@@ -44,11 +44,13 @@
 	margin-bottom: 20px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .shopping-cart .items .product .info{
 	padding-top: 0px;
 	text-align: center;
+
 }
 
 .shopping-cart .items .product .info .product-name{
@@ -69,12 +71,19 @@
     width: 80px;
 }
 
-.shopping-cart .items .product .info .price{
+.shopping-cart  .product .price{
 	margin-top: 15px;
     font-weight: bold;
-    font-size: 22px;
- }
+    font-size: 13px;
 
+ }
+.phivan{
+	padding-top: 50px;
+	text-align: center;
+}
+.help .help_li{
+	font-size: 14px;
+}
 .shopping-cart .summary{
 	border-top: 2px solid #5ea4f3;
     background-color: #f7fbff;
@@ -132,4 +141,5 @@
 	.box-quantity{
 		width: 100%;
 	}
+
 }
