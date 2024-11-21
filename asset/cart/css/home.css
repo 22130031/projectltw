@@ -1,0 +1,27 @@
+
+#PageIamge {
+    background-image: url("/asset/cart/img/istock.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    padding: 0 80px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 33px;
+}
+#PageIamge h1 {
+    padding-top: 50px;
+    padding-bottom: 15px;
+    color: rgb(168, 149, 50);
+
+}
+#PageIamge h2 {
+    color: darkgoldenrod;
+}
+#PageIamge h3 {
+    color: khaki;
+}
+#PageIamge p {
+    color: goldenrod;
+}
