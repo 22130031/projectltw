@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Page</title>
+  <link rel="stylesheet" href="thanhtoan.css">
+</head>
+<body>
+<header class="header">
+  <h1>My E-Commerce Store</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</header>
+
+<main class="checkout-container">
+  <h2>Checkout</h2>
+  <div class="checkout-content">
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <ul>
+        <li>Product 1 <span>$29.99</span></li>
+        <li>Product 2 <span>$39.99</span></li>
+        <li>Shipping <span>$5.00</span></li>
+        <li class="total">Total <span>$74.98</span></li>
+      </ul>
+    </div>
+
+    <!-- Payment Form -->
+    <div class="payment-form">
+      <h3>Billing Details</h3>
+      <form id="checkout-form">
+        <!-- Contact Info -->
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+        <label for="zip">ZIP Code</label>
+        <input type="text" id="zip" name="zip" placeholder="Enter your ZIP code" required>
+
+        <!-- Payment Method -->
+        <h3>Payment Method</h3>
+        <label>
+          <input type="radio" name="payment-method" value="credit-card" checked>
+          Credit Card
+        </label>
+        <label>
+          <input type="radio" name="payment-method" value="paypal">
+          PayPal
+        </label>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Confirm Order</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2024 My E-Commerce Store. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
