@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <link rel="stylesheet" href="mk.css">
+</head>
+<body>
+<header class="header">
+    <h1>Account Management</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<main class="password-container">
+    <!-- Change Password Section -->
+    <section class="change-password">
+        <h2>Change Password</h2>
+        <form id="change-password-form">
+            <label for="old-password">Old Password</label>
+            <input type="password" id="old-password" name="old-password" placeholder="Enter old password" required>
+
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" name="new-password" placeholder="Enter new password" required>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password" required>
+
+            <button type="submit" class="submit-btn">Change Password</button>
+            <p id="change-password-error" class="error"></p>
+        </form>
+    </section>
+
+    <hr>
+
+    <!-- Forgot Password Section -->
+    <section class="forgot-password">
+        <h2>Forgot Password</h2>
+        <form id="forgot-password-form">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <button type="submit" class="submit-btn">Reset Password</button>
+            <p id="forgot-password-success" class="success"></p>
+        </form>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2024 Account Management. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
