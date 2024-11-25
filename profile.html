@@ -5,25 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hồ Sơ Người Dùng</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
   <style>
     /* Toàn bộ trang */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #181818;
+      background-color: #212121;
       color: #f0f0f0;
     }
 
     .container {
       display: flex;
-      max-width: 1200px;
-      margin: 20px auto;
-      background-color: #222;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      justify-content: space-around;
+      width: 80%;
+      color: #ffffff;
+      border-right: 2px solid #3a3a3a;
     }
 
     /* Sidebar */
@@ -208,7 +207,7 @@
       <form>
         <div class="form-group">
           <label for="name">Tên:</label>
-          <input type="text" id="name" value="Cường">
+          <input type="text" id="name" value="Mạnh Cường">
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
@@ -235,5 +234,64 @@
     </div>
   </div>
 </div>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo và mạng xã hội -->
+    <div class="footer-brand">
+      <img src="" alt="Logo" class="footer-logo">
+      <p>Chất lượng - Uy tín - Tin cậy</p>
+      <div class="social-icons">
+        <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+        <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+        <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
+        <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+      </div>
+    </div>
+
+    <!-- Danh sách liên kết -->
+    <div class="footer-links">
+      <div>
+        <h3>Sản phẩm</h3>
+        <ul>
+          <li><a href="#">Thắt lưng nam </a></li>
+          <li><a href="#">Thắt lưng nữ </a></li>
+          <li><a href="#">Phụ kiện</a></li>
+          <li><a href="#">Khuyến mãi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Chính sách</h3>
+        <ul>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Chính sách vận chuyển</a></li>
+          <li><a href="#">Hướng dẫn thanh toán</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Hỗ trợ</h3>
+        <ul>
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#">Hỗ trợ </a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Thông tin công ty -->
+    <div class="footer-contact">
+      <h3>Liên hệ</h3>
+      <p>Địa chỉ: Số 8, Tam Bình, Thủ Đức </p>
+      <p>Điện thoại: 0397526965 </p>
+      <p>Email: storethatlung@gmail.com </p>
+      <p>Thời gian làm việc: 8:00 - 22:00 (hàng ngày)</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; Chuyên cung cấp thắt lưng các loại.
+      HotLine: 0397526965</p>
+  </div>
+</footer>
 </body>
 </html>
