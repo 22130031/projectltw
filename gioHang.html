@@ -1,146 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-	<title>Shopping Cart</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" href="asset/cart/css/style.css">
+    <title>Shopping Cart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="asset/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="asset/css/style.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="asset/fontawesome-free-6.6.0-web/fontawesome-free-6.6.0-web/css/all.css">
 </head>
 <body>
-	<main class="page">
-	 	<section class="shopping-cart dark">
-	 		<div class="container">
-		        <div class="block-heading">
-		          <h2>Giỏ Hàng</h2>
+<header>
+    <div class="header">
+        <a href="home.html"><h1>Trang chủ</h1></a>
+        <div class="menu">
+            <div class="dropdown">
+                <a href="#">Danh mục sản phẩm</a>
+                <div class="dropdown-content">
+                    <a href="#">Thắt lưng nam</a>
+                    <a href="#">Thắt lưng nữ</a>
+                </div>
+            </div>
+            <a href="#">Giới thiệu</a>
+            <a href="#">Chính sách</a>
+            <a href="#">Liên hệ</a>
+        </div>
+        <div class="icons">
+            <div class="dropdown-user">
+                <a href="profile.html"><i class="fa-solid fa-user"></i></a>
+                <div class="dropdown-content-user">
+                    <a href="Login.html">Đăng nhập</a>
+                </div>
+            </div>
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="gioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </div>
+</header>
+<!--CONTAINER CART-->
+<main class="page">
+    <section class="shopping-cart dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2>Giỏ Hàng</h2>
 
-		        </div>
-		        <div class="content">
-	 				<div class="row">
-	 					<div class="col-md-12 col-lg-8">
-	 						<div class="items">
-				 				<div class="product">
-				 					<div class="row">
-					 					<div class="col-md-3">
-					 						<img class="img-fluid mx-auto d-block image" src="asset/cart/img/-473Wx593H-466411871-black-MODEL.jpg">
-					 					</div>
-					 					<div class="col-md-8">
-					 						<div class="info">
-						 						<div class="row">
-							 						<div class="col-md-5 product-name">
-							 							<div class="product-name">
-															<a href="#">Dây lưng - BELT232623</a>
-															<div class="product-info">
-																<div>Mã SP: <span class="value">BELT232623</span></div>
-																<div>Màu sắc : <span class="value">Màu đen</span></div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="items">
+                            <div class="product">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid mx-auto d-block image" style="width: 113px"
+                                             src="asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="info">
+                                            <div class="row">
+                                                <div class="col-md-5 product-name">
+                                                    <div class="product-name">
+                                                        <a href="#">Dây lưng - BELT232623</a>
+                                                        <div class="product-info">
+                                                            <div>Mã SP: <span class="value">BELT232623</span></div>
+                                                            <div>Màu sắc : <span class="value">Màu đen</span></div>
 
-															</div>
-									 					</div>
-							 						</div>
-													<div class="col-md-4 quantity">
-														<p class="quantity">Số lượng</p>
-														<input class="quantity box-quantity" type="number" value ="1" class="form-control quantity-input">
-													</div>
-							 						<div class="col-md-3 price">
-							 							<span>2,237,000₫</span>
-							 						</div>
-							 					</div>
-							 				</div>
-					 					</div>
-					 				</div>
-				 				</div>
-				 				<div class="product">
-				 					<div class="row">
-					 					<div class="col-md-3">
-					 						<img class="img-fluid mx-auto d-block image" src="asset/cart/img/-473Wx593H-466411871-black-MODEL.jpg">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 quantity">
+                                                    <p class="quantity">Số lượng</p>
+                                                    <input class="quantity box-quantity " type="number" value="1"
+                                                           class="form-control quantity-input">
+                                                </div>
+                                                <div class="col-md-3 price">
+                                                    <span>2,237,000₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid mx-auto d-block image" style="width: 113px"
+                                             src="asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="info">
+                                            <div class="row">
+                                                <div class="col-md-5 product-name">
+                                                    <div class="product-name">
+                                                        <a href="#">Dây lưng - BELT232623</a>
+                                                        <div class="product-info">
+                                                            <div>Mã SP: <span class="value">BELT232623</span></div>
+                                                            <div>Màu sắc : <span class="value">Màu đen</span></div>
 
-					 					</div>
-					 					<div class="col-md-8">
-					 						<div class="info">
-						 						<div class="row">
-							 						<div class="col-md-5 product-name">
-							 							<div class="product-name">
-															<a href="#">Dây lưng - BELT232623</a>
-															<div class="product-info">
-																<div>Mã SP: <span class="value">BELT232623</span></div>
-																<div>Màu sắc : <span class="value">Màu đen</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 quantity">
+                                                    <p class="quantity">Số lượng</p>
+                                                    <input class="quantity box-quantity" type="number" value="1"
+                                                           class="form-control quantity-input">
+                                                </div>
+                                                <div class="col-md-3 price">
+                                                    <span>1,237,000₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product">
+                                <div class="row">
+                                    <div class="col-md-3 fix_cart">
 
-															</div>
-									 					</div>
-							 						</div>
-							 						<div class="col-md-4 quantity">
-														<p class="quantity">Số lượng</p>
-							 							<input class="quantity box-quantity" type="number" value ="1" class="form-control quantity-input">
-							 						</div>
-							 						<div class="col-md-3 price">
-							 							<span>1,237,000₫</span>
-							 						</div>
-							 					</div>
-							 				</div>
-					 					</div>
-					 				</div>
-				 				</div>
-				 				<div class="product">
-				 					<div class="row">
-					 					<div class="col-md-3 fix_cart">
+                                        <img class="img-fluid mx-auto d-block image"
+                                             src="asset/cart/img/that-lung-nam-zuciani-HZ17-den_600x.jpg">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="info">
+                                            <div class="row">
+                                                <div class="col-md-5 product-name">
+                                                    <div class="product-name">
+                                                        <a href="#">Dây lưng - BELT232623</a>
+                                                        <div class="product-info">
+                                                            <div>Mã SP: <span class="value">BELT232623</span></div>
+                                                            <div>Màu sắc : <span class="value">Màu đen</span></div>
 
-					 						<img class="img-fluid mx-auto d-block image" src="asset/cart/img/that-lung-nam-zuciani-HZ17-den_600x.jpg">
-					 					</div>
-					 					<div class="col-md-8">
-					 						<div class="info">
-						 						<div class="row">
-							 						<div class="col-md-5 product-name">
-							 							<div class="product-name">
-								 							<a href="#">Dây lưng - BELT232623</a>
-								 							<div class="product-info">
-									 							<div>Mã SP: <span class="value">BELT232623</span></div>
-									 							<div>Màu sắc : <span class="value">Màu đen</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 quantity">
+                                                    <p class="quantity">Số lượng</p>
+                                                    <input class="quantity box-quantity" type="number" value="1"
+                                                           class="form-control quantity-input">
+                                                </div>
+                                                <div class="col-md-3 price">
+                                                    <span>1,000,000₫</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <div class="summary">
+                            <h3>Thông tin đơn hàng</h3>
 
-									 						</div>
-									 					</div>
-							 						</div>
-							 						<div class="col-md-4 quantity">
-														<p class="quantity">Số lượng</p>
-							 							<input class="quantity box-quantity" type="number" value ="1" class="form-control quantity-input">
-							 						</div>
-							 						<div class="col-md-3 price">
-							 							<span>1,000,000₫</span>
-							 						</div>
-							 					</div>
-							 				</div>
-					 					</div>
-					 				</div>
-				 				</div>
-				 			</div>
-			 			</div>
-			 			<div class="col-md-12 col-lg-4">
-			 				<div class="summary">
-			 					<h3>Thông tin đơn hàng</h3>
-
-			 					<div class="summary-item"><span class="text">Giảm giá</span><span class="price">0 ₫</span></div>
-			 					<div class="summary-item"><span class="text">Chi phí vận chuyển</span><span class="price">0 ₫</span></div>
-			 					<div class="summary-item"><span class="text">Tổng cộng </span><span class="price">111123210 ₫</span></div>
-			 					<button type="button" class="btn btn-primary btn-lg btn-block">Xác nhận</button>
-								<p class="text phivan">Phí vận chuyển sẽ được tính ở trang thanh toán.</p>
-								Để nhận tư vấn hoặc hỗ trợ khi phát sinh khó khăn trong lúc mua hàng, hãy liên hệ Biti's thông qua:
-								<div> <ul class="help">
-									<li class="help_li">Gọi 0966.158.666 (cho Việt Nam)
-									</li>
-									<li class="help_li">chamsocKH@gmail.com.vn</li>
-								</ul>
-								</div>
+                            <div class="summary-item"><span class="text">Giảm giá</span><span class="price">0 ₫</span>
+                            </div>
+                            <div class="summary-item"><span class="text">Chi phí vận chuyển</span><span class="price">0 ₫</span>
+                            </div>
+                            <div class="summary-item"><span class="text">Tổng cộng </span><span class="price">111123210 ₫</span>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Xác nhận</button>
+                            <p class="text phivan">Phí vận chuyển sẽ được tính ở trang thanh toán.</p>
+                            Để nhận tư vấn hoặc hỗ trợ khi phát sinh khó khăn trong lúc mua hàng, hãy liên hệ Biti's
+                            thông qua:
+                            <div>
+                                <ul class="help">
+                                    <li class="help_li">Gọi 0966.158.666 (cho Việt Nam)
+                                    </li>
+                                    <li class="help_li">chamsocKH@gmail.com.vn</li>
+                                </ul>
+                            </div>
 
 
-				 			</div>
-			 			</div>
-		 			</div> 
-		 		</div>
-	 		</div>
-		</section>
-	</main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
+
+
 </html>
