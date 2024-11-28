@@ -45,6 +45,8 @@ header nav a {
 
 .product-item img {
     max-width: 100%;
+    height: 150px;
+    width: 150px;
     border-radius: 5px;
 }
 
