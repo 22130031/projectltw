@@ -53,3 +53,10 @@
 .dropdown:hover .dropdown-content,.dropdown-user:hover .dropdown-content-user {
     display: block;
 }
+.icons input {
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #121212;
+    color: #ffffff;
+}
