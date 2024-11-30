@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <style>
         /* Toàn bộ trang */
@@ -35,6 +34,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            border-radius: 10px;
         }
 
         .user-info {
@@ -43,11 +43,14 @@
         }
 
         .avatar img {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 2px solid #e63946;
+            border: 3px solid #e63946;
             object-fit: cover;
+        }
+        .avatar img:hover {
+            transform: scale(1.1); /* Phóng to nhẹ khi hover */
         }
 
         .username {
@@ -55,6 +58,7 @@
             font-weight: bold;
             margin: 10px 0;
         }
+
 
         .edit-profile {
             font-size: 14px;
@@ -83,11 +87,6 @@
             padding: 20px;
         }
 
-        h1 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
         .subtitle {
             font-size: 12px;
             color: #aaa;
@@ -102,7 +101,7 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         label {
@@ -112,9 +111,9 @@
         }
 
         input[type="text"], input[type="email"], input[type="date"] {
-            width: 70%; /* Thu nhỏ chiều rộng input */
-            max-width: 300px; /* Giới hạn kích thước lớn nhất */
-            padding: 8px;
+            width: 100%; /* Thu nhỏ chiều rộng input */
+            max-width: 400px; /* Giới hạn kích thước lớn nhất */
+            padding: 10px;
             font-size: 14px;
             border: 1px solid #444;
             border-radius: 5px;
@@ -123,8 +122,9 @@
         }
 
         input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus {
-            border-color: #555;
+            border-color: #e63946;
             outline: none;
+            box-shadow: 0 0 5px #e63946;
         }
 
         .gender-options label {
@@ -138,9 +138,9 @@
         }
 
         .save-button {
-            width: 70%;
-            max-width: 300px;
-            padding: 10px;
+            width: 10%;
+            max-width: 400px;
+            padding: 12px;
             font-size: 16px;
             color: #fff;
             background-color: #e63946;
@@ -155,15 +155,16 @@
         }
 
     </style>
+    <link rel="stylesheet" href="header.css">
 </head>
 <body>
 <!--Header-->
 <header>
     <div class="header">
-        <a href="index.html"><h1>Trang chủ</h1></a>
+        <a href="home.html"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="#">Danh mục sản phẩm</a>
+                <a href="danhmucsp.html">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -190,7 +191,7 @@
     <div class="sidebar">
         <div class="user-info">
             <div class="avatar">
-                <img src="belt1.png" alt="Avatar">
+                <img src="asset/image/belt1.png" alt="Avatar">
             </div>
             <p class="username">22xxxxx</p>
             <p class="edit-profile">Sửa Hồ Sơ</p>
@@ -241,13 +242,13 @@
     <div class="footer-container">
         <!-- Logo và mạng xã hội -->
         <div class="footer-brand">
-            <img src="" alt="Logo" class="footer-logo">
+            <img src="asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
             <p>Chất lượng - Uy tín - Tin cậy</p>
             <div class="social-icons">
-                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-                <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
-                <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-solid fa-phone"></i>
+                <i class="fa-brands fa-youtube"></i>
             </div>
         </div>
 

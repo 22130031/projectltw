@@ -1,6 +1,6 @@
-/* Tổng quan */
-body {
-  font-family: Arial, sans-serif; /* Thiết lập font chữ mặc định */
+
+body{
+font-family: Arial, sans-serif; /* Thiết lập font chữ mặc định */
   margin: 0;
   padding: 0;
   background-color: #f4f4f4; /* Nền trang màu xám nhạt */
@@ -143,3 +143,5 @@ body {
 .footer-bottom a:hover {
   text-decoration: underline; /* Hiện gạch chân khi hover */
 }
+
+

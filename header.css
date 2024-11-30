@@ -16,6 +16,7 @@
 .icons {
     display: flex;
     gap: 15px;
+    margin-right: 20px;
 }
 .header a{
     text-decoration: none;
@@ -34,7 +35,7 @@
     top: 100%;
     left: 0;
     background-color: #212121;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     min-width: 150px;
     z-index: 1;
 }
@@ -51,4 +52,11 @@
 
 .dropdown:hover .dropdown-content,.dropdown-user:hover .dropdown-content-user {
     display: block;
+}
+.icons input {
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #121212;
+    color: #ffffff;
 }
