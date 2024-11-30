@@ -79,6 +79,111 @@
       line-height: 1.6;
       margin-top: 20px;
     }
+    .color-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .color-options p {
+      color: #ffffff;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .color-options .color-choice {
+      display: flex;
+      gap: 15px;
+    }
+
+    .color-choice label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      padding: 5px 10px;
+      background-color: #333;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .color-choice label:hover {
+      border-color: #e74c3c; /* Đổi viền khi di chuột */
+      transform: scale(1.05); /* Phóng to nhẹ */
+      color: #e63946;
+    }
+
+    .color-choice label input[type="radio"] {
+      display: none;
+    }
+
+    .color-choice label img {
+      width: 30px;
+      height: 30px;
+      border-radius: 3px;
+    }
+
+    .color-choice label.selected {
+      border-color: #e63946; /* Viền nổi bật khi được chọn */
+    }
+
+    .quantity-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .quantity-options p {
+      color: #ffffff;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-control button {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      color: white;
+      background-color: #333;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .quantity-control button:hover {
+      background-color: #e63946;
+      transform: scale(1.1); /* Phóng to khi di chuột */
+    }
+
+    .quantity-control .quantity-input {
+      width: 50px;
+      text-align: center;
+      font-size: 18px;
+      padding: 5px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background-color: #212121;
+      color: white;
+    }
+
+    .quantity-control .available-stock {
+      color: #aaa;
+      font-size: 16px;
+      margin-left: 15px;
+    }
+
   </style>
   <link rel="stylesheet" href="header.css">
 </head>
@@ -90,7 +195,7 @@
     <a href="home.html"><h1>Trang chủ</h1></a>
     <div class="menu">
       <div class="dropdown">
-        <a href="#">Danh mục sản phẩm</a>
+        <a href="danhmucsp.html">Danh mục sản phẩm</a>
         <div class="dropdown-content">
           <a href="#">Thắt lưng nam</a>
           <a href="#">Thắt lưng nữ</a>
@@ -101,13 +206,14 @@
       <a href="#">Liên hệ</a>
     </div>
     <div class="icons">
+      <input type="text" placeholder="Search.." name="search">
+      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
       <div class="dropdown-user">
         <a href="profile.html"><i class="fa-solid fa-user"></i></a>
         <div class="dropdown-content-user">
           <a href="Login.html">Đăng nhập</a>
         </div>
       </div>
-      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
       <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
   </div>
@@ -124,6 +230,27 @@
   <div class="product-info">
     <h2>Thắt Lưng Da Cổ Điển</h2>
     <p class="price">200,000 VND</p>
+    <!-- Chọn màu sắc -->
+    <div class="color-options">
+      <p>Màu Sắc:</p>
+      <div class="color-choice">
+        <label>
+          <input type="radio" name="color" value="denbac">
+          <img src="asset/image/belt1.png" alt="Đen bạc"> Đen bạc
+        </label>
+      </div>
+    </div>
+
+    <!-- Điều chỉnh số lượng -->
+    <div class="quantity-options">
+      <p>Số Lượng:</p>
+      <div class="quantity-control">
+        <button type="button" class="quantity-decrease">-</button>
+        <input type="text" value="1" class="quantity-input">
+        <button type="button" class="quantity-increase">+</button>
+        <span class="available-stock">148 sản phẩm có sẵn</span>
+      </div>
+    </div>
     <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
     <p class="description">
       Thắt lưng làm từ da thật, thiết kế cổ điển, phù hợp với mọi lứa tuổi và phong cách. Độ bền cao, không bong tróc, mang đến vẻ ngoài sang trọng.
