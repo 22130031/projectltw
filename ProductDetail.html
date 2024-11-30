@@ -79,6 +79,111 @@
       line-height: 1.6;
       margin-top: 20px;
     }
+    .color-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .color-options p {
+      color: #ffffff;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .color-options .color-choice {
+      display: flex;
+      gap: 15px;
+    }
+
+    .color-choice label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      padding: 5px 10px;
+      background-color: #333;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .color-choice label:hover {
+      border-color: #e74c3c; /* Đổi viền khi di chuột */
+      transform: scale(1.05); /* Phóng to nhẹ */
+      color: #e63946;
+    }
+
+    .color-choice label input[type="radio"] {
+      display: none;
+    }
+
+    .color-choice label img {
+      width: 30px;
+      height: 30px;
+      border-radius: 3px;
+    }
+
+    .color-choice label.selected {
+      border-color: #e63946; /* Viền nổi bật khi được chọn */
+    }
+
+    .quantity-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .quantity-options p {
+      color: #ffffff;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-control button {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      color: white;
+      background-color: #333;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .quantity-control button:hover {
+      background-color: #e63946;
+      transform: scale(1.1); /* Phóng to khi di chuột */
+    }
+
+    .quantity-control .quantity-input {
+      width: 50px;
+      text-align: center;
+      font-size: 18px;
+      padding: 5px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background-color: #212121;
+      color: white;
+    }
+
+    .quantity-control .available-stock {
+      color: #aaa;
+      font-size: 16px;
+      margin-left: 15px;
+    }
+
   </style>
   <link rel="stylesheet" href="header.css">
 </head>
@@ -131,7 +236,7 @@
       <div class="color-choice">
         <label>
           <input type="radio" name="color" value="denbac">
-          <img src="asset/image/denbac.png" alt="Đen bạc"> Đen bạc
+          <img src="asset/image/belt1.png" alt="Đen bạc"> Đen bạc
         </label>
       </div>
     </div>
