@@ -317,6 +317,44 @@
       HotLine: 0397526965</p>
   </div>
 </footer>
+<script>
+  // Lấy các phần tử trong DOM
+  const decreaseButton = document.querySelector('.quantity-decrease');
+  const increaseButton = document.querySelector('.quantity-increase');
+  const quantityInput = document.querySelector('.quantity-input');
+  const maxStock = 148; // Số lượng sản phẩm tối đa có sẵn
 
+  // Xử lý khi bấm nút giảm số lượng
+  decreaseButton.addEventListener('click', () => {
+    let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
+    if (currentQuantity > 1) {
+      quantityInput.value = currentQuantity - 1; // Giảm 1 nếu lớn hơn 1
+    }
+  });
+
+  // Xử lý khi bấm nút tăng số lượng
+  increaseButton.addEventListener('click', () => {
+    let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
+    if (currentQuantity < maxStock) {
+      quantityInput.value = currentQuantity + 1; // Tăng 1 nếu chưa đạt tối đa
+    }
+  });
+
+  // Đảm bảo người dùng chỉ nhập số hợp lệ
+  quantityInput.addEventListener('input', () => {
+    let currentValue = parseInt(quantityInput.value, 10);
+
+    // Nếu nhập sai hoặc nhỏ hơn 1, tự động đặt về 1
+    if (isNaN(currentValue) || currentValue < 1) {
+      quantityInput.value = 1;
+    }
+
+    // Nếu vượt quá số lượng tối đa, đặt về số lượng tối đa
+    if (currentValue > maxStock) {
+      quantityInput.value = maxStock;
+    }
+  });
+
+</script>
 </body>
 </html>
