@@ -183,7 +183,46 @@
       font-size: 16px;
       margin-left: 15px;
     }
+    /* Đánh giá sản phẩm */
+    .product-rating {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: #f1c40f; /* Màu vàng sao */
+      margin-bottom: 15px;
+    }
 
+    .product-rating .rating-details {
+      color: #ffffff; /* Màu chữ trắng */
+      margin-left: 10px;
+    }
+
+    /* Nút hành động */
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .action-buttons button {
+      padding: 15px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .buy-now {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .buy-now:hover {
+      background-color: #d62c1a;
+      transform: scale(1.05);
+    }
   </style>
   <link rel="stylesheet" href="header.css">
 </head>
@@ -229,6 +268,10 @@
   <!-- Thông Tin Sản Phẩm -->
   <div class="product-info">
     <h2>Thắt Lưng Da Cổ Điển</h2>
+    <div class="product-rating">
+      <span class="rating-stars">5.0 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+      <span class="rating-details">498 đánh giá • 1,1k đã bán</span>
+    </div>
     <p class="price">200,000 VND</p>
     <!-- Chọn màu sắc -->
     <div class="color-options">
@@ -251,7 +294,10 @@
         <span class="available-stock">148 sản phẩm có sẵn</span>
       </div>
     </div>
-    <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
+    <div class="action-buttons">
+      <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
+      <button class="buy-now">Mua Ngay</button>
+    </div>
     <p class="description">
       Thắt lưng làm từ da thật, thiết kế cổ điển, phù hợp với mọi lứa tuổi và phong cách. Độ bền cao, không bong tróc, mang đến vẻ ngoài sang trọng.
     </p>
@@ -317,6 +363,44 @@
       HotLine: 0397526965</p>
   </div>
 </footer>
+<script>
+  // Lấy các phần tử trong DOM
+  const decreaseButton = document.querySelector('.quantity-decrease');
+  const increaseButton = document.querySelector('.quantity-increase');
+  const quantityInput = document.querySelector('.quantity-input');
+  const maxStock = 148; // Số lượng sản phẩm tối đa có sẵn
 
+  // Xử lý khi bấm nút giảm số lượng
+  decreaseButton.addEventListener('click', () => {
+    let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
+    if (currentQuantity > 1) {
+      quantityInput.value = currentQuantity - 1; // Giảm 1 nếu lớn hơn 1
+    }
+  });
+
+  // Xử lý khi bấm nút tăng số lượng
+  increaseButton.addEventListener('click', () => {
+    let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
+    if (currentQuantity < maxStock) {
+      quantityInput.value = currentQuantity + 1; // Tăng 1 nếu chưa đạt tối đa
+    }
+  });
+
+  // Đảm bảo người dùng chỉ nhập số hợp lệ
+  quantityInput.addEventListener('input', () => {
+    let currentValue = parseInt(quantityInput.value, 10);
+
+    // Nếu nhập sai hoặc nhỏ hơn 1, tự động đặt về 1
+    if (isNaN(currentValue) || currentValue < 1) {
+      quantityInput.value = 1;
+    }
+
+    // Nếu vượt quá số lượng tối đa, đặt về số lượng tối đa
+    if (currentValue > maxStock) {
+      quantityInput.value = maxStock;
+    }
+  });
+
+</script>
 </body>
 </html>
