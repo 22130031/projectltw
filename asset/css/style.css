@@ -130,7 +130,7 @@
         text-align: center;
     }
 }
-
+/*fix*/
 .fix_img_inCart{
     width: 123px;
     margin-left: 15px;
@@ -142,4 +142,39 @@
     text-align: center;
     width: 30%;
     border:  1px solid cornflowerblue;
+}
+.thongke{
+    text-align: center;
+    display: flex;
+}
+/*admin form*/
+.modal.open{
+    display: flex;
+}
+.modal{
+    background: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+.form__content{
+    background: white;
+    margin: 100px 50px 50px 500px;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    top: 40px;
+}
+.form__content input{
+    width: 100%;
+}
+.js-modal-close{
+    margin-left: 676px;
+}
+.commit{
+    top:20px;
+    letf:50px;
 }

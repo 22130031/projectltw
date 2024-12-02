@@ -16,7 +16,37 @@
 </head>
 <body>
 
+<div class="modal js-modal">
 
+    <form class="form__content" action="" method="POST">
+        <div class="form__title">
+            <button class="js-modal-close">Đóng</button>
+            <h3  >Chỉnh sửa thông tin user</h3>
+
+        </div>
+        <label for="email">Email</label>
+        <div class="form__item">
+            <input type="email" id="email" name="email" required placeholder="Email"><br>
+        </div>
+        <label for="email">Tên người dùng</label>
+        <div class="form__item">
+            <input type="email" id="name" name="email" required ><br>
+        </div>
+        <label for="matkhau">Mật khẩu</label>
+        <div class="form__item">
+
+            <input type="text" id="matkhau" name="pass" required><br>
+        </div>
+        <label for="phone">Số Điện Thoại:</label>
+        <div class="form__item">
+
+            <input type="text" id="phone" name="phone" required><br>
+        </div>
+        <div class="commit">
+            <button>Xác nhận</button>
+        </div>
+    </form>
+</div>
 <div id="wrapper">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="adjust-nav">
@@ -58,7 +88,7 @@
                     <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i>My Link Two</a>
+                    <a href="#"><i class="fa fa-bar-chart-o"></i>Category</a>
                 </li>
 
                 <li>
@@ -85,7 +115,7 @@
             </div>
             <!-- /. ROW  -->
             <label>
-                <input class="search__input" type="text" name="" placeholder="Nhập tên sản phẩm ">
+                <input class="search__input" type="text" name="" placeholder="Nhập email, sdt,.. ">
             </label>
 
             <button class="search__submit">
@@ -99,31 +129,36 @@
                     <th scope="col">ID</th>
                     <th scope="col">Tên Tài Khoản</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Mật khẩu</th>
                     <th scope="col">Số điện thoại</th>
-                    <th scope="col">Ngày đăng ký</th>
+                    <th scope="col">Loại tài khoản</th>
                     <th scope="col">Thao tác</th>
-
-
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Hường Mạnh Cà</td>
-                    <td>copeNgokNgek@yahoo.com</td>
-                    <td>31/12/2004</td>
-                    <td>24</td>
-                    <td><a href=""><i class="fa-solid fa-pen-to-square fa_in_admin"></i></a>
-                        <a href=""><i class="fa-solid fa-trash fa_in_admin"></i></a></td>
+                    <td>Nguyễn Văn A</td>
+                    <td>abc@yahoo.com</td>
+                    <td>132</td>
+                    <td>09123</td>
+                    <td>admin</td>
+                    <td>
+                         <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
+                        <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
+                    </td>
                 </tr>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Hường Mạnh Cà</td>
-                    <td>copeNgokNgek@yahoo.com</td>
-                    <td>31/12/2004</td>
-                    <td>24</td>
-                    <td><a href=""><i class="fa-solid fa-pen-to-square fa_in_admin"></i></a>
-                        <a href=""><i class="fa-solid fa-trash fa_in_admin"></i></a></td>
+                    <th scope="row">2</th>
+                    <td>Nguyễn Văn A</td>
+                    <td>abc@yahoo.com</td>
+                    <td>132</td>
+                    <td>09123</td>
+                    <td>admin</td>
+                    <td>
+                        <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
+                        <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
+                    </td>
                 </tr>
 
 
@@ -132,11 +167,27 @@
 
             <!-- /. ROW  -->
         </div>
-        <!-- /. PAGE INNER  -->
+
     </div>
 
 </div>
+<script>
+    const editBtns = document.querySelectorAll('.js-edit')
+    const modal = document.querySelector('.js-modal')
+    const  modalClose = document.querySelector('.js-modal-close')
 
-
+    function showForm() {
+        modal.classList.add('open')
+    }
+    function hideForm(){
+        modal.remove('open')
+    }
+    for(const editBtn of editBtns){
+        editBtn.addEventListener('click',showForm )
+    }
+        modalClose.addEventListener('click', hideForm)
+</script>
 </body>
+<!--c-->
+
 </html>
