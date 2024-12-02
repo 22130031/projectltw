@@ -324,6 +324,20 @@
             HotLine: 0397526965</p>
     </div>
 </footer>
+<script>
+    document.getElementById("avatar-upload").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
 
+            // Hiển thị hình ảnh được chọn
+            reader.onload = function (e) {
+                document.getElementById("profile-avatar").src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 </body>
 </html>
