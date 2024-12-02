@@ -174,7 +174,19 @@
 .js-modal-close{
     margin-left: 676px;
 }
-.commit{
-    top:20px;
-    letf:50px;
+
+/*button in Cart*/
+.quantity-control   .quantity-increase{
+    border-radius: 4px;
+    border: none;
+    background-color: #3b99e0;
+    font-size: 12px;
+    font-weight: 600;
+}
+.quantity-control   .quantity-decrease{
+    border-radius: 4px;
+    border: none;
+    background-color: #3b99e0;
+    font-size: 12px;
+    font-weight: 600;
 }
