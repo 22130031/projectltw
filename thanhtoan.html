@@ -1,19 +1,41 @@
-699<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout Page</title>
   <link rel="stylesheet" href="thanhtoan.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="asset/css/bootstrap.css">
 </head>
 <body>
-<header class="header">
-  <h1>Cửa hàng bán thắt lưng</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="cart.html">Cart</a>
-  </nav>
+<header>
+  <div class="header">
+    <a href="home.html"><h1>Trang chủ</h1></a>
+    <div class="menu">
+      <div class="dropdown">
+        <a href="danhmucsp.html">Danh mục sản phẩm</a>
+        <div class="dropdown-content">
+          <a href="#">Thắt lưng nam</a>
+          <a href="#">Thắt lưng nữ</a>
+        </div>
+      </div>
+      <a href="#">Giới thiệu</a>
+      <a href="#">Chính sách</a>
+      <a href="#">Liên hệ</a>
+    </div>
+    <div class="icons">
+      <input type="text" placeholder="Search.." name="search">
+      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <div class="dropdown-user">
+        <a href="profile.html"><i class="fa-solid fa-user"></i></a>
+        <div class="dropdown-content-user">
+          <a href="Login.html">Đăng nhập</a>
+        </div>
+      </div>
+      <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </div>
 </header>
 
 <main class="checkout-container">
