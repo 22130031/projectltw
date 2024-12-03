@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Simple Responsive Admin</title>
 
-    <link href="asset/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../asset/css/bootstrap.css" rel="stylesheet"/>
 
-    <link href="asset/css/font-awesome.css" rel="stylesheet"/>
-    <link href="asset/css/custom.css" rel="stylesheet"/>
+    <link href="../asset/css/font-awesome.css" rel="stylesheet"/>
+    <link href="../asset/css/custom.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="asset/css/style.css">
-    <link rel="stylesheet" href="asset/fontawesome-free-6.6.0-web/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <link rel="stylesheet" href="../asset/fontawsome/fontawsome/css/all.css">
 
 </head>
 <body>
@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home.html">
+                <a class="navbar-brand" href="../home.html">
                     Trang chủ
                 </a>
             </div>
@@ -44,14 +44,14 @@
 
 
                 <li>
-                    <a href="#"><i class="fa fa-desktop "></i>Dashboard</a>
+                    <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
                 </li>
 
 
                 <li class="active-link">
                     <a href="#"><i class="fa fa-table "></i>USER<span class="badge"></span></a>
                 </li>
-                <li >
+                <li>
                     <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCTS<span></span></a>
                 </li>
                 <li>
@@ -80,11 +80,20 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>BLANK PAGE </h2>
+                    <h2>Trang USER</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
+            <label>
+                <input class="search__input" type="text" name="" placeholder="Nhập tên sản phẩm ">
+            </label>
+
+            <button class="search__submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Tìm kiếm</span>
+            </button>
             <table class="table table-striped">
+
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -92,8 +101,8 @@
                     <th scope="col">Email</th>
                     <th scope="col">Số điện thoại</th>
                     <th scope="col">Ngày đăng ký</th>
-                    <th scope="col">Tuổi tác</th>
-                    <th scope="col">Giới tính</th>
+                    <th scope="col">Thao tác</th>
+
 
                 </tr>
                 </thead>
@@ -104,7 +113,8 @@
                     <td>copeNgokNgek@yahoo.com</td>
                     <td>31/12/2004</td>
                     <td>24</td>
-                    <td>Giữa</td>
+                    <td><a href=""><i class="fa-solid fa-pen-to-square fa_in_admin"></i></a>
+                        <a href=""><i class="fa-solid fa-trash fa_in_admin"></i></a></td>
                 </tr>
                 <tr>
                     <th scope="row">1</th>
@@ -112,7 +122,8 @@
                     <td>copeNgokNgek@yahoo.com</td>
                     <td>31/12/2004</td>
                     <td>24</td>
-                    <td>Giữa</td>
+                    <td><a href=""><i class="fa-solid fa-pen-to-square fa_in_admin"></i></a>
+                        <a href=""><i class="fa-solid fa-trash fa_in_admin"></i></a></td>
                 </tr>
 
 

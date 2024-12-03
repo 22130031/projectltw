@@ -8,83 +8,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="footer.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-
-    .product-detail {
-      display: flex;
-      justify-content: center;
-      padding: 30px;
-    }
-
-    .product-image {
-      flex: 1;
-      text-align: center;
-    }
-
-    .product-image img {
-      width: 80%;
-      max-width: 500px;
-      border-radius: 10px;
-    }
-
-    .product-info {
-      flex: 1;
-      padding-left: 20px;
-      max-width: 600px;
-    }
-
-    .product-info h2 {
-      font-size: 28px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .product-info p {
-      font-size: 18px;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .product-info .price {
-      font-size: 24px;
-      color: #e74c3c;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .product-info .add-to-cart {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .product-info .add-to-cart:hover {
-      background-color: #2980b9;
-    }
-  </style>
-  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="ProductDetail.css">
 </head>
 <body>
 
 <!-- Header -->
 <header>
+  <div id="fullscreen-search" class="fullscreen-search">
+    <span class="close-btn">&times;</span>
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" class="search-input" placeholder="Search..">
+        <button class="search-icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+  </div>
   <div class="header">
-    <a href="index.html"><h1>Trang chủ</h1></a>
+    <a href="home.html"><h1>Trang chủ</h1></a>
     <div class="menu">
       <div class="dropdown">
-        <a href="#">Danh mục sản phẩm</a>
+        <a href="danhmucsp.html">Danh mục sản phẩm</a>
         <div class="dropdown-content">
           <a href="#">Thắt lưng nam</a>
           <a href="#">Thắt lưng nữ</a>
@@ -95,45 +40,116 @@
       <a href="#">Liên hệ</a>
     </div>
     <div class="icons">
+      <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
       <div class="dropdown-user">
         <a href="profile.html"><i class="fa-solid fa-user"></i></a>
         <div class="dropdown-content-user">
           <a href="Login.html">Đăng nhập</a>
         </div>
       </div>
-      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
       <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
   </div>
 </header>
+<script src="fullscreensearch.js"></script>
 
 <!-- Product Detail Section -->
 <div class="product-detail">
   <!-- Ảnh Sản Phẩm -->
   <div class="product-image">
-    <img src="belt1.png" alt="Thắt Lưng Da">
+    <img src="asset/image/belt1.png" alt="Thắt Lưng Da">
   </div>
 
   <!-- Thông Tin Sản Phẩm -->
   <div class="product-info">
     <h2>Thắt Lưng Da Cổ Điển</h2>
+    <div class="product-rating">
+      <span class="rating-stars">5.0 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+      <span class="rating-details">498 đánh giá • 1,1k đã bán</span>
+    </div>
     <p class="price">200,000 VND</p>
-    <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
+    <!-- Chọn màu sắc -->
+    <div class="color-options">
+      <p>Màu Sắc:</p>
+      <div class="color-choice">
+        <label>
+          <input type="radio" name="color" value="denbac">
+          <img src="asset/image/belt1.png" alt="Đen bạc"> Đen bạc
+        </label>
+      </div>
+    </div>
+
+    <!-- Điều chỉnh số lượng -->
+    <div class="quantity-options">
+      <p>Số Lượng:</p>
+      <div class="quantity-control">
+        <button type="button" class="quantity-decrease">-</button>
+        <input type="text" value="1" class="quantity-input">
+        <button type="button" class="quantity-increase">+</button>
+        <span class="available-stock">148 sản phẩm có sẵn</span>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
+      <button class="buy-now">Mua Ngay</button>
+    </div>
+    <p class="description">
+      Thắt lưng làm từ da thật, thiết kế cổ điển, phù hợp với mọi lứa tuổi và phong cách. Độ bền cao, không bong tróc, mang đến vẻ ngoài sang trọng.
+    </p>
   </div>
 </div>
+<div class="reviews-section">
+  <h3>ĐÁNH GIÁ SẢN PHẨM</h3>
+  <div class="reviews-summary">
+    <div class="average-rating">
+      <span class="rating-score">5.0</span>
+      <span class="rating-text">trên 5</span>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="rating-filters">
+      <button class="filter-btn active">Tất Cả</button>
+      <button class="filter-btn">5 Sao (497)</button>
+      <button class="filter-btn">4 Sao (1)</button>
+      <button class="filter-btn">3 Sao (0)</button>
+      <button class="filter-btn">2 Sao (0)</button>
+      <button class="filter-btn">1 Sao (0)</button>
+      <button class="filter-btn">Có Bình Luận (43)</button>
+      <button class="filter-btn">Có Hình Ảnh / Video (6)</button>
+    </div>
+  </div>
+  <div class="review-item">
+    <div class="review-header">
+      <img src="asset/image/user.jpg" alt="User Avatar" class="user-avatar">
+      <div class="review-info">
+        <span class="username">thuongde_6678</span>
+        <span class="review-stars">★★★★★</span>
+        <span class="review-date">2024-04-04 17:53</span>
+        <span class="review-category">| Phân loại hàng: Đen bạc</span>
+      </div>
+    </div>
+    <div class="review-content">
+      <p>Chất liệu: da</p>
+      <p>Đúng với mô tả: đen bạc</p>
+      <p>Màu sắc: đen</p>
+      <p>Rất đẹp  ... ưng ... sẽ mua ủng hộ tiếp...</p>
+      <img src="asset/image/belt1.png" alt="Review Image" class="review-image">
+    </div>
+  </div>
+</div>
+
 
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-container">
     <!-- Logo và mạng xã hội -->
     <div class="footer-brand">
-      <img src="" alt="Logo" class="footer-logo">
+      <img src="asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
       <p>Chất lượng - Uy tín - Tin cậy</p>
       <div class="social-icons">
-        <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-        <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-        <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
-        <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-solid fa-phone"></i>
+        <i class="fa-brands fa-youtube"></i>
       </div>
     </div>
 
@@ -181,6 +197,44 @@
       HotLine: 0397526965</p>
   </div>
 </footer>
+<script>
+  // Lấy các phần tử trong DOM
+  const decreaseButton = document.querySelector('.quantity-decrease');
+  const increaseButton = document.querySelector('.quantity-increase');
+  const quantityInput = document.querySelector('.quantity-input');
+  const maxStock = 148; // Số lượng sản phẩm tối đa có sẵn
 
+  // Xử lý khi bấm nút giảm số lượng
+  decreaseButton.addEventListener('click', () => {
+    let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
+    if (currentQuantity > 1) {
+      quantityInput.value = currentQuantity - 1; // Giảm 1 nếu lớn hơn 1
+    }
+  });
+
+  // Xử lý khi bấm nút tăng số lượng
+  increaseButton.addEventListener('click', () => {
+    let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
+    if (currentQuantity < maxStock) {
+      quantityInput.value = currentQuantity + 1; // Tăng 1 nếu chưa đạt tối đa
+    }
+  });
+
+  // Đảm bảo người dùng chỉ nhập số hợp lệ
+  quantityInput.addEventListener('input', () => {
+    let currentValue = parseInt(quantityInput.value, 10);
+
+    // Nếu nhập sai hoặc nhỏ hơn 1, tự động đặt về 1
+    if (isNaN(currentValue) || currentValue < 1) {
+      quantityInput.value = 1;
+    }
+
+    // Nếu vượt quá số lượng tối đa, đặt về số lượng tối đa
+    if (currentValue > maxStock) {
+      quantityInput.value = maxStock;
+    }
+  });
+
+</script>
 </body>
 </html>

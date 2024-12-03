@@ -4,11 +4,12 @@
     <title>Shopping Cart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="asset/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="asset/css/style.css">
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="asset/fontawesome-free-6.6.0-web/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="asset/fontawsome/fontawsome/css/all.css">
 </head>
 <body>
 <header>
@@ -16,7 +17,7 @@
         <a href="home.html"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="#">Danh mục sản phẩm</a>
+                <a href="danhmucsp.html">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -27,13 +28,14 @@
             <a href="#">Liên hệ</a>
         </div>
         <div class="icons">
+            <input type="text" placeholder="Search.." name="search">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
             <div class="dropdown-user">
                 <a href="profile.html"><i class="fa-solid fa-user"></i></a>
                 <div class="dropdown-content-user">
                     <a href="Login.html">Đăng nhập</a>
                 </div>
             </div>
-            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
             <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
@@ -71,18 +73,23 @@
                                                 </div>
                                                 <div class="col-md-4 quantity">
                                                     <p class="quantity">Số lượng</p>
-                                                    <input class="quantity box-quantity " type="number" value="1"
-                                                           class="form-control quantity-input">
+                                                    <label>
+                                                        <input class="quantity box-quantity form-control quantity-input"
+                                                               type="number" value="1" >
+                                                    </label>
+
                                                 </div>
-                                                <div class="col-md-3 price">
-                                                    <span>2,237,000₫</span>
+                                                <div class="col-md-2 price">
+                                                    <span>1,237,000₫</span>
+                                                </div>
+                                                <div class="col-md-1 price" style="left: 51px">
+                                                    <a href=""><i class="fa-solid fa-x" style="color: red" ></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="product">
+
                                 <div class="row">
                                     <div class="col-md-3">
                                         <img class="img-fluid mx-auto d-block image fix_img_inCart"
@@ -103,11 +110,16 @@
                                                 </div>
                                                 <div class="col-md-4 quantity">
                                                     <p class="quantity">Số lượng</p>
-                                                    <input class="quantity box-quantity" type="number" value="1"
-                                                           class="form-control quantity-input">
+                                                    <label>
+                                                        <input class="quantity box-quantity form-control quantity-input"
+                                                               type="number" value="1" >
+                                                    </label>
                                                 </div>
-                                                <div class="col-md-3 price">
+                                                <div class="col-md-2 price">
                                                     <span>1,237,000₫</span>
+                                                </div>
+                                                <div class="col-md-1 price" style="left: 51px">
+                                                     <a href=""><i class="fa-solid fa-x" style="color: red" ></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,8 +130,8 @@
                                 <div class="row">
                                     <div class="col-md-3 fix_cart">
 
-                                        <img class="img-fluid mx-auto d-block image fix_img_inCart "
-                                             src="asset/image/OIP.jpg">
+                                        <img alt="" class="img-fluid mx-auto d-block image fix_img_inCart "
+                                             src="asset/image/OIP.jpg" width="474"  >
                                     </div>
                                     <div class="col-md-8">
                                         <div class="info">
@@ -136,17 +148,24 @@
                                                 </div>
                                                 <div class="col-md-4 quantity">
                                                     <p class="quantity">Số lượng</p>
-                                                    <input class="quantity box-quantity" type="number" value="1"
-                                                           class="form-control quantity-input">
+                                                    <label>
+                                                        <input class="quantity box-quantity form-control quantity-input"
+                                                               type="number" value="1" >
+                                                    </label>
                                                 </div>
-                                                <div class="col-md-3 price">
-                                                    <span>1,000,000₫</span>
+                                                <div class="col-md-2 price">
+                                                    <span>1,237,000₫</span>
+                                                </div>
+                                                <div class="col-md-1 price" style="left: 51px">
+                                                    <a href=""><i class="fa-solid fa-x" style="color: red" ></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
