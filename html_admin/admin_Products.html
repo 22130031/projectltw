@@ -10,13 +10,44 @@
     <link href="../asset/css/font-awesome.css" rel="stylesheet"/>
 
     <link href="../asset/css/custom.css" rel="stylesheet"/>
-
+    <link rel="stylesheet" href="../asset/css/style.css">
     <link rel="stylesheet" href="../asset/fontawsome/fontawsome/css/all.css">
 
 </head>
 
 
 <body>
+<div class="modal js-modal">
+
+    <form class="form__content" action="" method="POST">
+        <div class="form__title">
+            <button class="js-modal-close">Đóng</button>
+            <h3  >Chỉnh sửa thông tin Sản Phẩm</h3>
+
+        </div>
+        <label for="email">Sản phẩm</label>
+        <div class="form__item">
+            <input type="email" id="email" name="email" required placeholder="Email"><br>
+        </div>
+        <label for="email">Tên sản phẩm</label>
+        <div class="form__item">
+            <input type="email" id="name" name="email" required ><br>
+        </div>
+        <label for="matkhau">Mô tả</label>
+        <div class="form__item">
+
+            <input type="text" id="matkhau" name="pass" required><br>
+        </div>
+        <label for="phone">Giá bán</label>
+        <div class="form__item">
+
+            <input type="text" id="phone" name="phone" required><br>
+        </div>
+        <div class="commit">
+            <button>Xác nhận</button>
+        </div>
+    </form>
+</div>
 <div id="wrapper">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="adjust-nav">
@@ -93,8 +124,7 @@
                 <span>Tìm kiếm</span>
             </button>
             <table class="table table-striped">
-
-                <thead>
+                <thead style="background:#a6e1ec">
 
                 <tr>
                     <th scope="col">Mã Sản Phẩm</th>
@@ -114,29 +144,29 @@
                     <td>Rất đẹp</td>
                     <td>50000usd</td>
                     <td>
-                        <a href=""><i class="fa-solid fa-pen-to-square fa_in_admin"></i></a>
-                        <a href=""><i class="fa-solid fa-trash fa_in_admin"></i></a>
+                        <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
+                        <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">1</th>
-                    <td>s</td>
+                    <td></td>
                     <td><img src="../asset/image/chatlieuda.jpg" alt="" class="responsive-hinhAnh"></td>
                     <td>Rất đẹp</td>
                     <td>50000usd</td>
                     <td>
-                        <a href=""><i class="fa-solid fa-pen-to-square fa_in_admin"></i></a>
-                        <a href=""><i class="fa-solid fa-trash fa_in_admin"></i></a>
+                        <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
+                        <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
                     </td>
                 </tr><tr>
                     <th scope="row">1</th>
-                    <td>s</td>
+                    <td></td>
                     <td><img src="../asset/image/chatlieuda.jpg" alt="" class="responsive-hinhAnh"></td>
                     <td>Rất đẹp</td>
                     <td>50000usd</td>
                     <td>
-                        <a href=""><i class="fa-solid fa-pen-to-square fa_in_admin"></i></a>
-                        <a href=""><i class="fa-solid fa-trash fa_in_admin"></i></a>
+                        <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
+                        <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
                     </td>
                 </tr>
                 </tbody>
@@ -149,6 +179,21 @@
 
 </div>
 
+<script>
+    const editBtns = document.querySelectorAll('.js-edit')
+    const modal = document.querySelector('.js-modal')
+    const  modalClose = document.querySelector('.js-modal-close')
 
+    function showForm() {
+        modal.classList.add('open')
+    }
+    function hideForm(){
+        modal.remove('open')
+    }
+    for(const editBtn of editBtns){
+        editBtn.addEventListener('click',showForm )
+    }
+    modalClose.addEventListener('click', hideForm)
+</script>
 </body>
 </html>
