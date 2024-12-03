@@ -47,12 +47,13 @@ body {
     text-align: center;
 }
 #product1 .pro-container, #product2 .pro-container{
+    margin: auto;
     display: flex;
-    justify-content: space-between;
+    width: 1200px;
     flex-wrap: wrap;
 }
 #product1 .pro,#product2 .pro{
-    width: 23%;
+    width: 22%;
     min-width: 250px;
     padding: 10px 12px;
     border: 1px solid #cce7d0;
@@ -118,4 +119,8 @@ body {
 #Bonus2{
     padding: 50px 100px 50px 100px;
     text-align: center;
+}
+.pro .pro-top img{
+    height: 300px;
+
 }
