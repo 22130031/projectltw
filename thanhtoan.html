@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Page</title>
+  <link rel="stylesheet" href="thanhtoan.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="asset/css/bootstrap.css">
+</head>
+<body>
+ 
+<header>
+  <div class="header">
+    <a href="home.html"><h1>Trang chủ</h1></a>
+    <div class="menu">
+      <div class="dropdown">
+        <a href="danhmucsp.html">Danh mục sản phẩm</a>
+        <div class="dropdown-content">
+          <a href="#">Thắt lưng nam</a>
+          <a href="#">Thắt lưng nữ</a>
+        </div>
+      </div>
+      <a href="#">Giới thiệu</a>
+      <a href="#">Chính sách</a>
+      <a href="#">Liên hệ</a>
+    </div>
+    <div class="icons">
+      <input type="text" placeholder="Search.." name="search">
+      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <div class="dropdown-user">
+        <a href="profile.html"><i class="fa-solid fa-user"></i></a>
+        <div class="dropdown-content-user">
+          <a href="Login.html">Đăng nhập</a>
+        </div>
+      </div>
+      <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </div>
+
+<header class="header">
+  <h1>Cửa hàng bán thắt lưng</h1>
+  <nav>
+    <a href="home.html">Trang chủ</a>
+    <a href="danhmucsp.html">Danh mục sản phẩm</a>
+    <a href="Cart.html">Giỏ hàng </a>
+  </nav>
+
+</header>
+
+<main class="checkout-container">
+  <h2>Thanh toán</h2>
+  <div class="checkout-content">
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <h3>Các sản phẩm: </h3>
+      <ul>
+        <li>Sản phẩm 1 <span>$299.99</span></li>
+        <li>Sản phẩm 2 <span>$399.99</span></li>
+        <li>Giảm giá  <span>-10% </span></li>
+
+        <li class="total">Tổng cộng <span>$629.982 </span></li>
+      </ul>
+    </div>
+
+    <!-- Payment Form -->
+    <div class="payment-form">
+      <h3>Chi tiết đơn hàng </h3>
+      <form id="checkout-form">
+        <!-- Contact Info -->
+        <label for="name">Họ và tên khách hàng </label>
+        <input type="text" id="name" name="name" placeholder="Nhập tên khách hàng" required>
+
+        <label for="email">Email hoặc số điện thoại</label>
+        <input type="email" id="email" name="email" placeholder="Nhập email hoặc số điện thoại" required>
+
+        <label for="address">Địa chỉ</label>
+        <input type="text" id="address" name="address" placeholder="Nhập địa chỉ" required>
+
+        <label for="city">Ghi chú đơn hàng </label>
+        <input type="text" id="city" name="city" placeholder="Ghi chú " required>
+
+
+        <!-- Payment Method -->
+        <h3>Phương thức thanh toán</h3>
+        <label>
+          <input type="radio" name="payment-method" value="credit-card" checked>
+          Thẻ tín dụng
+        </label>
+        <label>
+          <input type="radio" name="payment-method" value="paypal">
+          Tiền mặt
+        </label>
+
+        <button type="submit" class="submit-btn">Xác nhận đơn hàng</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>&copy; Liên hệ HotLine: 0397526965</p>
+</footer>
+</body>
+</html>
