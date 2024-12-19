@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,10 +10,22 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="asset/css/home.css">
-    <link rel="stylesheet" href="asset/fontawsome/fontawsome/css/all.css">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+
+</body>
+</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style><%@include file="/View/footer.css"%></style>
+    <style><%@include file="/View/header.css"%></style>
+    <style><%@include file="/View/asset/css/home.css"%></style>
 </head>
 <body>
 <!--Header-->
@@ -127,7 +143,8 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/belt1.png" alt="#">
+                    <img src="../View/asset/image/anhthatlung1.jpg " alt="#">
+
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -293,7 +310,8 @@
                 </a>
                 <a href="https://www.twitter.com" target="_blank">
                     <img src="asset/image/twitter.jpg" alt="Twitter">
-
+                </a>
+            </a>
         </div>
     </div>
     <div class="footer-container">
