@@ -1,3 +1,12 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: BAO ANH
+  Date: 12/20/2024
+  Time: 3:37 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,13 +15,16 @@
     <title>Simple Responsive Admin</title>
 
     <link href="../asset/css/bootstrap.css" rel="stylesheet"/>
-
-    <link href="../asset/css/font-awesome.css" rel="stylesheet"/>
-    <link href="../asset/css/custom.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="../asset/css/style.css">
-    <link rel="stylesheet" href="../asset/fontawsome/fontawsome/css/all.css">
-
+    <style>
+        <%@include file="../asset/css/style.css" %>
+    </style>
+    <style>
+        <%@include file="/View/asset/css/custom.css" %>
+    </style>
+    <style>
+        <%@include file="/View/asset/css/bootstrap.css" %>
+    </style>
 
 </head>
 <body>
@@ -41,7 +53,7 @@
     <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
-<!--LINK-->
+                <!--LINK-->
 
                 <li>
                     <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
@@ -49,16 +61,16 @@
 
 
                 <li>
-                    <a href=admin_user.html ><i class="fa fa-table "></i>USER<span class="badge"></span></a>
+                    <a href=admin_user.html><i class="fa fa-table "></i>USER<span class="badge"></span></a>
                 </li>
                 <li>
                     <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
                 </li>
                 <li>
-                    <a href="admin_Orders.html" class="active-link"><i class="fa fa-qrcode "></i>ORDERS</a>
+                    <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
                 </li>
                 <li>
-                    <a href="admin_Category.html"><i class="fa fa-bar-chart-o"></i>Category</a>
+                    <a href="#" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
                 </li>
 
                 <li>
@@ -80,12 +92,12 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Đơn hàng</h2>
+                    <h2>Loại sản phẩm</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
             <label>
-                <input class="search__input" type="text" name= "" placeholder="Nhập tên sản phẩm ">
+                <input class="search__input" type="text" name="" placeholder="Nhập tên sản phẩm ">
             </label>
 
             <button class="search__submit">
@@ -93,44 +105,34 @@
                 <span>Tìm kiếm</span>
             </button>
             <table class="table table-striped">
-                <thead style="background: #4cb4ff">
+
+                <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Người đặt hàng</th>
-                    <th scope="col">Ngày đặt hàng </th>
-                    <th scope="col">Tổng tiền</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col"><label for="cars">Trạng thái giao hàng</label>
-
-                        <select name="cars" id="cars">
-                            <option value="volvo">Lựa chọn</option>
-                            <option value="saab">Chờ xử lý</option>
-                            <option value="mercedes">Đang giao</option>
-                            <option value="audi">Đã giao</option>
-                            <option value="audi">Đã hủy</option>
-                        </select></th>
+                    <th scope="col">Loại</th>
+                    <th scope="col">Mô tả</th>
 
 
                 </tr>
                 </thead>
-
                 <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Trần Thị B</td>
-                    <td>31/12/2004</td>
-                    <td>240000 </td>
-                    <td>43/32 Khu phố 7 Vũng Tàu</td>
-                    <td>Đang giao hàng</td>
+                    <td>Mặt khóa lăn</td>
+                    <td> Mặt khóa lăn cũng là một loại khóa hộp rất quen thuộc với cánh mày râu khi thường xuyên sử dụng
+                        thắt lưng.
+
+                        Bên trong khóa sẽ có một con lăn giúp cố định thắt lưng và điều chỉnh sao cho vừa vặn với vòng
+                        eo nam giới.
 
                 </tr>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Trần Thị B</td>
-                    <td>31/12/2004</td>
-                    <td>240000 </td>
-                    <td>43/32 Khu phố 7 Vũng Tàu</td>
-                    <td>Đã hủy</td>
+                    <th scope="row">2</th>
+                    <td>Mặt khóa cài (khóa bấm)</td>
+                    <td>Một trong những mặt khóa có thiết kế cùng cách sử dụng rất đơn giản. Khóa được thiết kế mặt phía
+                        sau là một mặt phẳng, có nhô lên một chốt để bấm hay cài vào phía trên lỗ của mặt dây lưng da.
+                    </td>
+
 
                 </tr>
 
@@ -148,3 +150,4 @@
 
 </body>
 </html>
+

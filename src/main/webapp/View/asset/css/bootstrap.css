@@ -2486,11 +2486,15 @@ table th[class*="col-"] {
     background-color: #ebcccc;
 }
 
-  {
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    border: 0;
+{
+    min-width: 0
+;
+    padding: 0
+;
+    margin: 0
+;
+    border: 0
+;
 }
 
 legend {
@@ -4072,7 +4076,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 
 
-
 .tab-content > .tab-pane {
     display: none;
 }
@@ -4095,7 +4098,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 
 
-
 .navbar-collapse {
     padding-right: 15px;
     padding-left: 15px;
@@ -4115,7 +4117,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-fixed-bottom .navbar-collapse {
     max-height: 340px;
 }
-
 
 
 .navbar-static-top {
@@ -4160,7 +4161,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 
 
-
 .navbar-toggle {
     position: relative;
     float: right;
@@ -4188,7 +4188,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-toggle .icon-bar + .icon-bar {
     margin-top: 4px;
 }
-
 
 
 .navbar-nav {
@@ -4763,7 +4762,6 @@ a.list-group-item.active > .badge,
 .jumbotron .container {
     max-width: 100%;
 }
-
 
 
 .thumbnail {

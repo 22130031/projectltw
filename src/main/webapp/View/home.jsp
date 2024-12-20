@@ -23,6 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+
     <style><%@include file="/View/footer.css"%></style>
     <style><%@include file="/View/header.css"%></style>
     <style><%@include file="/View/asset/css/home.css"%></style>

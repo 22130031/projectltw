@@ -1,44 +1,55 @@
-﻿<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: BAO ANH
+  Date: 12/20/2024
+  Time: 2:43 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Simple Responsive Admin</title>
 
-    <link href="../asset/css/bootstrap.css" rel="stylesheet"/>
+<%--        <link href="D:\Java\testGit\projectltw\src\main\webapp\View\asset\css\bootstrap.css" rel="stylesheet"/>--%>
+<%--        <style><%@include file="../asset/fontawsome/fontawsome/css/all.css"%></style>--%>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style><%@include file="../asset/css/style.css"%></style>
+    <style><%@include file="/View/asset/css/custom.css"%></style>
+    <style><%@include file="/View/asset/css/bootstrap.css"%></style>
 
-    <link href="../asset/css/font-awesome.css" rel="stylesheet"/>
 
-    <link href="../asset/css/custom.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../asset/css/style.css">
-    <link rel="stylesheet" href="../asset/fontawsome/fontawsome/css/all.css">
 
 </head>
-
-
 <body>
+<!--FORM-->
 <div class="modal js-modal">
+
 
     <form class="form__content" action="" method="POST">
         <div class="form__title">
             <button class="js-modal-close">Đóng</button>
-            <h3  >Chỉnh sửa thông tin Sản Phẩm</h3>
+            <h3>Chỉnh sửa thông tin user</h3>
 
         </div>
-        <label for="email">Sản phẩm</label>
+        <label for="email">Email</label>
         <div class="form__item">
             <input type="email" id="email" name="email" required placeholder="Email"><br>
         </div>
-        <label for="email">Tên sản phẩm</label>
+        <label for="email">Tên người dùng</label>
         <div class="form__item">
-            <input type="email" id="name" name="email" required ><br>
+            <input type="email" id="name" name="email" required><br>
         </div>
-        <label for="matkhau">Mô tả</label>
+        <label for="matkhau">Mật khẩu</label>
         <div class="form__item">
 
             <input type="text" id="matkhau" name="pass" required><br>
         </div>
-        <label for="phone">Giá bán</label>
+        <label for="phone">Số Điện Thoại:</label>
         <div class="form__item">
 
             <input type="text" id="phone" name="phone" required><br>
@@ -57,7 +68,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="../home.jsp">
                     Trang chủ
                 </a>
             </div>
@@ -68,7 +79,7 @@
                 </span>
         </div>
     </div>
-
+    <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
@@ -79,17 +90,17 @@
                 </li>
 
 
-                <li>
-                    <a href="admin_user.html"><i class="fa fa-table "></i>USER<span class="badge"></span></a>
-                </li>
                 <li class="active-link">
-                    <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT</a>
+                    <a href="#"><i class="fa fa-table "></i>USER<span class="badge"></span></a>
+                </li>
+                <li>
+                    <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCTS<span></span></a>
                 </li>
                 <li>
                     <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
                 </li>
                 <li>
-                    <a href="admin_Category.html"><i class="fa fa-bar-chart-o"></i>Category</a>
+                    <a href="#"><i class="fa fa-bar-chart-o"></i>Category</a>
                 </li>
 
                 <li>
@@ -106,17 +117,17 @@
         </div>
 
     </nav>
-
+    <!-- /. NAV SIDE  -->
     <div id="page-wrapper">
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>SẢN PHẨM</h2>
+                    <h2>Trang USER</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
             <label>
-                <input  style="width: 500px" class="search__input" type="text" name= "" placeholder="Nhập tên sản phẩm ">
+                <input class="search__input" type="text" name="" placeholder="Nhập email, sdt,.. ">
             </label>
 
             <button class="search__submit">
@@ -124,46 +135,25 @@
                 <span>Tìm kiếm</span>
             </button>
             <table class="table table-striped">
-                <thead style="background:#a6e1ec">
-
+                <thead style="background:#5cb85c">
                 <tr>
-                    <th scope="col">Mã Sản Phẩm</th>
-                    <th scope="col">Tên Sản Phẩm</th>
-                    <th scope="col">Hình Ảnh</th>
-                    <th scope="col">Mô tả</th>
-                    <th scope="col">Giá bán</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên Tài Khoản</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mật khẩu</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Loại tài khoản</th>
                     <th scope="col">Thao tác</th>
-
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td></td>
-                    <td><img src="../asset/image/chatlieuda.jpg" alt="" class="responsive-hinhAnh"></td>
-                    <td>Rất đẹp</td>
-                    <td>50000usd</td>
-                    <td>
-                        <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
-                        <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td><img src="../asset/image/chatlieuda.jpg" alt="" class="responsive-hinhAnh"></td>
-                    <td>Rất đẹp</td>
-                    <td>50000usd</td>
-                    <td>
-                        <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
-                        <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
-                    </td>
-                </tr><tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td><img src="../asset/image/chatlieuda.jpg" alt="" class="responsive-hinhAnh"></td>
-                    <td>Rất đẹp</td>
-                    <td>50000usd</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>abc@yahoo.com</td>
+                    <td>132</td>
+                    <td>09123</td>
+                    <td>admin</td>
                     <td>
                         <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
                         <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
@@ -174,26 +164,30 @@
 
             <!-- /. ROW  -->
         </div>
-        <!-- /. PAGE INNER  -->
+
     </div>
 
 </div>
-
 <script>
     const editBtns = document.querySelectorAll('.js-edit')
     const modal = document.querySelector('.js-modal')
-    const  modalClose = document.querySelector('.js-modal-close')
+    const modalClose = document.querySelector('.js-modal-close')
 
     function showForm() {
         modal.classList.add('open')
     }
-    function hideForm(){
+
+    function hideForm() {
         modal.remove('open')
     }
-    for(const editBtn of editBtns){
-        editBtn.addEventListener('click',showForm )
+
+    for (const editBtn of editBtns) {
+        editBtn.addEventListener('click', showForm)
     }
     modalClose.addEventListener('click', hideForm)
 </script>
 </body>
+<!--c-->
+
 </html>
+
