@@ -1,4 +1,4 @@
-package com.banthatlung.Dao;
+package com.banthatlung.Dao.db;
 
 import java.sql.*;
 
