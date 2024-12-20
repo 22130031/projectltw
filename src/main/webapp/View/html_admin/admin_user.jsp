@@ -21,7 +21,7 @@
     <style><%@include file="../asset/css/style.css"%></style>
     <style><%@include file="/View/asset/css/custom.css"%></style>
     <style><%@include file="/View/asset/css/bootstrap.css"%></style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 
 </head>

@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -22,11 +22,17 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-
-    <style><%@include file="/View/footer.css"%></style>
-    <style><%@include file="/View/header.css"%></style>
-    <style><%@include file="/View/asset/css/home.css"%></style>
+    <style>
+        <%@include file="/View/footer.css" %>
+    </style>
+    <style>
+        <%@include file="/View/header.css" %>
+    </style>
+    <style>
+        <%@include file="/View/asset/css/home.css" %>
+    </style>
 </head>
 <body>
 <!--Header-->
@@ -119,6 +125,7 @@
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
                     <img src="asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
+                    <mvc:resources location="" mapping="/files/**"></mvc:resources>
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -299,7 +306,7 @@
 <footer class="footer">
     <div class="footer-brand">
         <p>CHUYÊN CUNG CẤP CÁC LOẠI THẮT LƯNG.</p>
-        <p>   Chất lượng - Uy tín - Tin cậy</p>
+        <p> Chất lượng - Uy tín - Tin cậy</p>
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
                 <img src="asset/image/icons8-facebook-48.png" alt="Facebook">
