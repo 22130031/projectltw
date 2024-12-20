@@ -1,6 +1,6 @@
-package com.banthatlung.Dao;
+package com.banthatlung.Dao.db;
 
-import com.banthatlung.Model.Person;
+import com.banthatlung.Dao.model.Person;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

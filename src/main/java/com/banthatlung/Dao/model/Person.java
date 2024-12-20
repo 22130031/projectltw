@@ -1,4 +1,4 @@
-package com.banthatlung.Model;
+package com.banthatlung.Dao.model;
 
 public class Person {
     int id;
