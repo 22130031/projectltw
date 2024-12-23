@@ -106,23 +106,13 @@
                 </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${categoryList}" var="cate">
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mặt khóa lăn</td>
-                    <td> Mặt khóa lăn cũng là một loại khóa hộp rất quen thuộc với cánh mày râu khi thường xuyên sử dụng thắt lưng.
-
-                        Bên trong khóa sẽ có một con lăn giúp cố định thắt lưng và điều chỉnh sao cho vừa vặn với vòng eo nam giới.
-
+                    <th scope="row">${cate.getId()}</th>
+                    <td>${cate.getName()}</td>
+                    <td>${cate.getDescription()}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Mặt khóa cài (khóa bấm)</td>
-                    <td>Một trong những mặt khóa có thiết kế cùng cách sử dụng rất đơn giản. Khóa được thiết kế mặt phía sau là một mặt phẳng, có nhô lên một chốt để bấm hay cài vào phía trên lỗ của mặt dây lưng da.</td>
-
-
-                </tr>
-
-
+                </c:forEach>
                 </tbody>
             </table>
 
