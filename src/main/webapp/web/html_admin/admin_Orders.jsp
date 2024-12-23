@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -7,11 +9,11 @@
 
     <link href="../asset/css/bootstrap.css" rel="stylesheet"/>
 
-    <link href="../asset/css/font-awesome.css" rel="stylesheet"/>
-    <link href="../asset/css/custom.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="../asset/css/style.css">
-    <link rel="stylesheet" href="../asset/fontawsome/fontawsome/css/all.css">
+    <style><%@include file="../asset/css/style.css"%></style>
+    <style><%@include file="../asset/css/custom.css"%></style>
+    <style><%@include file="../asset/css/bootstrap.css"%></style>
 
 
 </head>
