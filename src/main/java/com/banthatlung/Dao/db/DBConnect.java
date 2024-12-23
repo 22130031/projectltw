@@ -11,13 +11,13 @@ public class DBConnect {
             throw new RuntimeException(e);
         }
         return con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/product", "root", "");
+                "jdbc:mysql://localhost:3306/webthatlung", "root", "");
     }
     public static void main(String arg[]) throws SQLException, ClassNotFoundException {
          DBConnect db = new DBConnect();
             Connection connection = db.getConnection();
 
-            PreparedStatement statement = connection.prepareStatement("select * from persons");
+            PreparedStatement statement = connection.prepareStatement("select * from categories");
             ResultSet resultSet = statement.executeQuery();
 
             int code;
