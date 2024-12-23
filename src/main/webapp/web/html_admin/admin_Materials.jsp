@@ -21,6 +21,10 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 </head>
 <body>
 
@@ -90,24 +94,17 @@
                     <h2>Loại sản phẩm</h2>
                 </div>
             </div>
-            <!-- /. ROW  -->
-            <label>
-                <input class="search__input" type="text" name="" placeholder="Nhập tên sản phẩm ">
-            </label>
 
-            <button class="search__submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Tìm kiếm</span>
-            </button>
-            <table class="table table-striped">
-
+            <table id="example" class="display" style="width:100%">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">loại chất liệu</th>
+                    <th>ID</th>
+                    <th>Tên</th>
+
                 </tr>
                 </thead>
                 <tbody>
+                <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
                 <c:forEach items="${materialList}" var="mate">
                     <tr>
                         <th scope="row">${mate.getId()}</th>
@@ -123,5 +120,15 @@
     </div>
 
 </div>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "paging": true,        // Bật phân trang
+            "searching": true,     // Bật tìm kiếm
+            "ordering": true,      // Bật sắp xếp
+            "info": true           // Hiển thị thông tin tổng quan
+        });
+    });
+</script>
 </body>
 </html>
