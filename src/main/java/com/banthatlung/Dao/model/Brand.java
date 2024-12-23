@@ -2,17 +2,14 @@ package com.banthatlung.Dao.model;
 
 import java.sql.Date;
 
-public class Category {
+public class Brand {
     private int id;
     private String name;
-    private String description;
-    public Category() {
-    }
+    private Date createAt;
 
-    public Category(int id,String name, String description) {
-        this.id = id;
+    public Brand(int id,String name, Date createAt) {
         this.name = name;
-        this.description = description;
+        this.createAt = createAt;
     }
 
     public int getId() {
@@ -31,11 +28,11 @@ public class Category {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 }

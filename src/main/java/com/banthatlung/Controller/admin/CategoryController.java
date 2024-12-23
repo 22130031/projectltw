@@ -1,4 +1,4 @@
-package com.banthatlung.Controller;
+package com.banthatlung.Controller.admin;
 
 
 import com.banthatlung.Dao.db.CategoryDao;

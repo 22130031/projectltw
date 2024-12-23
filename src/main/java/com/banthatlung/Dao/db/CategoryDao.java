@@ -21,17 +21,12 @@ public class CategoryDao {
         ps = con.prepareStatement("SELECT * from categories");
         rs = ps.executeQuery();
         while (rs.next()) {
-            categories.add(new Category(rs.getString("name"), rs.getString("description")));
+            categories.add(new Category(rs.getInt("id"),rs.getString("name"), rs.getString("description")));
         }
         return categories;
 
     }
 
-    public static void main(String[] args) throws SQLException {
-        CategoryDao dao = new CategoryDao();
-        for (Category category : dao.getCategory()) {
-            System.out.println(category.getName()+ " " + category.getDescription());
-        }
-    }
+
 
 }
