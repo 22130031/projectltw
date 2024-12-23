@@ -15,7 +15,11 @@ public class DBProperties {
     public static String host() {
         return prop.get("db.host").toString();
     }
-    public static int port() {return Integer.parseInt(prop.get("db.port").toString());}
+    public static int port() {try {
+        return Integer.parseInt(prop.get("db.port").toString());
+    } catch (NumberFormatException e) {
+        return 3306;
+    }}
     public static String username() {return prop.get("db.username").toString();}
     public static String password() {return prop.get("db.password").toString();}
     public static String dbName() {return prop.get("db.dbname").toString();}
