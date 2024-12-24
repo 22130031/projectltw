@@ -66,18 +66,20 @@
 <!-- Product Detail Section -->
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
+    <c:forEach var="p" items="${data}">
     <div class="product-image">
-        <img src="../asset/image/belt1.png" alt="Thắt Lưng Da">
+        <img src="${p.img}" alt="Thắt Lưng Da">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
     <div class="product-info">
-        <h2>Thắt Lưng Da Cổ Điển</h2>
+        <h2>${p.title}</h2>
         <div class="product-rating">
             <span class="rating-stars">5.0 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
             <span class="rating-details">498 đánh giá • 1,1k đã bán</span>
         </div>
-        <p class="price">200,000 VND</p>
+        <p class="price"><fmt:formatNumber value="${p.price}"/> </p>
+        </c:forEach>
         <!-- Chọn màu sắc -->
         <div class="color-options">
             <p>Màu Sắc:</p>
