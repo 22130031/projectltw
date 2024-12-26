@@ -53,7 +53,7 @@
         <a href="home.jsp"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="danhmucsp.html">Danh mục sản phẩm</a>
+                <a href="../danhmucsp.html">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -75,7 +75,7 @@
         </div>
     </div>
 </header>
-<script src="fullscreensearch.js"></script>
+<script src="../fullscreensearch.js"></script>
 <!--CONTAINER CART-->
 <main class="page">
     <section class="shopping-cart dark">
@@ -132,7 +132,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <img class="img-fluid mx-auto d-block image fix_img_inCart"
-                                             src="asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="">
+                                             src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="info">
@@ -172,7 +172,7 @@
                                     <div class="col-md-3 fix_cart">
 
                                         <img alt="" class="img-fluid mx-auto d-block image fix_img_inCart "
-                                             src="asset/image/OIP.jpg" width="474">
+                                             src="../asset/image/OIP.jpg" width="474">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="info">
@@ -250,15 +250,15 @@
         <p> Chất lượng - Uy tín - Tin cậy</p>
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
-                <img src="asset/image/icons8-facebook-48.png" alt="Facebook">
+                <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
                 <a href="https://www.instagram.com" target="_blank">
-                    <img src="asset/image/logoInsta.png" alt="Instagram">
+                    <img src="../asset/image/logoInsta.png" alt="Instagram">
                 </a>
                 <a href="https://www.youtube.com" target="_blank">
-                    <img src="asset/image/logoytb.jpg" alt="YouTube">
+                    <img src="../asset/image/logoytb.jpg" alt="YouTube">
                 </a>
                 <a href="https://www.twitter.com" target="_blank">
-                    <img src="asset/image/twitter.jpg" alt="Twitter">
+                    <img src="../asset/image/twitter.jpg" alt="Twitter">
                 </a>
             </a>
         </div>
@@ -267,7 +267,7 @@
         <!-- Logo và mạng xã hội -->
 
         <div class="footer-brand">
-            <img src="asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
+            <img src="../asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
             <p>Chất lượng - Uy tín - Tin cậy</p>
             <div class="social-icons">
                 <i class="fa-brands fa-facebook"></i>

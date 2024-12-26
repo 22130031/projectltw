@@ -25,13 +25,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <style>
-        <%@include file="/View/footer.css" %>
+        <%@include file="../css/footer.css" %>
     </style>
     <style>
-        <%@include file="/View/header.css" %>
+        <%@include file="../css/header.css" %>
     </style>
     <style>
-        <%@include file="/View/asset/css/home.css" %>
+        <%@include file="../asset/css/home.css" %>
     </style>
 </head>
 <body>
@@ -52,7 +52,7 @@
         <a href="home.html"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="danhmucsp.html">Danh mục sản phẩm</a>
+                <a href="../danhmucsp.html">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -74,7 +74,7 @@
         </div>
     </div>
 </header>
-<script src="fullscreensearch.js"></script>
+<script src="../fullscreensearch.js"></script>
 <!--    CONTAINER-->
 <section id="PageIamge">
     <h1>Nhiều ưu đãi bất ngờ </h1>
@@ -110,21 +110,21 @@
     <div class="pro-container">
         <div class="pro">
             <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
+                <a href="productDetail.jsp" class="pro-thumb">
+                    <img src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
             <div class="des">
                 <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
+                <h5>${data.title}</h5>
                 <h4>500000</h4>
             </div>
         </div>
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
+                    <img src="../asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
                     <mvc:resources location="" mapping="/files/**"></mvc:resources>
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
@@ -138,7 +138,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/that_lung.jpg" alt="#">
+                    <img src="../asset/image/that_lung.jpg" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -151,7 +151,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/anhthatlung1.jpg " alt="#">
+                    <img src="../asset/image/anhthatlung1.jpg " alt="#">
 
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
@@ -171,7 +171,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/OIP.jpg" alt="#">
+                    <img src="../asset/image/OIP.jpg" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -184,7 +184,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/anh1.png" alt="#">
+                    <img src="../asset/image/anh1.png" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -197,7 +197,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="" class="pro-thumb">
-                    <img src="asset/image/OIP.jpg" alt="#">
+                    <img src="../asset/image/OIP.jpg" alt="#">
                     <a href="ProductDetail.html" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -210,7 +210,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="" class="pro-thumb">
-                    <img src="asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
+                    <img src="../asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
                     <a href="ProductDetail.html" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -228,7 +228,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
+                    <img src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -241,7 +241,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
+                    <img src="../asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -254,7 +254,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/that_lung.jpg" alt="#">
+                    <img src="../asset/image/that_lung.jpg" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -267,7 +267,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="asset/image/belt1.png" alt="#">
+                    <img src="../asset/image/belt1.png" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -292,7 +292,7 @@
             thông thường khác. Đối với những sản phẩm da thông thường, bề mặt chúng được phủ lên một lớp da tổng hợp nên
             rất dễ bị nổ hoặc gấp nếp.</p>
     </div>
-    <img src="asset/image/chatlieuda.jpg" alt="">
+    <img src="../asset/image/chatlieuda.jpg" alt="">
 </div>
 <div id="Bonus2">
     <h1>100% da bò nhập khẩu</h1>
@@ -309,15 +309,15 @@
         <p> Chất lượng - Uy tín - Tin cậy</p>
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
-                <img src="asset/image/icons8-facebook-48.png" alt="Facebook">
+                <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
                 <a href="https://www.instagram.com" target="_blank">
-                    <img src="asset/image/logoInsta.png" alt="Instagram">
+                    <img src="../asset/image/logoInsta.png" alt="Instagram">
                 </a>
                 <a href="https://www.youtube.com" target="_blank">
-                    <img src="asset/image/logoytb.jpg" alt="YouTube">
+                    <img src="../asset/image/logoytb.jpg" alt="YouTube">
                 </a>
                 <a href="https://www.twitter.com" target="_blank">
-                    <img src="asset/image/twitter.jpg" alt="Twitter">
+                    <img src="../asset/image/twitter.jpg" alt="Twitter">
                 </a>
             </a>
         </div>
@@ -326,7 +326,7 @@
         <!-- Logo và mạng xã hội -->
 
         <div class="footer-brand">
-            <img src="asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
+            <img src="../asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
             <p>Chất lượng - Uy tín - Tin cậy</p>
             <div class="social-icons">
                 <i class="fa-brands fa-facebook"></i>
