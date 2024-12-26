@@ -18,7 +18,7 @@ public class ProductDetail extends HttpServlet {
         ProductService service = new ProductService();
         Product detail = service.getDetail(pid);
         req.setAttribute("p", detail);
-        req.getRequestDispatcher("productDetail.jsp").forward(req, resp);
+        req.getRequestDispatcher("/productDetail.jsp").forward(req, resp);
     }
 
     @Override

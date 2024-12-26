@@ -32,7 +32,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../home.jsp">Quản Lý Trang Web Thắt Lưng</a>
+        <a class="navbar-brand" href="../View/home.jsp">Quản Lý Trang Web Thắt Lưng</a>
       </div>
 
       <span class="logout-spn">
