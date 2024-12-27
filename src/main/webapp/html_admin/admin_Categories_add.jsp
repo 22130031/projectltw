@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: BAO ANH
-  Date: 12/20/2024
-  Time: 3:37 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -13,8 +6,9 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Simple Responsive Admin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <link href="../asset/css/bootstrap.css" rel="stylesheet"/>
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <style>
         <%@include file="../asset/css/style.css" %>
@@ -25,6 +19,8 @@
     <style>
         <%@include file="../asset/css/bootstrap.css" %>
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
 </head>
 <body>
@@ -39,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../View/home.jsp">Quản Lý Trang Web Thắt Lưng</a>
+                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưng</a>
             </div>
 
             <span class="logout-spn">
@@ -74,7 +70,7 @@
                 </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-edit "></i>My Link Three </a>
+
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-table "></i>My Link Four</a>
@@ -92,62 +88,24 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Loại sản phẩm</h2>
+                    <h2>Thêm loại thắt lưng</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
-            <label>
-                <input class="search__input" type="text" name="" placeholder="Nhập tên sản phẩm ">
-            </label>
-
-            <button class="search__submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Tìm kiếm</span>
-            </button>
-            <table class="table table-striped">
-
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Loại</th>
-                    <th scope="col">Mô tả</th>
-
-
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mặt khóa lăn</td>
-                    <td> Mặt khóa lăn cũng là một loại khóa hộp rất quen thuộc với cánh mày râu khi thường xuyên sử dụng
-                        thắt lưng.
-
-                        Bên trong khóa sẽ có một con lăn giúp cố định thắt lưng và điều chỉnh sao cho vừa vặn với vòng
-                        eo nam giới.
-
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Mặt khóa cài (khóa bấm)</td>
-                    <td>Một trong những mặt khóa có thiết kế cùng cách sử dụng rất đơn giản. Khóa được thiết kế mặt phía
-                        sau là một mặt phẳng, có nhô lên một chốt để bấm hay cài vào phía trên lỗ của mặt dây lưng da.
-                    </td>
-
-
-                </tr>
-
-
-                </tbody>
-            </table>
-
-            <!-- /. ROW  -->
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên loại thắt lưng</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm">
+                </div>
+                <div class="mb-3">
+                    <label for="decription" class="form-label">Mô tả</label>
+                    <input type="text" name="decription" class="form-control" id="decription" placeholder="Mô tả">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <a href="/admin_Categories">Quay về</a>
         </div>
-        <!-- /. PAGE INNER  -->
     </div>
-
 </div>
-
-
 </body>
 </html>
-
