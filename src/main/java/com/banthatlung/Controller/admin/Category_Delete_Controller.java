@@ -2,9 +2,7 @@ package com.banthatlung.Controller.admin;
 
 
 import com.banthatlung.Dao.db.CategoryDao;
-import com.banthatlung.Dao.db.MaterialDao;
 import com.banthatlung.Dao.model.Category;
-import com.banthatlung.Dao.model.Material;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,20 +13,21 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/admin_Material"})
-public class MaterialController extends HttpServlet {
-    MaterialDao materialDao = new MaterialDao();
+@WebServlet(urlPatterns = {"/admin_Categories/delete"})
+public class Category_Delete_Controller extends HttpServlet {
+    CategoryDao categoryDao = new CategoryDao();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        resp.setCharacterEncoding("UTF-8");
-        List<Material> materialList = null;
+        req.getParameter("id");
+        int id = Integer.parseInt(req.getParameter("id"));
         try {
-            materialList = materialDao.getList();
+            categoryDao.delete(id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        req.setAttribute("materialList", materialList);
-        req.getRequestDispatcher("/html_admin/admin_Material.jsp").forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/admin_Categories");
     }
+
+
 }

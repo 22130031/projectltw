@@ -29,6 +29,6 @@ public class BrandController extends HttpServlet {
             throw new RuntimeException(e);
         }
         req.setAttribute("brandList", brandList);
-        req.getRequestDispatcher("web/html_admin/admin_Brands.jsp").forward(req, resp);
+        req.getRequestDispatcher("/html_admin/admin_Brands.jsp").forward(req, resp);
     }
 }

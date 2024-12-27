@@ -22,11 +22,11 @@ public class CategoryController extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         List<Category> categoryList = null;
         try {
-            categoryList = categoryDao.getCategory();
+            categoryList = categoryDao.getAllCategory() ;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         req.setAttribute("categoryList", categoryList);
-        req.getRequestDispatcher("web/html_admin/admin_Category.jsp").forward(req, resp);
+        req.getRequestDispatcher("/html_admin/admin_Categories.jsp").forward(req, resp);
     }
 }

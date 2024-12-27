@@ -21,9 +21,7 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 </head>
 <body>
 
@@ -90,50 +88,24 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Loại sản phẩm</h2>
+                    <h2>Thêm loại thắt lưng</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
-
-
-            <tbody>
-            <table id="example" class="display" style="width:100%">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên</th>
-                    <th>Mô tả</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
-                <c:forEach items="${categoryList}" var="cate">
-                    <tr>
-                        <th scope="row">${cate.getId()}</th>
-                        <td>${cate.getName()}</td>
-                        <td>${cate.getDescription()}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-
-
-            <!-- /. ROW  -->
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên loại thắt lưng</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm">
+                </div>
+                <div class="mb-3">
+                    <label for="decription" class="form-label">Mô tả</label>
+                    <input type="text" name="decription" class="form-control" id="decription" placeholder="Mô tả">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <a href="/admin_Categories">Quay về</a>
         </div>
-        <!-- /. PAGE INNER  -->
     </div>
-
 </div>
-
-<script>
-    $(document).ready(function () {
-        $('#example').DataTable({
-            "paging": true,        // Bật phân trang
-            "searching": true,     // Bật tìm kiếm
-            "ordering": true,      // Bật sắp xếp
-            "info": true           // Hiển thị thông tin tổng quan
-        });
-    });
-</script>
 </body>
 </html>

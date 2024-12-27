@@ -66,7 +66,7 @@
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="${p.img}" alt="Thắt Lưng Da">
+        <img src="/images/thatlung1.png" alt="Thắt Lưng Da">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
@@ -163,7 +163,8 @@
                 </a>
                 <a href="https://www.twitter.com" target="_blank">
                     <img src="../asset/image/twitter.jpg" alt="Twitter">
-
+                </a>
+            </a>
         </div>
     </div>
     <div class="footer-container">
