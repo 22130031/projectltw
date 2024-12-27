@@ -20,10 +20,10 @@
         <%@include file="../asset/css/style.css" %>
     </style>
     <style>
-        <%@include file="/View/asset/css/custom.css" %>
+        <%@include file="../asset/css/custom.css" %>
     </style>
     <style>
-        <%@include file="/View/asset/css/bootstrap.css" %>
+        <%@include file="../asset/css/bootstrap.css" %>
     </style>
 
 </head>

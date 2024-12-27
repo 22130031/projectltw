@@ -8,6 +8,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -15,9 +16,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Tiết Sản Phẩm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/ProductDetail.css">
+    <style>
+        <%@include file="../css/footer.css" %>
+    </style>
+    <style>
+        <%@include file="../css/header.css" %>
+    </style>
+    <style>
+        <%@include file="../css/ProductDetail.css" %>
+    </style>
 </head>
 <body>
 
@@ -27,7 +34,9 @@
         <span class="close-btn">&times;</span>
         <div class="search-container">
             <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search..">
+                <label>
+                    <input type="text" class="search-input" placeholder="Search..">
+                </label>
                 <button class="search-icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -35,7 +44,7 @@
         </div>
     </div>
     <div class="header">
-        <a href="../html/home.html"><h1>Trang chủ</h1></a>
+        <a href="home.jsp"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
                 <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
@@ -53,30 +62,29 @@
             <div class="dropdown-user">
                 <a href="../html/profile.html"><i class="fa-solid fa-user"></i></a>
                 <div class="dropdown-content-user">
-                    <a href="../html/Login.html">Đăng nhập</a>
+                    <a href="Login.jsp">Đăng nhập</a>
                 </div>
             </div>
             <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
-<script src="../fullscreensearch.js"></script>
 
 <!-- Product Detail Section -->
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="${p.img}" alt="Thắt Lưng Da">
+        <img src="/${pd.img}" alt="${pd.title}">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
     <div class="product-info">
-        <h2>${p.title}</h2>
+        <h2>${pd.title}</h2>
         <div class="product-rating">
             <span class="rating-stars">5.0 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
             <span class="rating-details">498 đánh giá • 1,1k đã bán</span>
         </div>
-        <p class="price"><fmt:formatNumber value="${p.price}"/> </p>
+        <p class="price"><fmt:formatNumber value="${pd.price}"/> </p>
         <!-- Chọn màu sắc -->
         <div class="color-options">
             <p>Màu Sắc:</p>
@@ -93,7 +101,9 @@
             <p>Số Lượng:</p>
             <div class="quantity-control">
                 <button type="button" class="quantity-decrease">-</button>
-                <input type="text" value="1" class="quantity-input">
+                <label>
+                    <input type="text" value="1" class="quantity-input">
+                </label>
                 <button type="button" class="quantity-increase">+</button>
                 <span class="available-stock">148 sản phẩm có sẵn</span>
             </div>
@@ -155,6 +165,7 @@
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
                 <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
+                </a>
                 <a href="https://www.instagram.com" target="_blank">
                     <img src="../asset/image/logoInsta.png" alt="Instagram">
                 </a>
@@ -163,7 +174,7 @@
                 </a>
                 <a href="https://www.twitter.com" target="_blank">
                     <img src="../asset/image/twitter.jpg" alt="Twitter">
-
+                </a>
         </div>
     </div>
     <div class="footer-container">
