@@ -95,7 +95,8 @@
             </div>
             <!-- /. ROW  -->
 
-
+            <a href="<%=request.getContextPath()%>/admin_Categories/add"><i class="fa-solid fa-plus"></i>Thêm loại thắt
+                lưng</a>
             <tbody>
             <table id="example" class="display" style="width:100%">
                 <thead>
@@ -103,6 +104,7 @@
                     <th>ID</th>
                     <th>Tên</th>
                     <th>Mô tả</th>
+                    <th>Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -112,6 +114,13 @@
                         <th scope="row">${cate.getId()}</th>
                         <td>${cate.getName()}</td>
                         <td>${cate.getDescription()}</td>
+                        <td>
+                            <a href="<%=request.getContextPath()%>/admin_Categories/edit?id=${cate.getId()}"> <i
+                                    class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="<%=request.getContextPath()%>/admin_Categories/delete?id=${cate.getId()}"><i
+                                    class="fa-solid fa-trash"></i></a>
+                        </td>
+                            <%--                        <td><a href="<c:url value='/admin_Brands/edit?id=${cate.getId()}'/>"></a></td>--%>
                     </tr>
                 </c:forEach>
                 </tbody>
