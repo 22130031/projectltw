@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưng</a>
+                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưsng</a>
             </div>
 
             <span class="logout-spn">

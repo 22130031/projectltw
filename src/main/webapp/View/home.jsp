@@ -25,13 +25,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <style>
-        <%@include file="/View/footer.css" %>
+        <%@include file="../css/footer.css" %>
     </style>
     <style>
-        <%@include file="/View/header.css" %>
+        <%@include file="../css/header.css" %>
     </style>
     <style>
-        <%@include file="/View/asset/css/home.css" %>
+        <%@include file="../asset/css/home.css" %>
     </style>
 </head>
 <body>
@@ -110,14 +110,18 @@
     <div class="pro-container">
         <div class="pro">
             <div class="pro-top">
+<<<<<<<< HEAD:src/main/webapp/html/home.jsp
                 <a href="ProductDetail.html" class="pro-thumb">
+========
+                <a href="productDetail.jsp" class="pro-thumb">
+>>>>>>>> main:src/main/webapp/View/home.jsp
                     <img src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
             <div class="des">
                 <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
+                <h5>${data.title}</h5>
                 <h4>500000</h4>
             </div>
         </div>

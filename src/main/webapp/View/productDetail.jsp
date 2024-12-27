@@ -5,10 +5,9 @@
   Time: 5:15 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -36,10 +35,10 @@
         </div>
     </div>
     <div class="header">
-        <a href="home.html"><h1>Trang chủ</h1></a>
+        <a href="../html/home.html"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="danhmucsp.html">Danh mục sản phẩm</a>
+                <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -52,12 +51,12 @@
         <div class="icons">
             <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
             <div class="dropdown-user">
-                <a href="profile.html"><i class="fa-solid fa-user"></i></a>
+                <a href="../html/profile.html"><i class="fa-solid fa-user"></i></a>
                 <div class="dropdown-content-user">
-                    <a href="Login.html">Đăng nhập</a>
+                    <a href="../html/Login.html">Đăng nhập</a>
                 </div>
             </div>
-            <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
@@ -67,17 +66,17 @@
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="../asset/image/belt1.png" alt="Thắt Lưng Da">
+        <img src="${p.img}" alt="Thắt Lưng Da">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
     <div class="product-info">
-        <h2>Thắt Lưng Da Cổ Điển</h2>
+        <h2>${p.title}</h2>
         <div class="product-rating">
             <span class="rating-stars">5.0 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
             <span class="rating-details">498 đánh giá • 1,1k đã bán</span>
         </div>
-        <p class="price">200,000 VND</p>
+        <p class="price"><fmt:formatNumber value="${p.price}"/> </p>
         <!-- Chọn màu sắc -->
         <div class="color-options">
             <p>Màu Sắc:</p>
