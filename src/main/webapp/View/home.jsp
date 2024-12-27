@@ -118,6 +118,7 @@
                     <img src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
+                </a>
             </div>
             <div class="des">
                 <span>Da bo`</span>
@@ -128,8 +129,8 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
-                    <mvc:resources location="" mapping="/files/**"></mvc:resources>
+                    <img src="../images/thatlung2.webp" alt="#">
+
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -155,7 +156,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/anhthatlung1.jpg " alt="#">
+                    <img src="../images/thatlung5.webp" alt="#">
 
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>

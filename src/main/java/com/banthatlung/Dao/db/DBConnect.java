@@ -17,14 +17,14 @@ public class DBConnect {
 //         DBConnect db = new DBConnect();
 //            Connection connection = db.getConnection();
 //
-//            PreparedStatement statement = connection.prepareStatement("select * from categories");
+//            PreparedStatement statement = connection.prepareStatement("select * from categories where id =1");
 //            ResultSet resultSet = statement.executeQuery();
 //
 //            int code;
 //            String title;
 //            while (resultSet.next()) {
-//                code = resultSet.getInt("Personid");
-//                title = resultSet.getString("LastName").trim();
+//                code = resultSet.getInt("id");
+//                title = resultSet.getString("name").trim();
 //                System.out.println("Code : " + code
 //                        + " Title : " + title);
 //            }

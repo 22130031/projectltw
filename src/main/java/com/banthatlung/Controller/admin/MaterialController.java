@@ -29,6 +29,6 @@ public class MaterialController extends HttpServlet {
             throw new RuntimeException(e);
         }
         req.setAttribute("materialList", materialList);
-        req.getRequestDispatcher("web/html_admin/admin_Materials.jsp").forward(req, resp);
+        req.getRequestDispatcher("/html_admin/admin_Material.jsp").forward(req, resp);
     }
 }
