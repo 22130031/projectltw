@@ -9,12 +9,21 @@
 
     <link href="../asset/css/bootstrap.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <style><%@include file="../asset/css/style.css"%></style>
-    <style><%@include file="../asset/css/custom.css"%></style>
-    <style><%@include file="../asset/css/bootstrap.css"%></style>
+    <style>
+        <%@include file="../asset/css/style.css" %>
+    </style>
+    <style>
+        <%@include file="../asset/css/custom.css" %>
+    </style>
+    <style>
+        <%@include file="../asset/css/bootstrap.css" %>
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>
@@ -43,7 +52,7 @@
     <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
-<!--LINK-->
+                <!--LINK-->
 
                 <li>
                     <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
@@ -51,16 +60,16 @@
 
 
                 <li>
-                    <a href=admin_user.html ><i class="fa fa-table "></i>USER<span class="badge"></span></a>
+                    <a href=admin_user.html><i class="fa fa-table "></i>USER<span class="badge"></span></a>
                 </li>
                 <li>
                     <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
                 </li>
                 <li>
-                    <a href="admin_Orders.html" class="active-link"><i class="fa fa-qrcode "></i>ORDERS</a>
+                    <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
                 </li>
                 <li>
-                    <a href="admin_Category.html"><i class="fa fa-bar-chart-o"></i>Category</a>
+                    <a href="#" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
                 </li>
 
                 <li>
@@ -82,61 +91,26 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Đơn hàng</h2>
+                    <h2>Loại sản phẩm</h2>
                 </div>
             </div>
-            <!-- /. ROW  -->
-            <label>
-                <input class="search__input" type="text" name= "" placeholder="Nhập tên sản phẩm ">
-            </label>
 
-            <button class="search__submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Tìm kiếm</span>
-            </button>
-            <table class="table table-striped">
-                <thead style="background: #4cb4ff">
+            <table id="example" class="display" style="width:100%">
+                <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Người đặt hàng</th>
-                    <th scope="col">Ngày đặt hàng </th>
-                    <th scope="col">Tổng tiền</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col"><label for="cars">Trạng thái giao hàng</label>
-
-                        <select name="cars" id="cars">
-                            <option value="volvo">Lựa chọn</option>
-                            <option value="saab">Chờ xử lý</option>
-                            <option value="mercedes">Đang giao</option>
-                            <option value="audi">Đã giao</option>
-                            <option value="audi">Đã hủy</option>
-                        </select></th>
-
+                    <th>ID</th>
+                    <th>Tên</th>
 
                 </tr>
                 </thead>
-
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Trần Thị B</td>
-                    <td>31/12/2004</td>
-                    <td>240000 </td>
-                    <td>43/32 Khu phố 7 Vũng Tàu</td>
-                    <td>Đang giao hàng</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Trần Thị B</td>
-                    <td>31/12/2004</td>
-                    <td>240000 </td>
-                    <td>43/32 Khu phố 7 Vũng Tàu</td>
-                    <td>Đã hủy</td>
-
-                </tr>
-
-
+                <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
+                <c:forEach items="${materialList}" var="mate">
+                    <tr>
+                        <th scope="row">${mate.getId()}</th>
+                        <td>${mate.getName()}</td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
 
@@ -146,7 +120,15 @@
     </div>
 
 </div>
-
-
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "paging": true,        // Bật phân trang
+            "searching": true,     // Bật tìm kiếm
+            "ordering": true,      // Bật sắp xếp
+            "info": true           // Hiển thị thông tin tổng quan
+        });
+    });
+</script>
 </body>
 </html>

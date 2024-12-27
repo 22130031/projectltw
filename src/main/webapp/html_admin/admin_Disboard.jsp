@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <style><%@include file="../asset/css/style.css"%></style>
-  <style><%@include file="/View/asset/css/custom.css"%></style>
-  <style><%@include file="/View/asset/css/bootstrap.css"%></style>
+  <style><%@include file="../asset/css/custom.css"%></style>
+  <style><%@include file="../asset/css/bootstrap.css"%></style>
 
 </head>
 <body>
@@ -32,7 +32,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../View/home.jsp">Quản Lý Trang Web Thắt Lưng</a>
+        <a class="navbar-brand" href="../html/home.jsp">Quản Lý Trang Web Thắt Lưng</a>
       </div>
 
       <span class="logout-spn">

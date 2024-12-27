@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 </head>
 <body>
 
@@ -37,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưng</a>
+                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưsng</a>
             </div>
 
             <span class="logout-spn">
@@ -68,11 +69,10 @@
                     <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
                 </li>
                 <li>
-                    <a href="#" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
+                    <a href="/fake_war_exploded/admin_Categories" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
                 </li>
-
                 <li>
-
+                    <a href="/fake_war_exploded/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-table "></i>My Link Four</a>
@@ -93,30 +93,27 @@
                     <h2>Loại sản phẩm</h2>
                 </div>
             </div>
-            <!-- /. ROW  -->
 
-
-            <tbody>
             <table id="example" class="display" style="width:100%">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên</th>
-                    <th>Mô tả</th>
+                    <th>Tên Nhãn hàng</th>
+                    <th>Ngày thêm vào</th>
+
                 </tr>
                 </thead>
                 <tbody>
                 <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
-                <c:forEach items="${categoryList}" var="cate">
+                <c:forEach items="${brandList}" var="brand">
                     <tr>
-                        <th scope="row">${cate.getId()}</th>
-                        <td>${cate.getName()}</td>
-                        <td>${cate.getDescription()}</td>
+                        <th scope="row">${brand.getId()}</th>
+                        <td>${brand.getName()}</td>
+                        <td>${brand.getCreateAt()}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
-
 
             <!-- /. ROW  -->
         </div>
@@ -124,7 +121,6 @@
     </div>
 
 </div>
-
 <script>
     $(document).ready(function () {
         $('#example').DataTable({
