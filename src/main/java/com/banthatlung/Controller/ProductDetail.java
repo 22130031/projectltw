@@ -10,15 +10,16 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "ProductDetail", value = "/productDetail")
+@WebServlet(name = "ProductDetail", value = "/product")
 public class ProductDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pid = req.getParameter("pid");
         ProductService service = new ProductService();
         Product detail = service.getDetail(pid);
-        req.setAttribute("p", detail);
-        req.getRequestDispatcher("/productDetail.jsp").forward(req, resp);
+        req.setAttribute("pd", detail);
+        req.getRequestDispatcher("/View/product-detail.jsp").forward(req, resp);
+        System.out.println(detail.getTitle());
     }
 
     @Override

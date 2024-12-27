@@ -110,27 +110,22 @@
     <div class="pro-container">
         <div class="pro">
             <div class="pro-top">
-<<<<<<<< HEAD:src/main/webapp/html/home.jsp
-                <a href="ProductDetail.html" class="pro-thumb">
-========
-                <a href="productDetail.jsp" class="pro-thumb">
->>>>>>>> main:src/main/webapp/View/home.jsp
+                <a href="<c:url value="/product?pid=77"/>" class="pro-thumb">
                     <img src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
+                    <a href="${pageContext.request.contextPath}/product?pid=22" class="buy-now">Mua ngay</a>
                 </a>
             </div>
             <div class="des">
                 <span>Da bo`</span>
-                <h5>${data.title}</h5>
+                <h5>test</h5>
                 <h4>500000</h4>
             </div>
         </div>
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../images/thatlung2.webp" alt="#">
-
+                    <img src="../asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
+                    <mvc:resources location="" mapping="/files/**"></mvc:resources>
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>
             </div>
@@ -156,7 +151,7 @@
         <div class="pro">
             <div class="pro-top">
                 <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../images/thatlung5.webp" alt="#">
+                    <img src="../asset/image/anhthatlung1.jpg " alt="#">
 
                     <a href="" class="buy-now">Mua ngay</a>
                 </a>

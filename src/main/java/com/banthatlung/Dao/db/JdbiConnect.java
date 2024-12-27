@@ -24,7 +24,7 @@ public class JdbiConnect {
         try {
             src.setUseCompression(true);
             src.setAutoReconnect(true);
-        } catch (SQLException _) {
+        } catch (SQLException e) {
         }
         jdbi = Jdbi.create(src);
     }
