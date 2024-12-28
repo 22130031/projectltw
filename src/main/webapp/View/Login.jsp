@@ -136,12 +136,12 @@
     <div class="login-container">
         <div class="section">
             <h2>Đăng nhập</h2>
-            <form action="#" method="post">
+            <form action="${pageContext.request.contextPath}/login" method="post">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="email" name="uname" required>
 
                 <label for="password">Mật khẩu</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="pass" required>
 
                 <div style="display: flex; align-items: center; margin: 10px 0;">
                     <input type="checkbox" id="remember" name="remember" style="margin-right: 10px;">

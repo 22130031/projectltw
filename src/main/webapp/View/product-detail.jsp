@@ -62,7 +62,7 @@
             <div class="dropdown-user">
                 <a href="../html/profile.html"><i class="fa-solid fa-user"></i></a>
                 <div class="dropdown-content-user">
-                    <a href="Login.jsp">Đăng nhập</a>
+                    <a href="<c:url value="/View/Login.jsp"/>">Đăng nhập</a>
                 </div>
             </div>
             <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -74,7 +74,7 @@
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="/${pd.img}" alt="${pd.title}">
+        <img src="${pageContext.request.contextPath}/${pd.img}" alt="${pd.title}">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
@@ -91,7 +91,7 @@
             <div class="color-choice">
                 <label>
                     <input type="radio" name="color" value="denbac">
-                    <img src="../asset/image/belt1.png" alt="Đen bạc"> Đen bạc
+                    <img src="${pageContext.request.contextPath}/asset/image/belt1.png" alt="Đen bạc"> Đen bạc
                 </label>
             </div>
         </div>
