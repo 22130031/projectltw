@@ -1,6 +1,7 @@
-package com.banthatlung.Dao.db;
+package com.banthatlung.Dao.model;
 
 public class User {
+
     private String username;
     private String pass;
     private String name;

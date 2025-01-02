@@ -1,7 +1,7 @@
 package com.banthatlung.services;
 
 import com.banthatlung.Dao.UserDao;
-import com.banthatlung.Dao.db.User;
+import com.banthatlung.Dao.model.User;
 
 public class AuthService {
     public User checkLogin(String username, String pass){

@@ -1,8 +1,7 @@
 package com.banthatlung.Dao;
 
 import com.banthatlung.Dao.db.DBConnect2;
-import com.banthatlung.Dao.db.User;
-import com.banthatlung.Dao.model.Product;
+import com.banthatlung.Dao.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
