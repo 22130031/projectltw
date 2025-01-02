@@ -58,13 +58,23 @@
             <a href="#">Liên hệ</a>
         </div>
         <div class="icons">
-            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <div class="dropdown-user">
-                <a href="../html/profile.html"><i class="fa-solid fa-user"></i></a>
-                <div class="dropdown-content-user">
-                    <a href="<c:url value="/View/Login.jsp"/>">Đăng nhập</a>
+            <c:if test="${sessionScope.auth ==null}">
+                <div class="dropdown-user">
+                    <a href="#"><i class="fa-solid fa-user"></i></a>
+                    <div class="dropdown-content-user">
+                        <a href="<c:url value="/View/Login.jsp"/>">Đăng nhập</a>
+                    </div>
                 </div>
-            </div>
+            </c:if>
+            <c:if test="${sessionScope.auth !=null}">
+                <div class="dropdown-user">
+                    <img href="<c:url value="/View/profile.jsp"/>" src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%;">
+                    <div class="dropdown-content-user">
+                        <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                    </div>
+                </div>
+            </c:if>
+            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
             <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>

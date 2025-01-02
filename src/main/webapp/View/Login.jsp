@@ -5,6 +5,8 @@
   Time: 10:31 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -97,7 +99,9 @@
         <span class="close-btn">&times;</span>
         <div class="search-container">
             <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search..">
+                <label>
+                    <input type="text" class="search-input" placeholder="Search..">
+                </label>
                 <button class="search-icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -105,10 +109,10 @@
         </div>
     </div>
     <div class="header">
-        <a href="home.html"><h1>Trang chủ</h1></a>
+        <a href="home.jsp"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="danhmucsp.html">Danh mục sản phẩm</a>
+                <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -119,14 +123,24 @@
             <a href="#">Liên hệ</a>
         </div>
         <div class="icons">
-            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <div class="dropdown-user">
-                <a href="profile.html"><i class="fa-solid fa-user"></i></a>
-                <div class="dropdown-content-user">
-                    <a href="Login.html">Đăng nhập</a>
+            <c:if test="${sessionScope.auth ==null}">
+                <div class="dropdown-user">
+                    <a href="#"><i class="fa-solid fa-user"></i></a>
+                    <div class="dropdown-content-user">
+                        <a href="<c:url value="/View/Login.jsp"/>">Đăng nhập</a>
+                    </div>
                 </div>
-            </div>
-            <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            </c:if>
+            <c:if test="${sessionScope.auth !=null}">
+                <div class="dropdown-user">
+                    <img href="<c:url value="/View/profile.jsp"/>" src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%;">
+                    <div class="dropdown-content-user">
+                        <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                    </div>
+                </div>
+            </c:if>
+            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
