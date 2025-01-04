@@ -1,17 +1,29 @@
 package com.banthatlung.Dao.model;
 
+import java.util.Date;
+
 public class User {
 
     private String username;
     private String pass;
-    private String name;
     private int role;
+    private String name;
+    private String email;
+    private String phone;
+    private Date birthday;
+    private String gender;
+    private String image;
 
-    public User(String username, String pass, String name, int role) {
+    public User(String username, String pass, int role, String name, String email, String phone, Date birthday, String gender, String image) {
         this.username = username;
         this.pass = pass;
-        this.name = name;
         this.role = role;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.image = image;
     }
 
     public String getUsername() {
@@ -44,5 +56,46 @@ public class User {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

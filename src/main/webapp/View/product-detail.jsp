@@ -68,7 +68,10 @@
             </c:if>
             <c:if test="${sessionScope.auth !=null}">
                 <div class="dropdown-user">
-                    <img href="<c:url value="/View/profile.jsp"/>" src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%;">
+                    <a href="<c:url value='/View/profile.jsp'/>">
+                        <img src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar"
+                             style="width: 25px; height: 25px; border-radius: 50%;">
+                    </a>
                     <div class="dropdown-content-user">
                         <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
                     </div>

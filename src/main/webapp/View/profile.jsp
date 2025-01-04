@@ -226,7 +226,10 @@
             </c:if>
             <c:if test="${sessionScope.auth !=null}">
                 <div class="dropdown-user">
-                    <img href="<c:url value="/View/profile.jsp"/>" src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%;">
+                    <a href="<c:url value='/View/profile.jsp'/>">
+                        <img src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar"
+                             style="width: 25px; height: 25px; border-radius: 50%;">
+                    </a>
                     <div class="dropdown-content-user">
                         <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
                     </div>
@@ -247,7 +250,7 @@
                 <label for="avatar-upload" class="avatar-upload-label">Đổi Avatar</label>
                 <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
             </div>
-            <p class="username">22xxxxx</p>
+            <p class="username">${sessionScope.auth.name}</p>
             <p class="edit-profile">Sửa Hồ Sơ</p>
         </div>
         <div class="menu-text">
@@ -264,27 +267,22 @@
             <form>
                 <div class="form-group">
                     <label for="name">Tên:</label>
-                    <input type="text" id="name" value="Mạnh Cường">
+                    <input type="text" id="name" value="${sessionScope.auth.name}">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" value="22********@st.hcmuaf.edu.vn">
+                    <input type="email" id="email" value="${sessionScope.auth.email}">
                 </div>
                 <div class="form-group">
                     <label for="phone">Số điện thoại:</label>
-                    <input type="text" id="phone" value="********66">
+                    <input type="text" id="phone" value="${sessionScope.auth.phone}">
                 </div>
                 <div class="form-group">
                     <label for="dob">Ngày sinh:</label>
-                    <input type="date" id="dob" value="2000-01-01">
+                    <input type="date" id="dob" value="${sessionScope.auth.birthday}">
                 </div>
                 <div class="form-group">
-                    <label>Giới tính:</label>
-                    <div class="gender-options">
-                        <label><input type="radio" name="gender" value="male" checked> Nam</label>
-                        <label><input type="radio" name="gender" value="female"> Nữ</label>
-                        <label><input type="radio" name="gender" value="other"> Khác</label>
-                    </div>
+                    <label>Giới tính: ${sessionScope.auth.gender}</label>
                 </div>
                 <button type="submit" class="save-button">Lưu</button>
             </form>
