@@ -8,6 +8,10 @@ import java.util.List;
 public class ProductService {
     static ProductDao productDao = new ProductDao();
 
+    public static Product getById(int id) {
+        return productDao.getbyId(id);
+    }
+
     public List<Product> getAll() {
         return productDao.getAll();
     }

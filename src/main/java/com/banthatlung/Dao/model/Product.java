@@ -46,7 +46,6 @@ public class Product implements Serializable {
         this.price = price;
         this.img = img;
     }
-
     public Product() {
         super();
     }
@@ -57,6 +56,6 @@ public class Product implements Serializable {
                 "," + title + '\'' +
                 "," + price +
                 "," + img
-                ;
+               ;
     }
 }
