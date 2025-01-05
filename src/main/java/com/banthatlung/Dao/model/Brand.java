@@ -7,7 +7,7 @@ public class Brand {
     private String name;
     private Date createAt;
 
-    public Brand(int id,String name, Date createAt) {
+    public Brand(int id, String name, Date createAt) {
         this.name = name;
         this.createAt = createAt;
     }
@@ -26,6 +26,15 @@ public class Brand {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Brand{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createAt=" + createAt +
+                '}';
     }
 
     public Date getCreateAt() {

@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.HashMap" %>
+<%@ page import="com.banthatlung.Dao.model.ProductCart" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: BAO ANH
   Date: 12/20/2024
@@ -22,16 +24,14 @@
     <%--  <link rel="stylesheet" href="footer.css">--%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
-        <%@include file="/web/asset/css/style.css" %>
+        <%@include file="/asset/css/style.css" %>
     </style>
-    <style>
-        <%@include file="/web/asset/css/bootstrap.css" %>
-    </style>
+
     <style>
         <%@include file="../css/footer.css" %>
     </style>
     <style>
-        <%@include file="/web/css/header.css" %>
+        <%@include file="/css/header.css" %>
     </style>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -89,124 +89,53 @@
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
                             <div class="product">
-                                <div class="row">
-                                    <div class="col-md-3">
-<%--                                        <img class="img-fluid mx-auto d-block image fix_img_inCart"--%>
-<%--                                             src="asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="">--%>
+                                <c:if test="${cart != null}">
+                                    <%
+                                        HashMap<Integer, ProductCart> carts = (HashMap<Integer, ProductCart>) request.getAttribute("cart");
+                                        for (Map.Entry<Integer, ProductCart> entry : carts.entrySet()) {
+                                            Integer ket = entry.getKey();
+                                            ProductCart value = entry.getValue();
+                                    %>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img class="img-fluid mx-auto d-block image fix_img_inCart"
+                                                 src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg"
+                                                 alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="info">
+                                                <div class="row">
+                                                    <div class="col-md-5 product-name">
+                                                        <div class="product-name">
+                                                            <a href="#"><% value.getProduct().getId();%></a>
+                                                            <div class="product-info">
+                                                                <div>Mã SP: <span class="value">BELT232623</span></div>
+                                                                <div>Màu sắc : <span class="value">Màu đen</span></div>
 
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="col-md-5 product-name">
-                                                    <div class="product-name">
-                                                        <a href="#">Dây lưng - BELT232623</a>
-                                                        <div class="product-info">
-                                                            <div>Mã SP: <span class="value">BELT232623</span></div>
-                                                            <div>Màu sắc : <span class="value">Màu đen</span></div>
-
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4 quantity">
-                                                    <p class="quantity">Số lượng</p>
-                                                    <div class="quantity-control">
-                                                        <button type="button" class="quantity-decrease">-</button>
-                                                        <input type="text" value="1" class="quantity-input">
-                                                        <button type="button" class="quantity-increase">+</button>
-                                                        <span class="available-stock">148 sản phẩm có sẵn</span>
+                                                    <div class="col-md-4 quantity">
+                                                        <p class="quantity">Số lượng</p>
+                                                        <div class="quantity-control">
+                                                            <button type="button" class="quantity-decrease">-</button>
+                                                            <input type="text" value="1" class="quantity-input">
+                                                            <button type="button" class="quantity-increase">+</button>
+                                                            <span class="available-stock">148 sản phẩm có sẵn</span>
+                                                        </div>
                                                     </div>
-
-                                                </div>
-                                                <div class="col-md-2 price">
-                                                    <span>1,237,000₫</span>
-                                                </div>
-                                                <div class="col-md-1 price" style="left: 51px">
-                                                    <a href=""><i class="fa-solid fa-x" style="color: red"></i></a>
+                                                    <div class="col-md-2 price">
+                                                        <span>1,237,000₫</span>
+                                                    </div>
+                                                    <div class="col-md-1 price" style="left: 51px">
+                                                        <a href=""><i class="fa-solid fa-x" style="color: red"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img class="img-fluid mx-auto d-block image fix_img_inCart"
-                                             src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="col-md-5 product-name">
-                                                    <div class="product-name">
-                                                        <a href="#">Dây lưng - BELT232623</a>
-                                                        <div class="product-info">
-                                                            <div>Mã SP: <span class="value">BELT232623</span></div>
-                                                            <div>Màu sắc : <span class="value">Màu đen</span></div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 quantity">
-                                                    <p class="quantity">Số lượng</p>
-                                                    <div class="quantity-control">
-                                                        <button type="button" class="quantity-decrease">-</button>
-                                                        <input type="text" value="1" class="quantity-input">
-                                                        <button type="button" class="quantity-increase">+</button>
-                                                        <span class="available-stock">148 sản phẩm có sẵn</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 price">
-                                                    <span>1,237,000₫</span>
-                                                </div>
-                                                <div class="col-md-1 price" style="left: 51px">
-                                                    <a href=""><i class="fa-solid fa-x" style="color: red"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="row">
-                                    <div class="col-md-3 fix_cart">
-
-                                        <img alt="" class="img-fluid mx-auto d-block image fix_img_inCart "
-                                             src="../asset/image/OIP.jpg" width="474">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="col-md-5 product-name">
-                                                    <div class="product-name">
-                                                        <a href="#">Dây lưng - BELT232623</a>
-                                                        <div class="product-info">
-                                                            <div>Mã SP: <span class="value">BELT232623</span></div>
-                                                            <div>Màu sắc : <span class="value">Màu đen</span></div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 quantity">
-                                                    <p class="quantity">Số lượng</p>
-                                                    <div class="quantity-control">
-                                                        <button type="button" class="quantity-decrease">-</button>
-                                                        <input type="text" value="1" class="quantity-input">
-                                                        <button type="button" class="quantity-increase">+</button>
-                                                        <span class="available-stock">148 sản phẩm có sẵn</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 price">
-                                                    <span>1,237,000₫</span>
-                                                </div>
-                                                <div class="col-md-1 price" style="left: 51px">
-                                                    <a href=""><i class="fa-solid fa-x" style="color: red"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
+                                    <% } %>
+                                </c:if>
                             </div>
 
                         </div>
@@ -362,3 +291,4 @@
 
 </html>
 
+}

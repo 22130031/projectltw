@@ -1,8 +1,7 @@
 package com.banthatlung.Controller.admin;
 
 
-import com.banthatlung.Dao.db.CategoryDao;
-import com.banthatlung.Dao.model.Category;
+import com.banthatlung.Dao.CategoryDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet(urlPatterns = {"/admin_Categories/delete"})
 public class Category_Delete_Controller extends HttpServlet {

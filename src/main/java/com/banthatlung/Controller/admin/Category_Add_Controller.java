@@ -1,7 +1,7 @@
 package com.banthatlung.Controller.admin;
 
 
-import com.banthatlung.Dao.db.CategoryDao;
+import com.banthatlung.Dao.CategoryDao;
 import com.banthatlung.Dao.model.Category;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet(urlPatterns = {"/admin_Categories/add"})
 public class Category_Add_Controller extends HttpServlet {
