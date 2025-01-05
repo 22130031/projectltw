@@ -1,10 +1,8 @@
 package com.banthatlung.Controller.admin;
 
 
-import com.banthatlung.Dao.db.BrandDao;
-import com.banthatlung.Dao.db.CategoryDao;
+import com.banthatlung.Dao.BrandDao;
 import com.banthatlung.Dao.model.Brand;
-import com.banthatlung.Dao.model.Category;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,6 +16,7 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/admin_Brands"})
 public class BrandController extends HttpServlet {
     BrandDao brandDao = new BrandDao();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
@@ -31,4 +30,5 @@ public class BrandController extends HttpServlet {
         req.setAttribute("brandList", brandList);
         req.getRequestDispatcher("/html_admin/admin_Brands.jsp").forward(req, resp);
     }
+
 }

@@ -1,7 +1,7 @@
 package com.banthatlung.Controller.admin;
 
 
-import com.banthatlung.Dao.db.CategoryDao;
+import com.banthatlung.Dao.CategoryDao;
 import com.banthatlung.Dao.model.Category;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

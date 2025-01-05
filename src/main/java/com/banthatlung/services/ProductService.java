@@ -7,16 +7,18 @@ import java.util.List;
 
 public class ProductService {
     static ProductDao productDao = new ProductDao();
+
     public List<Product> getAll() {
         return productDao.getAll();
     }
+
     public Product getDetail(String in) {
-       try {
-           int id = Integer.parseInt(in);
-           return productDao.getbyId(id);
-       }catch (NumberFormatException e) {
+        try {
+            int id = Integer.parseInt(in);
+            return productDao.getbyId(id);
+        } catch (NumberFormatException e) {
             return null;
-       }
+        }
 
     }
 }
