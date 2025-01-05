@@ -1,6 +1,6 @@
 package com.banthatlung.Controller;
 
-import com.banthatlung.Dao.db.User;
+import com.banthatlung.Dao.model.User;
 import com.banthatlung.services.AuthService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,9 +19,10 @@ public class LoginController extends HttpServlet {
         AuthService authService = new AuthService();
         User user = authService.checkLogin(username, password);
         if (user != null) {
+            System.out.println("Userid"+user.getId());
             HttpSession session = req.getSession();
             session.setAttribute("auth", user);
-            resp.sendRedirect(req.getContextPath() +"/View/home.jsp");
+            resp.sendRedirect(req.getContextPath() +"/View/profile.jsp");
         }else {
             req.setAttribute("error", "Invalid username or password");
             req.getRequestDispatcher("/View/Login.jsp").forward(req, resp);

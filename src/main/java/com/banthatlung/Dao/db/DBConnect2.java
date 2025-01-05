@@ -14,6 +14,15 @@ public static Statement get() {
         return null;
     }
 }
+    public static PreparedStatement getPreparedStatement(String sql) {
+        try {
+            if (conn == null || conn.isClosed()) makeConnect();
+            return conn.prepareStatement(sql);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     private static void makeConnect() throws ClassNotFoundException, SQLException {
     Class.forName("com.mysql.cj.jdbc.Driver");
@@ -22,13 +31,11 @@ public static Statement get() {
 
     public static void main(String[] args) throws SQLException {
         Statement stmt = get();
-        ResultSet rs = stmt.executeQuery("select * from user where username= 'admin' ");
-        while (rs.next()) {
-            System.out.println(rs.getString(2) +
-                    "," + rs.getString(3) + '\'' +
-                    "," + rs.getString(4) +
-                    "," + rs.getInt(5)
-            );
-        }
+        String sql = "UPDATE users SET full_name = ?,email = ? WHERE userid = ?";
+        PreparedStatement pstmt = getPreparedStatement(sql);
+        pstmt.setString(1,"Administrator");
+        pstmt.setString(2,"admin@gmail.com");
+        pstmt.setInt(3, 1);
+        pstmt.executeUpdate();
     }
 }
