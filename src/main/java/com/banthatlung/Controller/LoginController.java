@@ -19,6 +19,7 @@ public class LoginController extends HttpServlet {
         AuthService authService = new AuthService();
         User user = authService.checkLogin(username, password);
         if (user != null) {
+            System.out.println("Userid"+user.getId());
             HttpSession session = req.getSession();
             session.setAttribute("auth", user);
             resp.sendRedirect(req.getContextPath() +"/View/profile.jsp");

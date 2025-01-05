@@ -246,7 +246,7 @@
     <div class="sidebar">
         <div class="user-info">
             <div class="avatar">
-                <img id="profile-avatar" src="../asset/image/belt1.png" alt="Avatar">
+                <img id="profile-avatar" src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar">
                 <label for="avatar-upload" class="avatar-upload-label">Đổi Avatar</label>
                 <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
             </div>
@@ -264,22 +264,22 @@
         <h1>Hồ Sơ Của Tôi</h1>
         <p class="subtitle">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
         <div class="profile-form">
-            <form>
+            <form action="${pageContext.request.contextPath}/profile" method="post">
                 <div class="form-group">
                     <label for="name">Tên:</label>
-                    <input type="text" id="name" value="${sessionScope.auth.name}">
+                    <input type="text" id="name" name="name" value="${sessionScope.auth.name}">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" value="${sessionScope.auth.email}">
+                    <input type="email" id="email" name="email" value="${sessionScope.auth.email}">
                 </div>
                 <div class="form-group">
                     <label for="phone">Số điện thoại:</label>
-                    <input type="text" id="phone" value="${sessionScope.auth.phone}">
+                    <input type="text" id="phone" name="phone" value="${sessionScope.auth.phone}">
                 </div>
                 <div class="form-group">
                     <label for="dob">Ngày sinh:</label>
-                    <input type="date" id="dob" value="${sessionScope.auth.birthday}">
+                    <input type="date" id="dob" name="dob" value="${sessionScope.auth.birthday}">
                 </div>
                 <div class="form-group">
                     <label>Giới tính: ${sessionScope.auth.gender}</label>
