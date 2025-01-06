@@ -95,19 +95,6 @@
 </head>
 <body>
 <header>
-    <div id="fullscreen-search" class="fullscreen-search">
-        <span class="close-btn">&times;</span>
-        <div class="search-container">
-            <div class="search-box">
-                <label>
-                    <input type="text" class="search-input" placeholder="Search..">
-                </label>
-                <button class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </div>
-    </div>
     <div class="header">
         <a href="home.jsp"><h1>Trang chủ</h1></a>
         <div class="menu">
@@ -142,12 +129,22 @@
                     </div>
                 </div>
             </c:if>
-            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <form action="${pageContext.request.contextPath}/search" method="get">
+                <div class="search-container">
+                    <div class="search-box">
+                        <label>
+                            <input type="text" class="search-input" name="search" placeholder="Search..">
+                        </label>
+                        <button class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <a href="/View/Cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
-<script src="../fullscreensearch.js"></script>
 <div id="container">
     <!-- Phần đăng nhập và đăng ký -->
     <div class="login-container">

@@ -110,9 +110,9 @@
     <div class="pro-container">
         <div class="pro">
             <div class="pro-top">
-                <a href="<c:url value="/product?pid=77"/>" class="pro-thumb">
+                <a href="<c:url value="/product?pid=1"/>" class="pro-thumb">
                     <img src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
-                    <a href="${pageContext.request.contextPath}/product?pid=22" class="buy-now">Mua ngay</a>
+                    <a href="${pageContext.request.contextPath}/product?pid=2" class="buy-now">Mua ngay</a>
                 </a>
             </div>
             <div class="des">

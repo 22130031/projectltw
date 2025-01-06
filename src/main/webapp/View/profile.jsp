@@ -124,7 +124,9 @@
             display: block;
             margin-bottom: 5px;
         }
-
+        input[type = "search"]{
+            margin-right: 20px;
+        }
         input[type="text"], input[type="email"], input[type="date"] {
             width: 100%; /* Thu nhỏ chiều rộng input */
             max-width: 400px; /* Giới hạn kích thước lớn nhất */
@@ -188,19 +190,6 @@
 <body>
 <!--Header-->
 <header>
-    <div id="fullscreen-search" class="fullscreen-search">
-        <span class="close-btn">&times;</span>
-        <div class="search-container">
-            <div class="search-box">
-                <label>
-                    <input type="text" class="search-input" placeholder="Search..">
-                </label>
-                <button class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </div>
-    </div>
     <div class="header">
         <a href="home.jsp"><h1>Trang chủ</h1></a>
         <div class="menu">
@@ -235,12 +224,22 @@
                     </div>
                 </div>
             </c:if>
-            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <form action="${pageContext.request.contextPath}/search" method="get">
+                <div class="search-container">
+                    <div class="search-box">
+                        <label>
+                            <input type="text" class="search-input" name="search" placeholder="Search..">
+                        </label>
+                        <button class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <a href="/View/Cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
-<script src="../fullscreensearch.js"></script>
 <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
@@ -255,7 +254,7 @@
         </div>
         <div class="menu-text">
             <p><a href="#">Hồ Sơ</a></p>
-            <p><a href="<c:url value="/View/Cart.jsp"/>">Giỏ Hàng</a></p>
+            <p><a href="<c:url value="/View/product-detail.jsp"/>">Giỏ Hàng</a></p>
         </div>
     </div>
 

@@ -1,9 +1,10 @@
 package com.banthatlung.Dao.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class User {
-    private int id;
+public class User implements Serializable {
+    private String id;
     private String username;
     private String pass;
     private int role;
@@ -14,11 +15,12 @@ public class User {
     private String gender;
     private String image;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public User(int id, String username, String pass, int role, String name, String email, String phone, Date birthday, String gender, String image) {
+    public User(String id, String username, String pass, int role, String name, String email, String phone, Date birthday, String gender, String image) {
+        this.id = id;
         this.username = username;
         this.pass = pass;
         this.role = role;
@@ -103,7 +105,7 @@ public class User {
         this.image = image;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }
