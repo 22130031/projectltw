@@ -111,11 +111,7 @@
         <c:forEach items="${productList}" var="p">
             <div class="pro">
                 <div class="pro-top">
-                    <a href="ProductDetail.html" class="pro-thumb">
-                            <%--                       <c:url value="/asset/image/belt1.png"/>--%>
-                        <img src="images/${p.getImage()}"
-                             alt="">
-
+                    <a href="ProductDetail.html" class="pro-thumb"><img src="images/${p.getImage()}" alt="">
                         <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a>
                 </div>
                 <div class="des">

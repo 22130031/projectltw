@@ -66,7 +66,7 @@
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="/images/thatlung1.png" alt="Thắt Lưng Da">
+        <img src="/images/thatlung2.jpg" alt="Thắt Lưng Da">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->

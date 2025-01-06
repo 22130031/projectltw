@@ -16,10 +16,9 @@ public class ProductDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     public List<Product> getAll() {
-
         ArrayList<Product> re = new ArrayList<Product>();
         try {
-            String sql = "Select * from products";
+            String sql = "SELECT * FROM products";
             ps = getPreparedStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -50,11 +49,9 @@ public class ProductDao {
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-//        List<Product> p = dao.getAll();
-//        for (Product p1 : p) {
-//            System.out.println(p1);
-//        }
-        System.out.println(dao.getbyId(1));
-
+        List<Product> p = dao.getAll();
+        for (Product p1 : p) {
+            System.out.println(p1);
+        }
     }
 }

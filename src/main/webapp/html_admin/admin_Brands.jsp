@@ -100,7 +100,7 @@
                     <th>ID</th>
                     <th>Tên Nhãn hàng</th>
                     <th>Ngày thêm vào</th>
-
+                    <th>Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
