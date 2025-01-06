@@ -136,16 +136,19 @@
             <span class="reviews-rating-text">trên 5</span>
             <div class="reviews-stars">★★★★★</div>
         </div>
+        <form action="${pageContext.request.contextPath}/rfilter" method="get">
         <div class="reviews-rating-filters">
-            <button class="reviews-filter-btn active">Tất Cả</button>
-            <button class="reviews-filter-btn">5 Sao (497)</button>
-            <button class="reviews-filter-btn">4 Sao (1)</button>
-            <button class="reviews-filter-btn">3 Sao (0)</button>
-            <button class="reviews-filter-btn">2 Sao (0)</button>
-            <button class="reviews-filter-btn">1 Sao (0)</button>
-            <button class="reviews-filter-btn">Có Bình Luận (43)</button>
-            <button class="reviews-filter-btn">Có Hình Ảnh / Video (6)</button>
+            <input type="hidden" name="pid" value="${pd.id}">
+            <button name="filter" value="tatca" class="reviews-filter-btn active">Tất Cả</button>
+            <button name="filter" value="5" class="reviews-filter-btn">5 Sao (497)</button>
+            <button name="filter" value="4" class="reviews-filter-btn">4 Sao (1)</button>
+            <button name="filter" value="3" class="reviews-filter-btn">3 Sao (0)</button>
+            <button name="filter" value="2" class="reviews-filter-btn">2 Sao (0)</button>
+            <button name="filter" value="1" class="reviews-filter-btn">1 Sao (0)</button>
+            <button name="filter" value="Comment" class="reviews-filter-btn">Có Bình Luận (43)</button>
+            <button name="filter" value="Img" class="reviews-filter-btn">Có Hình Ảnh / Video (6)</button>
         </div>
+        </form>
     </div>
     <c:forEach var="r" items="${reviews}">
     <div class="reviews-item">
@@ -153,7 +156,11 @@
             <img src="../asset/image/user.jpg" alt="User Avatar" class="reviews-user-avatar">
             <div class="reviews-info">
                 <span class="reviews-username">${r.userId}</span>
-                <span class="reviews-stars">${r.rating}</span>
+                <span class="reviews-stars">
+                <c:forEach var="i" begin="1" end="${r.rating}">
+                                    ★
+                </c:forEach>
+                </span>
                 <span class="reviews-date">${r.reviewDate}</span>
             </div>
         </div>
@@ -266,44 +273,5 @@
         <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
     </div>
 </footer>
-<script>
-    // Lấy các phần tử trong DOM
-    const decreaseButton = document.querySelector('.quantity-decrease');
-    const increaseButton = document.querySelector('.quantity-increase');
-    const quantityInput = document.querySelector('.quantity-input');
-    const maxStock = 148; // Số lượng sản phẩm tối đa có sẵn
-
-    // Xử lý khi bấm nút giảm số lượng
-    decreaseButton.addEventListener('click', () => {
-        let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
-        if (currentQuantity > 1) {
-            quantityInput.value = currentQuantity - 1; // Giảm 1 nếu lớn hơn 1
-        }
-    });
-
-    // Xử lý khi bấm nút tăng số lượng
-    increaseButton.addEventListener('click', () => {
-        let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
-        if (currentQuantity < maxStock) {
-            quantityInput.value = currentQuantity + 1; // Tăng 1 nếu chưa đạt tối đa
-        }
-    });
-
-    // Đảm bảo người dùng chỉ nhập số hợp lệ
-    quantityInput.addEventListener('input', () => {
-        let currentValue = parseInt(quantityInput.value, 10);
-
-        // Nếu nhập sai hoặc nhỏ hơn 1, tự động đặt về 1
-        if (isNaN(currentValue) || currentValue < 1) {
-            quantityInput.value = 1;
-        }
-
-        // Nếu vượt quá số lượng tối đa, đặt về số lượng tối đa
-        if (currentValue > maxStock) {
-            quantityInput.value = maxStock;
-        }
-    });
-
-</script>
 </body>
 </html>
