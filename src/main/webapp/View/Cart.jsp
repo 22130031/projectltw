@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="header">
-        <a href="home.jsp"><h1>Trang chủ</h1></a>
+        <a href="<%= request.getContextPath()%>/home"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
                 <a href="../danhmucsp.html">Danh mục sản phẩm</a>
@@ -93,42 +93,45 @@
                                     <%
                                         HashMap<Integer, ProductCart> carts = (HashMap<Integer, ProductCart>) request.getAttribute("cart");
                                         for (Map.Entry<Integer, ProductCart> entry : carts.entrySet()) {
-                                            Integer ket = entry.getKey();
+                                            Integer key = entry.getKey();
                                             ProductCart value = entry.getValue();
                                     %>
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <img class="img-fluid mx-auto d-block image fix_img_inCart"
-                                                 src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg"
-                                                 alt="">
+                                            <img class="img-fluid mx-auto d-block image fix_img_inCart" src="images/<%= value.getProduct().getImage()%>" alt="">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="info">
                                                 <div class="row">
                                                     <div class="col-md-5 product-name">
                                                         <div class="product-name">
-                                                            <a href="#"><% value.getProduct().getId();%></a>
+                                                            <a href="#"><%= value.getProduct().getName()%>
+                                                            </a>
                                                             <div class="product-info">
-                                                                <div>Mã SP: <span class="value">BELT232623</span></div>
+                                                                <div>Loại thắt lưng: <span
+                                                                        class="value"><%= value.getProduct().getDescription()%></span>
+                                                                </div>
                                                                 <div>Màu sắc : <span class="value">Màu đen</span></div>
 
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 quantity">
-                                                        <p class="quantity">Số lượng</p>
+<%--                                                        <p class="quantity"><%= value.getProduct().getId()%>--%>
+                                                        </p>
                                                         <div class="quantity-control">
                                                             <button type="button" class="quantity-decrease">-</button>
-                                                            <input type="text" value="1" class="quantity-input">
+                                                            <input type="text" value="<%= value.getQuantity()%>"
+                                                                   class="quantity-input">
                                                             <button type="button" class="quantity-increase">+</button>
-                                                            <span class="available-stock">148 sản phẩm có sẵn</span>
+                                                            <span class="available-stock"><%= value.getProduct().getQuantity()%> sản phẩm có sẵn</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 price">
-                                                        <span>1,237,000₫</span>
+                                                        <span><%= value.getProduct().getPrice()%></span>
                                                     </div>
                                                     <div class="col-md-1 price" style="left: 51px">
-                                                        <a href=""><i class="fa-solid fa-x" style="color: red"></i></a>
+                                                        <a href="<%=request.getContextPath()%>/Cart?action=remove&id=<%= value.getProduct().getId()%>"><i class="fa-solid fa-x" style="color: red"></i></a>
                                                     </div>
                                                 </div>
                                             </div>

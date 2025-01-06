@@ -110,6 +110,12 @@
                         <th scope="row">${brand.getId()}</th>
                         <td>${brand.getName()}</td>
                         <td>${brand.getCreateAt()}</td>
+                        <td>
+                            <a href="<%=request.getContextPath()%>/admin_Categories/edit?id=${brand.getId()}"> <i
+                                    class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="<%=request.getContextPath()%>/admin_Categories/delete?id=${brand.getId()}"><i
+                                    class="fa-solid fa-trash"></i></a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

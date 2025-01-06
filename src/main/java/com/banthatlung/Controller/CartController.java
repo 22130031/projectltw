@@ -11,34 +11,69 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.HashMap;
 
-@WebServlet(urlPatterns = "/cart/*")
+@WebServlet(urlPatterns = {"/Cart"})
 public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getPathInfo();
-        if (action == null) {
-            action = "/";
-        }
-        switch (action) {
-            case "/cart":
 
-        }
+        doPost(req, resp);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getPathInfo();
+        String action = req.getParameter("action");
+        switch (action) {
+            case "showCart":{
+                showCart(req, resp);
+                break;
+            }
+            case "add":
+                try {
+                    addToCart(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "remove":
+                try {
+                    remove(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "/update_quantity":
+                try {
+                    updateQuantity(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void updateQuantity(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        Product product = ProductService.getById(id);
+        HttpSession session = req.getSession();
     }
 
     public void showCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         HashMap<Integer, ProductCart> carts = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
+        req.setAttribute("cart", carts);
         req.getRequestDispatcher("/View/Cart.jsp").forward(req, resp);
+        return;
     }
 
-    public static void addToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public static void addToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String contextPath = req.getContextPath();
         int id = Integer.parseInt(req.getParameter("id"));
         Product product = ProductService.getById(id);
         HttpSession session = req.getSession();
@@ -59,6 +94,23 @@ public class CartController extends HttpServlet {
             }
         }
         session.setAttribute("cart", cart);
-        resp.sendRedirect("/View/Cart.jsp");
+        resp.sendRedirect(contextPath + "/home");
+    }
+    public static void remove(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String contextPath = req.getContextPath();
+        int id = Integer.parseInt(req.getParameter("id"));
+        Product product = ProductService.getById(id);
+        HttpSession session = req.getSession();
+        ProductCart productCart;
+        HashMap<Integer, ProductCart> cart = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
+        if (cart == null) {
+            cart = new HashMap<>();
+        } else {
+          cart.containsKey(id);
+                cart.remove(id);
+
+        }
+        session.setAttribute("cart", cart);
+        resp.sendRedirect(contextPath + "/Cart?action=showCart");
     }
 }
