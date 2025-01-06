@@ -224,12 +224,16 @@
                     </div>
                 </div>
             </c:if>
-            <form action="" method="get" class="search-container">
-                <div class="search-box">
-                        <input type="search" class="search-input" placeholder="Search..">
-                    <button type="submit" class="search-icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+            <form action="${pageContext.request.contextPath}/search" method="get">
+                <div class="search-container">
+                    <div class="search-box">
+                        <label>
+                            <input type="text" class="search-input" name="search" placeholder="Search..">
+                        </label>
+                        <button class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
             <a href="/View/Cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>

@@ -129,17 +129,19 @@
                     </div>
                 </div>
             </c:if>
-            <div class="search-container">
-                <div class="search-box">
-                    <label>
-                        <input type="text" class="search-input" placeholder="Search..">
-                    </label>
-                    <button class="search-icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+            <form action="${pageContext.request.contextPath}/search" method="get">
+                <div class="search-container">
+                    <div class="search-box">
+                        <label>
+                            <input type="text" class="search-input" name="search" placeholder="Search..">
+                        </label>
+                        <button class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            </form>
+            <a href="/View/Cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>

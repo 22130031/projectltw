@@ -64,16 +64,18 @@
                     </div>
                 </div>
             </c:if>
+            <form action="${pageContext.request.contextPath}/search" method="get">
             <div class="search-container">
                 <div class="search-box">
                     <label>
-                        <input type="text" class="search-input" placeholder="Search..">
+                        <input type="text" class="search-input" name="search" placeholder="Search..">
                     </label>
                     <button class="search-icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
+            </form>
             <a href="/View/Cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
@@ -153,22 +155,19 @@
                 <span class="reviews-username">${r.userId}</span>
                 <span class="reviews-stars">${r.rating}</span>
                 <span class="reviews-date">${r.reviewDate}</span>
-                <span class="reviews-category">| Phân loại hàng: Đen bạc</span>
             </div>
         </div>
         <div class="reviews-content">
-            <p>Chất liệu: da</p>
-            <p>Đúng với mô tả: đen bạc</p>
-            <p>Màu sắc: đen</p>
-            <p>Rất đẹp  ... ưng ... sẽ mua ủng hộ tiếp...</p>
-            <img src="../asset/image/belt1.png" alt="Review Image" class="reviews-image">
+            <p> ${r.reviewText}</p>
+            <img src="${r.url}" alt="Review Image" class="review-image">
         </div>
     </div>
     </c:forEach>
     <!-- Add Review Section -->
     <div class="reviews-add-review">
         <h4>Thêm Đánh Giá</h4>
-        <form action="ReviewController" method="post">
+        <form action="${pageContext.request.contextPath}/review" method="post">
+            <input type="hidden" name="pid" value="${pd.id}">
             <label for="reviews-rating">Đánh Giá (1-5 Sao):</label>
             <select name="rating" id="reviews-rating">
                 <option value="5">5 Sao</option>
@@ -178,14 +177,11 @@
                 <option value="1">1 Sao</option>
             </select>
 
-            <label for="reviews-url">Hình Ảnh / Video (Tùy chọn):</label>
+            <label for="reviews-url">Hình Ảnh, Video:</label>
             <input type="text" name="url" id="reviews-url" placeholder="URL hình ảnh hoặc video">
 
             <label for="reviews-text">Nội Dung Đánh Giá:</label>
             <textarea name="reviewText" id="reviews-text" rows="4" placeholder="Viết đánh giá của bạn..."></textarea>
-
-            <label for="reviews-date">Ngày Đánh Giá:</label>
-            <input type="date" name="reviewDate" id="reviews-date" required>
 
             <button type="submit" class="reviews-submit-btn">Gửi Đánh Giá</button>
         </form>
