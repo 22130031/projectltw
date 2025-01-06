@@ -19,4 +19,7 @@ public class ProductService {
        }
 
     }
+    public List<Product> search(String in) {
+        return productDao.Search(in);
+    }
 }

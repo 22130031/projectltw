@@ -25,6 +25,21 @@ public class ProductDao {
                 return re;
                }
     }
+    public List<Product> Search(String search) {
+        Statement stmt = DBConnect2.get();
+        ResultSet rs = null;
+        ArrayList<Product> re = new ArrayList<Product>();
+        try {
+            rs = stmt.executeQuery("SELECT * from Products where name LIKE '%" + search + "%'");
+
+            while (rs.next()) {
+                re.add(new Product(rs.getInt(1), rs.getString(2),rs.getDouble(4),
+                        rs.getString(7)));}
+            return re;
+        } catch (SQLException e) {
+            return re;
+        }
+    }
     public Product getbyId(int id) {
         Statement stmt = DBConnect2.get();
         ResultSet rs = null;

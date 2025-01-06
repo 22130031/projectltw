@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ReviewDao {
     public void addReview(Review review) {
-        String query = "INSERT INTO ProductReviews (review_id, product_id, user_id, rating, url, review_text, review_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO reviews (review_id, product_id, user_id, rating, url, review_text, review_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (
              PreparedStatement stmt = DBConnect2.getPreparedStatement(query)) {
             stmt.setString(1, "u"+(getTotalReviews()+1));
