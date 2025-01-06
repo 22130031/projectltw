@@ -157,10 +157,10 @@
                 <label for="password">Mật khẩu</label>
                 <input type="password" id="password" name="pass" required>
 
-                <div style="display: flex; align-items: center; margin: 10px 0;">
-                    <input type="checkbox" id="remember" name="remember" style="margin-right: 10px;">
-                    <label for="remember" style="color: #b0b0b0;">Ghi nhớ đăng nhập</label>
-                </div>
+<%--                <div style="display: flex; align-items: center; margin: 10px 0;">--%>
+<%--                    <input type="checkbox" id="remember" name="remember" style="margin-right: 10px;">--%>
+<%--                    <label for="remember" style="color: #b0b0b0;">Ghi nhớ đăng nhập</label>--%>
+<%--                </div>--%>
 
                 <a href="mk.html" class="forgot-password">Quên mật khẩu?</a>
                 <a href="home.html">

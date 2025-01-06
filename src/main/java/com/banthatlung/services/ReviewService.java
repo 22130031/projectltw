@@ -17,4 +17,13 @@ public class ReviewService {
     public List<Review> getReviewsByProductId(String productId) {
         return reviewDao.getReviewsByProductId(productId);
     }
+    public List<Review> getReviewsByRating(String pid,String rating) {
+        return reviewDao.getReviewsByRating(pid,rating);
+    }
+    public List<Review> getReviewsByImg(String pid) {
+        return reviewDao.getReviewsByImg(pid);
+    }
+    public List<Review> getReviewsByComment(String pid) {
+        return reviewDao.getReviewsByComment(pid);
+    }
 }
