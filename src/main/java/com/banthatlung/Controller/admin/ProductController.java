@@ -1,5 +1,7 @@
-package com.banthatlung.Controller;
+package com.banthatlung.Controller.admin;
 
+
+import com.banthatlung.Dao.BrandDao;
 import com.banthatlung.Dao.model.Brand;
 import com.banthatlung.Dao.model.Product;
 import com.banthatlung.services.ProductService;
@@ -13,21 +15,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+@WebServlet(urlPatterns = {"/admin_Products"})
+public class ProductController extends HttpServlet {
+    ProductService productService = new ProductService();
 
-@WebServlet(urlPatterns = {"/home"})
-public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProductService productService = new ProductService();
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
-        List<Product> productList = null;
-        try {
-            productList = productService.getAll();
-            req.setAttribute("productList", productList);
-            req.getRequestDispatcher("/View/home.jsp").forward(req, resp);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        List<Product> productList= null;
+        productList = productService.getAll();
+        req.setAttribute("productList", productList);
+        req.getRequestDispatcher("/html_admin/admin_Products.jsp").forward(req, resp);
     }
+
 }

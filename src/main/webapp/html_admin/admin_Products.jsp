@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: BAO ANH
-  Date: 12/20/2024
-  Time: 3:36 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -14,51 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Simple Responsive Admin</title>
 
-  <!--    <link href="../asset/css/bootstrap.css" rel="stylesheet"/>-->
-  <!--    <link href="../asset/css/font-awesome.css" rel="stylesheet"/>-->
-  <!--    <link href="../asset/css/custom.css" rel="stylesheet"/>-->
-  <!--    <link rel="stylesheet" href="../asset/css/style.css">-->
-  <!--    <link rel="stylesheet" href="../asset/fontawsome/fontawsome/css/all.css">-->
+  <link href="../asset/css/bootstrap.css" rel="stylesheet"/>
+
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <style><%@include file="../asset/css/style.css"%></style>
-  <style><%@include file="../asset/css/custom.css"%></style>
-  <style><%@include file="../asset/css/bootstrap.css"%></style>
+  <style>
+    <%@include file="../asset/css/style.css" %>
+  </style>
+  <style>
+    <%@include file="../asset/css/custom.css" %>
+  </style>
+  <style>
+    <%@include file="../asset/css/bootstrap.css" %>
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 </head>
-
-
 <body>
-<div class="modal js-modal">
 
-  <form class="form__content" action="" method="POST">
-    <div class="form__title">
-      <button class="js-modal-close">Đóng</button>
-      <h3  >Chỉnh sửa thông tin Sản Phẩm</h3>
 
-    </div>
-    <label for="email">Sản phẩm</label>
-    <div class="form__item">
-      <input type="email" id="email" name="email" required placeholder="Email"><br>
-    </div>
-    <label for="email">Tên sản phẩm</label>
-    <div class="form__item">
-      <input type="email" id="name" name="email" required ><br>
-    </div>
-    <label for="matkhau">Mô tả</label>
-    <div class="form__item">
-
-      <input type="text" id="matkhau" name="pass" required><br>
-    </div>
-    <label for="phone">Giá bán</label>
-    <div class="form__item">
-
-      <input type="text" id="phone" name="phone" required><br>
-    </div>
-    <div class="commit">
-      <button>Xác nhận</button>
-    </div>
-  </form>
-</div>
 <div id="wrapper">
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="adjust-nav">
@@ -68,22 +38,21 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
-          Trang chủ
-        </a>
+        <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưsng</a>
       </div>
 
       <span class="logout-spn">
-                  <a href="#" style="color:#fff;">Đăng xuất</a>
+                  <a href="#" style="color:#fff;">Xin chào admin</a>
 
                 </span>
     </div>
   </div>
+  <!-- /. NAV TOP  -->
 
   <nav class="navbar-default navbar-side" role="navigation">
     <div class="sidebar-collapse">
       <ul class="nav" id="main-menu">
-
+        <!--LINK-->
 
         <li>
           <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
@@ -91,20 +60,19 @@
 
 
         <li>
-          <a href="admin_user.html"><i class="fa fa-table "></i>USER<span class="badge"></span></a>
+          <a href=admin_user.html><i class="fa fa-table "></i>USER<span class="badge"></span></a>
         </li>
-        <li class="active-link">
-          <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT</a>
+        <li>
+          <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
         </li>
         <li>
           <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
         </li>
         <li>
-          <a href="admin_Category.html"><i class="fa fa-bar-chart-o"></i>Category</a>
+          <a href="/fake_war_exploded/admin_Categories" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
         </li>
-
         <li>
-          <a href="#"><i class="fa fa-edit "></i>My Link Three </a>
+          <a href="/fake_war_exploded/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
         </li>
         <li>
           <a href="#"><i class="fa fa-table "></i>My Link Four</a>
@@ -117,69 +85,39 @@
     </div>
 
   </nav>
-
+  <!-- /. NAV SIDE  -->
   <div id="page-wrapper">
     <div id="page-inner">
       <div class="row">
         <div class="col-md-12">
-          <h2>SẢN PHẨM</h2>
+          <h2>Loại sản phẩm</h2>
         </div>
       </div>
-      <!-- /. ROW  -->
-      <label>
-        <input  style="width: 500px" class="search__input" type="text" name= "" placeholder="Nhập tên sản phẩm ">
-      </label>
 
-      <button class="search__submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <span>Tìm kiếm</span>
-      </button>
-      <table class="table table-striped">
-        <thead style="background:#a6e1ec">
-
+      <table id="example" class="display" style="width:100%">
+        <thead>
         <tr>
-          <th scope="col">Mã Sản Phẩm</th>
-          <th scope="col">Tên Sản Phẩm</th>
-          <th scope="col">Hình Ảnh</th>
-          <th scope="col">Mô tả</th>
-          <th scope="col">Giá bán</th>
-          <th scope="col">Thao tác</th>
-
+          <th>ID</th>
+          <th>Hình ảnh</th>
+          <th>Tên Sản Phẩm</th>
+          <th>Thao tác</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td></td>
-          <td><img src="../asset/image/chatlieuda.jpg" alt="" class="responsive-hinhAnh"></td>
-          <td>Rất đẹp</td>
-          <td>50000usd</td>
-          <td>
-            <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
-            <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td></td>
-          <td><img src="../asset/image/chatlieuda.jpg" alt="" class="responsive-hinhAnh"></td>
-          <td>Rất đẹp</td>
-          <td>50000usd</td>
-          <td>
-            <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
-            <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
-          </td>
-        </tr><tr>
-          <th scope="row">1</th>
-          <td></td>
-          <td><img src="../asset/image/chatlieuda.jpg" alt="" class="responsive-hinhAnh"></td>
-          <td>Rất đẹp</td>
-          <td>50000usd</td>
-          <td>
-            <button class="btn js-edit"><i class="fa-solid fa-pen-to-square fa_in_admin"></i></button>
-            <button class="btn js-edit"><i class="fa-solid fa-trash fa_in_admin"></i></button>
-          </td>
-        </tr>
+        <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
+        <c:forEach items="${productList}" var="product">
+          <tr>
+            <th scope="row">${product.getId()}</th>
+            <td><img  style="width: 100px; height: auto" src="images/${product.getImage()}"></td>
+            <td>${product.getName()}</td>
+            <td>
+              <a href="<%=request.getContextPath()%>/admin_Categories/edit?id=${product.getId()}"> <i
+                      class="fa-solid fa-pen-to-square"></i></a>
+              <a href="<%=request.getContextPath()%>/admin_Categories/delete?id=${product.getId()}"><i
+                      class="fa-solid fa-trash"></i></a>
+            </td>
+          </tr>
+        </c:forEach>
         </tbody>
       </table>
 
@@ -189,22 +127,15 @@
   </div>
 
 </div>
-
 <script>
-  const editBtns = document.querySelectorAll('.js-edit')
-  const modal = document.querySelector('.js-modal')
-  const  modalClose = document.querySelector('.js-modal-close')
-
-  function showForm() {
-    modal.classList.add('open')
-  }
-  function hideForm(){
-    modal.remove('open')
-  }
-  for(const editBtn of editBtns){
-    editBtn.addEventListener('click',showForm )
-  }
-  modalClose.addEventListener('click', hideForm)
+  $(document).ready(function () {
+    $('#example').DataTable({
+      "paging": true,        // Bật phân trang
+      "searching": true,     // Bật tìm kiếm
+      "ordering": true,      // Bật sắp xếp
+      "info": true           // Hiển thị thông tin tổng quan
+    });
+  });
 </script>
 </body>
 </html>

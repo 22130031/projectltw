@@ -1,6 +1,10 @@
 package com.banthatlung.Dao.db;
 
+import com.banthatlung.Dao.model.Product;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBConnect2 {
     static String url = "jdbc:mysql://"+DBProperties.host()+":"+DBProperties.port()+"/"+DBProperties.dbName()+"?"+DBProperties.option();
@@ -30,12 +34,15 @@ public static Statement get() {
     }
 
     public static void main(String[] args) throws SQLException {
-        Statement stmt = get();
-        String sql = "UPDATE users SET full_name = ?,email = ? WHERE userid = ?";
+        List<Product>  products = new ArrayList<>();
+        String sql = "Select * from products";
         PreparedStatement pstmt = getPreparedStatement(sql);
-        pstmt.setString(1,"Administrator");
-        pstmt.setString(2,"admin@gmail.com");
-        pstmt.setInt(3, 1);
-        pstmt.executeUpdate();
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            products.add(new Product(1, rs.getString("name"), rs.getInt("price"), rs.getString("description"), rs.getInt("status"), rs.getInt("quantity"), rs.getDate("created"), rs.getString("image")));
+        }
+        for (Product p : products) {
+            System.out.println(p);
+        }
     }
 }

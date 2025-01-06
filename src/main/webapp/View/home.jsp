@@ -70,7 +70,7 @@
                     <a href="Login.html">Đăng nhập</a>
                 </div>
             </div>
-            <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="<%=request.getContextPath()%>/Cart?action=showCart"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
@@ -108,175 +108,62 @@
     <h2>Sản phẩm nổi bật</h2>
     <p>Sang trọng – Mạnh mẽ – Khí chất</p>
     <div class="pro-container">
-        <div class="pro">
-            <div class="pro-top">
-                <a href="<c:url value="/product?pid=1"/>" class="pro-thumb">
-                    <img src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
-                    <a href="${pageContext.request.contextPath}/product?pid=2" class="buy-now">Mua ngay</a>
-                </a>
+        <c:forEach items="${productList}" var="p">
+            <div class="pro">
+                <div class="pro-top">
+                    <a href="ProductDetail.html" class="pro-thumb"><img src="images/${p.getImage()}" alt="">
+                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a>
+                </div>
+                <div class="des">
+                    <span>Da bo`</span>
+                    <h5>${p.getName()}</h5>
+                    <h4>${p.getPrice()}</h4>
+                </div>
             </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>test</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
-                    <mvc:resources location="" mapping="/files/**"></mvc:resources>
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/that_lung.jpg" alt="#">
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/anhthatlung1.jpg " alt="#">
+        </c:forEach>
 
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
     </div>
 </section>
 <section id="product2" class="section_p1">
     <h2><i class="fa-solid fa-tag"></i>TOP SẢN PHẨM BÁN CHẠY</h2>
 
     <div class="pro-container">
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/OIP.jpg" alt="#">
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
+        <c:forEach items="${productList}" var="p">
+            <div class="pro">
+                <div class="pro-top">
+                    <a href="ProductDetail.html" class="pro-thumb">
+                        <img src="../images/${p.getImage()}" alt="#">
+
+                        <a href="" class="buy-now">Mua ngay</a>
+                    </a>
+                </div>
+                <div class="des">
+                    <span>Da bo`</span>
+                    <h5>${p.getName()}</h5>
+                    <h4>${p.getPrice()}</h4>
+                </div>
             </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/anh1.png" alt="#">
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="" class="pro-thumb">
-                    <img src="../asset/image/OIP.jpg" alt="#">
-                    <a href="ProductDetail.html" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="" class="pro-thumb">
-                    <img src="../asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
-                    <a href="ProductDetail.html" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
+        </c:forEach>
     </div>
 </section>
 <section id="product3" class="section_p1">
     <h2>Sản phẩm được đánh giá cao</h2>
     <div class="pro-container">
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/that-lung-da-nam-cong-so-lg22-mau-nau-1.jpg" alt="#">
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
+        <c:forEach items="${productList}" var="p">
+            <div class="pro">
+                <div class="pro-top">
+                    <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="pro-thumb">
+                        <img src="../images/${p.getImage()}" alt="#">
+                    </a>
+                </div>
+                <div class="des">
+                    <span>Da bo`</span>
+                    <h5>${p.getName()}</h5>
+                    <h4>${p.getPrice()}</h4>
+                </div>
             </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/that-lung-nam-zuciani-HZ17-den_600x.jpg" alt="#">
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/that_lung.jpg" alt="#">
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
-        <div class="pro">
-            <div class="pro-top">
-                <a href="ProductDetail.html" class="pro-thumb">
-                    <img src="../asset/image/belt1.png" alt="#">
-                    <a href="" class="buy-now">Mua ngay</a>
-                </a>
-            </div>
-            <div class="des">
-                <span>Da bo`</span>
-                <h5>Dây lưng da bò cao cấp D4055</h5>
-                <h4>500000</h4>
-            </div>
-        </div>
+        </c:forEach>
+
     </div>
 </section>
 
