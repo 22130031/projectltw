@@ -8,6 +8,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -15,27 +16,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Tiết Sản Phẩm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/ProductDetail.css">
+    <style>
+        <%@include file="../css/footer.css" %>
+    </style>
+    <style>
+        <%@include file="../css/header.css" %>
+    </style>
+    <style>
+        <%@include file="../css/ProductDetail.css" %>
+    </style>
 </head>
 <body>
 
 <!-- Header -->
 <header>
-    <div id="fullscreen-search" class="fullscreen-search">
-        <span class="close-btn">&times;</span>
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search..">
-                <button class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </div>
-    </div>
     <div class="header">
-        <a href="../html/home.html"><h1>Trang chủ</h1></a>
+        <a href="home.jsp"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
                 <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
@@ -49,41 +45,64 @@
             <a href="#">Liên hệ</a>
         </div>
         <div class="icons">
-            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <div class="dropdown-user">
-                <a href="../html/profile.html"><i class="fa-solid fa-user"></i></a>
-                <div class="dropdown-content-user">
-                    <a href="../html/Login.html">Đăng nhập</a>
+            <c:if test="${sessionScope.auth ==null}">
+                <div class="dropdown-user">
+                    <a href="#"><i class="fa-solid fa-user"></i></a>
+                    <div class="dropdown-content-user">
+                        <a href="<c:url value="/View/Login.jsp"/>">Đăng nhập</a>
+                    </div>
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.auth !=null}">
+                <div class="dropdown-user">
+                    <a href="<c:url value='/View/profile.jsp'/>">
+                        <img src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar"
+                             style="width: 25px; height: 25px; border-radius: 50%;">
+                    </a>
+                    <div class="dropdown-content-user">
+                        <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                    </div>
+                </div>
+            </c:if>
+            <form action="${pageContext.request.contextPath}/search" method="get">
+            <div class="search-container">
+                <div class="search-box">
+                    <label>
+                        <input type="text" class="search-input" name="search" placeholder="Search..">
+                    </label>
+                    <button class="search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
             </div>
-            <a href="../html/Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            </form>
+            <a href="/View/Cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
-<script src="../fullscreensearch.js"></script>
 
 <!-- Product Detail Section -->
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="/images/thatlung2.jpg" alt="Thắt Lưng Da">
+        <img src="${pageContext.request.contextPath}/${pd.img}" alt="${pd.title}">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
     <div class="product-info">
-        <h2>${p.title}</h2>
+        <h2>${pd.title}</h2>
         <div class="product-rating">
             <span class="rating-stars">5.0 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
             <span class="rating-details">498 đánh giá • 1,1k đã bán</span>
         </div>
-        <p class="price"><fmt:formatNumber value="${p.price}"/> </p>
+        <p class="price"><fmt:formatNumber value="${pd.price}"/> </p>
         <!-- Chọn màu sắc -->
         <div class="color-options">
             <p>Màu Sắc:</p>
             <div class="color-choice">
                 <label>
                     <input type="radio" name="color" value="denbac">
-                    <img src="../asset/image/belt1.png" alt="Đen bạc"> Đen bạc
+                    <img src="${pageContext.request.contextPath}/asset/image/belt1.png" alt="Đen bạc"> Đen bạc
                 </label>
             </div>
         </div>
@@ -93,7 +112,9 @@
             <p>Số Lượng:</p>
             <div class="quantity-control">
                 <button type="button" class="quantity-decrease">-</button>
-                <input type="text" value="1" class="quantity-input">
+                <label>
+                    <input type="text" value="1" class="quantity-input">
+                </label>
                 <button type="button" class="quantity-increase">+</button>
                 <span class="available-stock">148 sản phẩm có sẵn</span>
             </div>
@@ -110,39 +131,67 @@
 <div class="reviews-section">
     <h3>ĐÁNH GIÁ SẢN PHẨM</h3>
     <div class="reviews-summary">
-        <div class="average-rating">
-            <span class="rating-score">5.0</span>
-            <span class="rating-text">trên 5</span>
-            <div class="stars">★★★★★</div>
+        <div class="reviews-average-rating">
+            <span class="reviews-rating-score">5.0</span>
+            <span class="reviews-rating-text">trên 5</span>
+            <div class="reviews-stars">★★★★★</div>
         </div>
-        <div class="rating-filters">
-            <button class="filter-btn active">Tất Cả</button>
-            <button class="filter-btn">5 Sao (497)</button>
-            <button class="filter-btn">4 Sao (1)</button>
-            <button class="filter-btn">3 Sao (0)</button>
-            <button class="filter-btn">2 Sao (0)</button>
-            <button class="filter-btn">1 Sao (0)</button>
-            <button class="filter-btn">Có Bình Luận (43)</button>
-            <button class="filter-btn">Có Hình Ảnh / Video (6)</button>
+        <form action="${pageContext.request.contextPath}/rfilter" method="get">
+        <div class="reviews-rating-filters">
+            <input type="hidden" name="pid" value="${pd.id}">
+            <button name="filter" value="tatca" class="reviews-filter-btn active">Tất Cả</button>
+            <button name="filter" value="5" class="reviews-filter-btn">5 Sao (497)</button>
+            <button name="filter" value="4" class="reviews-filter-btn">4 Sao (1)</button>
+            <button name="filter" value="3" class="reviews-filter-btn">3 Sao (0)</button>
+            <button name="filter" value="2" class="reviews-filter-btn">2 Sao (0)</button>
+            <button name="filter" value="1" class="reviews-filter-btn">1 Sao (0)</button>
+            <button name="filter" value="Comment" class="reviews-filter-btn">Có Bình Luận (43)</button>
+            <button name="filter" value="Img" class="reviews-filter-btn">Có Hình Ảnh / Video (6)</button>
         </div>
+        </form>
     </div>
-    <div class="review-item">
-        <div class="review-header">
-            <img src="../asset/image/user.jpg" alt="User Avatar" class="user-avatar">
-            <div class="review-info">
-                <span class="username">thuongde_1578</span>
-                <span class="review-stars">★★★★★</span>
-                <span class="review-date">2024-04-04 17:53</span>
-                <span class="review-category">| Phân loại hàng: Đen bạc</span>
+    <c:forEach var="r" items="${reviews}">
+    <div class="reviews-item">
+        <div class="reviews-header">
+            <img src="../asset/image/user.jpg" alt="User Avatar" class="reviews-user-avatar">
+            <div class="reviews-info">
+                <span class="reviews-username">${r.userId}</span>
+                <span class="reviews-stars">
+                <c:forEach var="i" begin="1" end="${r.rating}">
+                                    ★
+                </c:forEach>
+                </span>
+                <span class="reviews-date">${r.reviewDate}</span>
             </div>
         </div>
-        <div class="review-content">
-            <p>Chất liệu: da</p>
-            <p>Đúng với mô tả: đen bạc</p>
-            <p>Màu sắc: đen</p>
-            <p>Rất đẹp  ... ưng ... sẽ mua ủng hộ tiếp...</p>
-            <img src="../asset/image/belt1.png" alt="Review Image" class="review-image">
+        <div class="reviews-content">
+            <p> ${r.reviewText}</p>
+            <img src="${r.url}" alt="Review Image" class="review-image">
         </div>
+    </div>
+    </c:forEach>
+    <!-- Add Review Section -->
+    <div class="reviews-add-review">
+        <h4>Thêm Đánh Giá</h4>
+        <form action="${pageContext.request.contextPath}/review" method="post">
+            <input type="hidden" name="pid" value="${pd.id}">
+            <label for="reviews-rating">Đánh Giá (1-5 Sao):</label>
+            <select name="rating" id="reviews-rating">
+                <option value="5">5 Sao</option>
+                <option value="4">4 Sao</option>
+                <option value="3">3 Sao</option>
+                <option value="2">2 Sao</option>
+                <option value="1">1 Sao</option>
+            </select>
+
+            <label for="reviews-url">Hình Ảnh, Video:</label>
+            <input type="text" name="url" id="reviews-url" placeholder="URL hình ảnh hoặc video">
+
+            <label for="reviews-text">Nội Dung Đánh Giá:</label>
+            <textarea name="reviewText" id="reviews-text" rows="4" placeholder="Viết đánh giá của bạn..."></textarea>
+
+            <button type="submit" class="reviews-submit-btn">Gửi Đánh Giá</button>
+        </form>
     </div>
 </div>
 
@@ -155,6 +204,7 @@
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
                 <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
+                </a>
                 <a href="https://www.instagram.com" target="_blank">
                     <img src="../asset/image/logoInsta.png" alt="Instagram">
                 </a>
@@ -164,7 +214,6 @@
                 <a href="https://www.twitter.com" target="_blank">
                     <img src="../asset/image/twitter.jpg" alt="Twitter">
                 </a>
-            </a>
         </div>
     </div>
     <div class="footer-container">
@@ -224,44 +273,5 @@
         <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
     </div>
 </footer>
-<script>
-    // Lấy các phần tử trong DOM
-    const decreaseButton = document.querySelector('.quantity-decrease');
-    const increaseButton = document.querySelector('.quantity-increase');
-    const quantityInput = document.querySelector('.quantity-input');
-    const maxStock = 148; // Số lượng sản phẩm tối đa có sẵn
-
-    // Xử lý khi bấm nút giảm số lượng
-    decreaseButton.addEventListener('click', () => {
-        let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
-        if (currentQuantity > 1) {
-            quantityInput.value = currentQuantity - 1; // Giảm 1 nếu lớn hơn 1
-        }
-    });
-
-    // Xử lý khi bấm nút tăng số lượng
-    increaseButton.addEventListener('click', () => {
-        let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
-        if (currentQuantity < maxStock) {
-            quantityInput.value = currentQuantity + 1; // Tăng 1 nếu chưa đạt tối đa
-        }
-    });
-
-    // Đảm bảo người dùng chỉ nhập số hợp lệ
-    quantityInput.addEventListener('input', () => {
-        let currentValue = parseInt(quantityInput.value, 10);
-
-        // Nếu nhập sai hoặc nhỏ hơn 1, tự động đặt về 1
-        if (isNaN(currentValue) || currentValue < 1) {
-            quantityInput.value = 1;
-        }
-
-        // Nếu vượt quá số lượng tối đa, đặt về số lượng tối đa
-        if (currentValue > maxStock) {
-            quantityInput.value = maxStock;
-        }
-    });
-
-</script>
 </body>
 </html>

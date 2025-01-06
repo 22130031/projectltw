@@ -272,48 +272,184 @@ h3 {
 .filter-btn.active, .filter-btn:hover {
     background-color: #b45d1c;
 }
+     /* Định dạng tổng quan cho phần thêm đánh giá */
+ .reviews-add-review {
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     padding: 20px;
+     margin-top: 20px;
+     background-color: #f9f9f9;
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+ }
 
-.review-item {
-    border-top: 1px solid #3a3a3a;
-    padding-top: 20px;
-    margin-top: 20px;
+/* Tiêu đề của phần thêm đánh giá */
+.reviews-add-review h4 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+    text-transform: uppercase;
 }
 
-.review-header {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-.user-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.review-info {
+/* Định dạng cho form */
+.reviews-add-review form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
-.username {
-    font-size: 18px;
+/* Nhãn */
+.reviews-add-review label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
     font-weight: bold;
 }
 
-.review-stars {
-    color: gold;
-    margin: 5px 0;
+/* Input và Textarea */
+.reviews-add-review input[type="text"],
+.reviews-add-review textarea,
+.reviews-add-review select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-.review-content {
-    margin-left: 65px;
+.reviews-add-review input[type="text"]:focus,
+.reviews-add-review textarea:focus,
+.reviews-add-review select:focus {
+    border-color: #007bff;
 }
 
+/* Button */
+.reviews-submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.reviews-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Định dạng các lỗi có thể xuất hiện (tùy chọn) */
+.reviews-add-review .error-message {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+/* Đáp ứng cho màn hình nhỏ */
+@media (max-width: 600px) {
+    .reviews-add-review {
+        padding: 15px;
+    }
+
+    .reviews-add-review h4 {
+        font-size: 16px;
+    }
+
+    .reviews-submit-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+}
+     /* Định dạng tổng quan cho phần hiển thị bình luận */
+ .reviews-item {
+     border: 1px solid #ddd;
+     border-radius: 10px;
+     padding: 15px;
+     margin-bottom: 20px;
+     background-color: #fff;
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+ }
+
+/* Header của bình luận */
+.reviews-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Avatar của người dùng */
+.reviews-user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #007bff;
+    object-fit: cover;
+}
+
+/* Thông tin người dùng */
+.reviews-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.reviews-username {
+    font-weight: bold;
+    color: #333;
+}
+
+.reviews-stars {
+    color: #ffc107; /* Màu vàng cho sao */
+    font-size: 14px;
+}
+
+.reviews-date {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Nội dung bình luận */
+.reviews-content p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Hình ảnh trong bình luận */
 .review-image {
+    width: 100%;
+    max-width: 100px;
+    border-radius: 5px;
     margin-top: 10px;
-    width: 100px;
-    height: auto;
-    border-radius: 8px;
+    object-fit: cover;
 }
+
+/* Hiệu ứng hover cho bình luận */
+.reviews-item:hover {
+    border-color: #007bff;
+    background-color: #f9f9ff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Đáp ứng cho màn hình nhỏ */
+@media (max-width: 600px) {
+    .reviews-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reviews-user-avatar {
+        margin-bottom: 10px;
+    }
+
+    .review-image {
+        max-width: 100%;
+    }
+}
+
+
