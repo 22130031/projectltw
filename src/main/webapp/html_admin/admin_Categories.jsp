@@ -115,9 +115,9 @@
                         <td>${cate.getName()}</td>
                         <td>${cate.getDescription()}</td>
                         <td>
-                            <a href="/admin_Categories/edit?id=${cate.getId()}"> <i
+                            <a href="${pageContext.request.contextPath}/admin_Categories/edit?id=${cate.getId()}"> <i
                                     class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="<%=request.getContextPath()%>/admin_Categories/delete?id=${cate.getId()}"><i
+                            <a href="${pageContext.request.contextPath}/admin_Categories/delete?id=${cate.getId()}"><i
                                     class="fa-solid fa-trash"></i></a>
                         </td>
                             <%--                        <td><a href="<c:url value='/admin_Brands/edit?id=${cate.getId()}'/>"></a></td>--%>

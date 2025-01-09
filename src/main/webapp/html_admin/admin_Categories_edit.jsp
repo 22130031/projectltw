@@ -88,25 +88,25 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Thêm loại thắt lưng</h2>
+                    <h2>Sửa loại thắt lưng</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
             <form method="POST">
-                <label for="country"></label>
-                <input type="text" id="country" name="id" value="${category.getId()}"  readonly><br><br>
+                <label for="id"></label>
+                <input type="text" id="id" name="id" value="${category.getId()}"  readonly><br><br>
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên loại thắt lưng</label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${category.getName()}">
                 </div>
                 <div class="mb-3">
-                    <label for="decription" class="form-label">Mô tả</label>
-                    <input type="text" name="decription" class="form-control" id="decription" value="${category.getDescription()}" placeholder="Mô tả">
+                    <label for="description" class="form-label">Mô tả</label>
+                    <input type="text" name="description" class="form-control" id="description" value="${category.getDescription()}" placeholder="Mô tả">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <a href="/admin_Categories">Quay về</a>
+            <a href="${pageContext.request.contextPath}/admin_Categories">Quay về</a>
         </div>
     </div>
 </div>
