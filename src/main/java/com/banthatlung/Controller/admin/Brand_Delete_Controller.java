@@ -2,9 +2,6 @@ package com.banthatlung.Controller.admin;
 
 
 import com.banthatlung.Dao.BrandDao;
-import com.banthatlung.Dao.MaterialDao;
-import com.banthatlung.Dao.model.Brand;
-import com.banthatlung.Dao.model.Material;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,22 +10,22 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-@WebServlet(urlPatterns = {"/admin_Brands"})
-public class BrandController extends HttpServlet {
+@WebServlet(urlPatterns = {"/admin_Brands/delete"})
+public class Brand_Delete_Controller extends HttpServlet {
     BrandDao brandDao = new BrandDao();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        resp.setCharacterEncoding("UTF-8");
-        List<Brand> brandList = null;
+        req.getParameter("id");
+        int id = Integer.parseInt(req.getParameter("id"));
         try {
-            brandList = brandDao.getList();
+            brandDao.delete(id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        req.setAttribute("brandList", brandList);
-        req.getRequestDispatcher("/html_admin/admin_Brands.jsp").forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/admin_Brands");
     }
+
+
 }

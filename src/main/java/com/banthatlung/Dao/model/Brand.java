@@ -1,14 +1,28 @@
 package com.banthatlung.Dao.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Brand {
     private int id;
     private String name;
-    private Date createAt;
+    private String createAt;
 
-    public Brand(int id, String name, Date createAt) {
+    public Brand(int id, String name, String createAt) {
+        this.id = id;
         this.name = name;
+        this.createAt = createAt;
+    }
+
+    public Brand(String name, String createAt) {
+        this.name = name;
+        this.createAt = createAt;
+    }
+
+    public Brand() {
+    }
+
+    public void setCreateAt(String createAt) {
         this.createAt = createAt;
     }
 
@@ -37,11 +51,8 @@ public class Brand {
                 '}';
     }
 
-    public Date getCreateAt() {
+    public String getCreateAt() {
         return createAt;
     }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
 }
+
