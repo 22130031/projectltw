@@ -94,19 +94,15 @@
             <!-- /. ROW  -->
             <form method="POST">
                 <label for="id"></label>
-                <input type="text" id="id" name="id" value="${category.getId()}"  readonly><br><br>
+                <input type="text" id="id" name="id" value="${material.getId()}"  readonly><br><br>
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên loại thắt lưng</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${category.getName()}">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Mô tả</label>
-                    <input type="text" name="description" class="form-control" id="description" value="${category.getDescription()}" placeholder="Mô tả">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${material.getName()}">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <a href="${pageContext.request.contextPath}/admin_Categories">Quay về</a>
+            <a href="${pageContext.request.contextPath}/admin_Materials">Quay về</a>
         </div>
     </div>
 </div>

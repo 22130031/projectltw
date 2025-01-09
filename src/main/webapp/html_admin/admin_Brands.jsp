@@ -93,7 +93,8 @@
                     <h2>Loại sản phẩm</h2>
                 </div>
             </div>
-
+            <a href="<%=request.getContextPath()%>/admin_Brands/add"><i class="fa-solid fa-plus"></i>Thêm loại thắt
+                lưng</a>
             <table id="example" class="display" style="width:100%">
                 <thead>
                 <tr>
@@ -111,9 +112,10 @@
                         <td>${brand.getName()}</td>
                         <td>${brand.getCreateAt()}</td>
                         <td>
-                            <a href="<%=request.getContextPath()%>/admin_Categories/edit?id=${brand.getId()}"> <i
-                                    class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="<%=request.getContextPath()%>/admin_Categories/delete?id=${brand.getId()}"><i
+                            <a href="${pageContext.request.contextPath}/admin_Brands/edit?id=${brand.getId()}&action=edit">
+                                <i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="${pageContext.request.contextPath}/admin_Brands/delete?id=${brand.getId()}&action=delete"><i
                                     class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>

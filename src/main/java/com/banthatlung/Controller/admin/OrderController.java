@@ -1,8 +1,8 @@
 package com.banthatlung.Controller.admin;
 
 
-import com.banthatlung.Dao.MaterialDao;
-import com.banthatlung.Dao.model.Material;
+import com.banthatlung.Dao.OrderDao;
+import com.banthatlung.Dao.model.Order;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,20 +13,20 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/admin_Materials"})
-public class MaterialController extends HttpServlet {
-    MaterialDao materialDao = new MaterialDao();
+@WebServlet(urlPatterns = {"/admin_Orders"})
+public class OrderController extends HttpServlet {
+    OrderDao OrderDao = new OrderDao();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
-        List<Material> materialList = null;
+        List<Order> OrderList = null;
         try {
-            materialList = materialDao.getList();
+            OrderList = OrderDao.getList();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        req.setAttribute("materialList", materialList);
-        req.getRequestDispatcher("/html_admin/admin_Materials.jsp").forward(req, resp);
+        req.setAttribute("OrderList", OrderList);
+        req.getRequestDispatcher("/html_admin/admin_Orders.jsp").forward(req, resp);
     }
 }

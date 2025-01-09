@@ -9,12 +9,21 @@
 
     <link href="../asset/css/bootstrap.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <style><%@include file="../asset/css/style.css"%></style>
-    <style><%@include file="../asset/css/custom.css"%></style>
-    <style><%@include file="../asset/css/bootstrap.css"%></style>
+    <style>
+        <%@include file="../asset/css/style.css" %>
+    </style>
+    <style>
+        <%@include file="../asset/css/custom.css" %>
+    </style>
+    <style>
+        <%@include file="../asset/css/bootstrap.css" %>
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>
@@ -43,7 +52,7 @@
     <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
-<!--LINK-->
+                <!--LINK-->
 
                 <li>
                     <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
@@ -51,16 +60,16 @@
 
 
                 <li>
-                    <a href=admin_user.html ><i class="fa fa-table "></i>USER<span class="badge"></span></a>
+                    <a href=admin_user.html><i class="fa fa-table "></i>USER<span class="badge"></span></a>
                 </li>
                 <li>
                     <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
                 </li>
                 <li>
-                    <a href="admin_Orders.html" class="active-link"><i class="fa fa-qrcode "></i>ORDERS</a>
+                    <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
                 </li>
                 <li>
-                    <a href="admin_Category.html"><i class="fa fa-bar-chart-o"></i>Category</a>
+                    <a href="#" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
                 </li>
 
                 <li>
@@ -82,61 +91,47 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Đơn hàng</h2>
+                    <h2>Loại sản phẩm</h2>
                 </div>
             </div>
-            <!-- /. ROW  -->
-            <label>
-                <input class="search__input" type="text" name= "" placeholder="Nhập tên sản phẩm ">
-            </label>
-
-            <button class="search__submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Tìm kiếm</span>
-            </button>
-            <table class="table table-striped">
-                <thead style="background: #4cb4ff">
+            <a href="<%=request.getContextPath()%>/admin_Orders/add"><i class="fa-solid fa-plus"></i>Thêm loại thắt
+                lưng</a>
+            <table id="example" class="display" style="width:100%">
+                <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Người đặt hàng</th>
-                    <th scope="col">Ngày đặt hàng </th>
-                    <th scope="col">Tổng tiền</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col"><label for="cars">Trạng thái giao hàng</label>
-
-                        <select name="cars" id="cars">
-                            <option value="volvo">Lựa chọn</option>
-                            <option value="saab">Chờ xử lý</option>
-                            <option value="mercedes">Đang giao</option>
-                            <option value="audi">Đã giao</option>
-                            <option value="audi">Đã hủy</option>
-                        </select></th>
-
-
+                    <th>ID</th>
+                    <th>Id khách hàng</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày đặt hàng</th>
+                    <th>Ngày cập nhật</th>
+                    <th>Tình trạng</th>
+                    <th>Tổng tiền</th>
+                    <th>Thao tác</th>
                 </tr>
                 </thead>
-
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Trần Thị B</td>
-                    <td>31/12/2004</td>
-                    <td>240000 </td>
-                    <td>43/32 Khu phố 7 Vũng Tàu</td>
-                    <td>Đang giao hàng</td>
+                <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
+                <c:forEach items="${OrderList}" var="mate">
+                    <tr>
+                        <th scope="row">${mate.getId()}</th>
+                        <td>${mate.getName()}</td>
+                        <td>${mate.getphone()}</td>
+                        <td>${mate.getAddress()}</td>
+                        <td>${mate.getOrderDate()}</td>
+                        <td>${mate.getUpdate_date()}</td>
+                        <td>${mate.getStatus()}</td>
+                        <td>${mate.getTotal_amount()}</td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/admin_Order/edit?id=${mate.getId()}&action=edit">
+                                <i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="${pageContext.request.contextPath}/admin_Orders/delete?id=${mate.getId()}&action=delete"><i
+                                    class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
 
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Trần Thị B</td>
-                    <td>31/12/2004</td>
-                    <td>240000 </td>
-                    <td>43/32 Khu phố 7 Vũng Tàu</td>
-                    <td>Đã hủy</td>
-
-                </tr>
-
-
+                </c:forEach>
                 </tbody>
             </table>
 
@@ -146,7 +141,15 @@
     </div>
 
 </div>
-
-
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "paging": true,        // Bật phân trang
+            "searching": true,     // Bật tìm kiếm
+            "ordering": true,      // Bật sắp xếp
+            "info": true           // Hiển thị thông tin tổng quan
+        });
+    });
+</script>
 </body>
 </html>

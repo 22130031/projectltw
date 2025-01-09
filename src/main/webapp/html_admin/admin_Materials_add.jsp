@@ -88,21 +88,14 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Sửa loại thắt lưng</h2>
+                    <h2>Thêm chất liệu thắt lưng</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
             <form method="POST">
-                <label for="id"></label>
-                <input type="text" id="id" name="id" value="${category.getId()}"  readonly><br><br>
-
                 <div class="mb-3">
-                    <label for="name" class="form-label">Tên loại thắt lưng</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${category.getName()}">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Mô tả</label>
-                    <input type="text" name="description" class="form-control" id="description" value="${category.getDescription()}" placeholder="Mô tả">
+                    <label for="name" class="form-label">Tên chất liệu thắt lưng</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại chất liệu sản phẩm">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

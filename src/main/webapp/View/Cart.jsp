@@ -89,56 +89,67 @@
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
                             <div class="product">
-                                <c:if test="${cart != null}">
-                                    <%
-                                        HashMap<Integer, ProductCart> carts = (HashMap<Integer, ProductCart>) request.getAttribute("cart");
-                                        for (Map.Entry<Integer, ProductCart> entry : carts.entrySet()) {
-                                            Integer key = entry.getKey();
-                                            ProductCart value = entry.getValue();
-                                    %>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <img class="img-fluid mx-auto d-block image fix_img_inCart" src="images/<%= value.getProduct().getImage()%>" alt="">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="info">
-                                                <div class="row">
-                                                    <div class="col-md-5 product-name">
-                                                        <div class="product-name">
-                                                            <a href="#"><%= value.getProduct().getName()%>
-                                                            </a>
-                                                            <div class="product-info">
-                                                                <div>Loại thắt lưng: <span
-                                                                        class="value"><%= value.getProduct().getDescription()%></span>
-                                                                </div>
-                                                                <div>Màu sắc : <span class="value">Màu đen</span></div>
+                                <c:choose>
+                                <c:when test="${cart != null}">
+                                <%
+                                    int total = 0;
+                                    HashMap<Integer, ProductCart> carts = (HashMap<Integer, ProductCart>) request.getAttribute("cart");
+                                    for (Map.Entry<Integer, ProductCart> entry : carts.entrySet()) {
+                                        Integer key = entry.getKey();
+                                        ProductCart value = entry.getValue();
 
+                                        total += value.getQuantity() * value.getProduct().getPrice();
+                                %>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img class="img-fluid mx-auto d-block image fix_img_inCart"
+                                             src="images/<%= value.getProduct().getImage()%>" alt="">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="info">
+                                            <div class="row">
+                                                <div class="col-md-5 product-name">
+                                                    <div class="product-name">
+                                                        <a href="#"><%= value.getProduct().getName()%>
+                                                        </a>
+                                                        <div class="product-info">
+                                                            <div>Loại thắt lưng: <span
+                                                                    class="value"><%= value.getProduct().getDescription()%></span>
                                                             </div>
+                                                            <div>Màu sắc : <span class="value">Màu đen</span></div>
+
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 quantity">
-<%--                                                        <p class="quantity"><%= value.getProduct().getId()%>--%>
-                                                        </p>
-                                                        <div class="quantity-control">
+                                                </div>
+                                                <div class="col-md-4 quantity">
+                                                        <%--                                                        <p class="quantity"><%= value.getProduct().getId()%>--%>
+                                                    </p>
+                                                    <div class="quantity-control">
+                                                        <a href="<%=request.getContextPath()%>/Cart?action=decrease&id=<%=key%>">
                                                             <button type="button" class="quantity-decrease">-</button>
-                                                            <input type="text" value="<%= value.getQuantity()%>"
-                                                                   class="quantity-input">
+                                                        </a>
+                                                        <input type="text" value="<%= value.getQuantity() %>"
+                                                               class="quantity-input"
+                                                               data-max-stock="<%= value.getProduct().getQuantity() %>">
+                                                        <a href="<%=request.getContextPath()%>/Cart?action=increase&id=<%=key%>">
                                                             <button type="button" class="quantity-increase">+</button>
-                                                            <span class="available-stock"><%= value.getProduct().getQuantity()%> sản phẩm có sẵn</span>
-                                                        </div>
+                                                        </a>
+                                                        <span class="available-stock"><%= value.getProduct().getQuantity() %> sản phẩm có sẵn</span>
                                                     </div>
-                                                    <div class="col-md-2 price">
-                                                        <span><%= value.getProduct().getPrice()%></span>
-                                                    </div>
-                                                    <div class="col-md-1 price" style="left: 51px">
-                                                        <a href="<%=request.getContextPath()%>/Cart?action=remove&id=<%= value.getProduct().getId()%>"><i class="fa-solid fa-x" style="color: red"></i></a>
-                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 price">
+                                                    <span><%= value.getProduct().getPrice()%></span>
+                                                </div>
+                                                <div class="col-md-1 price" style="left: 51px">
+                                                    <a href="<%=request.getContextPath()%>/Cart?action=remove&id=<%= value.getProduct().getId()%>"><i
+                                                            class="fa-solid fa-x" style="color: red"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <% } %>
-                                </c:if>
+                                </div>
+                                <% } %>
+
                             </div>
 
                         </div>
@@ -151,9 +162,10 @@
                             </div>
                             <div class="summary-item"><span class="text">Chi phí vận chuyển</span><span class="price">0 ₫</span>
                             </div>
-                            <div class="summary-item"><span class="text">Tổng cộng </span><span class="price">111123210 ₫</span>
+                            <div class="summary-item"><span class="text">Tổng cộng </span><span
+                                    class="price"> <%= total%></span>
                             </div>
-                            <a href="thanhtoan.html">
+                            <a href="<%=request.getContextPath()%>/Cart?action=checkOut">
                                 <button type="button" class="btn btn-primary btn-lg btn-block">Xác nhận</button>
                             </a>
                             <p class="text phivan">Phí vận chuyển sẽ được tính ở trang thanh toán.</p>
@@ -166,12 +178,15 @@
                                     <li class="help_li">chamsocKH@gmail.com.vn</li>
                                 </ul>
                             </div>
-
-
                         </div>
                     </div>
-                </div>
-            </div>
+
+            </div></c:when>
+                <c:otherwise>
+                <h1>Bạn không có sản phẩm nào trong giỏ</h1></div>
+            </c:otherwise>
+            </c:choose>
+        </div>
         </div>
     </section>
 </main>
@@ -253,41 +268,54 @@
     </div>
 </footer>
 <script>
-    const decreaseButton = document.querySelector('.quantity-decrease');
-    const increaseButton = document.querySelector('.quantity-increase');
-    const quantityInput = document.querySelector('.quantity-input');
-    const maxStock = 148; // Số lượng sản phẩm tối đa có sẵn
+    // Chọn tất cả các phần tử giảm, tăng và nhập số lượng
+    // Chọn tất cả các phần tử giảm, tăng và nhập số lượng
+    const decreaseButtons = document.querySelectorAll('.quantity-decrease');
+    const increaseButtons = document.querySelectorAll('.quantity-increase');
+    const quantityInputs = document.querySelectorAll('.quantity-input');
 
-    // Xử lý khi bấm nút giảm số lượng
-    decreaseButton.addEventListener('click', () => {
-        let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
-        if (currentQuantity > 1) {
-            quantityInput.value = currentQuantity - 1; // Giảm 1 nếu lớn hơn 1
-        }
+    // Duyệt qua tất cả các nút giảm số lượng
+    decreaseButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            let input = quantityInputs[index];
+            let currentQuantity = parseInt(input.value, 10); // Lấy số lượng hiện tại
+            if (currentQuantity > 1) {
+                input.value = currentQuantity - 1; // Giảm số lượng nếu lớn hơn 1
+            }
+        });
     });
 
-    // Xử lý khi bấm nút tăng số lượng
-    increaseButton.addEventListener('click', () => {
-        let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
-        if (currentQuantity < maxStock) {
-            quantityInput.value = currentQuantity + 1; // Tăng 1 nếu chưa đạt tối đa
-        }
+    // Duyệt qua tất cả các nút tăng số lượng
+    increaseButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            let input = quantityInputs[index];
+            let currentQuantity = parseInt(input.value, 10); // Lấy số lượng hiện tại
+            let maxStock = parseInt(input.getAttribute('data-max-stock'), 10); // Lấy số lượng tối đa
+            if (currentQuantity < maxStock) {
+                input.value = currentQuantity + 1; // Tăng số lượng nếu chưa đạt tối đa
+            }
+        });
     });
 
-    // Đảm bảo người dùng chỉ nhập số hợp lệ
-    quantityInput.addEventListener('input', () => {
-        let currentValue = parseInt(quantityInput.value, 10);
+    // Duyệt qua tất cả các ô nhập số lượng
+    quantityInputs.forEach((input) => {
+        input.addEventListener('input', () => {
+            let currentValue = parseInt(input.value, 10);
+            let maxStock = parseInt(input.getAttribute('data-max-stock'), 10); // Lấy số lượng tối đa
 
-        // Nếu nhập sai hoặc nhỏ hơn 1, tự động đặt về 1
-        if (isNaN(currentValue) || currentValue < 1) {
-            quantityInput.value = 1;
-        }
+            // Nếu nhập sai hoặc nhỏ hơn 1, tự động đặt về 1
+            if (isNaN(currentValue) || currentValue < 1) {
+                input.value = 1;
+            }
 
-        // Nếu vượt quá số lượng tối đa, đặt về số lượng tối đa
-        if (currentValue > maxStock) {
-            quantityInput.value = maxStock;
-        }
+            // Nếu vượt quá số lượng tối đa, đặt về số lượng tối đa
+            if (currentValue > maxStock) {
+                input.value = maxStock;
+            }
+        });
     });
+
+
 </script>
 </body>
 

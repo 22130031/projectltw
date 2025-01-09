@@ -103,7 +103,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <a href="/admin_Categories">Quay về</a>
+            <a href="${pageContext.request.contextPath}/admin_Categories">Quay về</a>
         </div>
     </div>
 </div>

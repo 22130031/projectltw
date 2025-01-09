@@ -10,13 +10,13 @@ public class Product implements Serializable {
     private String description;
     private int status;
     private int quantity;
-    private Date created;
+    private String date;
     private String image;
     private Category category;
     private Brand brand;
     private Material material;
 
-    public Product(int id, String name, int price, String description, int status, int quantity, Date create, String image) {
+    public Product(int id, String name, int price, String description, int status, int quantity, String create, String image) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -25,14 +25,6 @@ public class Product implements Serializable {
         this.quantity = quantity;
         this.image = image;
 
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public int getId() {
@@ -51,7 +43,7 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
@@ -75,20 +67,20 @@ public class Product implements Serializable {
         this.status = status;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
     }
 
     public Category getCategory() {
@@ -107,6 +99,14 @@ public class Product implements Serializable {
         this.brand = brand;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Material getMaterial() {
         return material;
     }
@@ -115,20 +115,8 @@ public class Product implements Serializable {
         this.material = material;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                ", quantity=" + quantity +
-                ", created=" + created +
-                ", image='" + image + '\'' +
-                ", category=" + category +
-                ", brand=" + brand +
-                ", material=" + material +
-                '}';
+    public static void main(String[] args) {
+        Product p = new Product(1,"dsa",21,"sac",3,4,"today","dsa");
+        System.out.println(p.getBrand().getName());
     }
 }

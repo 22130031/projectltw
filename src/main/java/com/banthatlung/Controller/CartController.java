@@ -28,7 +28,7 @@ public class CartController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         switch (action) {
-            case "showCart":{
+            case "showCart": {
                 showCart(req, resp);
                 break;
             }
@@ -46,9 +46,23 @@ public class CartController extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
-            case "/update_quantity":
+            case "increase":
                 try {
-                    updateQuantity(req, resp);
+                    increase(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "decrease":
+                try {
+                    decrease(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "checkOut":
+                try {
+                   checkOut(req, resp);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -96,6 +110,7 @@ public class CartController extends HttpServlet {
         session.setAttribute("cart", cart);
         resp.sendRedirect(contextPath + "/home");
     }
+
     public static void remove(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         String contextPath = req.getContextPath();
         int id = Integer.parseInt(req.getParameter("id"));
@@ -106,11 +121,44 @@ public class CartController extends HttpServlet {
         if (cart == null) {
             cart = new HashMap<>();
         } else {
-          cart.containsKey(id);
-                cart.remove(id);
+            cart.containsKey(id);
+            cart.remove(id);
 
         }
         session.setAttribute("cart", cart);
         resp.sendRedirect(contextPath + "/Cart?action=showCart");
+    }
+
+    public static void increase(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String contextPath = req.getContextPath();
+        int id = Integer.parseInt(req.getParameter("id"));
+        Product product = ProductService.getById(id);
+        HttpSession session = req.getSession();
+        ProductCart productCart;
+        HashMap<Integer, ProductCart> cart = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
+        cart.get(id).increaseQuantity();
+        session.setAttribute("cart", cart);
+        resp.sendRedirect(contextPath + "/Cart?action=showCart");
+    }
+
+    public static void decrease(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String contextPath = req.getContextPath();
+        int id = Integer.parseInt(req.getParameter("id"));
+        Product product = ProductService.getById(id);
+        HttpSession session = req.getSession();
+        ProductCart productCart;
+        HashMap<Integer, ProductCart> cart = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
+        if (cart.get(id).getQuantity()==1) {
+            cart.remove(id);
+        }else cart.get(id).decrementQuantity();
+        session.setAttribute("cart", cart);
+        resp.sendRedirect(contextPath + "/Cart?action=showCart");
+    }
+    public static void checkOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        HttpSession session = req.getSession();
+        String contextPath = req.getContextPath();
+        HashMap<Integer, ProductCart> cart = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
+        session.setAttribute("cart", cart);
+        resp.sendRedirect( contextPath + "/checkOut");
     }
 }

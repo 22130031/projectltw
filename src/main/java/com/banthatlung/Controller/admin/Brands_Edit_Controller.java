@@ -1,8 +1,8 @@
 package com.banthatlung.Controller.admin;
 
 
-import com.banthatlung.Dao.CategoryDao;
-import com.banthatlung.Dao.model.Category;
+import com.banthatlung.Dao.BrandDao;
+import com.banthatlung.Dao.model.Brand;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,17 +13,17 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
-@WebServlet(urlPatterns = {"/admin_Categories/edit"})
-public class Category_Edit_Controller extends HttpServlet {
-    CategoryDao categoryDao = new CategoryDao();
+@WebServlet(urlPatterns = {"/admin_Brands/edit"})
+public class Brands_Edit_Controller extends HttpServlet {
+    BrandDao brandDao = new BrandDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         try {
-            Category category = categoryDao.getCategory(id);
-            req.setAttribute("category", category);
-            req.getRequestDispatcher("/html_admin/admin_Categories_edit.jsp").forward(req, resp);
+            Brand brand = brandDao.getBrand(id);
+            req.setAttribute("brand", brand);
+            req.getRequestDispatcher("/html_admin/admin_Brands_edit.jsp").forward(req, resp);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -35,9 +35,9 @@ public class Category_Edit_Controller extends HttpServlet {
         try {
             int id = Integer.parseInt(req.getParameter("id"));
             String name = req.getParameter("name");
-            String description = req.getParameter("description");
-            categoryDao.update(new Category(id, name, description));
-            resp.sendRedirect(req.getContextPath() + "/admin_Categories");
+            String date = req.getParameter("created_At");
+            brandDao.update(new Brand(id, name,date));
+            resp.sendRedirect(req.getContextPath() + "/admin_Brands");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

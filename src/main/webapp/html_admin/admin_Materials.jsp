@@ -94,12 +94,14 @@
                     <h2>Loại sản phẩm</h2>
                 </div>
             </div>
-
+            <a href="<%=request.getContextPath()%>/admin_Materials/add"><i class="fa-solid fa-plus"></i>Thêm loại thắt
+                lưng</a>
             <table id="example" class="display" style="width:100%">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Tên</th>
+                    <th>Thao tác </th>
 
                 </tr>
                 </thead>
@@ -109,7 +111,15 @@
                     <tr>
                         <th scope="row">${mate.getId()}</th>
                         <td>${mate.getName()}</td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/admin_Material/edit?id=${mate.getId()}&action=edit">
+                                <i
+                                        class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="${pageContext.request.contextPath}/admin_Materials/delete?id=${mate.getId()}&action=delete"><i
+                                    class="fa-solid fa-trash"></i></a>
+                        </td>
                     </tr>
+
                 </c:forEach>
                 </tbody>
             </table>
