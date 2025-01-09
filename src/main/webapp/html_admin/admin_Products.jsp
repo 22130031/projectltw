@@ -99,7 +99,14 @@
         <tr>
           <th>ID</th>
           <th>Hình ảnh</th>
-          <th>Tên Sản Phẩm</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá</th>
+          <th>Mô tả</th>
+          <th>Số lượng</th>
+          <th>Loại</th>
+          <th>Hãng</th>
+          <th>Chất liệu</th>
+          <th>Tình trạng</th>
           <th>Thao tác</th>
         </tr>
         </thead>
@@ -110,10 +117,17 @@
             <th scope="row">${product.getId()}</th>
             <td><img  style="width: 100px; height: auto" src="images/${product.getImage()}"></td>
             <td>${product.getName()}</td>
+            <td>${product.getPrice()}</td>
+            <td>${product.getDescription()}</td>
+            <td>${product.getQuantity()}</td>
+            <td>${product.getCategory()}</td>
+            <td>${product.getBrand}</td>
+            <td>${product.getMaterial()}</td>
+            <td>${product.getStatus}</td>
             <td>
-              <a href="<%=request.getContextPath()%>/admin_Categories/edit?id=${product.getId()}"> <i
+              <a href="<%=request.getContextPath()%>/admin_Products/edit?id=${product.getId()}"> <i
                       class="fa-solid fa-pen-to-square"></i></a>
-              <a href="<%=request.getContextPath()%>/admin_Categories/delete?id=${product.getId()}"><i
+              <a href="<%=request.getContextPath()%>/admin_Products/delete?id=${product.getId()}"><i
                       class="fa-solid fa-trash"></i></a>
             </td>
           </tr>

@@ -39,7 +39,7 @@ public static Statement get() {
         PreparedStatement pstmt = getPreparedStatement(sql);
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
-            products.add(new Product(1, rs.getString("name"), rs.getInt("price"), rs.getString("description"), rs.getInt("status"), rs.getInt("quantity"), rs.getDate("created"), rs.getString("image")));
+            products.add(new Product(1, rs.getString("name"), rs.getInt("price"), rs.getString("description"), rs.getInt("status"), rs.getInt("quantity"), rs.getString("created"), rs.getString("image")));
         }
         for (Product p : products) {
             System.out.println(p);

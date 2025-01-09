@@ -17,8 +17,8 @@ public class Search extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         String search = req.getParameter("search");
         ProductService service = new ProductService();
-        List<Product> products = service.search(search);
-        req.setAttribute("SP", products);
+        //List<Product> products = service.search(search);
+       // req.setAttribute("SP", products);
         req.getRequestDispatcher("/View/home.jsp").forward(req, resp);
     }
 }

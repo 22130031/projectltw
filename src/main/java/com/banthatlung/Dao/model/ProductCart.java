@@ -16,7 +16,12 @@ public class ProductCart {
     public int getQuantity() {
         return quantity;
     }
-
+    public void incrementQuantity() {
+        quantity++;
+    }
+    public void decrementQuantity() {
+        quantity--;
+    }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
