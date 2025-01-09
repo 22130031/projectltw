@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="header">
-        <a href="home.html"><h1>Trang chủ</h1></a>
+        <a href="${pageContext.request.contextPath}/home"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
                 <a href="../danhmucsp.html">Danh mục sản phẩm</a>
@@ -111,8 +111,10 @@
         <c:forEach items="${productList}" var="p">
             <div class="pro">
                 <div class="pro-top">
-                    <a href="ProductDetail.html" class="pro-thumb"><img src="images/${p.getImage()}" alt="">
-                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a>
+                    <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="pro-thumb">
+                        <img src="images/${p.getImage()}" alt="#">
+                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a></a>
+                    </a>
                 </div>
                 <div class="des">
                     <span>Da bo`</span>
@@ -121,7 +123,6 @@
                 </div>
             </div>
         </c:forEach>
-
     </div>
 </section>
 <section id="product2" class="section_p1">
@@ -131,10 +132,9 @@
         <c:forEach items="${productList}" var="p">
             <div class="pro">
                 <div class="pro-top">
-                    <a href="ProductDetail.html" class="pro-thumb">
-                        <img src="../images/${p.getImage()}" alt="#">
-
-                        <a href="" class="buy-now">Mua ngay</a>
+                    <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="pro-thumb">
+                        <img src="images/${p.getImage()}" alt="#">
+                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a></a>
                     </a>
                 </div>
                 <div class="des">
@@ -153,7 +153,8 @@
             <div class="pro">
                 <div class="pro-top">
                     <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="pro-thumb">
-                        <img src="../images/${p.getImage()}" alt="#">
+                        <img src="images/${p.getImage()}" alt="#">
+                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a></a>
                     </a>
                 </div>
                 <div class="des">
@@ -163,7 +164,6 @@
                 </div>
             </div>
         </c:forEach>
-
     </div>
 </section>
 

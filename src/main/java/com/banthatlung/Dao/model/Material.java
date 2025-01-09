@@ -9,6 +9,14 @@ public class Material {
         this.name = name;
     }
 
+    public Material(String name) {
+        this.name = name;
+    }
+
+    public Material() {
+
+    }
+
     public int getId() {
         return id;
     }
