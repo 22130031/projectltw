@@ -21,9 +21,6 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>
@@ -73,7 +70,7 @@
                 </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-edit "></i>My Link Three </a>
+
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-table "></i>My Link Four</a>
@@ -91,54 +88,23 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Loại sản phẩm</h2>
+                    <h2>Sửa loại thắt lưng</h2>
                 </div>
             </div>
-            <a href="<%=request.getContextPath()%>/admin_Materials/add"><i class="fa-solid fa-plus"></i>Thêm loại thắt
-                lưng</a>
-            <table id="example" class="display" style="width:100%">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên</th>
-                    <th>Thao tác </th>
-
-                </tr>
-                </thead>
-                <tbody>
-                <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
-                <c:forEach items="${materialList}" var="mate">
-                    <tr>
-                        <th scope="row">${mate.getId()}</th>
-                        <td>${mate.getName()}</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/admin_Material/edit?id=${mate.getId()}&action=edit">
-                                <i
-                                        class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="${pageContext.request.contextPath}/admin_Materials/delete?id=${mate.getId()}&action=delete"><i
-                                    class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-
-                </c:forEach>
-                </tbody>
-            </table>
-
             <!-- /. ROW  -->
-        </div>
-        <!-- /. PAGE INNER  -->
-    </div>
+            <form method="POST">
+                <label for="id"></label>
+                <input type="text" id="id" name="id" value="${material.getId()}"  readonly><br><br>
 
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên loại thắt lưng</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${material.getName()}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <a href="${pageContext.request.contextPath}/admin_Materials">Quay về</a>
+        </div>
+    </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#example').DataTable({
-            "paging": true,        // Bật phân trang
-            "searching": true,     // Bật tìm kiếm
-            "ordering": true,      // Bật sắp xếp
-            "info": true           // Hiển thị thông tin tổng quan
-        });
-    });
-</script>
 </body>
 </html>

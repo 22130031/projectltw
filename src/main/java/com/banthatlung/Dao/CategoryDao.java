@@ -54,7 +54,7 @@ public class CategoryDao {
 
     public void update(Category category) throws SQLException {
         con = new DBConnect().getConnection();
-        ps = con.prepareStatement("UPDATE categories SET name = ?, description = ? WHERE id = ?");
+        ps = con.prepareStatement("UPDATE categories SET name = ?, Description = ? WHERE id = ?");
         ps.setString(1, category.getName());
         ps.setString(2, category.getDescription());
         ps.setInt(3, category.getId());
@@ -67,4 +67,10 @@ public class CategoryDao {
         ps.executeUpdate();
     }
 
+    public static void main(String[] args) throws SQLException {
+        CategoryDao categoryDao = new CategoryDao();
+        Category category = new Category("zzdsadazzz","zzcấcz");
+        category.setId(1);
+        categoryDao.update(category);
+    }
 }
