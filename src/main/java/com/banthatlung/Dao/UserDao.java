@@ -1,20 +1,20 @@
 package com.banthatlung.Dao;
 
+import com.banthatlung.Dao.db.DBConnect;
 import com.banthatlung.Dao.db.DBConnect2;
 import com.banthatlung.Dao.model.User;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Date;
+import java.sql.*;
 
 public class UserDao {
     public User findUser(String username) {
-        Statement stmt = DBConnect2.get();
+        PreparedStatement stmt = null;
+        String sql = "SELECT * FROM users WHERE username = ?";
         ResultSet rs = null;
-        try {
-            rs = stmt.executeQuery("select * from users where username = " + "'" + username + "'" );
+        try {Connection con = DBConnect.getConnection();
+            stmt=con.prepareStatement(sql);
+            stmt.setString(1, username);
+            rs = stmt.executeQuery();
             if (rs.next()) {
                 return new User(rs.getString(1),
                         rs.getString(2),
@@ -52,5 +52,31 @@ public class UserDao {
         int rowsAffected = stmt.executeUpdate();
         System.out.println("Rows affected: " + rowsAffected);
         return rowsAffected > 0;
+    }
+    public boolean registerUser(User u) {
+        String sql = "INSERT INTO users (username, password, full_name,user_id) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
+            stmt.setString(1, u.getUsername());
+            stmt.setString(2, u.getPass());
+            stmt.setString(3, u.getName());
+            stmt.setString(4, "u"+(generateID() +1));
+            return stmt.executeUpdate()>0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public int generateID() {
+        String query = "SELECT COUNT(*) AS total FROM users";
+        try (
+                PreparedStatement stmt = DBConnect2.getPreparedStatement(query)) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

@@ -13,4 +13,12 @@ public class AuthService {
         }
         return null;
     }
+    public boolean register(User user) {
+        UserDao dao = new UserDao();
+        User u = dao.findUser(user.getUsername());
+        if(u != null){
+            return false;
+        }
+        return dao.registerUser(user);
+    }
 }

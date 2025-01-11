@@ -171,21 +171,18 @@
 
         <div class="section">
             <h2>Đăng ký</h2>
-            <form action="#" method="post">
-                <label for="first-name">Họ</label>
-                <input type="text" id="first-name" name="first-name" required>
+            <form action="${pageContext.request.contextPath}/register" method="post">
+                <label for="first-name">Họ và Tên</label>
+                <input type="text" id="first-name" name="fullname" required>
 
-                <label for="last-name">Tên</label>
-                <input type="text" id="last-name" name="last-name" required>
-
-                <label for="register-email">Email</label>
-                <input type="text" id="register-email" name="register-email" required>
+                <label for="last-name">Tên tài khoản</label>
+                <input type="text" id="last-name" name="username" required>
 
                 <label for="register-password">Mật khẩu</label>
-                <input type="password" id="register-password" name="register-password" required>
+                <input type="password" id="register-password" name="password" required>
 
                 <label for="confirm-password">Xác nhận mật khẩu</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
+                <input type="password" id="confirm-password" name="cpassword" required>
                 <a href="home.html">
                     <button type="submit" class="btn">Đăng ký</button>
                 </a>
