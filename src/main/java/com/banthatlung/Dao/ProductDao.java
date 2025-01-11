@@ -32,7 +32,6 @@ public class ProductDao {
     }
 
     public Product getbyId(int id) {
-        Statement stmt = DBConnect2.get();
         ResultSet rs = null;
         try {
             String sql = "Select * from products where id= ?";

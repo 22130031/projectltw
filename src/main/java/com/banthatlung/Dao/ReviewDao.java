@@ -129,7 +129,7 @@ public class ReviewDao {
     public int getTotalReviews() {
         String query = "SELECT COUNT(*) AS total FROM reviews";
         try (
-             Statement stmt = DBConnect2.get()) {
+             PreparedStatement stmt = DBConnect2.getPreparedStatement(query)) {
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
                 return rs.getInt("total");
