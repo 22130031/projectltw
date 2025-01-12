@@ -11,6 +11,15 @@ public class Review implements Serializable {
     private String reviewText;
     private String reviewDate;
     private String username;
+    private String uimg;
+
+    public String getUimg() {
+        return uimg;
+    }
+
+    public void setUimg(String uimg) {
+        this.uimg = uimg;
+    }
 
     public String getUsername() {
         return username;

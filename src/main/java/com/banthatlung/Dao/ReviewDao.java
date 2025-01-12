@@ -46,6 +46,7 @@ public class ReviewDao {
                     rs.getString(6),
                     rs.getString(7));
             r.setUsername(getUsernameById(rs.getString(3)));
+            r.setUimg(getUserIMGById(rs.getString(3)));
             reviews.add(r);
             }
         return reviews;
@@ -143,13 +144,26 @@ public class ReviewDao {
         return 0;
     }
     public String getUsernameById(String id) {
-        String query = "select * from users where id = ?";
+        String query = "select * from users where user_id = ?";
         ResultSet rs = null;
         try {
             PreparedStatement  pstmt = DBConnect2.getPreparedStatement(query);
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
             while (rs.next()) return rs.getString("username");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+    public String getUserIMGById(String id) {
+        String query = "select * from users where user_id = ?";
+        ResultSet rs = null;
+        try {
+            PreparedStatement  pstmt = DBConnect2.getPreparedStatement(query);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            while (rs.next()) return rs.getString("avatar_url");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
