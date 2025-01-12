@@ -35,8 +35,11 @@ public static Statement get() {
 
     public static void main(String[] args) throws SQLException {
         List<Product>  products = new ArrayList<>();
-        String sql = "Select * from products";
+        String sql = "Select * from products where id=?";
         PreparedStatement pstmt = getPreparedStatement(sql);
+        String in = "22";
+        int id = Integer.parseInt(in);
+        pstmt.setInt(1, id);
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
             products.add(new Product(1, rs.getString("name"), rs.getInt("price"), rs.getString("description"), rs.getInt("status"), rs.getInt("quantity"), rs.getString("created"), rs.getString("image")));

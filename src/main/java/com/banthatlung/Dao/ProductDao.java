@@ -20,7 +20,7 @@ public class ProductDao {
         ArrayList<Product> re = new ArrayList<Product>();
         try {
             String sql = "SELECT * FROM products";
-            ps = getPreparedStatement(sql);
+            ps = DBConnect2.getPreparedStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 re.add(new Product(rs.getInt("id"), rs.getString("name"), rs.getInt("price"), rs.getString("description"), rs.getInt("status"), rs.getInt("quantity"), rs.getString("created"), rs.getString("image")));
@@ -35,7 +35,7 @@ public class ProductDao {
         ResultSet rs = null;
         try {
             String sql = "Select * from products where id= ?";
-            ps = getPreparedStatement(sql);
+            ps = DBConnect2.getPreparedStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -44,6 +44,21 @@ public class ProductDao {
             return null;
         } catch (SQLException e) {
             return null;
+        }
+    }
+    public List<Product> Search(String name) {
+        ArrayList<Product> re = new ArrayList<Product>();
+        try {
+            String sql = "SELECT * FROM products where name like ?";
+            ps = DBConnect2.getPreparedStatement(sql);
+            ps.setString(1, "%" + name + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                re.add(new Product(rs.getInt("id"), rs.getString("name"), rs.getInt("price"), rs.getString("description"), rs.getInt("status"), rs.getInt("quantity"), rs.getString("created"), rs.getString("image")));
+            }
+            return re;
+        } catch (SQLException e) {
+            return re;
         }
     }
 

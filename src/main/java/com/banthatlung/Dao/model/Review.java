@@ -10,6 +10,15 @@ public class Review implements Serializable {
     private String url;
     private String reviewText;
     private String reviewDate;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     // Constructors
     public Review() {}

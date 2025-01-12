@@ -22,7 +22,7 @@ public class ProductDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pid = req.getParameter("pid");
-
+        System.out.println("pid = " + pid);
         ProductService service = new ProductService();
         Product detail = service.getDetail(pid);
         req.setAttribute("pd", detail);

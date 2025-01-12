@@ -85,12 +85,12 @@
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="${pageContext.request.contextPath}/${pd.img}" alt="${pd.title}">
+        <img src="${pageContext.request.contextPath}/images/${pd.image}" alt="${pd.name}">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
     <div class="product-info">
-        <h2>${pd.title}</h2>
+        <h2>${pd.name}</h2>
         <div class="product-rating">
             <span class="rating-stars">5.0 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
             <span class="rating-details">498 đánh giá • 1,1k đã bán</span>
@@ -116,7 +116,7 @@
                     <input type="text" value="1" class="quantity-input">
                 </label>
                 <button type="button" class="quantity-increase">+</button>
-                <span class="available-stock">148 sản phẩm có sẵn</span>
+                <span class="available-stock">${pd.quantity} sản phẩm có sẵn</span>
             </div>
         </div>
         <div class="action-buttons">
@@ -155,7 +155,7 @@
         <div class="reviews-header">
             <img src="../asset/image/user.jpg" alt="User Avatar" class="reviews-user-avatar">
             <div class="reviews-info">
-                <span class="reviews-username">${r.userId}</span>
+                <span class="reviews-username">${r.username}</span>
                 <span class="reviews-stars">
                 <c:forEach var="i" begin="1" end="${r.rating}">
                                     ★
@@ -273,5 +273,44 @@
         <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
     </div>
 </footer>
+<script>
+    // Lấy các phần tử trong DOM
+    const decreaseButton = document.querySelector('.quantity-decrease');
+    const increaseButton = document.querySelector('.quantity-increase');
+    const quantityInput = document.querySelector('.quantity-input');
+    const maxStock = ${pd.quantity}; // Số lượng sản phẩm tối đa có sẵn
+
+    // Xử lý khi bấm nút giảm số lượng
+    decreaseButton.addEventListener('click', () => {
+        let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
+        if (currentQuantity > 1) {
+            quantityInput.value = currentQuantity - 1; // Giảm 1 nếu lớn hơn 1
+        }
+    });
+
+    // Xử lý khi bấm nút tăng số lượng
+    increaseButton.addEventListener('click', () => {
+        let currentQuantity = parseInt(quantityInput.value, 10); // Lấy giá trị hiện tại
+        if (currentQuantity < maxStock) {
+            quantityInput.value = currentQuantity + 1; // Tăng 1 nếu chưa đạt tối đa
+        }
+    });
+
+    // Đảm bảo người dùng chỉ nhập số hợp lệ
+    quantityInput.addEventListener('input', () => {
+        let currentValue = parseInt(quantityInput.value, 10);
+
+        // Nếu nhập sai hoặc nhỏ hơn 1, tự động đặt về 1
+        if (isNaN(currentValue) || currentValue < 1) {
+            quantityInput.value = 1;
+        }
+
+        // Nếu vượt quá số lượng tối đa, đặt về số lượng tối đa
+        if (currentValue > maxStock) {
+            quantityInput.value = maxStock;
+        }
+    });
+
+</script>
 </body>
 </html>

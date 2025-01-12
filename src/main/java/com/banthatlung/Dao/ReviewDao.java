@@ -38,13 +38,15 @@ public class ReviewDao {
         pstmt.setInt(1, id);
         rs = pstmt.executeQuery();
         while (rs.next()) {
-            reviews.add(new Review(rs.getString(1),
+            Review r =new Review(rs.getString(1),
                     rs.getInt(2),
                     rs.getString(3),
                     rs.getInt(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getString(7)));
+                    rs.getString(7));
+            r.setUsername(getUsernameById(rs.getString(3)));
+            reviews.add(r);
             }
         return reviews;
         }
@@ -128,9 +130,10 @@ public class ReviewDao {
     }
     public int getTotalReviews() {
         String query = "SELECT COUNT(*) AS total FROM reviews";
+        ResultSet rs = null;
         try (
              PreparedStatement stmt = DBConnect2.getPreparedStatement(query)) {
-            ResultSet rs = stmt.executeQuery(query);
+             rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getInt("total");
             }
@@ -138,5 +141,18 @@ public class ReviewDao {
             e.printStackTrace();
         }
         return 0;
+    }
+    public String getUsernameById(String id) {
+        String query = "select * from users where id = ?";
+        ResultSet rs = null;
+        try {
+            PreparedStatement  pstmt = DBConnect2.getPreparedStatement(query);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            while (rs.next()) return rs.getString("username");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 }
