@@ -241,7 +241,7 @@
             <c:if test="${sessionScope.auth !=null}">
                 <div class="dropdown-user">
                     <a href="<c:url value='/View/profile.jsp'/>">
-                        <img src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar"
+                        <img src="${sessionScope.auth.image}" alt="Avatar"
                              style="width: 25px; height: 25px; border-radius: 50%;">
                     </a>
                     <div class="dropdown-content-user">
@@ -258,7 +258,7 @@
     <div class="sidebar">
         <div class="user-info">
             <div class="avatar">
-                <img id="profile-avatar" src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar">
+                <img id="profile-avatar" src="${sessionScope.auth.image}" alt="Avatar">
                 <label for="avatar-upload" class="avatar-upload-label">Đổi Avatar</label>
                 <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
             </div>

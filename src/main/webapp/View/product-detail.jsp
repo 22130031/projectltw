@@ -153,7 +153,7 @@
     <c:forEach var="r" items="${reviews}">
     <div class="reviews-item">
         <div class="reviews-header">
-            <img src="../asset/image/user.jpg" alt="User Avatar" class="reviews-user-avatar">
+            <img src="${r.uimg}" alt="User Avatar" class="reviews-user-avatar">
             <div class="reviews-info">
                 <span class="reviews-username">${r.username}</span>
                 <span class="reviews-stars">
