@@ -98,13 +98,13 @@
             <form id="checkout-form" method=post>
                 <!-- Contact Info -->
                 <label for="name">Họ và tên khách hàng </label>
-                <input type="text" id="name" name="name" placeholder="Nhập tên khách hàng" required>
+                <input type="text" id="name" name="name" value="${sessionScope.auth.name}" required>
 
                 <label for="email">Email hoặc số điện thoại</label>
-                <input type="email" id="email" name="email" placeholder="Nhập email hoặc số điện thoại" required>
+                <input type="email" id="email" name="email" value="${sessionScope.auth.email}" required>
 
                 <label for="phone">Địa chỉ</label>
-                <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+                <input type="text" id="phone" name="phone" value="${sessionScope.auth.phone}" required>
                 <!-- Payment Method -->
                 <h3>Phương thức thanh toán</h3>
                 <label>

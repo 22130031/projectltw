@@ -124,10 +124,8 @@
             display: block;
             margin-bottom: 5px;
         }
-        input[type = "search"]{
-            margin-right: 20px;
-        }
-        input[type="text"], input[type="email"], input[type="date"] {
+
+        input[type="email"], input[type="date"] {
             width: 100%; /* Thu nhỏ chiều rộng input */
             max-width: 400px; /* Giới hạn kích thước lớn nhất */
             padding: 10px;
@@ -138,7 +136,22 @@
             color: #f0f0f0;
         }
 
-        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus {
+        input[type="email"]:focus, input[type="date"]:focus {
+            border-color: #e63946;
+            outline: none;
+            box-shadow: 0 0 5px #e63946;
+        }
+        .name-input{
+            width: 100%; /* Thu nhỏ chiều rộng input */
+            max-width: 400px; /* Giới hạn kích thước lớn nhất */
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: #f0f0f0;
+        }
+        .name-input:focus{
             border-color: #e63946;
             outline: none;
             box-shadow: 0 0 5px #e63946;
@@ -191,7 +204,7 @@
 <!--Header-->
 <header>
     <div class="header">
-        <a href="home.jsp"><h1>Trang chủ</h1></a>
+        <a href="${pageContext.request.contextPath}/home"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
                 <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
@@ -205,6 +218,18 @@
             <a href="#">Liên hệ</a>
         </div>
         <div class="icons">
+            <form action="${pageContext.request.contextPath}/search" method="get">
+                <div class="search-container">
+                    <div class="search-box">
+                        <button class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <label>
+                            <input type="text" class="search-input" name="search" placeholder="Search..">
+                        </label>
+                    </div>
+                </div>
+            </form>
             <c:if test="${sessionScope.auth ==null}">
                 <div class="dropdown-user">
                     <a href="#"><i class="fa-solid fa-user"></i></a>
@@ -223,20 +248,8 @@
                         <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
                     </div>
                 </div>
+                <a href=${pageContext.request.contextPath}/Cart?action=showCart><i class="fa-solid fa-cart-shopping"></i></a>
             </c:if>
-            <form action="${pageContext.request.contextPath}/search" method="get">
-                <div class="search-container">
-                    <div class="search-box">
-                        <label>
-                            <input type="text" class="search-input" name="search" placeholder="Search..">
-                        </label>
-                        <button class="search-icon">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <a href="/View/Cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
@@ -266,7 +279,7 @@
             <form action="${pageContext.request.contextPath}/profile" method="post">
                 <div class="form-group">
                     <label for="name">Tên:</label>
-                    <input type="text" id="name" name="name" value="${sessionScope.auth.name}">
+                    <input type="text" id="name" class="name-input" name="name" value="${sessionScope.auth.name}">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
@@ -274,7 +287,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">Số điện thoại:</label>
-                    <input type="text" id="phone" name="phone" value="${sessionScope.auth.phone}">
+                    <input type="text" id="phone" class="name-input" name="phone" value="${sessionScope.auth.phone}">
                 </div>
                 <div class="form-group">
                     <label for="dob">Ngày sinh:</label>
