@@ -1,32 +1,31 @@
 package com.banthatlung.Dao.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Product implements Serializable {
     private int id;
     private String name;
-    private int price;
-    private String description;
-    private int status;
-    private int quantity;
-    private String date;
-    private String image;
-    private Category category;
-    private Brand brand;
-    private Material material;
+    private Category category;    // loai
+    private double price;       // gia (decimal(10, 2))
+    private int quantity;       // so_luong
+    private String description; // mo_ta
+    private String image;       // hinh_anh
+    private String color;       // color
+    private String createdDate; // ngay_tao
 
-    public Product(int id, String name, int price, String description, int status, int quantity, String create, String image) {
+    public Product(int id, String name, Category category, double price, int quantity, String description, String image, String color, String createdDate) {
         this.id = id;
         this.name = name;
+        this.category = category;
         this.price = price;
-        this.description = description;
-        this.status = status;
         this.quantity = quantity;
+        this.description = description;
         this.image = image;
-
+        this.color = color;
+        this.createdDate = createdDate;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -43,36 +42,20 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public int getPrice() {
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public int getQuantity() {
@@ -83,20 +66,12 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImage() {
@@ -107,16 +82,19 @@ public class Product implements Serializable {
         this.image = image;
     }
 
-    public Material getMaterial() {
-        return material;
+    public String getColor() {
+        return color;
     }
 
-    public void setMaterial(Material material) {
-        this.material = material;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public static void main(String[] args) {
-        Product p = new Product(1,"dsa",21,"sac",3,4,"today","dsa");
-        System.out.println(p.getBrand().getName());
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 }

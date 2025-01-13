@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,262 +8,129 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-</body>
-</html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <style>
-        <%@include file="../css/footer.css" %>
-    </style>
-    <style>
-        <%@include file="../css/header.css" %>
-    </style>
-    <style>
-        <%@include file="../asset/css/home.css" %>
-    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
 <!--Header-->
-<header>
-    <div id="fullscreen-search" class="fullscreen-search">
-        <span class="close-btn">&times;</span>
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search..">
-                <button class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
+<header class="bg-dark text-white py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo và Trang chủ -->
+        <a href="${pageContext.request.contextPath}/home" class="text-white">
+            <h1 class="m-0">Trang chủ</h1>
+        </a>
+
+        <!-- Menu điều hướng -->
+        <div class="menu d-flex">
+            <a href="#" class="text-white mx-3">Danh mục sản phẩm</a>
+            <a href="#" class="text-white mx-3">Giới thiệu</a>
+            <a href="#" class="text-white mx-3">Chính sách</a>
+            <a href="#" class="text-white mx-3">Liên hệ</a>
         </div>
-    </div>
-    <div class="header">
-        <a href="${pageContext.request.contextPath}/home"><h1>Trang chủ</h1></a>
-        <div class="menu">
-            <div class="dropdown">
-                <a href="../danhmucsp.html">Danh mục sản phẩm</a>
-                <div class="dropdown-content">
-                    <a href="#">Thắt lưng nam</a>
-                    <a href="#">Thắt lưng nữ</a>
-                </div>
-            </div>
-            <a href="#">Giới thiệu</a>
-            <a href="#">Chính sách </a>
-            <a href="#">Liên hệ</a>
-        </div>
-        <div class="icons">
-            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <div class="dropdown-user">
-                <a href="profile.html"><i class="fa-solid fa-user"></i></a>
-                <div class="dropdown-content-user">
-                    <a href="Login.html">Đăng nhập</a>
-                </div>
-            </div>
-            <a href="<%=request.getContextPath()%>/Cart?action=showCart"><i class="fa-solid fa-cart-shopping"></i></a>
+
+        <!-- Các biểu tượng tìm kiếm và giỏ hàng -->
+        <div class="icons d-flex">
+            <a href="#" id="open-search" class="text-white mx-2"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a>
+            <a href="<%=request.getContextPath()%>/Cart?action=showCart" class="text-white mx-2"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
         </div>
     </div>
 </header>
-<script src="../fullscreensearch.js"></script>
-<!--    CONTAINER-->
-<section id="PageIamge">
-    <h1>Nhiều ưu đãi bất ngờ </h1>
+
+
+<section id="PageIamge" class="bg-dark text-white text-center py-5" >
+    <h1>Nhiều ưu đãi bất ngờ</h1>
     <h2>Trên tất cả các sản phẩm</h2>
     <h3>Thắt lưng số 1 Đông Nam Á</h3>
-    <p>Giá rẻ nhát thị trường </p>
+    <p>Giá rẻ nhất thị trường</p>
 </section>
-<section id="feature" class="section_p1">
-    <div class="fe-box">
-        <i class="fa-solid fa-truck"></i>
-        <h6>Giao hàng miễn phí</h6>
+
+<section id="feature" class="container py-5">
+    <div class="row text-center">
+        <div class="col-md-2">
+            <i class="fa-solid fa-truck fa-3x"></i>
+            <h6>Giao hàng miễn phí</h6>
+        </div>
+        <div class="col-md-2">
+            <i class="fa-solid fa-medal fa-3x"></i>
+            <h6>Bảo hành 36 tháng</h6>
+        </div>
+        <div class="col-md-2">
+            <i class="fa-sharp fa-solid fa-shield-halved fa-3x"></i>
+            <h6>Cam kết da thật 100%</h6>
+        </div>
+        <div class="col-md-2">
+            <i class="fa-solid fa-clipboard fa-3x"></i>
+            <h6>Đổi trả trong 7 ngày</h6>
+        </div>
+        <div class="col-md-2">
+            <i class="fa-solid fa-thumbs-up fa-3x"></i>
+            <h6>Bảo hành trọn đời</h6>
+        </div>
+        <div class="col-md-2">
+            <i class="fa-solid fa-tag fa-3x"></i>
+            <h6>Giảm giá hấp dẫn</h6>
+        </div>
     </div>
-    <div class="fe-box">
-        <i class="fa-solid fa-medal"></i>
-        <h6>Bảo hành 36 tháng</h6>
-    </div>
-    <div class="fe-box">
-        <i class="fa-sharp fa-solid fa-shield-halved"></i>
-        <h6>Cam kết da thật 100%</h6>
-    </div>
-    <div class="fe-box">
-        <i class="fa-solid fa-clipboard"></i>
-        <h6>Đổi trả trong 7 ngày</h6>
-    </div>
-    <div class="fe-box">
-        <i class="fa-solid fa-thumbs-up"></i>
-        <h6>Bảo hành trọn đời</h6>
-    </div>
+
 </section>
-<section id="product1" class="section_p1">
-    <h2>Sản phẩm nổi bật</h2>
-    <p>Sang trọng – Mạnh mẽ – Khí chất</p>
-    <div class="pro-container">
-        <c:forEach items="${productList}" var="p">
-            <div class="pro">
-                <div class="pro-top">
-                    <a href="<%=request.getContextPath()%>/product?pid=${p.getId()}" class="pro-thumb">
-                        <img src="images/${p.getImage()}" alt="#">
-                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a></a>
+
+<section id="product1" class="container py-5">
+    <h2 class="text-center">Sản phẩm nổi bật</h2>
+    <p class="text-center">Sang trọng – Mạnh mẽ – Khí chất</p>
+    <div class="row">
+        <c:forEach var="product" items="${productList}">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <a href="../projectl/product?pid=${product.id != null ? product.id : 'default'}">
+                        <img src="./${product.image != null ? product.image : 'https://down-vn.img.susercontent.com/file/sg-11134201-22100-sqhzemsl5vivac'}" class="card-img-top" alt="${product.name}">
                     </a>
-                </div>
-                <div class="des">
-                    <span>Da bo`</span>
-                    <h5>${p.getName()}</h5>
-                    <h4>${p.getPrice()}</h4>
+                    <div class="card-body d-flex flex-column text-center">
+                        <h5 class="card-title text-truncate" style="max-width: 100%">${product.name}</h5>
+                        <h4 class="card-text">${product.price}</h4>
+                        <a href="../projectl/cart?action=add&id=${product.id}" class="btn btn-warning mt-auto">Thêm vào giỏ hàng</a>
+                    </div>
                 </div>
             </div>
         </c:forEach>
     </div>
-</section>
-<section id="product2" class="section_p1">
-    <h2><i class="fa-solid fa-tag"></i>TOP SẢN PHẨM BÁN CHẠY</h2>
 
-    <div class="pro-container">
-        <c:forEach items="${productList}" var="p">
-            <div class="pro">
-                <div class="pro-top">
-                    <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="pro-thumb">
-                        <img src="images/${p.getImage()}" alt="#">
-                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a></a>
-                    </a>
-                </div>
-                <div class="des">
-                    <span>Da bo`</span>
-                    <h5>${p.getName()}</h5>
-                    <h4>${p.getPrice()}</h4>
-                </div>
-            </div>
+    <div class="pagination justify-content-center flex-wrap">
+        <!-- Các nút phân trang -->
+        <c:forEach var="i" begin="1" end="${totalPages}">
+            <button class="btn btn-outline-primary mx-1 my-2" onclick="window.location.href='/projectl/home?page=${i}'">${i}</button>
         </c:forEach>
     </div>
-</section>
-<section id="product3" class="section_p1">
-    <h2>Sản phẩm được đánh giá cao</h2>
-    <div class="pro-container">
-        <c:forEach items="${productList}" var="p">
-            <div class="pro">
-                <div class="pro-top">
-                    <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="pro-thumb">
-                        <img src="images/${p.getImage()}" alt="#">
-                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${p.getId()}" class="buy-now">Thêm vào giỏ hàng</a></a>
-                    </a>
-                </div>
-                <div class="des">
-                    <span>Da bo`</span>
-                    <h5>${p.getName()}</h5>
-                    <h4>${p.getPrice()}</h4>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-</section>
 
-<!--    Bonus-->
-<div id="Bonus">
-    <div class="textChatLieu">
-        <h2>Về chất liệu</h2>
-        <h1>Chất liệu da nguyên tấm</h1>
-        <p>Tất cả các sản phẩm đồ da nam của LaForce được làm từ chất liệu da nguyên tấm. Đây là phần da đắt tiền nhất
-            lấy từ lớp da trên cùng của con bò, giữ lại được tất cả kết cấu nguyên thủy của da, mang đến chất lượng tốt
-            nhất, chính vì thế chúng rất bền và khó bị hỏng
-            Đó cũng là điểm khác biệt lớn nhất trong sản phẩm đồ da nam của LaForce so với các sản phẩm làm bằng da
-            thông thường khác. Đối với những sản phẩm da thông thường, bề mặt chúng được phủ lên một lớp da tổng hợp nên
-            rất dễ bị nổ hoặc gấp nếp.</p>
-    </div>
-    <img src="../asset/image/chatlieuda.jpg" alt="">
-</div>
-<div id="Bonus2">
-    <h1>100% da bò nhập khẩu</h1>
-    <p>LaForce với hệ thống 23 cửa hàng trên toàn quốc và tiếp tục mở rộng trong tương lai, chúng tôi mong muốn sẽ mang
-        đến những sản phẩm đồ da chất lượng nhất cho khách hàng.
-
-        LaForce – sản phẩm đồ da của người Việt.</p>
-</div>
+</section>
 
 <!-- Footer -->
-<footer class="footer">
-    <div class="footer-brand">
+<footer class="bg-dark text-white py-3">
+    <div class="container text-center">
         <p>CHUYÊN CUNG CẤP CÁC LOẠI THẮT LƯNG.</p>
-        <p> Chất lượng - Uy tín - Tin cậy</p>
+        <p>Chất lượng - Uy tín - Tin cậy</p>
         <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank">
-                <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
-                <a href="https://www.instagram.com" target="_blank">
-                    <img src="../asset/image/logoInsta.png" alt="Instagram">
-                </a>
-                <a href="https://www.youtube.com" target="_blank">
-                    <img src="../asset/image/logoytb.jpg" alt="YouTube">
-                </a>
-                <a href="https://www.twitter.com" target="_blank">
-                    <img src="../asset/image/twitter.jpg" alt="Twitter">
-                </a>
+            <a href="https://www.facebook.com" target="_blank" class="text-white mx-2">
+                <i class="fa-brands fa-facebook fa-2x"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="text-white mx-2">
+                <i class="fa-brands fa-instagram fa-2x"></i>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" class="text-white mx-2">
+                <i class="fa-brands fa-youtube fa-2x"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" class="text-white mx-2">
+                <i class="fa-brands fa-twitter fa-2x"></i>
             </a>
         </div>
     </div>
-    <div class="footer-container">
-        <!-- Logo và mạng xã hội -->
-
-        <div class="footer-brand">
-            <img src="../asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
-            <p>Chất lượng - Uy tín - Tin cậy</p>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-solid fa-phone"></i>
-                <i class="fa-brands fa-youtube"></i>
-            </div>
-        </div>
-
-        <!-- Danh sách liên kết -->
-        <div class="footer-links">
-            <div>
-                <h3>Sản phẩm</h3>
-                <ul>
-                    <li><a href="#">Thắt lưng nam</a></li>
-                    <li><a href="#">Thắt lưng nữ</a></li>
-                    <li><a href="#">Phụ kiện</a></li>
-                    <li><a href="#">Khuyến mãi</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Chính sách</h3>
-                <ul>
-                    <li><a href="#">Chính sách đổi trả</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                    <li><a href="#">Chính sách vận chuyển</a></li>
-                    <li><a href="#">Hướng dẫn thanh toán</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Hỗ trợ</h3>
-                <ul>
-                    <li><a href="#">Liên hệ</a></li>
-                    <li><a href="#">Hỗ trợ</a></li>
-                    <li><a href="#">Tuyển dụng</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Thông tin công ty -->
-        <div class="footer-contact">
-            <h3>Liên hệ</h3>
-            <p>Địa chỉ: Số 8, Tam Bình, Thủ Đức</p>
-            <p>Điện thoại: 0397526965</p>
-            <p>Email: storethatlung@gmail.com</p>
-            <p>Thời gian làm việc: 8:00 - 22:00 (hàng ngày)</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
-    </div>
 </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
