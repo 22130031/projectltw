@@ -21,12 +21,31 @@ public class HomeController extends HttpServlet {
         ProductService productService = new ProductService();
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
+
+        int page = 1; // Mặc định trang 1
+        int pageSize = 8; // Mỗi trang 8 sản phẩm
+
+        // Lấy tham số page từ request, nếu có
+        String pageParam = req.getParameter("page");
+        if (pageParam != null && !pageParam.isEmpty()) {
+            page = Integer.parseInt(pageParam);
+        }
+
         List<Product> productList = null;
         try {
-            productList = productService.getAll();
+            productList = productService.getAll(page, pageSize);
+
             req.setAttribute("productList", productList);
+
+            // Tính số lượng trang để phân trang
+            int totalProducts = productService.getTotalProductCount();
+            int totalPages = (int) Math.ceil(totalProducts / (double) pageSize);
+            req.setAttribute("totalPages", totalPages);
+            req.setAttribute("currentPage", page);
+
             req.getRequestDispatcher("/View/home.jsp").forward(req, resp);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
