@@ -1,31 +1,46 @@
 package com.banthatlung.Dao.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Product implements Serializable {
     private int id;
     private String name;
-    private Category category;    // loai
-    private double price;       // gia (decimal(10, 2))
-    private int quantity;       // so_luong
-    private String description; // mo_ta
-    private String image;       // hinh_anh
-    private String color;       // color
-    private String createdDate; // ngay_tao
+    private int price;
+    private String description;
+    private int status;
+    private int quantity;
+    private String date;
+    private String image;
+    private Category category;
+    private Brand brand;
+    private Material material;
 
-    public Product(int id, String name, Category category, double price, int quantity, String description, String image, String color, String createdDate) {
+    public Product(int id, String name, int price, String description, int status, int quantity, String create, String image) {
         this.id = id;
         this.name = name;
-        this.category = category;
         this.price = price;
-        this.quantity = quantity;
         this.description = description;
+        this.status = status;
+        this.quantity = quantity;
         this.image = image;
-        this.color = color;
-        this.createdDate = createdDate;
+
     }
 
-    // Getters and Setters
+    public Product(int id, String name, int price, String description, int status, int quantity, String date, String image, Category category, Brand brand, Material material) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.status = status;
+        this.quantity = quantity;
+        this.date = date;
+        this.image = image;
+        this.category = category;
+        this.brand = brand;
+        this.material = material;
+    }
+
     public int getId() {
         return id;
     }
@@ -42,28 +57,12 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public String getDescription() {
@@ -74,6 +73,46 @@ public class Product implements Serializable {
         this.description = description;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     public String getImage() {
         return image;
     }
@@ -82,19 +121,16 @@ public class Product implements Serializable {
         this.image = image;
     }
 
-    public String getColor() {
-        return color;
+    public Material getMaterial() {
+        return material;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 
-    public String getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
+    public static void main(String[] args) {
+        Product p = new Product(1,"dsa",21,"sac",3,4,"today","dsa");
+        System.out.println(p.getBrand().getName());
     }
 }

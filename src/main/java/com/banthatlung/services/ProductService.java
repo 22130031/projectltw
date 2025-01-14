@@ -12,7 +12,6 @@ public class ProductService {
         return productDao.getById(id);
     }
 
-
     public List<Product> getAll() {
         return productDao.getAll();
     }

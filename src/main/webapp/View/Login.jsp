@@ -99,7 +99,7 @@
         <a href="${pageContext.request.contextPath}/home"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
+                <a href="${pageContext.request.contextPath}/home">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -126,7 +126,7 @@
                 <div class="dropdown-user">
                     <a href="#"><i class="fa-solid fa-user"></i></a>
                     <div class="dropdown-content-user">
-                        <a href="<c:url value="/View/Login.jsp"/>">Đăng nhập</a>
+                        <a href="<c:url value="${pageContext.request.contextPath}"/>">Đăng nhập</a>
                     </div>
                 </div>
             </c:if>
@@ -145,11 +145,20 @@
         </div>
     </div>
 </header>
+
 <div id="container">
     <!-- Phần đăng nhập và đăng ký -->
     <div class="login-container">
         <div class="section">
             <h2>Đăng nhập</h2>
+
+            <!-- Hiển thị lỗi nếu có -->
+            <c:if test="${not empty error}">
+                <div class="error-message" style="color: red; margin-bottom: 10px;">
+                    <p>${error}</p>
+                </div>
+            </c:if>
+
             <form action="${pageContext.request.contextPath}/login" method="post">
                 <label for="email">Tên tài khỏan</label>
                 <input type="text" id="email" name="uname" required>
@@ -157,15 +166,8 @@
                 <label for="password">Mật khẩu</label>
                 <input type="password" id="password" name="pass" required>
 
-<%--                <div style="display: flex; align-items: center; margin: 10px 0;">--%>
-<%--                    <input type="checkbox" id="remember" name="remember" style="margin-right: 10px;">--%>
-<%--                    <label for="remember" style="color: #b0b0b0;">Ghi nhớ đăng nhập</label>--%>
-<%--                </div>--%>
-
-                <a href="mk.html" class="forgot-password">Quên mật khẩu?</a>
-                <a href="home.html">
-                    <button type="submit" class="btn">Đăng nhập</button>
-                </a>
+                <a href="${pageContext.request.contextPath}/forgot-password" class="forgot-password">Quên mật khẩu?</a>
+                <button type="submit" class="btn">Đăng nhập</button>
             </form>
         </div>
 
@@ -183,13 +185,13 @@
 
                 <label for="confirm-password">Xác nhận mật khẩu</label>
                 <input type="password" id="confirm-password" name="cpassword" required>
-                <a href="home.html">
-                    <button type="submit" class="btn">Đăng ký</button>
-                </a>
+                <button type="submit" class="btn">Đăng ký</button>
             </form>
         </div>
     </div>
 </div>
+
+
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-brand">
@@ -199,14 +201,14 @@
             <a href="https://www.facebook.com" target="_blank">
                 <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
                 <a href="https://www.instagram.com" target="_blank"></a>
-                    <img src="../asset/image/logoInsta.png" alt="Instagram">
-                </a>
-                <a href="https://www.youtube.com" target="_blank">
-                    <img src="../asset/image/logoytb.jpg" alt="YouTube">
-                </a>
-                <a href="https://www.twitter.com" target="_blank">
-                    <img src="../asset/image/twitter.jpg" alt="Twitter">
-                </a>
+                <img src="../asset/image/logoInsta.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="../asset/image/logoytb.jpg" alt="YouTube">
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <img src="../asset/image/twitter.jpg" alt="Twitter">
+            </a>
         </div>
     </div>
     <div class="footer-container">

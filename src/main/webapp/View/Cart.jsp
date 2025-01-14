@@ -35,44 +35,53 @@
     </style>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<header>
-    <div id="fullscreen-search" class="fullscreen-search">
-        <span class="close-btn">&times;</span>
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search..">
-                <button class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
+<!--Header-->
+<header class="bg-dark text-white py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo và Trang chủ -->
+        <a href="${pageContext.request.contextPath}/home" class="text-white">
+            <h1 class="m-0">Trang chủ</h1>
+        </a>
+
+        <!-- Menu điều hướng -->
+        <div class="menu d-flex">
+            <a href="${pageContext.request.contextPath}/home" class="text-white mx-3">Danh mục sản phẩm</a>
+            <a href="#" class="text-white mx-3">Giới thiệu</a>
+            <a href="#" class="text-white mx-3">Chính sách</a>
+            <a href="#" class="text-white mx-3">Liên hệ</a>
         </div>
-    </div>
-    <div class="header">
-        <a href="<%= request.getContextPath()%>/home"><h1>Trang chủ</h1></a>
-        <div class="menu">
-            <div class="dropdown">
-                <a href="../danhmucsp.html">Danh mục sản phẩm</a>
-                <div class="dropdown-content">
-                    <a href="#">Thắt lưng nam</a>
-                    <a href="#">Thắt lưng nữ</a>
-                </div>
+
+
+        <div class="icons d-flex pt-1"  >
+
+            <div class="dropdown pt-1">
+                <a href="#" class="text-white mx-2" id="user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Đăng nhập</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/change-password">Đổi mật khẩu</a></li>
+                </ul>
             </div>
-            <a href="#">Giới thiệu</a>
-            <a href="#">Chính sách </a>
-            <a href="#">Liên hệ</a>
-        </div>
-        <div class="icons">
-            <a href="#" id="open-search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <div class="dropdown-user">
-                <a href="profile.html"><i class="fa-solid fa-user"></i></a>
-                <div class="dropdown-content-user">
-                    <a href="Login.html">Đăng nhập</a>
-                </div>
+
+            <div class="search-container me-4">
+                <form action="${pageContext.request.contextPath}/search" method="get">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" name="search" placeholder="Tìm kiếm...">
+                        <button class="btn btn-sm btn-outline-secondary" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
-            <a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+
+            <a href="<%=request.getContextPath()%>/Cart?action=showCart" class="text-white mx-2 pt-1"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
         </div>
+
     </div>
 </header>
 <script src="../fullscreensearch.js"></script>
@@ -190,83 +199,84 @@
         </div>
     </section>
 </main>
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-brand">
-        <p>CHUYÊN CUNG CẤP CÁC LOẠI THẮT LƯNG.</p>
-        <p> Chất lượng - Uy tín - Tin cậy</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank">
-                <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
-                <a href="https://www.instagram.com" target="_blank">
-                    <img src="../asset/image/logoInsta.png" alt="Instagram">
-                </a>
-                <a href="https://www.youtube.com" target="_blank">
-                    <img src="../asset/image/logoytb.jpg" alt="YouTube">
-                </a>
-                <a href="https://www.twitter.com" target="_blank">
-                    <img src="../asset/image/twitter.jpg" alt="Twitter">
-                </a>
-            </a>
-        </div>
-    </div>
-    <div class="footer-container">
-        <!-- Logo và mạng xã hội -->
-
-        <div class="footer-brand">
-            <img src="../asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
-            <p>Chất lượng - Uy tín - Tin cậy</p>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-solid fa-phone"></i>
-                <i class="fa-brands fa-youtube"></i>
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <!-- Thông tin giới thiệu và các mạng xã hội -->
+        <div class="row text-center mb-4">
+            <div class="col-12">
+                <p>CHUYÊN CUNG CẤP CÁC LOẠI THẮT LƯNG.</p>
+                <p>Chất lượng - Uy tín - Tin cậy</p>
+            </div>
+            <div class="col-12">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com" target="_blank" class="text-white mx-2">
+                        <i class="fa-brands fa-facebook fa-2x"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="text-white mx-2">
+                        <i class="fa-brands fa-instagram fa-2x"></i>
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank" class="text-white mx-2">
+                        <i class="fa-brands fa-youtube fa-2x"></i>
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-white mx-2">
+                        <i class="fa-brands fa-twitter fa-2x"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <!-- Danh sách liên kết -->
-        <div class="footer-links">
-            <div>
-                <h3>Sản phẩm</h3>
-                <ul>
-                    <li><a href="#">Thắt lưng nam</a></li>
-                    <li><a href="#">Thắt lưng nữ</a></li>
-                    <li><a href="#">Phụ kiện</a></li>
-                    <li><a href="#">Khuyến mãi</a></li>
+        <!-- Các liên kết footer (4 mục nằm ngang) -->
+        <div class="row mb-4">
+            <div class="col-lg-3 col-md-6">
+                <h5>Sản phẩm</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Thắt lưng nam</a></li>
+                    <li><a href="#" class="text-white">Thắt lưng nữ</a></li>
+                    <li><a href="#" class="text-white">Phụ kiện</a></li>
+                    <li><a href="#" class="text-white">Khuyến mãi</a></li>
                 </ul>
             </div>
-            <div>
-                <h3>Chính sách</h3>
-                <ul>
-                    <li><a href="#">Chính sách đổi trả</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                    <li><a href="#">Chính sách vận chuyển</a></li>
-                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+            <div class="col-lg-3 col-md-6">
+                <h5>Chính sách</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Chính sách đổi trả</a></li>
+                    <li><a href="#" class="text-white">Chính sách bảo mật</a></li>
+                    <li><a href="#" class="text-white">Chính sách vận chuyển</a></li>
+                    <li><a href="#" class="text-white">Hướng dẫn thanh toán</a></li>
                 </ul>
             </div>
-            <div>
-                <h3>Hỗ trợ</h3>
-                <ul>
-                    <li><a href="#">Liên hệ</a></li>
-                    <li><a href="#">Hỗ trợ</a></li>
-                    <li><a href="#">Tuyển dụng</a></li>
+            <div class="col-lg-3 col-md-6">
+                <h5>Hỗ trợ</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Liên hệ</a></li>
+                    <li><a href="#" class="text-white">Hỗ trợ</a></li>
+                    <li><a href="#" class="text-white">Tuyển dụng</a></li>
                 </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Liên hệ</h5>
+                <p>Địa chỉ: Số 8, Tam Bình, Thủ Đức</p>
+                <p>Điện thoại: 0397526965</p>
+                <p>Email: <a href="mailto:storethatlung@gmail.com" class="text-white">storethatlung@gmail.com</a></p>
+                <p>Thời gian làm việc: 8:00 - 22:00 (hàng ngày)</p>
             </div>
         </div>
 
-        <!-- Thông tin công ty -->
-        <div class="footer-contact">
-            <h3>Liên hệ</h3>
-            <p>Địa chỉ: Số 8, Tam Bình, Thủ Đức</p>
-            <p>Điện thoại: 0397526965</p>
-            <p>Email: storethatlung@gmail.com</p>
-            <p>Thời gian làm việc: 8:00 - 22:00 (hàng ngày)</p>
+        <!-- Thông tin bản quyền -->
+        <div class="footer-bottom text-center">
+            <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965" class="text-white">0397526965</a></p>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
     </div>
 </footer>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
     // Chọn tất cả các phần tử giảm, tăng và nhập số lượng
     // Chọn tất cả các phần tử giảm, tăng và nhập số lượng
