@@ -42,7 +42,6 @@ public class AvatarController extends HttpServlet {
             // Cập nhật đường dẫn ảnh đại diện
             String avatarUrl = "images/" + fileName;
             user.setImage(avatarUrl);
-
             // Cập nhật vào cơ sở dữ liệu
             ProfileService profileService = new ProfileService();
             try {
