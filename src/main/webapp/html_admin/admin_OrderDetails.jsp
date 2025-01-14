@@ -20,11 +20,9 @@
         <%@include file="../asset/css/bootstrap.css" %>
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
 </head>
 <body>
 
@@ -38,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưsng</a>
+                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưng</a>
             </div>
 
             <span class="logout-spn">
@@ -60,23 +58,26 @@
 
 
                 <li>
-                    <a href=<%=request.getContextPath()%>/admin_Users ><i class="fa fa-table "></i>USER<span class="badge"></span></a>
+                    <a href=<%=request.getContextPath()%>/admin_Users><i class="fa fa-table "></i>USER<span
+                            class="badge"></span></a>
                 </li>
                 <li>
-                    <a href="<%=request.getContextPath()%>/admin_Products"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
+                    <a href="<%=request.getContextPath()%>/admin_Products"><i
+                            class="fa fa-edit "></i>PRODUCT<span></span></a>
                 </li>
                 <li>
                     <a href="<%=request.getContextPath()%>/admin_Orders"><i class="fa fa-qrcode "></i>ORDERS</a>
                 </li>
                 <li>
-                    <a href="<%=request.getContextPath()%>/admin_Categories" ><i class="fa fa-bar-chart-o"></i>Category</a>
+                    <a href="<%=request.getContextPath()%>/admin_Categories"><i
+                            class="fa fa-bar-chart-o"></i>Category</a>
                 </li>
                 <li>
-                    <a href="<%=request.getContextPath()%>/admin_Brands" class="active-link"><i class="fa fa-edit "></i>Brands</a>
+                    <a href="<%=request.getContextPath()%>/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
                 </li>
-                    <a href="/fake_war_exploded/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin_Materials"><i class="fa fa-edit "></i>Materials</a>
                 </li>
-
 
             </ul>
         </div>
@@ -90,35 +91,32 @@
                     <h2>Loại sản phẩm</h2>
                 </div>
             </div>
-            <a href="<%=request.getContextPath()%>/admin_Brands/add"><i class="fa-solid fa-plus"></i>Thêm loại thắt
-                lưng</a>
+            <!-- /. ROW  -->
+
+
+            <tbody>
             <table id="example" class="display" style="width:100%">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên Nhãn hàng</th>
-                    <th>Ngày thêm vào</th>
-                    <th>Thao tác</th>
+                    <th>Product id</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
-                <c:forEach items="${brandList}" var="brand">
+                <c:forEach items="${OrderDetailList}" var="cate">
                     <tr>
-                        <th scope="row">${brand.getId()}</th>
-                        <td>${brand.getName()}</td>
-                        <td>${brand.getCreateAt()}</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/admin_Brands/edit?id=${brand.getId()}&action=edit">
-                                <i
-                                        class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="${pageContext.request.contextPath}/admin_Brands/delete?id=${brand.getId()}&action=delete"><i
-                                    class="fa-solid fa-trash"></i></a>
-                        </td>
+                        <th scope="row">${cate.getId()}</th>
+                        <td>${cate.getProduct_id()}</td>
+                        <td>${cate.getQuantity()}</td>
+                        <td>${cate.getPrice()}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
+
 
             <!-- /. ROW  -->
         </div>
@@ -126,6 +124,7 @@
     </div>
 
 </div>
+
 <script>
     $(document).ready(function () {
         $('#example').DataTable({

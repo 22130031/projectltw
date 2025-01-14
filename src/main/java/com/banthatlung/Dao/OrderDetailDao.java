@@ -15,16 +15,16 @@ public class OrderDetailDao {
     PreparedStatement ps;
     ResultSet rs;
 
-    public List<Order> getList() throws SQLException {
-        List<Order> orders = new ArrayList<Order>();
-        String sql = "select * from orders";
+    public List<OrderDetail> getList(int id) throws SQLException {
+        List<OrderDetail> list = new ArrayList<>();
+        String sql = "select * from order_details where order_id=?";
         PreparedStatement ps = getPreparedStatement(sql);
+        ps.setInt(1, id);
         rs = ps.executeQuery();
         while (rs.next()) {
-            // orders.add(new Order(rs.getInt("id"), rs.getInt("customer_id"), rs.getDate("oder_date").toString(), rs.getDate("created_at").toString(), rs.getString("status"), rs.getInt("total_amount")));
+            list.add(new OrderDetail(rs.getInt("order_id"), rs.getInt("product_id"), rs.getInt("quantity"), rs.getInt("price")));
         }
-        return orders;
-
+        return list;
     }
 
     public boolean addOrderDetail(OrderDetail orderDetail) {
@@ -83,7 +83,7 @@ public class OrderDetailDao {
     public static void main(String[] args) throws SQLException {
 
         OrderDetailDao dao = new OrderDetailDao();
-        OrderDetail o = new OrderDetail(1,22,1,21);
-        dao.addOrderDetail(o);
+        OrderDetail o = new OrderDetail(1, 22, 1, 21);
+        dao.getList(42);
     }
 }

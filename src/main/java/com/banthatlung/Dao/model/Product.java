@@ -1,44 +1,68 @@
 package com.banthatlung.Dao.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Product implements Serializable {
     private int id;
     private String name;
+    // loai
     private int price;
-    private String description;
+    private String description;// gia (decimal(10, 2))
+    private int quantity;       // so_luong
     private int status;
-    private int quantity;
-    private String date;
+    private String createdDate;
     private String image;
     private Category category;
     private Brand brand;
     private Material material;
 
-    public Product(int id, String name, int price, String description, int status, int quantity, String create, String image) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.status = status;
-        this.quantity = quantity;
-        this.image = image;
 
+
+
+
+    public int getStatus() {
+        return status;
     }
 
-    public Product(int id, String name, int price, String description, int status, int quantity, String date, String image, Category category, Brand brand, Material material) {
-        this.id = id;
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Product(int i, String aNew, int i1, String dsa, int i2, int i3, String s, Category category, Brand brand, Material material) {
+    }
+
+    public Product(String name, int price, String description, int quantity, int status, String image, Category category, Brand brand, Material material) {
         this.name = name;
         this.price = price;
         this.description = description;
-        this.status = status;
         this.quantity = quantity;
-        this.date = date;
+        this.status = status;
         this.image = image;
         this.category = category;
         this.brand = brand;
         this.material = material;
+    }
+
+    public Product(int id, String name, int price, String description, int quantity, int status, String createdDate, String image, Category category, Brand brand, Material material) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.quantity = quantity;
+        this.status = status;
+        this.createdDate = createdDate;
+        this.image = image;
+        this.category = category;
+        this.brand = brand;
+        this.material = material;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getId() {
@@ -57,13 +81,6 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     public String getDescription() {
         return description;
@@ -73,28 +90,28 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Category getCategory() {
@@ -113,24 +130,11 @@ public class Product implements Serializable {
         this.brand = brand;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public Material getMaterial() {
         return material;
     }
 
     public void setMaterial(Material material) {
         this.material = material;
-    }
-
-    public static void main(String[] args) {
-        Product p = new Product(1,"dsa",21,"sac",3,4,"today","dsa");
-        System.out.println(p.getBrand().getName());
     }
 }

@@ -35,7 +35,7 @@ public class OrderDao {
         ps.setInt(1, id);
         rs = ps.executeQuery();
         while (rs.next()) {
-            order = new Order(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("address"), rs.getDate("order_date").toString(), rs.getDate("created_at").toString(), rs.getString("status"), rs.getInt("total_amount"));
+            order = new Order(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("address"), rs.getDate("orderDate").toString(), rs.getDate("update_date").toString(), rs.getString("status"), rs.getInt("total_amount"));
         }
         return order;
     }

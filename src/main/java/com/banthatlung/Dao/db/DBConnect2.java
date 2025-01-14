@@ -38,12 +38,9 @@ public class DBConnect2 {
 
     public static void main(String[] args) throws SQLException {
         List<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM products WHERE id = ?";
+        String sql = "SELECT * FROM products";
         PreparedStatement pstmt = getPreparedStatement(sql);
-        String in = "22"; // Giả định rằng đây là đầu vào
-        int id = Integer.parseInt(in);
-        pstmt.setInt(1, id);
-
+         // Giả định rằng đây là đầu vào
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
             // Lấy thông tin từ ResultSet và khởi tạo đối tượng Product
@@ -64,7 +61,7 @@ public class DBConnect2 {
                     rs.getInt("status"),              // status
                     rs.getInt("quantity"),            // quantity
                     rs.getString("created"),          // date (created)
-                    rs.getString("image")             // image
+                    rs.getString("image"),category,brand,material   // image
             );
 
             product.setCategory(category);           // Gán đối tượng Category
@@ -73,11 +70,11 @@ public class DBConnect2 {
 
             products.add(product);
         }
-
-        // Hiển thị danh sách sản phẩm
-        for (Product p : products) {
-            System.out.println("Product: " + p.getName() + ", Price: " + p.getPrice() + ", Category ID: " + p.getCategory().getId());
+        for(Product product : products) {
+            System.out.println(product);
         }
+        // Hiển thị danh sách sản phẩm
+
     }
 
 }
