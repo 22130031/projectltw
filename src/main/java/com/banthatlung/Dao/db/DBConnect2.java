@@ -78,6 +78,7 @@ public class DBConnect2 {
         for (Product p : products) {
             System.out.println("Product: " + p.getName() + ", Price: " + p.getPrice() + ", Category ID: " + p.getCategory().getId());
         }
+
     }
 
 }
