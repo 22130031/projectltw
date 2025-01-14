@@ -30,9 +30,7 @@ public class LoginController extends HttpServlet {
             resp.addCookie(userCookie);
 
             resp.sendRedirect(req.getContextPath() + "/View/profile.jsp");
-   
-         
-        else
+        } else {
             req.setAttribute("error", "Invalid username or password");
             req.getRequestDispatcher("/View/Login.jsp").forward(req, resp);
         }
