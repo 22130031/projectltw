@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trang chủ</title>
+    <title>Đổi mật khẩu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -33,7 +33,7 @@
 
         <div class="icons d-flex pt-1"  >
 
-            <div class="dropdown pt-1">
+            <div class="dropdown">
                 <a href="#" class="text-white mx-2" id="user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-user"></i>
                 </a>
@@ -54,100 +54,51 @@
                 </form>
             </div>
 
-            <a href="<%=request.getContextPath()%>/Cart?action=showCart" class="text-white mx-2 pt-1"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+            <a href="<%=request.getContextPath()%>/Cart?action=showCart" class="text-white mx-2"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
         </div>
 
     </div>
 </header>
 
-<section id="feature" class="container py-5">
-    <div class="row text-center">
-        <div class="col-md-2">
-            <i class="fa-solid fa-truck fa-3x"></i>
-            <h6>Giao hàng miễn phí</h6>
-        </div>
-        <div class="col-md-2">
-            <i class="fa-solid fa-medal fa-3x"></i>
-            <h6>Bảo hành 36 tháng</h6>
-        </div>
-        <div class="col-md-2">
-            <i class="fa-sharp fa-solid fa-shield-halved fa-3x"></i>
-            <h6>Cam kết da thật 100%</h6>
-        </div>
-        <div class="col-md-2">
-            <i class="fa-solid fa-clipboard fa-3x"></i>
-            <h6>Đổi trả trong 7 ngày</h6>
-        </div>
-        <div class="col-md-2">
-            <i class="fa-solid fa-thumbs-up fa-3x"></i>
-            <h6>Bảo hành trọn đời</h6>
-        </div>
-        <div class="col-md-2">
-            <i class="fa-solid fa-tag fa-3x"></i>
-            <h6>Giảm giá hấp dẫn</h6>
-        </div>
-    </div>
 
-</section>
-
-<section id="product1" class="container py-5">
-    <h2 class="text-center">Sản phẩm nổi bật</h2>
-    <p class="text-center">Sang trọng – Mạnh mẽ – Khí chất</p>
-    <div class="row">
-        <c:forEach var="product" items="${productList}">
-            <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <!-- Link đến chi tiết sản phẩm -->
-                    <a href="../projectl/product?pid=${product.id != null ? product.id : 'default'}">
-                        <!-- Hình ảnh sản phẩm với kiểm tra dữ liệu -->
-                        <img src="./images/${product.image != null && !product.image.isEmpty() ? product.image : 'https://via.placeholder.com/200'}"
-                             class="card-img-top"
-                             alt="${product.name != null ? product.name : 'Sản phẩm không có tên'}"
-                             style="object-fit: cover; height: 200px; width: 100%;">
-                    </a>
-                    <div class="card-body d-flex flex-column text-center">
-                        <p class="card-text text-muted">
-                                ${product.category != null && product.category.name != null ? product.category.name : 'Không có danh mục'}
-                        </p>
-                        <!-- Tên sản phẩm -->
-                        <h5 class="card-title text-truncate" style="max-width: 100%;">
-                                ${product.name != null && !product.name.isEmpty() ? product.name : 'Sản phẩm không có tên'}
-                        </h5>
-                        <!-- Giá sản phẩm -->
-                        <h4 class="card-text">
-                            <c:choose>
-                                <c:when test="${product.price != null}">
-                                    ${product.price} VND
-                                </c:when>
-                                <c:otherwise>
-                                    Liên hệ
-                                </c:otherwise>
-                            </c:choose>
-                        </h4>
-
-                        <form action="../projectl/Cart" method="post">
-                            <input type="hidden" name="action" value="add">
-                            <input type="hidden" name="id" value="${product.id != null ? product.id : 'default'}">
-                            <button type="submit" class="btn btn-warning mt-auto">
-                                Thêm vào giỏ hàng
-                            </button>
-                        </form>
-
-                    </div>
-                </div>
+<!-- Đổi mật khẩu -->
+<section id="change-password" class="container py-5">
+    <h2 class="text-center mb-4">Đổi mật khẩu</h2>
+    <form action="${pageContext.request.contextPath}/change-password" method="post">
+        <div class="row justify-content-center">
+            <!-- Mật khẩu cũ -->
+            <div class="col-md-8 mb-3">
+                <label for="old-password" class="form-label">Mật khẩu cũ</label>
+                <input type="password" id="old-password" name="currentPassword" class="form-control" required>
             </div>
-        </c:forEach>
-    </div>
 
+            <!-- Mật khẩu mới -->
+            <div class="col-md-8 mb-3">
+                <label for="new-password" class="form-label">Mật khẩu mới</label>
+                <input type="password" id="new-password" name="newPassword" class="form-control" required>
+            </div>
 
-    <div class="pagination justify-content-center flex-wrap">
-        <!-- Các nút phân trang -->
-        <c:forEach var="i" begin="1" end="${totalPages}">
-            <button class="btn btn-outline-primary mx-1 my-2" onclick="window.location.href='${pageContext.request.contextPath}/home?page=${i}'">${i}</button>
-        </c:forEach>
-    </div>
+            <!-- Xác nhận mật khẩu mới -->
+            <div class="col-md-8 mb-3">
+                <label for="confirm-password" class="form-label">Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirm-password" name="confirmPassword" class="form-control" required>
+            </div>
+        </div>
 
+        <!-- Thông báo lỗi (nếu có) -->
+        <c:if test="${not empty errorMessage}">
+            <div class="alert alert-danger text-center mb-4">
+                    ${errorMessage}
+            </div>
+        </c:if>
+
+        <!-- Nút đổi mật khẩu -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Đổi mật khẩu</button>
+        </div>
+    </form>
 </section>
+
 
 <footer class="bg-dark text-white py-4">
     <div class="container">
@@ -218,8 +169,6 @@
         </div>
     </div>
 </footer>
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

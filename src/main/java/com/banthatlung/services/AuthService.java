@@ -13,6 +13,13 @@ public class AuthService {
         }
         return null;
     }
+
+    public User findByUserId(String userId){
+        UserDao dao = new UserDao();
+        return dao.findUserById(userId);
+    }
+
+
     public boolean register(User user) {
         UserDao dao = new UserDao();
         User u = dao.findUser(user.getUsername());
@@ -21,4 +28,14 @@ public class AuthService {
         }
         return dao.registerUser(user);
     }
+
+    public boolean changePassword(String userId, String oldPassword, String newPassword) {
+        UserDao userDao = new UserDao();
+        User user = userDao.findUserById(userId);
+        if (user != null && oldPassword.equals(user.getPass())) {
+            return userDao.updatePassword(userId, newPassword);
+        }
+        return false;
+    }
+
 }
