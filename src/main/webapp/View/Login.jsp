@@ -96,7 +96,7 @@
 <body>
 <header>
     <div class="header">
-        <a href="home.jsp"><h1>Trang chủ</h1></a>
+        <a href="${pageContext.request.contextPath}/home"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
                 <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
@@ -110,6 +110,18 @@
             <a href="#">Liên hệ</a>
         </div>
         <div class="icons">
+            <form action="${pageContext.request.contextPath}/search" method="get">
+                <div class="search-container">
+                    <div class="search-box">
+                        <button class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <label>
+                            <input type="text" class="search-input" name="search" placeholder="Search..">
+                        </label>
+                    </div>
+                </div>
+            </form>
             <c:if test="${sessionScope.auth ==null}">
                 <div class="dropdown-user">
                     <a href="#"><i class="fa-solid fa-user"></i></a>
@@ -121,27 +133,15 @@
             <c:if test="${sessionScope.auth !=null}">
                 <div class="dropdown-user">
                     <a href="<c:url value='/View/profile.jsp'/>">
-                        <img src="${pageContext.request.contextPath}/asset/image/user.jpg" alt="Avatar"
+                        <img src="${pageContext.request.contextPath}/${sessionScope.auth.image}" alt="Avatar"
                              style="width: 25px; height: 25px; border-radius: 50%;">
                     </a>
                     <div class="dropdown-content-user">
                         <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
                     </div>
                 </div>
+                <a href=${pageContext.request.contextPath}/Cart?action=showCart><i class="fa-solid fa-cart-shopping"></i></a>
             </c:if>
-            <form action="${pageContext.request.contextPath}/search" method="get">
-                <div class="search-container">
-                    <div class="search-box">
-                        <label>
-                            <input type="text" class="search-input" name="search" placeholder="Search..">
-                        </label>
-                        <button class="search-icon">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <a href="/View/Cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 </header>
@@ -151,7 +151,7 @@
         <div class="section">
             <h2>Đăng nhập</h2>
             <form action="${pageContext.request.contextPath}/login" method="post">
-                <label for="email">Email</label>
+                <label for="email">Tên tài khỏan</label>
                 <input type="text" id="email" name="uname" required>
 
                 <label for="password">Mật khẩu</label>

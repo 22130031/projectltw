@@ -15,7 +15,7 @@ public class ReviewDao {
         String query = "INSERT INTO reviews (review_id, product_id, user_id, rating, url, review_text, review_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (
              PreparedStatement stmt = DBConnect2.getPreparedStatement(query)) {
-            stmt.setString(1, "u"+(getTotalReviews()+1));
+            stmt.setString(1, "r"+(getTotalReviews()+1));
             stmt.setInt(2, review.getProductId());
             stmt.setString(3, review.getUserId());
             stmt.setInt(4, review.getRating());
