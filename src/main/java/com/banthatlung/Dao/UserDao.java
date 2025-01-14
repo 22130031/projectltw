@@ -34,19 +34,21 @@ public class UserDao {
         }
     }
     public boolean updateProfile(User u) throws SQLException {
-        String sql = "UPDATE users SET full_name = ?, email = ?, phone_number = ?, date_of_birth = ? WHERE user_id = ?";
+        String sql = "UPDATE users SET full_name = ?, email = ?, phone_number = ?, date_of_birth = ?,avatar_url =? WHERE user_id = ?";
         PreparedStatement stmt = DBConnect2.getPreparedStatement(sql) ;
             stmt.setString(1, u.getName());
             stmt.setString(2, u.getEmail());
             stmt.setString(3, u.getPhone());
             stmt.setDate(4, u.getBirthday());
-            stmt.setString(5, u.getId());
+            stmt.setString(5, u.getImage());
+            stmt.setString(6, u.getId());
         System.out.println("Executing SQL: " + sql);
         System.out.println("With values: " +
                 u.getName() + ", " +
                 u.getEmail() + ", " +
                 u.getPhone() + ", " +
                 u.getBirthday() + ", " +
+                u.getImage() + ", " +
                 u.getId());
 
         int rowsAffected = stmt.executeUpdate();
@@ -54,11 +56,11 @@ public class UserDao {
         return rowsAffected > 0;
     }
     public boolean registerUser(User u) {
-        String sql = "INSERT INTO users (username, password, full_name,user_id) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO users (username, password, email,user_id) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
             stmt.setString(1, u.getUsername());
             stmt.setString(2, u.getPass());
-            stmt.setString(3, u.getName());
+            stmt.setString(3, u.getEmail());
             stmt.setString(4, "u"+(generateID() +1));
             return stmt.executeUpdate()>0;
         } catch (SQLException e) {
