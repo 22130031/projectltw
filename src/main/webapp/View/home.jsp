@@ -30,11 +30,25 @@
             <a href="#" class="text-white mx-3">Liên hệ</a>
         </div>
 
-        <!-- Các biểu tượng tìm kiếm và giỏ hàng -->
+
         <div class="icons d-flex">
+            <!-- Tìm kiếm -->
             <a href="#" id="open-search" class="text-white mx-2"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a>
+
+            <!-- Dropdown cho người dùng -->
+            <div class="dropdown">
+                <a href="#" class="text-white mx-2" id="user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+                    <li><a class="dropdown-item" href="../projectl/login">Đăng nhập</a></li>
+                </ul>
+            </div>
+
+            <!-- Giỏ hàng -->
             <a href="<%=request.getContextPath()%>/Cart?action=showCart" class="text-white mx-2"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
         </div>
+
     </div>
 </header>
 
@@ -83,18 +97,44 @@
         <c:forEach var="product" items="${productList}">
             <div class="col-md-3 mb-4">
                 <div class="card h-100">
+                    <!-- Link đến chi tiết sản phẩm -->
                     <a href="../projectl/product?pid=${product.id != null ? product.id : 'default'}">
-                        <img src="./${product.image != null ? product.image : 'https://down-vn.img.susercontent.com/file/sg-11134201-22100-sqhzemsl5vivac'}" class="card-img-top" alt="${product.name}">
+                        <!-- Hình ảnh sản phẩm với kiểm tra dữ liệu -->
+                        <img src="./images/${product.image != null && !product.image.isEmpty() ? product.image : 'https://via.placeholder.com/200'}"
+                             class="card-img-top"
+                             alt="${product.name != null ? product.name : 'Sản phẩm không có tên'}"
+                             style="object-fit: cover; height: 200px; width: 100%;">
                     </a>
                     <div class="card-body d-flex flex-column text-center">
-                        <h5 class="card-title text-truncate" style="max-width: 100%">${product.name}</h5>
-                        <h4 class="card-text">${product.price}</h4>
-                        <a href="../projectl/cart?action=add&id=${product.id}" class="btn btn-warning mt-auto">Thêm vào giỏ hàng</a>
+                        <p class="card-text text-muted">
+                                ${product.category != null && product.category.name != null ? product.category.name : 'Không có danh mục'}
+                        </p>
+                        <!-- Tên sản phẩm -->
+                        <h5 class="card-title text-truncate" style="max-width: 100%;">
+                                ${product.name != null && !product.name.isEmpty() ? product.name : 'Sản phẩm không có tên'}
+                        </h5>
+                        <!-- Giá sản phẩm -->
+                        <h4 class="card-text">
+                            <c:choose>
+                                <c:when test="${product.price != null}">
+                                    ${product.price} VND
+                                </c:when>
+                                <c:otherwise>
+                                    Liên hệ
+                                </c:otherwise>
+                            </c:choose>
+                        </h4>
+                        <!-- Nút thêm vào giỏ hàng -->
+                        <a href="../projectl/cart?action=add&id=${product.id != null ? product.id : 'default'}"
+                           class="btn btn-warning mt-auto">
+                            Thêm vào giỏ hàng
+                        </a>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
+
 
     <div class="pagination justify-content-center flex-wrap">
         <!-- Các nút phân trang -->
@@ -130,7 +170,8 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

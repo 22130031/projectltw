@@ -1,6 +1,8 @@
 package com.banthatlung.Dao.db;
 
+import com.banthatlung.Dao.model.Brand;
 import com.banthatlung.Dao.model.Category;
+import com.banthatlung.Dao.model.Material;
 import com.banthatlung.Dao.model.Product;
 
 import java.sql.*;
@@ -35,34 +37,47 @@ public class DBConnect2 {
     }
 
     public static void main(String[] args) throws SQLException {
-        List<Product>  products = new ArrayList<>();
-        String sql = "Select * from products where product_id=?";
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT * FROM products WHERE id = ?";
         PreparedStatement pstmt = getPreparedStatement(sql);
-        String in = "22";
+        String in = "22"; // Giả định rằng đây là đầu vào
         int id = Integer.parseInt(in);
         pstmt.setInt(1, id);
+
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
             // Lấy thông tin từ ResultSet và khởi tạo đối tượng Product
-            Category category = null; // Lấy đối tượng Category từ category_id
+            Category category = new Category(); // Khởi tạo Category (nếu cần lấy thêm thông tin từ bảng liên quan)
+            category.setId(rs.getInt("category_id")); // Lấy ID của danh mục từ cột `category_id`
+
+            Brand brand = new Brand(); // Khởi tạo Brand (tương tự như Category)
+            brand.setId(rs.getInt("brand_id"));
+
+            Material material = new Material(); // Khởi tạo Material (nếu có dữ liệu liên quan)
+            material.setId(rs.getInt("material_id"));
 
             Product product = new Product(
-                    rs.getInt("product_id"),           // product_id
-                    rs.getString("name"),              // name
-                    category,                          // category (Category object)
-                    rs.getDouble("gia"),               // gia (price)
-                    rs.getInt("so_luong"),             // so_luong (quantity)
-                    rs.getString("mo_ta"),             // mo_ta (description)
-                    rs.getString("hinh_anh"),          // hinh_anh (image)
-                    rs.getString("color"),             // color
-                    rs.getString("ngay_tao")           // ngay_tao (createdDate)
+                    rs.getInt("id"),                  // id
+                    rs.getString("name"),             // name
+                    rs.getInt("price"),               // price
+                    rs.getString("description"),      // description
+                    rs.getInt("status"),              // status
+                    rs.getInt("quantity"),            // quantity
+                    rs.getString("created"),          // date (created)
+                    rs.getString("image")             // image
             );
+
+            product.setCategory(category);           // Gán đối tượng Category
+            product.setBrand(brand);                 // Gán đối tượng Brand
+            product.setMaterial(material);           // Gán đối tượng Material
 
             products.add(product);
         }
 
+        // Hiển thị danh sách sản phẩm
         for (Product p : products) {
-            System.out.println(p);
+            System.out.println("Product: " + p.getName() + ", Price: " + p.getPrice() + ", Category ID: " + p.getCategory().getId());
         }
     }
+
 }
