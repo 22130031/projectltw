@@ -2,6 +2,8 @@ package com.banthatlung.Dao;
 
 import com.banthatlung.Dao.db.DBConnect;
 import com.banthatlung.Dao.db.DBConnect2;
+import com.banthatlung.Dao.model.Brand;
+import com.banthatlung.Dao.model.Material;
 import com.banthatlung.Dao.model.Product;
 import com.banthatlung.Dao.model.Category;
 
@@ -10,81 +12,93 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDao {
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    Connection con;
+    private Product mapProduct(ResultSet rs) throws SQLException {
+        Category category = new Category();
+        category.setId(rs.getInt("category_id"));
+        category.setName(rs.getString("category_name"));
 
-    // Lấy tất cả các sản phẩm
-    public List<Product> getAll() {
-        ArrayList<Product> result = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM products";
-            ps = DBConnect2.getPreparedStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
+        Brand brand = new Brand();
+        brand.setId(rs.getInt("brand_id"));
+        brand.setName(rs.getString("brand_name"));
 
-                Category category = null;// Lấy đối tượng Category
+        Material material = new Material();
+        material.setId(rs.getInt("material_id"));
+        material.setName(rs.getString("material_name"));
 
-                Product product = new Product(
-                        rs.getInt("product_id"),    // product_id
-                        rs.getString("name"),       // name
-                        category,                   // category
-                        rs.getDouble("gia"),        // gia (price)
-                        rs.getInt("so_luong"),      // so_luong (quantity)
-                        rs.getString("mo_ta"),      // mo_ta (description)
-                        rs.getString("hinh_anh"),   // hinh_anh (image)
-                        rs.getString("color"),      // color
-                        rs.getString("ngay_tao")    // ngay_tao (createdDate)
-                );
-                result.add(product);
-            }
-            return result;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return result;
-        }
+        return new Product(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getInt("price"),
+                rs.getString("description"),
+                rs.getInt("status"),
+                rs.getInt("quantity"),
+                rs.getString("created"),
+                rs.getString("image"),
+                category,
+                brand,
+                material
+        );
     }
 
+    // Lấy tất cả sản phẩm
+    public List<Product> getAll() {
+        List<Product> result = new ArrayList<>();
+        String sql = """
+                SELECT p.*, 
+                       c.id AS category_id, c.name AS category_name,
+                       b.id AS brand_id, b.name AS brand_name,
+                       m.id AS material_id, m.name AS material_name
+                FROM products p
+                JOIN categories c ON p.category_id = c.id
+                JOIN brands b ON p.brand_id = b.id
+                JOIN materials m ON p.material_id = m.id
+                """;
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                result.add(mapProduct(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    // Lấy sản phẩm phân trang
     public List<Product> getAll(int page, int pageSize) {
-        ArrayList<Product> result = new ArrayList<>();
-        try {
-            // Tính toán vị trí bắt đầu (OFFSET) và số lượng sản phẩm trên mỗi trang (LIMIT)
-            int offset = (page - 1) * pageSize;
-            String sql = "SELECT * FROM products LIMIT ? OFFSET ?";
-            ps = DBConnect2.getPreparedStatement(sql);
+        List<Product> result = new ArrayList<>();
+        int offset = (page - 1) * pageSize;
+        String sql = """
+                SELECT p.*, 
+                       c.id AS category_id, c.name AS category_name,
+                       b.id AS brand_id, b.name AS brand_name,
+                       m.id AS material_id, m.name AS material_name
+                FROM products p
+                JOIN categories c ON p.category_id = c.id
+                JOIN brands b ON p.brand_id = b.id
+                JOIN materials m ON p.material_id = m.id
+                LIMIT ? OFFSET ?
+                """;
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
             ps.setInt(1, pageSize);
             ps.setInt(2, offset);
-
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Category category = null; // Lấy đối tượng Category
-
-                Product product = new Product(
-                        rs.getInt("product_id"),    // product_id
-                        rs.getString("name"),       // name
-                        category,                   // category
-                        rs.getDouble("gia"),        // gia (price)
-                        rs.getInt("so_luong"),      // so_luong (quantity)
-                        rs.getString("mo_ta"),      // mo_ta (description)
-                        rs.getString("hinh_anh"),   // hinh_anh (image)
-                        rs.getString("color"),      // color
-                        rs.getString("ngay_tao")    // ngay_tao (createdDate)
-                );
-                result.add(product);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    result.add(mapProduct(rs));
+                }
             }
-            return result;
         } catch (SQLException e) {
             e.printStackTrace();
-            return result;
         }
+        return result;
     }
 
+    // Lấy tổng số sản phẩm
     public int getTotalProductCount() {
         int count = 0;
-        try {
-            String sql = "SELECT COUNT(*) FROM products";
-            ps = DBConnect2.getPreparedStatement(sql);
-            rs = ps.executeQuery();
+        String sql = "SELECT COUNT(*) FROM products";
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
             if (rs.next()) {
                 count = rs.getInt(1);
             }
@@ -94,123 +108,110 @@ public class ProductDao {
         return count;
     }
 
-
     // Lấy sản phẩm theo ID
     public Product getById(int id) {
-        ResultSet rs = null;
-        try {
-            String sql = "SELECT * FROM products WHERE product_id = ?";
-            ps = DBConnect2.getPreparedStatement(sql);
+        String sql = """
+                SELECT p.*, 
+                       c.id AS category_id, c.name AS category_name,
+                       b.id AS brand_id, b.name AS brand_name,
+                       m.id AS material_id, m.name AS material_name
+                FROM products p
+                JOIN categories c ON p.category_id = c.id
+                JOIN brands b ON p.brand_id = b.id
+                JOIN materials m ON p.material_id = m.id
+                WHERE p.id = ?
+                """;
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
             ps.setInt(1, id);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                Category category = null; // Lấy đối tượng Category
-
-                Product product = new Product(
-                        rs.getInt("product_id"),    // product_id
-                        rs.getString("name"),       // name
-                        category,                   // category
-                        rs.getDouble("gia"),        // gia (price)
-                        rs.getInt("so_luong"),      // so_luong (quantity)
-                        rs.getString("mo_ta"),      // mo_ta (description)
-                        rs.getString("hinh_anh"),   // hinh_anh (image)
-                        rs.getString("color"),      // color
-                        rs.getString("ngay_tao")    // ngay_tao (createdDate)
-                );
-                return product;
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return mapProduct(rs);
+                }
             }
-            return null;
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     // Tìm kiếm sản phẩm theo tên
     public List<Product> search(String name) {
-        ArrayList<Product> result = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM products WHERE name LIKE ?";
-            ps = DBConnect2.getPreparedStatement(sql);
+        List<Product> result = new ArrayList<>();
+        String sql = """
+                SELECT p.*, 
+                       c.id AS category_id, c.name AS category_name,
+                       b.id AS brand_id, b.name AS brand_name,
+                       m.id AS material_id, m.name AS material_name
+                FROM products p
+                JOIN categories c ON p.category_id = c.id
+                JOIN brands b ON p.brand_id = b.id
+                JOIN materials m ON p.material_id = m.id
+                WHERE p.name LIKE ?
+                """;
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
             ps.setString(1, "%" + name + "%");
-            rs = ps.executeQuery();
-            while (rs.next()) {
-
-                Category category = null;// Lấy đối tượng Category
-
-                Product product = new Product(
-                        rs.getInt("product_id"),
-                        rs.getString("name"),
-                        category,                   // category
-                        rs.getDouble("gia"),        // gia (price)
-                        rs.getInt("so_luong"),      // so_luong (quantity)
-                        rs.getString("mo_ta"),      // mo_ta (description)
-                        rs.getString("hinh_anh"),   // hinh_anh (image)
-                        rs.getString("color"),      // color
-                        rs.getString("ngay_tao")    // ngay_tao (createdDate)
-                );
-                result.add(product);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    result.add(mapProduct(rs));
+                }
             }
-            return result;
         } catch (SQLException e) {
             e.printStackTrace();
-            return result;
         }
+        return result;
     }
 
-    // Thêm mới sản phẩm
-    public void add(Product product) throws SQLException {
-        String sql = "INSERT INTO products (name, category_id, gia, mo_ta, so_luong, ngay_tao, hinh_anh, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection con = new DBConnect().getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setString(1, product.getName());
-            ps.setInt(2, product.getCategory().getId());  // category_id
-            ps.setDouble(3, product.getPrice());          // gia
-            ps.setString(4, product.getDescription());    // mo_ta
-            ps.setInt(5, product.getQuantity());          // so_luong
-            ps.setString(6, product.getCreatedDate());    // ngay_tao
-            ps.setString(7, product.getImage());          // hinh_anh
-            ps.setString(8, product.getColor());          // color
+    // Thêm sản phẩm
+    public void add(Product product) {
+        String sql = """
+                INSERT INTO products (name, price, description, status, quantity, created, 
+                                      category_id, brand_id, material_id, image)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """;
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
+            setProductParameters(ps, product);
             ps.executeUpdate();
-            System.out.println("Product added successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
-            System.err.println("Error while adding product: " + e.getMessage());
         }
     }
 
     // Cập nhật sản phẩm
-    public void update(Product product) throws SQLException {
-        con = new DBConnect().getConnection();
-        String sql = "UPDATE products SET name = ?, category_id = ?, gia = ?, mo_ta = ?, so_luong = ?, ngay_tao = ?, hinh_anh = ?, color = ? WHERE product_id = ?";
-        ps = con.prepareStatement(sql);
-        ps.setString(1, product.getName());
-        ps.setInt(2, product.getCategory().getId());  // category_id
-        ps.setDouble(3, product.getPrice());          // gia
-        ps.setString(4, product.getDescription());    // mo_ta
-        ps.setInt(5, product.getQuantity());          // so_luong
-        ps.setString(6, product.getCreatedDate());    // ngay_tao
-        ps.setString(7, product.getImage());          // hinh_anh
-        ps.setString(8, product.getColor());          // color
-        ps.setInt(9, product.getId());                // product_id
-        ps.executeUpdate();
+    public void update(Product product) {
+        String sql = """
+                UPDATE products SET name = ?, price = ?, description = ?, status = ?, 
+                                   quantity = ?, created = ?, category_id = ?, 
+                                   brand_id = ?, material_id = ?, image = ?
+                WHERE id = ?
+                """;
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
+            setProductParameters(ps, product);
+            ps.setInt(11, product.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // Xóa sản phẩm
     public void delete(int id) throws SQLException {
-        con = new DBConnect().getConnection();
-        String sql = "DELETE FROM products WHERE product_id = ?";
-        ps = con.prepareStatement(sql);
-        ps.setInt(1, id);
-        ps.executeUpdate();
+        String sql = "DELETE FROM products WHERE id = ?";
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }
     }
 
-    public static void main(String[] args) {
-        ProductDao dao = new ProductDao();
-        List<Product> p = dao.getAll();
-        for (Product p1 : p) {
-            System.out.println(p1);
-        }
+    private void setProductParameters(PreparedStatement ps, Product product) throws SQLException {
+        ps.setString(1, product.getName());
+        ps.setInt(2, product.getPrice());
+        ps.setString(3, product.getDescription());
+        ps.setInt(4, product.getStatus());
+        ps.setInt(5, product.getQuantity());
+        ps.setString(6, product.getDate());
+        ps.setInt(7, product.getCategory().getId());
+        ps.setInt(8, product.getBrand().getId());
+        ps.setInt(9, product.getMaterial().getId());
+        ps.setString(10, product.getImage());
     }
 }
