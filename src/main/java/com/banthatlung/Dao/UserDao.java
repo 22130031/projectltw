@@ -86,19 +86,7 @@ public class UserDao {
         return null;
     }
 
-    // Cập nhật mật khẩu người dùng
-    public boolean updatePassword(String userId, String newPassword) {
-        String sql = "UPDATE users SET password = ? WHERE user_id = ?";
-        try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
-            stmt.setString(1, newPassword);
-            stmt.setString(2, userId);
-            int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+
 
     // Cập nhật thông tin cá nhân người dùng
     public boolean updateProfile(User user) {
@@ -111,6 +99,16 @@ public class UserDao {
             stmt.setString(5, user.getId());
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
+
+    public boolean registerUser(User u) {
+        String sql = "INSERT INTO users (username, password, email,user_id) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
+            stmt.setString(1, u.getUsername());
+            stmt.setString(2, u.getPass());
+            stmt.setString(3, u.getEmail());
+            stmt.setString(4, "u"+(generateID() +1));
+            return stmt.executeUpdate()>0;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

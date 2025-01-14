@@ -16,19 +16,23 @@ public class LoginController extends HttpServlet {
         String username = req.getParameter("uname");
         String password = req.getParameter("pass");
 
+        String hashpass = PasswordUtils.encryptPassword(password);
         AuthService authService = new AuthService();
-        User user = authService.checkLogin(username, password);
+        User user = authService.checkLogin(username, hashpass);
 
         if (user != null) {
             HttpSession session = req.getSession();
             session.setAttribute("auth", user);
+
             Cookie userCookie = new Cookie("userId", String.valueOf(user.getId()));
             userCookie.setMaxAge(60 * 60 * 24 * 7);
             userCookie.setPath(req.getContextPath());
             resp.addCookie(userCookie);
 
             resp.sendRedirect(req.getContextPath() + "/View/profile.jsp");
-        } else {
+   
+         
+        else
             req.setAttribute("error", "Invalid username or password");
             req.getRequestDispatcher("/View/Login.jsp").forward(req, resp);
         }
