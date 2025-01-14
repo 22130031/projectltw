@@ -172,8 +172,8 @@
         <div class="section">
             <h2>Đăng ký</h2>
             <form action="${pageContext.request.contextPath}/register" method="post">
-                <label for="first-name">Họ và Tên</label>
-                <input type="text" id="first-name" name="fullname" required>
+                <label for="first-name">Email</label>
+                <input type="text" id="first-name" name="email" required>
 
                 <label for="last-name">Tên tài khoản</label>
                 <input type="text" id="last-name" name="username" required>

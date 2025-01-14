@@ -19,7 +19,7 @@ public class Registry extends HttpServlet {
 
         AuthService authService = new AuthService();
 
-        String fname = req.getParameter("fullname");
+        String fname = req.getParameter("email");
         String uname = req.getParameter("username");
         String pwd = req.getParameter("password");
         String cpwd = req.getParameter("cpassword");
@@ -31,7 +31,7 @@ public class Registry extends HttpServlet {
         String hashedPassword = PasswordUtils.encryptPassword(pwd);
         User u = new User();
         u.setUsername(uname);
-        u.setName(fname);
+        u.setEmail(fname);
         u.setPass(hashedPassword);
 
         if (authService.register(u)) {

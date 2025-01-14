@@ -19,12 +19,17 @@ public class LoginController extends HttpServlet {
         String hashpass = PasswordUtils.encryptPassword(password);
         AuthService authService = new AuthService();
         User user = authService.checkLogin(username, hashpass);
-        if (user != null) {
+        if (user != null && user.getRole() == 0) {
             System.out.println("Userid"+user.getId());
             HttpSession session = req.getSession();
             session.setAttribute("auth", user);
             resp.sendRedirect(req.getContextPath() +"/View/profile.jsp");
-        }else {
+        }if (user!=null && user.getRole()==1) {
+            HttpSession session = req.getSession();
+            session.setAttribute("auth", user);
+            resp.sendRedirect(req.getContextPath() +"/html_admin/admin_user.jsp");
+        }
+        else {
             req.setAttribute("error", "Invalid username or password");
             req.getRequestDispatcher("/View/Login.jsp").forward(req, resp);
             req.getRequestDispatcher("/View/checkOut.jsp").forward(req, resp);
