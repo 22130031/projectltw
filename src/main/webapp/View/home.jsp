@@ -35,9 +35,15 @@
 
             <div class="dropdown pt-1">
                 <a href="#" class="text-white mx-2" id="user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <c:if test="${sessionScope.auth ==null}">
                     <i class="fa-solid fa-user"></i>
+                    </c:if>
+                    <c:if test="${sessionScope.auth !=null}">
+                    <img src="${pageContext.request.contextPath}/${sessionScope.auth.image}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
+                    </c:if>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/profile">Hồ sơ</a></li>
                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Đăng nhập</a></li>
                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/change-password">Đổi mật khẩu</a></li>
                 </ul>

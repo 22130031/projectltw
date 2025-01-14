@@ -34,7 +34,7 @@
         <a href="${pageContext.request.contextPath}/home"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
+                <a href="${pageContext.request.contextPath}/home">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -61,7 +61,7 @@
                 <div class="dropdown-user">
                     <a href="#"><i class="fa-solid fa-user"></i></a>
                     <div class="dropdown-content-user">
-                        <a href="<c:url value="/View/Login.jsp"/>">Đăng nhập</a>
+                        <a href="${pageContext.request.contextPath}/login"/>">Đăng nhập</a>
                     </div>
                 </div>
             </c:if>
@@ -69,7 +69,7 @@
                 <div class="dropdown-user">
                     <a href="<c:url value='/View/profile.jsp'/>">
                         <img src="${pageContext.request.contextPath}/${sessionScope.auth.image}" alt="Avatar"
-                             style="width: 25px; height: 25px; border-radius: 50%;">
+                             style="width: 30px; height: 30px; border-radius: 50%;">
                     </a>
                     <div class="dropdown-content-user">
                         <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
