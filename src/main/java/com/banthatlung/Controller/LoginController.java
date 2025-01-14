@@ -16,8 +16,9 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("uname");
         String password = req.getParameter("pass");
+        String hashpass = PasswordUtils.encryptPassword(password);
         AuthService authService = new AuthService();
-        User user = authService.checkLogin(username, password);
+        User user = authService.checkLogin(username, hashpass);
         if (user != null) {
             System.out.println("Userid"+user.getId());
             HttpSession session = req.getSession();

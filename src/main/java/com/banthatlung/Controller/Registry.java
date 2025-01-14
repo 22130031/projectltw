@@ -28,11 +28,11 @@ public class Registry extends HttpServlet {
             resp.getWriter().write("Mật khẩu không khớp");
             return;
         }
-
+        String hashedPassword = PasswordUtils.encryptPassword(pwd);
         User u = new User();
         u.setUsername(uname);
         u.setName(fname);
-        u.setPass(pwd);
+        u.setPass(hashedPassword);
 
         if (authService.register(u)) {
             resp.getWriter().write("Đăng ký thành công");
