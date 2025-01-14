@@ -125,7 +125,7 @@
                             </c:choose>
                         </h4>
                         <!-- Nút thêm vào giỏ hàng -->
-                        <a href="../projectl/cart?action=add&id=${product.id != null ? product.id : 'default'}"
+                        <a href="<%=request.getContextPath()%>/Cart?action=add&id=${product.id != null ? product.id : 'default'}"
                            class="btn btn-warning mt-auto">
                             Thêm vào giỏ hàng
                         </a>

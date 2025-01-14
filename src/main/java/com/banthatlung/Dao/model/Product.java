@@ -5,27 +5,66 @@ import java.io.Serializable;
 public class Product implements Serializable {
     private int id;
     private String name;
-    private Category category;    // loai
-    private double price;       // gia (decimal(10, 2))
+    // loai
+    private int price;
+    private String description;// gia (decimal(10, 2))
     private int quantity;       // so_luong
-    private String description; // mo_ta
-    private String image;       // hinh_anh
-    private String color;       // color
-    private String createdDate; // ngay_tao
+    private int status;
+    private String createdDate;
+    private String image;
+    private Category category;
+    private Brand brand;
+    private Material material;
 
-    public Product(int id, String name, Category category, double price, int quantity, String description, String image, String color, String createdDate) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.price = price;
-        this.quantity = quantity;
-        this.description = description;
-        this.image = image;
-        this.color = color;
-        this.createdDate = createdDate;
+
+
+
+
+    public int getStatus() {
+        return status;
     }
 
-    // Getters and Setters
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Product(int i, String aNew, int i1, String dsa, int i2, int i3, String s, Category category, Brand brand, Material material) {
+    }
+
+    public Product(String name, int price, String description, int quantity, int status, String image, Category category, Brand brand, Material material) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.quantity = quantity;
+        this.status = status;
+        this.image = image;
+        this.category = category;
+        this.brand = brand;
+        this.material = material;
+    }
+
+    public Product(int id, String name, int price, String description, int quantity, int status, String createdDate, String image, Category category, Brand brand, Material material) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.quantity = quantity;
+        this.status = status;
+        this.createdDate = createdDate;
+        this.image = image;
+        this.category = category;
+        this.brand = brand;
+        this.material = material;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }
@@ -42,20 +81,13 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public Category getCategory() {
-        return category;
+
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getQuantity() {
@@ -66,12 +98,12 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCreatedDate() {
+        return createdDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getImage() {
@@ -82,19 +114,27 @@ public class Product implements Serializable {
         this.image = image;
     }
 
-    public String getColor() {
-        return color;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public String getCreatedDate() {
-        return createdDate;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 }

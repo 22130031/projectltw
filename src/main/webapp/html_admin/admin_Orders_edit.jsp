@@ -21,9 +21,6 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>
@@ -38,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưsng</a>
+                <a class="navbar-brand" href="../home.html">Quản Lý Trang Web Thắt Lưng</a>
             </div>
 
             <span class="logout-spn">
@@ -60,6 +57,11 @@
 
 
                 <li>
+                    <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
+                </li>
+
+
+                <li>
                     <a href=<%=request.getContextPath()%>/admin_Users ><i class="fa fa-table "></i>USER<span class="badge"></span></a>
                 </li>
                 <li>
@@ -72,11 +74,11 @@
                     <a href="<%=request.getContextPath()%>/admin_Categories" ><i class="fa fa-bar-chart-o"></i>Category</a>
                 </li>
                 <li>
-                    <a href="<%=request.getContextPath()%>/admin_Brands" class="active-link"><i class="fa fa-edit "></i>Brands</a>
+                    <a href="<%=request.getContextPath()%>/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
                 </li>
-                    <a href="/fake_war_exploded/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin_Materials"><i class="fa fa-edit "></i>Materials</a>
                 </li>
-
 
             </ul>
         </div>
@@ -87,54 +89,42 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Loại sản phẩm</h2>
+                    <h2>Cập nhật đơn hàng</h2>
                 </div>
             </div>
-            <a href="<%=request.getContextPath()%>/admin_Brands/add"><i class="fa-solid fa-plus"></i>Thêm loại thắt
-                lưng</a>
-            <table id="example" class="display" style="width:100%">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên Nhãn hàng</th>
-                    <th>Ngày thêm vào</th>
-                    <th>Thao tác</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
-                <c:forEach items="${brandList}" var="brand">
-                    <tr>
-                        <th scope="row">${brand.getId()}</th>
-                        <td>${brand.getName()}</td>
-                        <td>${brand.getCreateAt()}</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/admin_Brands/edit?id=${brand.getId()}&action=edit">
-                                <i
-                                        class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="${pageContext.request.contextPath}/admin_Brands/delete?id=${brand.getId()}&action=delete"><i
-                                    class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-
             <!-- /. ROW  -->
-        </div>
-        <!-- /. PAGE INNER  -->
-    </div>
+            <form method="POST">
+                <label for="id"></label>
+                <input type="text" id="id" name="id" value="${order.getId()}"  readonly><br><br>
 
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên loại thắt lưng</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${order.getName()}">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Số điện thoại</label>
+                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Loại sản phẩm" value="${order.getphone()}">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Địa chỉ" value="${order.getAddress()}">
+                </div>
+                <div class="mb-3">
+                    <label for="status"  class="form-label">Tình trạng:</label>
+                    <select class="form-select"  name="status" id="status">
+                        <option value="Chờ xác thực">Chờ xác thực</option>
+                        <option value="Đang vận chuyển">Đang vận chuyển</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tổng tiền</label>
+                    <input type="number" name="total" class="form-control" id="total" placeholder="Loại sản phẩm" value="${order.getTotal_amount()}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <a href="${pageContext.request.contextPath}/admin_Orders">Quay về</a>
+        </div>
+    </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#example').DataTable({
-            "paging": true,        // Bật phân trang
-            "searching": true,     // Bật tìm kiếm
-            "ordering": true,      // Bật sắp xếp
-            "info": true           // Hiển thị thông tin tổng quan
-        });
-    });
-</script>
 </body>
 </html>
