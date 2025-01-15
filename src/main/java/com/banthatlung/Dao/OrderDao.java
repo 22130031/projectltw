@@ -51,7 +51,7 @@ public class OrderDao {
             ps.setString(1, order.getName());
             ps.setString(2, order.getphone());
             ps.setString(3, order.getAddress());
-            ps.setInt(4, order.getStatus());
+            ps.setInt(4, 1);
             ps.setInt(5, order.getTotal_amount());
 
             // Execute the insert statement
@@ -108,8 +108,8 @@ public class OrderDao {
 
     public static void main(String[] args) throws SQLException {
         OrderDao orderDao = new OrderDao();
-        Order order = new Order(32,"dsa", "sda", "312", 1,2);
-       orderDao.updateOrder(order);
+        Order order = new Order("123", "123", "123", 2);
+       orderDao.addOrder(order);
 
     }
 

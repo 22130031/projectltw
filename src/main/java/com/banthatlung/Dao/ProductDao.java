@@ -163,10 +163,8 @@ public class ProductDao {
 
     // Cập nhật sản phẩm
     public void update(Product product) {
-        String sql = """
-               UPDATE products SET name = ?, price = ?, description = ?, 
-               status = ?, quantity = ? , image = ?, category_id = 
-               ?,brand_id = ?, material_id = ?WHERE id = ?""";
+        String sql = " UPDATE products SET name = ?, price = ?, description = ?, status = ?, quantity = ? , image = ?, category_id =?,brand_id = ?, material_id = ?WHERE id = ?"
+                ;
         try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
             setProductParameters(ps, product);
             ps.setInt(10, product.getId());

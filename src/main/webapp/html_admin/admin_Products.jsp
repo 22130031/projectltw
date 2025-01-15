@@ -114,7 +114,7 @@
         <c:forEach items="${productList}" var="product">
           <tr>
             <th scope="row">${product.getId()}</th>
-            <td><img  style="width: 100px; height: auto" src="images/${product.getImage()}"></td>
+            <td><img  style="width: 100px; height: auto" src="../images/thatlung4.jpg"></td>
             <td>${product.getName()}</td>
             <td>${product.getPrice()}</td>
             <td>${product.getDescription()}</td>

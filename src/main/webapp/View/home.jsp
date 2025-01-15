@@ -106,7 +106,7 @@
                     <!-- Link đến chi tiết sản phẩm -->
                     <a href=" ${pageContext.request.contextPath}/product?pid=${product.id != null ? product.id : 'default'}">
                         <!-- Hình ảnh sản phẩm với kiểm tra dữ liệu -->
-                        <img src="./images/${product.image != null && !product.image.isEmpty() ? product.image : 'https://via.placeholder.com/200'}"
+                        <img src="../images/thatlung1.jpg"
                              class="card-img-top"
                              alt="${product.name != null ? product.name : 'Sản phẩm không có tên'}"
                              style="object-fit: cover; height: 200px; width: 100%;">
