@@ -112,8 +112,8 @@
                 <div class="mb-3">
                     <label for="status"  class="form-label">Tình trạng:</label>
                     <select class="form-select"  name="status" id="status">
-                        <option value="Chờ xác thực">Chờ xác thực</option>
-                        <option value="Đang vận chuyển">Đang vận chuyển</option>
+                        <option value=1>Chờ xác thực</option>
+                        <option value=0>Đang vận chuyển</option>
                     </select>
                 </div>
                 <div class="mb-3">

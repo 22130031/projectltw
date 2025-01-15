@@ -104,7 +104,7 @@
             <div class="col-md-3 mb-4">
                 <div class="card h-100">
                     <!-- Link đến chi tiết sản phẩm -->
-                    <a href="../projectl/product?pid=${product.id != null ? product.id : 'default'}">
+                    <a href=" ${pageContext.request.contextPath}/product?pid=${product.id != null ? product.id : 'default'}">
                         <!-- Hình ảnh sản phẩm với kiểm tra dữ liệu -->
                         <img src="./images/${product.image != null && !product.image.isEmpty() ? product.image : 'https://via.placeholder.com/200'}"
                              class="card-img-top"
@@ -131,7 +131,7 @@
                             </c:choose>
                         </h4>
 
-                        <form action="../projectl/Cart" method="post">
+                        <form action="${pageContext.request.contextPath}/Cart" method="post">
                             <input type="hidden" name="action" value="add">
                             <input type="hidden" name="id" value="${product.id != null ? product.id : 'default'}">
                             <button type="submit" class="btn btn-warning mt-auto">

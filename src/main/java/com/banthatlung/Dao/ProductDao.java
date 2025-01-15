@@ -163,7 +163,10 @@ public class ProductDao {
 
     // Cập nhật sản phẩm
     public void update(Product product) {
-        String sql = " UPDATE products SET name = ?, price = ?, description = ?, status = ?, quantity = ? , image = ?, category_id = ?,brand_id = ?, material_id = ?WHERE id = ?";
+        String sql = """
+               UPDATE products SET name = ?, price = ?, description = ?, 
+               status = ?, quantity = ? , image = ?, category_id = 
+               ?,brand_id = ?, material_id = ?WHERE id = ?""";
         try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
             setProductParameters(ps, product);
             ps.setInt(10, product.getId());
@@ -209,14 +212,7 @@ public class ProductDao {
     }
 
     public static void main(String[] args) {
-        Brand brand = new Brand();
-        brand.setId(1);
-        Category category = new Category(12, "csa,", "sa");
 
-        Material material = new Material();
-        material.setId(2);
-        Product product = new Product(65, "new", 21, "dsa", 1, 321, "pro.jsp", category, brand, material);
-        new ProductDao().update(product);
 
     }
 }
