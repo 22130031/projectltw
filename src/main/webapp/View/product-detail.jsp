@@ -85,7 +85,7 @@
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="${pageContext.request.contextPath}/images/${pd.image}" alt="${pd.name}">
+        <img src="${pd.image}" alt="${pd.name}">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
