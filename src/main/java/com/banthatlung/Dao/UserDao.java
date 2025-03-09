@@ -19,8 +19,8 @@ public class UserDao {
                 rs.getString(6),  // email
                 rs.getString(7),  // phone_number
                 rs.getDate(8),    // date_of_birth
-                rs.getString(9),  // address
-                rs.getString(10)  // other fields
+                rs.getString(9),  // gender
+                rs.getString(10)  // image
         );
     }
 
