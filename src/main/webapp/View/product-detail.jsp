@@ -334,7 +334,29 @@
             quantityInput.value = maxStock;
         }
     });
+    // Xử lý chọn màu sắc
+    const colorButtons = document.querySelectorAll('.color-btn');
+    const selectedColor = document.getElementById('selected-color');
 
+    colorButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            colorButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedColor.textContent = button.getAttribute('data-color');
+        });
+    });
+
+    // Xử lý chọn kích cỡ
+    const sizeButtons = document.querySelectorAll('.size-btn');
+    const selectedSize = document.getElementById('selected-size');
+
+    sizeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            sizeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedSize.textContent = button.getAttribute('data-size');
+        });
+    });
 </script>
 </body>
 </html>
