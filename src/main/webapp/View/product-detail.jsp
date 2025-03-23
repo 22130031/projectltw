@@ -92,7 +92,45 @@
     <div class="product-info">
         <h2>${pd.name}</h2>
         <p class="price"><fmt:formatNumber value="${pd.price}"/> </p>
+        <!-- Chọn Màu Sắc -->
+        <div class="color-options">
+            <p>Chọn Màu Sắc:</p>
+            <div class="color-choices">
+                <button class="option-btn color-btn" data-color="Đen">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6mcojrgkaxk4b.webp" alt="Đen" class="option-image" width="20" height="20">
+                    <span>Đen</span>
+                </button>
+                <button class="option-btn color-btn" data-color="Nâu">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="Nâu" class="option-image" width="20" height="20">
+                    <span>Nâu</span>
+                </button>
+            </div>
+            <p>Màu đã chọn: <span id="selected-color">Chưa chọn</span></p>
+        </div>
 
+        <!-- Chọn Kích Cỡ -->
+        <div class="size-options">
+            <p>Chọn Kích Cỡ:</p>
+            <div class="size-choices">
+                <button class="option-btn size-btn" data-size="S">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="S" class="option-image" width="20" height="20">
+                    <span>S</span>
+                </button>
+                <button class="option-btn size-btn" data-size="M">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="M" class="option-image" width="20" height="20">
+                    <span>M</span>
+                </button>
+                <button class="option-btn size-btn" data-size="L">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="L" class="option-image" width="20" height="20">
+                    <span>L</span>
+                </button>
+                <button class="option-btn size-btn" data-size="XL">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="XL" class="option-image" width="20" height="20">
+                    <span>XL</span>
+                </button>
+            </div>
+            <p>Kích cỡ đã chọn: <span id="selected-size">Chưa chọn</span></p>
+        </div>
         <!-- Điều chỉnh số lượng -->
         <div class="quantity-options">
             <p>Số Lượng:</p>

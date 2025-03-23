@@ -62,63 +62,60 @@ body {
 .product-info .add-to-cart:hover {
     background-color: #e63946;
 }
+
 .product-info .description {
     border-top: 2px solid #3a3a3a;
     font-size: 16px;
     line-height: 1.6;
     margin-top: 20px;
 }
-.color-options {
+/* Common styles for both color and size options */
+.color-options, .size-options {
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: left;
-    margin-bottom: 20px;
 }
 
-.color-options p {
+.color-options p, .size-options p {
     color: #ffffff;
     font-size: 18px;
     margin-bottom: 10px;
 }
 
-.color-options .color-choice {
+.color-choices, .size-choices {
     display: flex;
     gap: 15px;
 }
 
-.color-choice label {
+.option-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    padding: 5px 10px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
     background-color: #333;
-    transition: border-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 
-.color-choice label:hover {
-    border-color: #e74c3c; /* Đổi viền khi di chuột */
-    transform: scale(1.05); /* Phóng to nhẹ */
-    color: #e63946;
+.option-btn.active {
+    border-color: #e63946 !important; /* Viền đỏ nổi bật khi được chọn */
+    background-color: #4a1e1e !important; /* Nền đỏ tối để nổi bật trên nền tối */
 }
 
-.color-choice label input[type="radio"] {
-    display: none;
+.option-image {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    object-fit: cover;
 }
 
-.color-choice label img {
-    width: 30px;
-    height: 30px;
-    border-radius: 3px;
+.option-btn span {
+    font-size: 14px;
+    color: #ffffff;
 }
-
-.color-choice label.selected {
-    border-color: #e63946; /* Viền nổi bật khi được chọn */
-}
-
 .quantity-options {
     display: flex;
     flex-direction: column;
@@ -153,7 +150,7 @@ body {
 
 .quantity-control button:hover {
     background-color: #e63946;
-    transform: scale(1.1); /* Phóng to khi di chuột */
+    transform: scale(1.1);
 }
 
 .quantity-control .quantity-input {
@@ -173,18 +170,19 @@ body {
     font-size: 16px;
     margin-left: 15px;
 }
+
 /* Đánh giá sản phẩm */
 .product-rating {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
-    color: #f1c40f; /* Màu vàng sao */
+    color: #f1c40f;
     margin-bottom: 15px;
 }
 
 .product-rating .rating-details {
-    color: #ffffff; /* Màu chữ trắng */
+    color: #ffffff;
     margin-left: 10px;
 }
 
@@ -204,6 +202,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
+
 .buy-now {
     background-color: #e74c3c;
     color: white;
@@ -213,6 +212,7 @@ body {
     background-color: #d62c1a;
     transform: scale(1.05);
 }
+
 .reviews-section {
     border-top: 2px solid #3a3a3a;
     background-color: #212121;
@@ -272,15 +272,16 @@ h3 {
 .filter-btn.active, .filter-btn:hover {
     background-color: #b45d1c;
 }
-     /* Định dạng tổng quan cho phần thêm đánh giá */
- .reviews-add-review {
-     border: 1px solid #ccc;
-     border-radius: 10px;
-     padding: 20px;
-     margin-top: 20px;
-     background-color: #f9f9f9;
-     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
- }
+
+/* Định dạng tổng quan cho phần thêm đánh giá */
+.reviews-add-review {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 /* Tiêu đề của phần thêm đánh giá */
 .reviews-add-review h4 {
@@ -364,15 +365,16 @@ h3 {
         font-size: 12px;
     }
 }
-     /* Định dạng tổng quan cho phần hiển thị bình luận */
- .reviews-item {
-     border: 1px solid #ddd;
-     border-radius: 10px;
-     padding: 15px;
-     margin-bottom: 20px;
-     background-color: #fff;
-     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
- }
+
+/* Định dạng tổng quan cho phần hiển thị bình luận */
+.reviews-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 /* Header của bình luận */
 .reviews-header {
@@ -404,7 +406,7 @@ h3 {
 }
 
 .reviews-stars {
-    color: #ffc107; /* Màu vàng cho sao */
+    color: #ffc107;
     font-size: 14px;
 }
 
@@ -451,5 +453,3 @@ h3 {
         max-width: 100%;
     }
 }
-
-
