@@ -54,7 +54,7 @@ public class CheckOutController extends HttpServlet {
         for(Map.Entry<Integer, ProductCart> entry : cart.entrySet()){
             total += entry.getValue().getProduct().getPrice();
         }
-        Order order = new Order(name,address,phone,total);
+        Order order = new Order( name, address, phone, total);
         int id = orderDao.addOrder(order);
         for(Map.Entry<Integer, ProductCart> entry : cart.entrySet()){
             OrderDetail orderDetail = new OrderDetail(id,entry.getValue().getProduct().getId(),entry.getValue().getQuantity(), (int) (entry.getValue().getProduct().getPrice()*entry.getValue().getQuantity()));

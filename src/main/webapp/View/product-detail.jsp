@@ -85,14 +85,68 @@
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="${pageContext.request.contextPath}/images/${pd.image}" alt="${pd.name}">
+        <img src="${pd.image}" alt="${pd.name}">
     </div>
-
+    <div class="thumbnail-images">
+        <!-- Các hình ảnh nhỏ sẽ được thêm động hoặc tĩnh tùy theo dữ liệu -->
+        <img src="../asset/image/belt-black-1.png" alt="Thumbnail 1" class="thumbnail" data-main="../asset/image/belt-black-1.png">
+        <img src="../asset/image/belt-black-2.png" alt="Thumbnail 2" class="thumbnail" data-main="../asset/image/belt-black-2.png">
+        <img src="../asset/image/belt-black-3.png" alt="Thumbnail 3" class="thumbnail" data-main="../asset/image/belt-black-3.png">
+        <img src="../asset/image/belt-black-4.png" alt="Thumbnail 4" class="thumbnail" data-main="../asset/image/belt-black-4.png">
+    </div>
     <!-- Thông Tin Sản Phẩm -->
     <div class="product-info">
         <h2>${pd.name}</h2>
         <p class="price"><fmt:formatNumber value="${pd.price}"/> </p>
+        <!-- Chọn Màu Sắc -->
+        <div class="color-options">
+            <p>Chọn Màu Sắc:</p>
+            <div class="color-choices">
+                <button class="option-btn color-btn" data-color="Đen" data-images='[
+                    "../asset/image/belt-black-1.png",
+                    "../asset/image/belt-black-2.png",
+                    "../asset/image/belt-black-3.png",
+                    "../asset/image/belt-black-4.png"
+                ]'>
+                    <img src="../asset/image/black-belt.png" alt="Đen" class="option-image" width="20" height="20">
+                    <span>Đen</span>
+                </button>
+                <button class="option-btn color-btn" data-color="Nâu" data-images='[
+                    "../asset/image/belt-brown-1.png",
+                    "../asset/image/belt-brown-2.png",
+                    "../asset/image/belt-brown-3.png",
+                    "../asset/image/belt-brown-4.png"
+                ]'>
+                    <img src="../asset/image/brown-belt.png" alt="Nâu" class="option-image" width="20" height="20">
+                    <span>Nâu</span>
+                </button>
+            </div>
+            <p>Màu đã chọn: <span id="selected-color">Chưa chọn</span></p>
+        </div>
 
+        <!-- Chọn Kích Cỡ -->
+        <div class="size-options">
+            <p>Chọn Kích Cỡ:</p>
+            <div class="size-choices">
+                <button class="option-btn size-btn" data-size="S">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="S" class="option-image" width="20" height="20">
+                    <span>S</span>
+                </button>
+                <button class="option-btn size-btn" data-size="M">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="M" class="option-image" width="20" height="20">
+                    <span>M</span>
+                </button>
+                <button class="option-btn size-btn" data-size="L">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="L" class="option-image" width="20" height="20">
+                    <span>L</span>
+                </button>
+                <button class="option-btn size-btn" data-size="XL">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="XL" class="option-image" width="20" height="20">
+                    <span>XL</span>
+                </button>
+            </div>
+            <p>Kích cỡ đã chọn: <span id="selected-size">Chưa chọn</span></p>
+        </div>
         <!-- Điều chỉnh số lượng -->
         <div class="quantity-options">
             <p>Số Lượng:</p>
@@ -139,7 +193,7 @@
     <c:forEach var="r" items="${reviews}">
     <div class="reviews-item">
         <div class="reviews-header">
-            <img src="${pageContext.request.contextPath}/${r.uimg}" alt="User Avatar" class="reviews-user-avatar">
+            <img src="${r.uimg}" alt="User Avatar" class="reviews-user-avatar">
             <div class="reviews-info">
                 <span class="reviews-username">${r.username}</span>
                 <span class="reviews-stars">
@@ -296,7 +350,118 @@
             quantityInput.value = maxStock;
         }
     });
+    // Xử lý chọn màu sắc
+    const colorButtons = document.querySelectorAll('.color-btn');
+    const selectedColor = document.getElementById('selected-color');
 
+    colorButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            colorButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedColor.textContent = button.getAttribute('data-color');
+        });
+    });
+
+    // Xử lý chọn kích cỡ
+    const sizeButtons = document.querySelectorAll('.size-btn');
+    const selectedSize = document.getElementById('selected-size');
+
+    sizeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            sizeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedSize.textContent = button.getAttribute('data-size');
+        });
+    });
+    // Xử lý chọn màu sắc và thay đổi hình ảnh
+    const colorButtons = document.querySelectorAll('.color-btn');
+    const selectedColor = document.getElementById('selected-color');
+    const mainImage = document.querySelector('.main-image');
+    const thumbnailContainer = document.querySelector('.thumbnail-images');
+
+    colorButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Xóa class active khỏi tất cả các nút màu
+            colorButtons.forEach(btn => btn.classList.remove('active'));
+            // Thêm class active cho nút được chọn
+            button.classList.add('active');
+            // Cập nhật màu đã chọn
+            selectedColor.textContent = button.getAttribute('data-color');
+
+            // Lấy danh sách hình ảnh từ thuộc tính data-images
+            const imageList = JSON.parse(button.getAttribute('data-images'));
+
+            // Cập nhật hình ảnh chính (hình đầu tiên trong danh sách)
+            mainImage.src = imageList[0];
+
+            // Cập nhật danh sách thumbnail
+            thumbnailContainer.innerHTML = ''; // Xóa các thumbnail cũ
+            imageList.forEach((imageSrc, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = imageSrc;
+                thumbnail.alt = `Thumbnail ${index + 1}`;
+                thumbnail.classList.add('thumbnail');
+                thumbnail.setAttribute('data-main', imageSrc);
+                if (index === 0) thumbnail.classList.add('active'); // Thumbnail đầu tiên được chọn mặc định
+                thumbnailContainer.appendChild(thumbnail);
+            });
+
+            // Thêm sự kiện click cho các thumbnail mới
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    // Xóa class active khỏi tất cả các thumbnail
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    // Thêm class active cho thumbnail được chọn
+                    thumbnail.classList.add('active');
+                    // Cập nhật hình ảnh chính
+                    mainImage.src = thumbnail.getAttribute('data-main');
+                });
+            });
+        });
+    });
+
+    // Xử lý chọn kích cỡ
+    const sizeButtons = document.querySelectorAll('.size-btn');
+    const selectedSize = document.getElementById('selected-size');
+
+    sizeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            sizeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedSize.textContent = button.getAttribute('data-size');
+        });
+    });
+
+    // Giữ nguyên code xử lý số lượng
+    const decreaseButton = document.querySelector('.quantity-decrease');
+    const increaseButton = document.querySelector('.quantity-increase');
+    const quantityInput = document.querySelector('.quantity-input');
+    const maxStock = ${pd.quantity};
+
+    decreaseButton.addEventListener('click', () => {
+        let currentQuantity = parseInt(quantityInput.value, 10);
+        if (currentQuantity > 1) {
+            quantityInput.value = currentQuantity - 1;
+        }
+    });
+
+    increaseButton.addEventListener('click', () => {
+        let currentQuantity = parseInt(quantityInput.value, 10);
+        if (currentQuantity < maxStock) {
+            quantityInput.value = currentQuantity + 1;
+        }
+    });
+
+    quantityInput.addEventListener('input', () => {
+        let currentValue = parseInt(quantityInput.value, 10);
+        if (isNaN(currentValue) || currentValue < 1) {
+            quantityInput.value = 1;
+        }
+        if (currentValue > maxStock) {
+            quantityInput.value = maxStock;
+        }
+    });
 </script>
 </body>
 </html>

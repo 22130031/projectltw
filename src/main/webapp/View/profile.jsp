@@ -234,14 +234,14 @@
                 <div class="dropdown-user">
                     <a href="#"><i class="fa-solid fa-user"></i></a>
                     <div class="dropdown-content-user">
-                        <a href="${pageContext.request.contextPath}/login"/>">Đăng nhập</a>
+                        <a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
                     </div>
                 </div>
             </c:if>
             <c:if test="${sessionScope.auth !=null}">
                 <div class="dropdown-user">
                     <a href="${pageContext.request.contextPath}/profile">
-                        <img src="${pageContext.request.contextPath}/${sessionScope.auth.image}" alt="Avatar"
+                        <img src="${sessionScope.auth.image}" alt="Avatar"
                              style="width: 30px; height: 30px; border-radius: 50%;">
                     </a>
                     <div class="dropdown-content-user">
@@ -258,7 +258,7 @@
     <div class="sidebar">
         <div class="user-info">
             <div class="avatar">
-                <img id="profile-avatar" src="${pageContext.request.contextPath}/${sessionScope.auth.image}" alt="Avatar">
+                <img id="profile-avatar" src="${sessionScope.auth.image}" alt="Avatar">
                 <form action="${pageContext.request.contextPath}/update-avatar" method="post" enctype="multipart/form-data">
                     <label for="avatar-upload" class="avatar-upload-label">Đổi Avatar</label>
                     <input type="file" id="avatar-upload" name="avatar" accept="image/*" onchange="this.form.submit();" style="display: none;">

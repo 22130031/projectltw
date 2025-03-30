@@ -33,12 +33,17 @@ public class Order_Edit_Controller extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        System.out.println(id);
         String name = req.getParameter("name");
         String phone = req.getParameter("phone");
         String address = req.getParameter("address");
-        String status = req.getParameter("status");
+        int status = Integer.parseInt(req.getParameter("status"));
         int total = Integer.parseInt(req.getParameter("total"));
-        orderDao.updateOrder(new Order(name, phone, address, status, total));
+        Order order = new Order(id, name, phone, address, status, total);
+        System.out.println(order.getId());
+        orderDao.updateOrder(order);
+
         resp.sendRedirect(req.getContextPath() + "/admin_Orders");
     }
 }
