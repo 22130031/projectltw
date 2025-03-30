@@ -1,6 +1,7 @@
 package com.banthatlung.Dao;
 
-import com.banthatlung.Dao.db.DBConnect;
+
+import com.banthatlung.Dao.db.DBConnect2;
 import com.banthatlung.Dao.model.Order;
 
 import java.sql.*;
@@ -30,8 +31,8 @@ public class OrderDao {
 
     public Order getOrder(int id) throws SQLException {
         Order order = null;
-        con = new DBConnect().getConnection();
-        ps = con.prepareStatement("SELECT * from orders where id = ?");
+        PreparedStatement stmt = DBConnect2.getPreparedStatement("SELECT * from orders where id = ?");
+
         ps.setInt(1, id);
         rs = ps.executeQuery();
         while (rs.next()) {
@@ -46,7 +47,7 @@ public class OrderDao {
 
         try {
             // Set the values for the prepared statement
-            con = new DBConnect().getConnection();
+            PreparedStatement stmt = DBConnect2.getPreparedStatement(sql);
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // Request generated keys
             ps.setString(1, order.getName());
             ps.setString(2, order.getphone());
@@ -82,8 +83,7 @@ public class OrderDao {
     public void updateOrder(Order order) {
         try {
             String sql = "UPDATE orders SET name = ?, phone = ?, address = ?, status = ? WHERE id = ?";
-            con = new DBConnect().getConnection();
-            ps = con.prepareStatement(sql);
+            PreparedStatement stmt = DBConnect2.getPreparedStatement(sql);
             ps.setString(1, order.getName());
             ps.setString(2, order.getphone());
             ps.setString(3, order.getAddress());
@@ -100,8 +100,8 @@ public class OrderDao {
     }
 
     public void delete(int id) throws SQLException {
-        con = new DBConnect().getConnection();
-        ps = con.prepareStatement("DELETE FROM Orders WHERE id = ?");
+        PreparedStatement stmt = DBConnect2.getPreparedStatement("DELETE FROM Orders WHERE id = ?");
+
         ps.setInt(1, id);
         ps.executeUpdate();
     }
@@ -109,7 +109,7 @@ public class OrderDao {
     public static void main(String[] args) throws SQLException {
         OrderDao orderDao = new OrderDao();
         Order order = new Order("123", "123", "123", 2);
-       orderDao.addOrder(order);
+        orderDao.addOrder(order);
 
     }
 
