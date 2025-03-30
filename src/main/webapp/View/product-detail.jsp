@@ -87,7 +87,13 @@
     <div class="product-image">
         <img src="${pd.image}" alt="${pd.name}">
     </div>
-
+    <div class="thumbnail-images">
+        <!-- Các hình ảnh nhỏ sẽ được thêm động hoặc tĩnh tùy theo dữ liệu -->
+        <img src="../asset/image/belt-black-1.png" alt="Thumbnail 1" class="thumbnail" data-main="../asset/image/belt-black-1.png">
+        <img src="../asset/image/belt-black-2.png" alt="Thumbnail 2" class="thumbnail" data-main="../asset/image/belt-black-2.png">
+        <img src="../asset/image/belt-black-3.png" alt="Thumbnail 3" class="thumbnail" data-main="../asset/image/belt-black-3.png">
+        <img src="../asset/image/belt-black-4.png" alt="Thumbnail 4" class="thumbnail" data-main="../asset/image/belt-black-4.png">
+    </div>
     <!-- Thông Tin Sản Phẩm -->
     <div class="product-info">
         <h2>${pd.name}</h2>
@@ -96,12 +102,22 @@
         <div class="color-options">
             <p>Chọn Màu Sắc:</p>
             <div class="color-choices">
-                <button class="option-btn color-btn" data-color="Đen">
-                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6mcojrgkaxk4b.webp" alt="Đen" class="option-image" width="20" height="20">
+                <button class="option-btn color-btn" data-color="Đen" data-images='[
+                    "../asset/image/belt-black-1.png",
+                    "../asset/image/belt-black-2.png",
+                    "../asset/image/belt-black-3.png",
+                    "../asset/image/belt-black-4.png"
+                ]'>
+                    <img src="../asset/image/black-belt.png" alt="Đen" class="option-image" width="20" height="20">
                     <span>Đen</span>
                 </button>
-                <button class="option-btn color-btn" data-color="Nâu">
-                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="Nâu" class="option-image" width="20" height="20">
+                <button class="option-btn color-btn" data-color="Nâu" data-images='[
+                    "../asset/image/belt-brown-1.png",
+                    "../asset/image/belt-brown-2.png",
+                    "../asset/image/belt-brown-3.png",
+                    "../asset/image/belt-brown-4.png"
+                ]'>
+                    <img src="../asset/image/brown-belt.png" alt="Nâu" class="option-image" width="20" height="20">
                     <span>Nâu</span>
                 </button>
             </div>
