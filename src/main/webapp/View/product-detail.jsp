@@ -373,6 +373,95 @@
             selectedSize.textContent = button.getAttribute('data-size');
         });
     });
+    // Xử lý chọn màu sắc và thay đổi hình ảnh
+    const colorButtons = document.querySelectorAll('.color-btn');
+    const selectedColor = document.getElementById('selected-color');
+    const mainImage = document.querySelector('.main-image');
+    const thumbnailContainer = document.querySelector('.thumbnail-images');
+
+    colorButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Xóa class active khỏi tất cả các nút màu
+            colorButtons.forEach(btn => btn.classList.remove('active'));
+            // Thêm class active cho nút được chọn
+            button.classList.add('active');
+            // Cập nhật màu đã chọn
+            selectedColor.textContent = button.getAttribute('data-color');
+
+            // Lấy danh sách hình ảnh từ thuộc tính data-images
+            const imageList = JSON.parse(button.getAttribute('data-images'));
+
+            // Cập nhật hình ảnh chính (hình đầu tiên trong danh sách)
+            mainImage.src = imageList[0];
+
+            // Cập nhật danh sách thumbnail
+            thumbnailContainer.innerHTML = ''; // Xóa các thumbnail cũ
+            imageList.forEach((imageSrc, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = imageSrc;
+                thumbnail.alt = `Thumbnail ${index + 1}`;
+                thumbnail.classList.add('thumbnail');
+                thumbnail.setAttribute('data-main', imageSrc);
+                if (index === 0) thumbnail.classList.add('active'); // Thumbnail đầu tiên được chọn mặc định
+                thumbnailContainer.appendChild(thumbnail);
+            });
+
+            // Thêm sự kiện click cho các thumbnail mới
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    // Xóa class active khỏi tất cả các thumbnail
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    // Thêm class active cho thumbnail được chọn
+                    thumbnail.classList.add('active');
+                    // Cập nhật hình ảnh chính
+                    mainImage.src = thumbnail.getAttribute('data-main');
+                });
+            });
+        });
+    });
+
+    // Xử lý chọn kích cỡ
+    const sizeButtons = document.querySelectorAll('.size-btn');
+    const selectedSize = document.getElementById('selected-size');
+
+    sizeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            sizeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedSize.textContent = button.getAttribute('data-size');
+        });
+    });
+
+    // Giữ nguyên code xử lý số lượng
+    const decreaseButton = document.querySelector('.quantity-decrease');
+    const increaseButton = document.querySelector('.quantity-increase');
+    const quantityInput = document.querySelector('.quantity-input');
+    const maxStock = ${pd.quantity};
+
+    decreaseButton.addEventListener('click', () => {
+        let currentQuantity = parseInt(quantityInput.value, 10);
+        if (currentQuantity > 1) {
+            quantityInput.value = currentQuantity - 1;
+        }
+    });
+
+    increaseButton.addEventListener('click', () => {
+        let currentQuantity = parseInt(quantityInput.value, 10);
+        if (currentQuantity < maxStock) {
+            quantityInput.value = currentQuantity + 1;
+        }
+    });
+
+    quantityInput.addEventListener('input', () => {
+        let currentValue = parseInt(quantityInput.value, 10);
+        if (isNaN(currentValue) || currentValue < 1) {
+            quantityInput.value = 1;
+        }
+        if (currentValue > maxStock) {
+            quantityInput.value = maxStock;
+        }
+    });
 </script>
 </body>
 </html>
