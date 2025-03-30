@@ -10,17 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnect2 {
-    static String url = "jdbc:mysql://"+DBProperties.host()+":"+DBProperties.port()+"/"+DBProperties.dbName()+"?"+DBProperties.option();
+    static String url = "jdbc:mysql://" + DBProperties.host() + ":" + DBProperties.port() + "/" + DBProperties.dbName() + "?" + DBProperties.option();
     static Connection conn;
+
     public static Statement get() {
         try {
-            if (conn == null|| conn.isClosed()) makeConnect();
+            if (conn == null || conn.isClosed()) makeConnect();
             return conn.createStatement();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             return null;
         }
     }
+
     public static PreparedStatement getPreparedStatement(String sql) {
         try {
             if (conn == null || conn.isClosed()) makeConnect();
@@ -33,14 +35,14 @@ public class DBConnect2 {
 
     private static void makeConnect() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        conn = DriverManager.getConnection(url,DBProperties.username(),DBProperties.password());
+        conn = DriverManager.getConnection(url, DBProperties.username(), DBProperties.password());
     }
 
     public static void main(String[] args) throws SQLException {
         List<Product> products = new ArrayList<>();
         String sql = "SELECT * FROM products";
         PreparedStatement pstmt = getPreparedStatement(sql);
-         // Giả định rằng đây là đầu vào
+        // Giả định rằng đây là đầu vào
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
             // Lấy thông tin từ ResultSet và khởi tạo đối tượng Product
@@ -61,7 +63,7 @@ public class DBConnect2 {
                     rs.getInt("status"),              // status
                     rs.getInt("quantity"),            // quantity
                     rs.getString("created"),          // date (created)
-                    rs.getString("image"),category,brand,material   // image
+                    rs.getString("image"), category, brand, material   // image
             );
 
             product.setCategory(category);           // Gán đối tượng Category
@@ -70,7 +72,7 @@ public class DBConnect2 {
 
             products.add(product);
         }
-        for(Product product : products) {
+        for (Product product : products) {
             System.out.println(product);
         }
         // Hiển thị danh sách sản phẩm

@@ -1,6 +1,6 @@
 package com.banthatlung.Dao;
 
-import com.banthatlung.Dao.db.DBConnect;
+import com.banthatlung.Dao.db.DBConnect2;
 import com.banthatlung.Dao.model.Order;
 import com.banthatlung.Dao.model.OrderDetail;
 
@@ -8,18 +8,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.banthatlung.Dao.db.DBConnect2.getPreparedStatement;
-
 public class OrderDetailDao {
-    Connection con;
-    PreparedStatement ps;
-    ResultSet rs;
+
 
     public List<OrderDetail> getList(int id) throws SQLException {
         List<OrderDetail> list = new ArrayList<>();
         String sql = "select * from order_details where order_id=?";
-        PreparedStatement ps = getPreparedStatement(sql);
+        PreparedStatement ps = DBConnect2.getPreparedStatement(sql);
         ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
         rs = ps.executeQuery();
         while (rs.next()) {
             list.add(new OrderDetail(rs.getInt("order_id"), rs.getInt("product_id"), rs.getInt("quantity"), rs.getInt("price")));
@@ -33,8 +30,7 @@ public class OrderDetailDao {
         boolean isAdded = false;
 
         try {
-            con = new DBConnect().getConnection();
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = DBConnect2.getPreparedStatement(sql);
 
             // Set parameters for the prepared statement
             ps.setInt(1, orderDetail.getId());
@@ -57,8 +53,7 @@ public class OrderDetailDao {
     public void updateOrder(Order order) {
         try {
             String sql = "UPDATE orders SET user_id = ?, status = ?, total_amount = ?, update_date = CURRENT_TIMESTAMP WHERE id = ?";
-            con = new DBConnect().getConnection();
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = DBConnect2.getPreparedStatement(sql);
             ps.setInt(1, order.getId());
             ps.setString(2, order.getStatus());
             ps.setInt(3, order.getTotal_amount());
@@ -74,8 +69,7 @@ public class OrderDetailDao {
     }
 
     public void delete(int id) throws SQLException {
-        con = new DBConnect().getConnection();
-        ps = con.prepareStatement("DELETE FROM Orders WHERE id = ?");
+        PreparedStatement ps = DBConnect2.getPreparedStatement("DELETE FROM Orders WHERE id = ?");
         ps.setInt(1, id);
         ps.executeUpdate();
     }

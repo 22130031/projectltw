@@ -1,6 +1,5 @@
 package com.banthatlung.Dao;
 
-import com.banthatlung.Dao.db.DBConnect;
 import com.banthatlung.Dao.db.DBConnect2;
 import com.banthatlung.Dao.model.Brand;
 import com.banthatlung.Dao.model.Material;
@@ -8,7 +7,6 @@ import com.banthatlung.Dao.model.Product;
 import com.banthatlung.Dao.model.Category;
 
 import java.sql.*;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 

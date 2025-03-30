@@ -1,6 +1,6 @@
 package com.banthatlung.Dao;
 
-import com.banthatlung.Dao.db.DBConnect;
+import com.banthatlung.Dao.db.DBConnect2;
 import com.banthatlung.Dao.model.Order;
 
 import java.sql.*;
@@ -10,9 +10,7 @@ import java.util.List;
 import static com.banthatlung.Dao.db.DBConnect2.getPreparedStatement;
 
 public class OrderDao {
-    Connection con;
-    PreparedStatement ps;
-    ResultSet rs;
+
 
     public OrderDao() {
     }
@@ -21,6 +19,7 @@ public class OrderDao {
         List<Order> orders = new ArrayList<Order>();
         String sql = "select * from orders";
         PreparedStatement ps = getPreparedStatement(sql);
+        ResultSet rs = ps.executeQuery();
         rs = ps.executeQuery();
         while (rs.next()) {
             orders.add(new Order(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("address"), rs.getDate("orderDate").toString(), rs.getDate("update_date").toString(), rs.getString("status"), rs.getInt("total_amount")));
@@ -30,9 +29,10 @@ public class OrderDao {
 
     public Order getOrder(int id) throws SQLException {
         Order order = null;
-        con = new DBConnect().getConnection();
-        ps = con.prepareStatement("SELECT * from orders where id = ?");
+        PreparedStatement ps = DBConnect2.getPreparedStatement("SELECT * from orders where id = ?");
+
         ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
         rs = ps.executeQuery();
         while (rs.next()) {
             order = new Order(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("address"), rs.getDate("orderDate").toString(), rs.getDate("update_date").toString(), rs.getString("status"), rs.getInt("total_amount"));
@@ -43,11 +43,11 @@ public class OrderDao {
     public int addOrder(Order order) {
         int generatedId = -1; // Default value if the insertion fails
         String sql = "INSERT INTO orders (name, phone, address, status, total_amount) VALUES (?, ?, ?, ?, ?)";
-
+        PreparedStatement ps = getPreparedStatement(sql);
         try {
             // Set the values for the prepared statement
-            con = new DBConnect().getConnection();
-            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // Request generated keys
+
+            // Request generated keys
             ps.setString(1, order.getName());
             ps.setString(2, order.getphone());
             ps.setString(3, order.getAddress());
@@ -69,7 +69,7 @@ public class OrderDao {
             // Close resources to prevent memory leaks
             try {
                 if (ps != null) ps.close();
-                if (con != null) con.close();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -82,8 +82,7 @@ public class OrderDao {
     public void updateOrder(Order order) {
         try {
             String sql = "UPDATE orders SET user_id = ?, status = ?, total_amount = ?, update_date = CURRENT_TIMESTAMP WHERE id = ?";
-            con = new DBConnect().getConnection();
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = DBConnect2.getPreparedStatement(sql);
             ps.setInt(1, order.getId());
             ps.setString(2, order.getStatus());
             ps.setInt(3, order.getTotal_amount());
@@ -99,8 +98,9 @@ public class OrderDao {
     }
 
     public void delete(int id) throws SQLException {
-        con = new DBConnect().getConnection();
-        ps = con.prepareStatement("DELETE FROM Orders WHERE id = ?");
+
+        PreparedStatement ps = DBConnect2.getPreparedStatement("DELETE FROM Orders WHERE id = ?");
+
         ps.setInt(1, id);
         ps.executeUpdate();
     }
