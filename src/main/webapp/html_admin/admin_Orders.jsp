@@ -60,26 +60,30 @@
 
 
                 <li>
-                    <a href=admin_user.html><i class="fa fa-table "></i>USER<span class="badge"></span></a>
-                </li>
-                <li>
-                    <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
-                </li>
-                <li>
-                    <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
-                </li>
-                <li>
-                    <a href="#" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
+                    <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
                 </li>
 
+
                 <li>
-                    <a href="#"><i class="fa fa-edit "></i>My Link Three </a>
+                    <a href=<%=request.getContextPath()%>/admin_Users><i class="fa fa-table "></i>USER<span
+                            class="badge"></span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-table "></i>My Link Four</a>
+                    <a href="<%=request.getContextPath()%>/admin_Products"><i
+                            class="fa fa-edit "></i>PRODUCT<span></span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-edit "></i>My Link Five </a>
+                    <a href="<%=request.getContextPath()%>/admin_Orders"><i class="fa fa-qrcode "></i>ORDERS</a>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin_Categories"><i
+                            class="fa fa-bar-chart-o"></i>Category</a>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin_Materials"><i class="fa fa-edit "></i>Materials</a>
                 </li>
 
             </ul>
@@ -100,11 +104,11 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Id khách hàng</th>
-                    <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
+                    <th>Tên khác hàng</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
                     <th>Ngày đặt hàng</th>
-                    <th>Ngày cập nhật</th>
+
                     <th>Tình trạng</th>
                     <th>Tổng tiền</th>
                     <th>Thao tác</th>
@@ -118,14 +122,14 @@
                         <td>${mate.getName()}</td>
                         <td>${mate.getphone()}</td>
                         <td>${mate.getAddress()}</td>
-                        <td>${mate.getOrderDate()}</td>
+
                         <td>${mate.getUpdate_date()}</td>
                         <td>${mate.getStatus()}</td>
                         <td>${mate.getTotal_amount()}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/admin_Order/edit?id=${mate.getId()}&action=edit">
-                                <i
-                                        class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="${pageContext.request.contextPath}/admin_OrderDetails?id=${mate.getId()}">Xem</a>
+                            <a href="${pageContext.request.contextPath}/admin_Order/edit?id=${mate.getId()}">
+                                <i class="fa-solid fa-pen-to-square"></i></a>
                             <a href="${pageContext.request.contextPath}/admin_Orders/delete?id=${mate.getId()}&action=delete"><i
                                     class="fa-solid fa-trash"></i></a>
                         </td>
