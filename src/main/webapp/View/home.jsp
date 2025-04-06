@@ -104,7 +104,8 @@
             <div class="col-md-3 mb-4">
                 <div class="card h-100">
                     <!-- Link đến chi tiết sản phẩm -->
-                    <a href=" ${pageContext.request.contextPath}/product?pid=${product.id != null ? product.id : 'default'}">
+
+                    <a href="../product?pid=${product.id != null ? product.id : 'default'}">
                         <!-- Hình ảnh sản phẩm với kiểm tra dữ liệu -->
                         <img src="../images/thatlung1.jpg"
                              class="card-img-top"
