@@ -28,10 +28,9 @@ public class CartController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         switch (action) {
-            case "showCart": {
+            case "showCart":
                 showCart(req, resp);
                 break;
-            }
             case "add":
                 try {
                     addToCart(req, resp);
@@ -62,7 +61,7 @@ public class CartController extends HttpServlet {
                 break;
             case "checkOut":
                 try {
-                   checkOut(req, resp);
+                    checkOut(req, resp);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -82,8 +81,14 @@ public class CartController extends HttpServlet {
         HttpSession session = req.getSession();
         HashMap<Integer, ProductCart> carts = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
         req.setAttribute("cart", carts);
-        req.getRequestDispatcher("/View/Cart.jsp").forward(req, resp);
-        return;
+
+        if (req.getHeader("X-Requested-With") != null) {
+            // Nếu yêu cầu là AJAX, chỉ trả về nội dung giỏ hàng
+            req.getRequestDispatcher("/View/Cart.jsp").include(req, resp);
+        } else {
+            // Nếu không phải AJAX, trả về toàn bộ trang
+            req.getRequestDispatcher("/View/Cart.jsp").forward(req, resp);
+        }
     }
 
     public static void addToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
