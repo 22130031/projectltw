@@ -73,6 +73,15 @@
 </header>
 
 <main class="page">
+    <div id="alert-box" class="container mt-3" style="display:none;">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span id="alert-message">Sản phẩm đã được cập nhật!</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Đóng">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
     <section class="shopping-cart dark">
         <div class="container">
             <div class="block-heading">
@@ -170,6 +179,7 @@
 </main>
 
 <!-- Footer không thay đổi, giữ nguyên như code gốc -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -183,14 +193,34 @@
             },
             success: function(response) {
                 $('#cart-content').html($(response).find('#cart-content').html());
-                // Cập nhật lại tổng tiền sau khi thay đổi giỏ hàng
+
+                // Kiểm tra xem giỏ hàng có trống không
+                if ($('#cart-content').text().trim().length === 0 || $('#cart-content').find('.product').length === 0) {
+                    showAlert("Không còn sản phẩm nào trong giỏ!", "warning");
+                } else {
+                    showAlert("Cập nhật giỏ hàng thành công!", "success");
+                }
+
                 updateSummary();
-            },
-            error: function(xhr, status, error) {
-                alert("Có lỗi xảy ra! Vui lòng thử lại.");
             }
+
         });
     }
+    function showAlert(message, type = "success") {
+        const alertBox = $('#alert-box');
+        const alertElement = alertBox.find('.alert');
+
+        alertElement.removeClass('alert-success alert-danger alert-warning alert-info')
+            .addClass('alert-' + type);
+
+        $('#alert-message').text(message);
+        alertBox.fadeIn();
+
+        setTimeout(function() {
+            alertBox.fadeOut();
+        }, 3000);
+    }
+
 
     // Hàm cập nhật phần tóm tắt
     function updateSummary() {
@@ -207,8 +237,30 @@
     $(document).on('click', '.quantity-decrease', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
-        updateCart('decrease', id);
+        var currentQuantity = parseInt($(this).siblings('.quantity-input').val());
+
+        if (currentQuantity <= 1) {
+            Swal.fire({
+                title: 'Sản phẩm sẽ bị xóa',
+                text: 'Bạn có chắc muốn xóa sản phẩm này không?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    updateCart('decrease', id);
+                    showAlert("Sản phẩm đã được xóa!", "success");
+                }
+            });
+        } else {
+            updateCart('decrease', id);
+        }
     });
+
+
 
     $(document).on('click', '.quantity-increase', function(e) {
         e.preventDefault();
@@ -219,8 +271,25 @@
     $(document).on('click', '.remove-item', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
-        updateCart('remove', id);
+
+        Swal.fire({
+            title: 'Xác nhận xóa',
+            text: 'Bạn có chắc muốn xóa sản phẩm này không?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                updateCart('remove', id);
+                showAlert("Sản phẩm đã được xóa!", "success");
+            }
+        });
     });
+
+
 </script>
 </body>
 </html>
