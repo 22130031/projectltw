@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.HashMap;
 
 @WebServlet(urlPatterns = {"/Cart"})
@@ -153,17 +152,18 @@ public class CartController extends HttpServlet {
         HttpSession session = req.getSession();
         ProductCart productCart;
         HashMap<Integer, ProductCart> cart = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
-        if (cart.get(id).getQuantity()==1) {
+        if (cart.get(id).getQuantity() == 1) {
             cart.remove(id);
-        }else cart.get(id).decrementQuantity();
+        } else cart.get(id).decrementQuantity();
         session.setAttribute("cart", cart);
         resp.sendRedirect(contextPath + "/Cart?action=showCart");
     }
+
     public static void checkOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         HttpSession session = req.getSession();
         String contextPath = req.getContextPath();
         HashMap<Integer, ProductCart> cart = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
         session.setAttribute("cart", cart);
-        resp.sendRedirect( contextPath + "/checkOut");
+        resp.sendRedirect(contextPath + "/checkOut");
     }
 }
