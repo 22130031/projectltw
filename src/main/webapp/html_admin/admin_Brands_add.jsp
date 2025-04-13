@@ -57,26 +57,21 @@
 
 
         <li>
-          <a href=admin_user.html><i class="fa fa-table "></i>USER<span class="badge"></span></a>
+          <a href=<%=request.getContextPath()%>/admin_Users ><i class="fa fa-table "></i>USER<span class="badge"></span></a>
         </li>
         <li>
-          <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
+          <a href="<%=request.getContextPath()%>/admin_Products"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
         </li>
         <li>
-          <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
+          <a href="<%=request.getContextPath()%>/admin_Orders"><i class="fa fa-qrcode "></i>ORDERS</a>
         </li>
         <li>
-          <a href="#" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
-        </li>
-
-        <li>
-
+          <a href="<%=request.getContextPath()%>/admin_Categories" ><i class="fa fa-bar-chart-o"></i>Category</a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-table "></i>My Link Four</a>
+          <a href="<%=request.getContextPath()%>/admin_Brands" class="active-link"><i class="fa fa-edit "></i>Brands</a>
         </li>
-        <li>
-          <a href="#"><i class="fa fa-edit "></i>My Link Five </a>
+        <a href="/fake_war_exploded/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
         </li>
 
       </ul>

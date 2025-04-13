@@ -106,7 +106,6 @@
                                     for (Map.Entry<Integer, ProductCart> entry : carts.entrySet()) {
                                         Integer key = entry.getKey();
                                         ProductCart value = entry.getValue();
-
                                         total += value.getQuantity() * value.getProduct().getPrice();
                                 %>
                                 <div class="row">

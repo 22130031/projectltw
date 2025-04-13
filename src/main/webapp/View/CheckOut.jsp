@@ -95,29 +95,22 @@
         <!-- Payment Form -->
         <div class="payment-form">
             <h3>Chi tiết đơn hàng </h3>
-            <form id="checkout-form" method=post>
-                <!-- Contact Info -->
-                <label for="name">Họ và tên khách hàng </label>
-                <input type="text" id="name" name="name" value="${sessionScope.auth.name}" required>
-
-                <label for="email">Email hoặc số điện thoại</label>
-                <input type="email" id="email" name="email" value="${sessionScope.auth.email}" required>
-
-                <label for="phone">Địa chỉ</label>
-                <input type="text" id="phone" name="phone" value="${sessionScope.auth.phone}" required>
-                <!-- Payment Method -->
-                <h3>Phương thức thanh toán</h3>
-                <label>
-                    <input type="radio" name="payment-method" value="credit-card" checked>
-                    Thẻ tín dụng
-                </label>
-                <label>
-                    <input type="radio" name="payment-method" value="paypal">
-                    Tiền mặt
-                </label>
-
-                <button type="submit" class="submit-btn">Xác nhận đơn hàng</button>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên </label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">SDT</label>
+                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Mô tả">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Mô tả">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+
         </div>
     </div>
 </main>
