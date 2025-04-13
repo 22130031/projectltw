@@ -150,6 +150,20 @@
         <p class="description">
             Thắt lưng làm từ da thật, thiết kế cổ điển, phù hợp với mọi lứa tuổi và phong cách. Độ bền cao, không bong tróc, mang đến vẻ ngoài sang trọng.
         </p>
+        <c:choose>
+            <c:when test="${empty sessionScope.auth}">
+                <a href="${pageContext.request.contextPath}/login"><button class="favorite-btn">Yêu Thích</button></a>
+            </c:when>
+            <c:otherwise>
+                <form action="${pageContext.request.contextPath}/add-favorite" method="post">
+                    <input type="hidden" name="productId" value="${pd.id}">
+                    <input type="hidden" name="productName" value="${pd.name}">
+                    <input type="hidden" name="imageUrl" value="${pd.image}">
+                    <input type="hidden" name="userId" value="${sessionScope.auth.id}">
+                    <button type="submit" class="favorite-btn"><i class="fa-solid fa-heart"></i>Yêu Thích</button>
+                </form>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 <div class="reviews-section">
