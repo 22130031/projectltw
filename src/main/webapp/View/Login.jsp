@@ -91,6 +91,15 @@
             margin-top: -10px;
             margin-bottom: 20px;
         }
+        .password-strength, .password-match {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .weak { color: red; }
+        .medium { color: orange; }
+        .strong { color: green; }
+        .match { color: green; }
+        .no-match { color: red; }
     </style>
 </head>
 <body>
@@ -181,17 +190,77 @@
                 <input type="text" id="last-name" name="username" required>
 
                 <label for="register-password">Mật khẩu</label>
-                <input type="password" id="register-password" name="password" required>
+                <input type="password" id="register-password" name="password" required
+                       onkeyup="checkPasswordStrength()">
+
+                <div id="password-strength" class="password-strength"></div>
 
                 <label for="confirm-password">Xác nhận mật khẩu</label>
-                <input type="password" id="confirm-password" name="cpassword" required>
+                <input type="password" id="confirm-password" name="cpassword" required
+                       onkeyup="checkPasswordMatch()">
+
+                <div id="password-match" class="password-match"></div>
                 <button type="submit" class="btn">Đăng ký</button>
             </form>
         </div>
     </div>
 </div>
+<script>
+    function checkPasswordStrength() {
+        const password = document.getElementById('register-password').value;
+        const strengthDisplay = document.getElementById('password-strength');
 
+        // Tiêu chí kiểm tra
+        const minLength = password.length >= 8;
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasNumbers = /\d/.test(password);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
+        // Đếm số tiêu chí đạt
+        let strength = 0;
+        if (minLength) strength++;
+        if (hasUpperCase) strength++;
+        if (hasLowerCase) strength++;
+        if (hasNumbers) strength++;
+        if (hasSpecialChar) strength++;
+
+        // Hiển thị độ mạnh
+        if (password.length === 0) {
+            strengthDisplay.textContent = '';
+            strengthDisplay.className = 'password-strength';
+        } else if (strength <= 2) {
+            strengthDisplay.textContent = 'Mật khẩu yếu';
+            strengthDisplay.className = 'password-strength weak';
+        } else if (strength <= 4) {
+            strengthDisplay.textContent = 'Mật khẩu trung bình';
+            strengthDisplay.className = 'password-strength medium';
+        } else {
+            strengthDisplay.textContent = 'Mật khẩu mạnh';
+            strengthDisplay.className = 'password-strength strong';
+        }
+
+        // Gọi kiểm tra khớp mật khẩu khi mật khẩu thay đổi
+        checkPasswordMatch();
+    }
+
+    function checkPasswordMatch() {
+        const password = document.getElementById('register-password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        const matchDisplay = document.getElementById('password-match');
+
+        if (confirmPassword.length === 0) {
+            matchDisplay.textContent = '';
+            matchDisplay.className = 'password-match';
+        } else if (password === confirmPassword) {
+            matchDisplay.textContent = 'Mật khẩu khớp';
+            matchDisplay.className = 'password-match match';
+        } else {
+            matchDisplay.textContent = 'Mật khẩu không khớp';
+            matchDisplay.className = 'password-match no-match';
+        }
+    }
+</script>
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-brand">
