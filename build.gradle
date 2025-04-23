@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id "org.hidetake.ssh" version "2.11.2"
+    id 'war'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_23 // Phù hợp với Java 23 trong pom.xml
+    targetCompatibility = JavaVersion.VERSION_23
+}
+
+dependencies {
+    // Jakarta Servlet API
+    providedCompile 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+
+    // JSTL API và Implementation
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.1'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+
+    // MySQL Connector
+    implementation 'mysql:mysql-connector-java:8.0.33'
+
+    // JDBI
+    implementation 'org.jdbi:jdbi3-core:3.47.0'
+
+    // Commons IO
+    implementation 'commons-io:commons-io:2.16.1'
+
+    // JavaMail
+    implementation 'javax.mail:mail:1.4.7'
+
+    // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
+}
+
+war {
+    archiveFileName = 'projectl.war' // Tên file WAR
+}
+
+
