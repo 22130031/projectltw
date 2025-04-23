@@ -19,8 +19,8 @@ public class UserDao {
                 rs.getString(6),  // email
                 rs.getString(7),  // phone_number
                 rs.getDate(8),    // date_of_birth
-                rs.getString(9),  // address
-                rs.getString(10)  // other fields
+                rs.getString(9),  // gender
+                rs.getString(10)  // image
         );
     }
 
@@ -99,7 +99,11 @@ public class UserDao {
             stmt.setString(5, user.getId());
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean registerUser(User u) {
         String sql = "INSERT INTO users (username, password, email,user_id) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
@@ -116,19 +120,6 @@ public class UserDao {
     }
 
     // Đăng ký người dùng mới
-    public boolean registerUser(User user) {
-        String sql = "INSERT INTO users (username, password, full_name, user_id) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPass());
-            stmt.setString(3, user.getName());
-            stmt.setString(4, "u" + (generateID() + 1));
-            return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
     // Sinh mã ID cho người dùng mới
     public int generateID() {
@@ -155,5 +146,19 @@ public class UserDao {
         } else {
             System.out.println("User not found!");
         }
+    }
+
+    // Cập nhật mật khẩu người dùng
+    public boolean updatePassword(String userId, String newPassword) {
+        String sql = "UPDATE users SET password = ? WHERE user_id = ?";
+        try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
+            stmt.setString(1, newPassword);
+            stmt.setString(2, userId);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

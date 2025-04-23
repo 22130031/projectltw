@@ -20,8 +20,9 @@
         <%@include file="../asset/css/bootstrap.css" %>
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
 
@@ -48,34 +49,58 @@
 
     <nav class="navbar-default navbar-side" role="navigation">
         <%@ include file="/html_admin/SideBar.jsp" %>
-
     </nav>
     <!-- /. NAV SIDE  -->
     <div id="page-wrapper">
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Sửa loại thắt lưng</h2>
+                    <h2>Loại sản phẩm</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
-            <form method="POST">
-                <label for="id"></label>
-                <input type="text" id="id" name="id" value="${category.getId()}"  readonly><br><br>
 
-                <div class="mb-3">
-                    <label for="name" class="form-label">Tên loại thắt lưng</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${category.getName()}">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Mô tả</label>
-                    <input type="text" name="description" class="form-control" id="description" value="${category.getDescription()}" placeholder="Mô tả">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <a href="${pageContext.request.contextPath}/admin_Categories">Quay về</a>
+
+            <tbody>
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product id</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
+                <c:forEach items="${OrderDetailList}" var="cate">
+                    <tr>
+                        <th scope="row">${cate.getId()}</th>
+                        <td>${cate.getProduct_id()}</td>
+                        <td>${cate.getQuantity()}</td>
+                        <td>${cate.getPrice()}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
+
+            <!-- /. ROW  -->
         </div>
+        <!-- /. PAGE INNER  -->
     </div>
+
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "paging": true,        // Bật phân trang
+            "searching": true,     // Bật tìm kiếm
+            "ordering": true,      // Bật sắp xếp
+            "info": true           // Hiển thị thông tin tổng quan
+        });
+    });
+</script>
 </body>
 </html>

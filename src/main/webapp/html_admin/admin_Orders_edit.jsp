@@ -55,25 +55,40 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Sửa loại thắt lưng</h2>
+                    <h2>Cập nhật đơn hàng</h2>
                 </div>
             </div>
             <!-- /. ROW  -->
             <form method="POST">
                 <label for="id"></label>
-                <input type="text" id="id" name="id" value="${category.getId()}"  readonly><br><br>
+                <input type="text" id="id" name="id" value="${order.getId()}"  readonly><br><br>
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên loại thắt lưng</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${category.getName()}">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Loại sản phẩm" value="${order.getName()}">
                 </div>
                 <div class="mb-3">
-                    <label for="description" class="form-label">Mô tả</label>
-                    <input type="text" name="description" class="form-control" id="description" value="${category.getDescription()}" placeholder="Mô tả">
+                    <label for="phone" class="form-label">Số điện thoại</label>
+                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Loại sản phẩm" value="${order.getphone()}">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Địa chỉ" value="${order.getAddress()}">
+                </div>
+                <div class="mb-3">
+                    <label for="status"  class="form-label">Tình trạng:</label>
+                    <select class="form-select"  name="status" id="status">
+                        <option value=1>Chờ xác thực</option>
+                        <option value=0>Đang vận chuyển</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tổng tiền</label>
+                    <input type="number" name="total" class="form-control" id="total" placeholder="Loại sản phẩm" value="${order.getTotal_amount()}">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <a href="${pageContext.request.contextPath}/admin_Categories">Quay về</a>
+            <a href="${pageContext.request.contextPath}/admin_Orders">Quay về</a>
         </div>
     </div>
 </div>

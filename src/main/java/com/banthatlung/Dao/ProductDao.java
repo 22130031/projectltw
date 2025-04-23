@@ -1,6 +1,5 @@
 package com.banthatlung.Dao;
 
-import com.banthatlung.Dao.db.DBConnect;
 import com.banthatlung.Dao.db.DBConnect2;
 import com.banthatlung.Dao.model.Brand;
 import com.banthatlung.Dao.model.Material;
@@ -12,16 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDao {
+
     private Product mapProduct(ResultSet rs) throws SQLException {
-        Category category = new Category();
-        category.setId(rs.getInt("category_id"));
-        category.setName(rs.getString("category_name"));
+        Category category = new CategoryDao().getCategory(rs.getInt("category_id"));
 
-        Brand brand = new Brand();
-        brand.setId(rs.getInt("brand_id"));
-        brand.setName(rs.getString("brand_name"));
 
-        Material material = new Material();
+        Brand brand = new BrandDao().getBrand(rs.getInt("brand_id"));
+        Material material = new MaterialDao().getMaterial(rs.getInt("material_id"));
+
+
         material.setId(rs.getInt("material_id"));
         material.setName(rs.getString("material_name"));
 
@@ -29,14 +27,11 @@ public class ProductDao {
                 rs.getInt("id"),
                 rs.getString("name"),
                 rs.getInt("price"),
-                rs.getString("description"),
+                rs.getString("description"), rs.getInt("quantity"),
                 rs.getInt("status"),
-                rs.getInt("quantity"),
                 rs.getString("created"),
                 rs.getString("image"),
-                category,
-                brand,
-                material
+                category, brand, material
         );
     }
 
@@ -161,32 +156,16 @@ public class ProductDao {
         return result;
     }
 
-    // Thêm sản phẩm
-    public void add(Product product) {
-        String sql = """
-                INSERT INTO products (name, price, description, status, quantity, created, 
-                                      category_id, brand_id, material_id, image)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """;
-        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
-            setProductParameters(ps, product);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    /////////////////////////////////////////////////////////////////////
+
 
     // Cập nhật sản phẩm
     public void update(Product product) {
-        String sql = """
-                UPDATE products SET name = ?, price = ?, description = ?, status = ?, 
-                                   quantity = ?, created = ?, category_id = ?, 
-                                   brand_id = ?, material_id = ?, image = ?
-                WHERE id = ?
-                """;
+        String sql = " UPDATE products SET name = ?, price = ?, description = ?, status = ?, quantity = ? , image = ?, category_id =?,brand_id = ?, material_id = ?WHERE id = ?"
+                ;
         try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
             setProductParameters(ps, product);
-            ps.setInt(11, product.getId());
+            ps.setInt(10, product.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -202,16 +181,34 @@ public class ProductDao {
         }
     }
 
+    public void addProduct(Product product) {
+        String sql = " INSERT INTO products (name, price, description, status, quantity, image, category_id, brand_id, material_id) VALUES (? , ?, ?, ?, ?, ?, ?, ?, ?) ";
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
+            setProductParameters(ps, product);
+            ps.executeUpdate();
+            System.out.println("Product added successfully!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Failed to add product.");
+        }
+    }
+
+
     private void setProductParameters(PreparedStatement ps, Product product) throws SQLException {
         ps.setString(1, product.getName());
         ps.setInt(2, product.getPrice());
         ps.setString(3, product.getDescription());
         ps.setInt(4, product.getStatus());
         ps.setInt(5, product.getQuantity());
-        ps.setString(6, product.getDate());
+        ps.setString(6, product.getImage());
         ps.setInt(7, product.getCategory().getId());
         ps.setInt(8, product.getBrand().getId());
         ps.setInt(9, product.getMaterial().getId());
-        ps.setString(10, product.getImage());
+
+    }
+
+    public static void main(String[] args) {
+
+
     }
 }

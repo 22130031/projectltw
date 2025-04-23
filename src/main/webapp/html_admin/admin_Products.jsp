@@ -50,39 +50,7 @@
   <!-- /. NAV TOP  -->
 
   <nav class="navbar-default navbar-side" role="navigation">
-    <div class="sidebar-collapse">
-      <ul class="nav" id="main-menu">
-        <!--LINK-->
-
-        <li>
-          <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
-        </li>
-
-
-        <li>
-          <a href=admin_user.html><i class="fa fa-table "></i>USER<span class="badge"></span></a>
-        </li>
-        <li>
-          <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
-        </li>
-        <li>
-          <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
-        </li>
-        <li>
-          <a href="/fake_war_exploded/admin_Categories" class="active-link"><i class="fa fa-bar-chart-o"></i>Category</a>
-        </li>
-        <li>
-          <a href="/fake_war_exploded/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
-        </li>
-        <li>
-          <a href="#"><i class="fa fa-table "></i>My Link Four</a>
-        </li>
-        <li>
-          <a href="#"><i class="fa fa-edit "></i>My Link Five </a>
-        </li>
-
-      </ul>
-    </div>
+    <%@ include file="/html_admin/SideBar.jsp" %>
 
   </nav>
   <!-- /. NAV SIDE  -->
@@ -94,6 +62,7 @@
         </div>
       </div>
 
+      <a href="<%=request.getContextPath()%>/admin_Products/add" class="btn btn-primary btn-lg" a>Thêm Sản phẩm</a>
       <table id="example" class="display" style="width:100%">
         <thead>
         <tr>
@@ -103,9 +72,9 @@
           <th>Giá</th>
           <th>Mô tả</th>
           <th>Số lượng</th>
-          <th>Loại</th>
-          <th>Hãng</th>
-          <th>Chất liệu</th>
+<%--          <th>Loại</th>--%>
+<%--          <th>Hãng</th>--%>
+<%--          <th>Chất liệu</th>--%>
           <th>Tình trạng</th>
           <th>Thao tác</th>
         </tr>
@@ -115,15 +84,15 @@
         <c:forEach items="${productList}" var="product">
           <tr>
             <th scope="row">${product.getId()}</th>
-            <td><img  style="width: 100px; height: auto" src="images/${product.getImage()}"></td>
+            <td><img  style="width: 100px; height: auto" src="../images/thatlung4.jpg"></td>
             <td>${product.getName()}</td>
             <td>${product.getPrice()}</td>
             <td>${product.getDescription()}</td>
             <td>${product.getQuantity()}</td>
-            <td>${product.getCategory()}</td>
-            <td>${product.getBrand}</td>
-            <td>${product.getMaterial()}</td>
-            <td>${product.getStatus}</td>
+            <td>${product.getCategory().getName()}</td>
+<%--            <td>${product.getBrand}</td>--%>
+<%--            <td>${product.getMaterial()}</td>--%>
+<%--            <td>${product.getStatus}</td>--%>
             <td>
               <a href="<%=request.getContextPath()%>/admin_Products/edit?id=${product.getId()}"> <i
                       class="fa-solid fa-pen-to-square"></i></a>

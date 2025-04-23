@@ -2,7 +2,7 @@ package com.banthatlung.Dao.model;
 
 public class Material {
     private int id;
-    private String name;
+   public  String name;
 
     public Material(int id, String name) {
         this.id = id;

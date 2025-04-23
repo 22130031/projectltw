@@ -34,7 +34,7 @@
         <a href="${pageContext.request.contextPath}/home"><h1>Trang chủ</h1></a>
         <div class="menu">
             <div class="dropdown">
-                <a href="../html/danhmucsp.html">Danh mục sản phẩm</a>
+                <a href="${pageContext.request.contextPath}/home">Danh mục sản phẩm</a>
                 <div class="dropdown-content">
                     <a href="#">Thắt lưng nam</a>
                     <a href="#">Thắt lưng nữ</a>
@@ -61,7 +61,7 @@
                 <div class="dropdown-user">
                     <a href="#"><i class="fa-solid fa-user"></i></a>
                     <div class="dropdown-content-user">
-                        <a href="<c:url value="/View/Login.jsp"/>">Đăng nhập</a>
+                        <a href="${pageContext.request.contextPath}/login"/>">Đăng nhập</a>
                     </div>
                 </div>
             </c:if>
@@ -69,7 +69,7 @@
                 <div class="dropdown-user">
                     <a href="<c:url value='/View/profile.jsp'/>">
                         <img src="${pageContext.request.contextPath}/${sessionScope.auth.image}" alt="Avatar"
-                             style="width: 25px; height: 25px; border-radius: 50%;">
+                             style="width: 30px; height: 30px; border-radius: 50%;">
                     </a>
                     <div class="dropdown-content-user">
                         <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
@@ -85,14 +85,52 @@
 <div class="product-detail">
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
-        <img src="${pageContext.request.contextPath}/images/${pd.image}" alt="${pd.name}">
+        <img src="${pd.image}" alt="${pd.name}">
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
     <div class="product-info">
         <h2>${pd.name}</h2>
         <p class="price"><fmt:formatNumber value="${pd.price}"/> </p>
+        <!-- Chọn Màu Sắc -->
+        <div class="color-options">
+            <p>Chọn Màu Sắc:</p>
+            <div class="color-choices">
+                <button class="option-btn color-btn" data-color="Đen">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6mcojrgkaxk4b.webp" alt="Đen" class="option-image" width="20" height="20">
+                    <span>Đen</span>
+                </button>
+                <button class="option-btn color-btn" data-color="Nâu">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="Nâu" class="option-image" width="20" height="20">
+                    <span>Nâu</span>
+                </button>
+            </div>
+            <p>Màu đã chọn: <span id="selected-color">Chưa chọn</span></p>
+        </div>
 
+        <!-- Chọn Kích Cỡ -->
+        <div class="size-options">
+            <p>Chọn Kích Cỡ:</p>
+            <div class="size-choices">
+                <button class="option-btn size-btn" data-size="S">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="S" class="option-image" width="20" height="20">
+                    <span>S</span>
+                </button>
+                <button class="option-btn size-btn" data-size="M">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="M" class="option-image" width="20" height="20">
+                    <span>M</span>
+                </button>
+                <button class="option-btn size-btn" data-size="L">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="L" class="option-image" width="20" height="20">
+                    <span>L</span>
+                </button>
+                <button class="option-btn size-btn" data-size="XL">
+                    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m5hcmz4l3mdfbf.webp" alt="XL" class="option-image" width="20" height="20">
+                    <span>XL</span>
+                </button>
+            </div>
+            <p>Kích cỡ đã chọn: <span id="selected-size">Chưa chọn</span></p>
+        </div>
         <!-- Điều chỉnh số lượng -->
         <div class="quantity-options">
             <p>Số Lượng:</p>
@@ -112,6 +150,20 @@
         <p class="description">
             Thắt lưng làm từ da thật, thiết kế cổ điển, phù hợp với mọi lứa tuổi và phong cách. Độ bền cao, không bong tróc, mang đến vẻ ngoài sang trọng.
         </p>
+        <c:choose>
+            <c:when test="${empty sessionScope.auth}">
+                <a href="${pageContext.request.contextPath}/login"><button class="favorite-btn">Yêu Thích</button></a>
+            </c:when>
+            <c:otherwise>
+                <form action="${pageContext.request.contextPath}/add-favorite" method="post">
+                    <input type="hidden" name="productId" value="${pd.id}">
+                    <input type="hidden" name="productName" value="${pd.name}">
+                    <input type="hidden" name="imageUrl" value="${pd.image}">
+                    <input type="hidden" name="userId" value="${sessionScope.auth.id}">
+                    <button type="submit" class="favorite-btn"><i class="fa-solid fa-heart"></i>Yêu Thích</button>
+                </form>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 <div class="reviews-section">
@@ -123,38 +175,38 @@
             <div class="reviews-stars">★★★★★</div>
         </div>
         <form action="${pageContext.request.contextPath}/rfilter" method="get">
-        <div class="reviews-rating-filters">
-            <input type="hidden" name="pid" value="${pd.id}">
-            <button name="filter" value="tatca" class="reviews-filter-btn active">Tất Cả</button>
-            <button name="filter" value="5" class="reviews-filter-btn">5 Sao </button>
-            <button name="filter" value="4" class="reviews-filter-btn">4 Sao </button>
-            <button name="filter" value="3" class="reviews-filter-btn">3 Sao </button>
-            <button name="filter" value="2" class="reviews-filter-btn">2 Sao </button>
-            <button name="filter" value="1" class="reviews-filter-btn">1 Sao </button>
-            <button name="filter" value="Comment" class="reviews-filter-btn">Có Bình Luận</button>
-            <button name="filter" value="Img" class="reviews-filter-btn">Có Hình Ảnh / Video</button>
-        </div>
+            <div class="reviews-rating-filters">
+                <input type="hidden" name="pid" value="${pd.id}">
+                <button name="filter" value="tatca" class="reviews-filter-btn active">Tất Cả</button>
+                <button name="filter" value="5" class="reviews-filter-btn">5 Sao </button>
+                <button name="filter" value="4" class="reviews-filter-btn">4 Sao </button>
+                <button name="filter" value="3" class="reviews-filter-btn">3 Sao </button>
+                <button name="filter" value="2" class="reviews-filter-btn">2 Sao </button>
+                <button name="filter" value="1" class="reviews-filter-btn">1 Sao </button>
+                <button name="filter" value="Comment" class="reviews-filter-btn">Có Bình Luận</button>
+                <button name="filter" value="Img" class="reviews-filter-btn">Có Hình Ảnh / Video</button>
+            </div>
         </form>
     </div>
     <c:forEach var="r" items="${reviews}">
-    <div class="reviews-item">
-        <div class="reviews-header">
-            <img src="${pageContext.request.contextPath}/${r.uimg}" alt="User Avatar" class="reviews-user-avatar">
-            <div class="reviews-info">
-                <span class="reviews-username">${r.username}</span>
-                <span class="reviews-stars">
+        <div class="reviews-item">
+            <div class="reviews-header">
+                <img src="${r.uimg}" alt="User Avatar" class="reviews-user-avatar">
+                <div class="reviews-info">
+                    <span class="reviews-username">${r.username}</span>
+                    <span class="reviews-stars">
                 <c:forEach var="i" begin="1" end="${r.rating}">
-                                    ★
+                    ★
                 </c:forEach>
                 </span>
-                <span class="reviews-date">${r.reviewDate}</span>
+                    <span class="reviews-date">${r.reviewDate}</span>
+                </div>
+            </div>
+            <div class="reviews-content">
+                <p> ${r.reviewText}</p>
+                <img src="${r.url}" alt="Review Image" class="review-image">
             </div>
         </div>
-        <div class="reviews-content">
-            <p> ${r.reviewText}</p>
-            <img src="${r.url}" alt="Review Image" class="review-image">
-        </div>
-    </div>
     </c:forEach>
     <!-- Add Review Section -->
     <div class="reviews-add-review">
@@ -190,16 +242,16 @@
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
                 <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
-                </a>
-                <a href="https://www.instagram.com" target="_blank">
-                    <img src="../asset/image/logoInsta.png" alt="Instagram">
-                </a>
-                <a href="https://www.youtube.com" target="_blank">
-                    <img src="../asset/image/logoytb.jpg" alt="YouTube">
-                </a>
-                <a href="https://www.twitter.com" target="_blank">
-                    <img src="../asset/image/twitter.jpg" alt="Twitter">
-                </a>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="../asset/image/logoInsta.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="../asset/image/logoytb.jpg" alt="YouTube">
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <img src="../asset/image/twitter.jpg" alt="Twitter">
+            </a>
         </div>
     </div>
     <div class="footer-container">
@@ -296,7 +348,29 @@
             quantityInput.value = maxStock;
         }
     });
+    // Xử lý chọn màu sắc
+    const colorButtons = document.querySelectorAll('.color-btn');
+    const selectedColor = document.getElementById('selected-color');
 
+    colorButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            colorButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedColor.textContent = button.getAttribute('data-color');
+        });
+    });
+
+    // Xử lý chọn kích cỡ
+    const sizeButtons = document.querySelectorAll('.size-btn');
+    const selectedSize = document.getElementById('selected-size');
+
+    sizeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            sizeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedSize.textContent = button.getAttribute('data-size');
+        });
+    });
 </script>
 </body>
 </html>

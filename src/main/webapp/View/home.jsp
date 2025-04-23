@@ -35,9 +35,15 @@
 
             <div class="dropdown pt-1">
                 <a href="#" class="text-white mx-2" id="user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <c:if test="${sessionScope.auth ==null}">
                     <i class="fa-solid fa-user"></i>
+                    </c:if>
+                    <c:if test="${sessionScope.auth !=null}">
+                    <img src="${pageContext.request.contextPath}/${sessionScope.auth.image}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
+                    </c:if>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/profile">Hồ sơ</a></li>
                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Đăng nhập</a></li>
                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/change-password">Đổi mật khẩu</a></li>
                 </ul>
@@ -98,9 +104,10 @@
             <div class="col-md-3 mb-4">
                 <div class="card h-100">
                     <!-- Link đến chi tiết sản phẩm -->
-                    <a href="../projectl/product?pid=${product.id != null ? product.id : 'default'}">
+
+                    <a href="../product?pid=${product.id != null ? product.id : 'default'}">
                         <!-- Hình ảnh sản phẩm với kiểm tra dữ liệu -->
-                        <img src="./images/${product.image != null && !product.image.isEmpty() ? product.image : 'https://via.placeholder.com/200'}"
+                        <img src="../images/thatlung1.jpg"
                              class="card-img-top"
                              alt="${product.name != null ? product.name : 'Sản phẩm không có tên'}"
                              style="object-fit: cover; height: 200px; width: 100%;">
@@ -125,7 +132,7 @@
                             </c:choose>
                         </h4>
 
-                        <form action="../projectl/Cart" method="post">
+                        <form action="${pageContext.request.contextPath}/Cart" method="post">
                             <input type="hidden" name="action" value="add">
                             <input type="hidden" name="id" value="${product.id != null ? product.id : 'default'}">
                             <button type="submit" class="btn btn-warning mt-auto">
