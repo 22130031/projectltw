@@ -105,9 +105,9 @@
                 <div class="card h-100">
                     <!-- Link đến chi tiết sản phẩm -->
 
-                    <a href="../product?pid=${product.id != null ? product.id : 'default'}">
+                    <a href="${pageContext.request.contextPath}/product?pid=${product.id != null ? product.id : 'default'}">
                         <!-- Hình ảnh sản phẩm với kiểm tra dữ liệu -->
-                        <img src="../images/thatlung1.jpg"
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lsyge42i2bh53f.webp"
                              class="card-img-top"
                              alt="${product.name != null ? product.name : 'Sản phẩm không có tên'}"
                              style="object-fit: cover; height: 200px; width: 100%;">

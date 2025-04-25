@@ -2,9 +2,9 @@ package com.banthatlung.Controller;
 
 import com.banthatlung.Dao.model.User;
 import com.banthatlung.services.AuthService;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
 
 import java.io.IOException;
 
