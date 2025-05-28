@@ -81,40 +81,7 @@
     </div>
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav" id="main-menu">
-
-
-                <li>
-                    <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
-                </li>
-
-
-                <li class="active-link">
-                    <a href="#"><i class="fa fa-table "></i>USER<span class="badge"></span></a>
-                </li>
-                <li>
-                    <a href="admin_Products.html"><i class="fa fa-edit "></i>PRODUCTS<span></span></a>
-                </li>
-                <li>
-                    <a href="admin_Orders.html"><i class="fa fa-qrcode "></i>ORDERS</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i>Category</a>
-                </li>
-
-                <li>
-                    <a href="#"><i class="fa fa-edit "></i>My Link Three </a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-table "></i>My Link Four</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-edit "></i>My Link Five </a>
-                </li>
-
-            </ul>
-        </div>
+        <%@ include file="/html_admin/SideBar.jsp" %>
 
     </nav>
     <!-- /. NAV SIDE  -->
