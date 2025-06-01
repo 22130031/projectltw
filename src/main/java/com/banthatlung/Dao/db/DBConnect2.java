@@ -29,8 +29,8 @@ public class DBConnect2 {
             return conn.prepareStatement(sql);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     private static void makeConnect() throws ClassNotFoundException, SQLException {

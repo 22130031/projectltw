@@ -2,10 +2,10 @@ package com.banthatlung.Controller;
 
 import com.banthatlung.Dao.model.User;
 import com.banthatlung.services.ProfileService;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 
 import java.io.File;
 import java.io.IOException;
