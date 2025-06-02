@@ -5,8 +5,8 @@
   Time: 10:31 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -14,8 +14,8 @@
     <meta charset="UTF-8">
     <title>Đăng nhập</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
     <style>
         <%@include file="../css/footer.css" %>
     </style>
@@ -34,27 +34,22 @@
             display: flex;
             justify-content: space-around;
             width: 80%;
-            margin-top: 50px;
-            margin-bottom: 50px;
+            margin: 50px auto;
             color: #ffffff;
             border-right: 2px solid #3a3a3a;
         }
-
         .login-container .section {
             width: 45%;
         }
-
         .login-container h2 {
             font-size: 24px;
             margin-bottom: 20px;
             color: #ffffff;
         }
-
         .login-container label {
             font-size: 14px;
             color: #b0b0b0;
         }
-
         .login-container input[type="text"],
         .login-container input[type="password"] {
             width: 100%;
@@ -64,12 +59,10 @@
             border: 1px solid #444444;
             color: #ffffff;
         }
-
         .login-container input[type="text"]::placeholder,
         .login-container input[type="password"]::placeholder {
             color: #888888;
         }
-
         .login-container .btn {
             background-color: #000000;
             color: #ffffff;
@@ -78,11 +71,9 @@
             cursor: pointer;
             font-weight: bold;
         }
-
         .login-container .btn:hover {
             background-color: #555555;
         }
-
         .login-container .forgot-password {
             color: #888888;
             font-size: 14px;
@@ -100,7 +91,13 @@
         .strong { color: green; }
         .match { color: green; }
         .no-match { color: red; }
+        .button-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
     </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <header>
@@ -131,17 +128,17 @@
                     </div>
                 </div>
             </form>
-            <c:if test="${sessionScope.auth ==null}">
+            <c:if test="${sessionScope.auth == null}">
                 <div class="dropdown-user">
                     <a href="#"><i class="fa-solid fa-user"></i></a>
                     <div class="dropdown-content-user">
-                        <a href="<c:url value="${pageContext.request.contextPath}"/>">Đăng nhập</a>
+                        <a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
                     </div>
                 </div>
             </c:if>
-            <c:if test="${sessionScope.auth !=null}">
+            <c:if test="${sessionScope.auth != null}">
                 <div class="dropdown-user">
-                    <a href="<c:url value='/View/profile.jsp'/>">
+                    <a href="${pageContext.request.contextPath}/profile.jsp">
                         <img src="${pageContext.request.contextPath}/${sessionScope.auth.image}" alt="Avatar"
                              style="width: 25px; height: 25px; border-radius: 50%;">
                     </a>
@@ -149,83 +146,74 @@
                         <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
                     </div>
                 </div>
-                <a href=${pageContext.request.contextPath}/Cart?action=showCart><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="${pageContext.request.contextPath}/Cart?action=showCart"><i class="fa-solid fa-cart-shopping"></i></a>
             </c:if>
         </div>
     </div>
 </header>
 
 <div id="container">
-    <!-- Phần đăng nhập và đăng ký -->
     <div class="login-container">
         <div class="section">
             <h2>Đăng nhập</h2>
-
-            <!-- Hiển thị lỗi nếu có -->
             <c:if test="${not empty error}">
                 <div class="error-message" style="color: red; margin-bottom: 10px;">
                     <p>${error}</p>
                 </div>
             </c:if>
-
             <form action="${pageContext.request.contextPath}/login" method="post">
-                <label for="email">Tên tài khỏan</label>
+                <label for="email">Tên tài khoản</label>
                 <input type="text" id="email" name="uname" required>
-
                 <label for="password">Mật khẩu</label>
                 <input type="password" id="password" name="pass" required>
-
                 <a href="${pageContext.request.contextPath}/forgot-password" class="forgot-password">Quên mật khẩu?</a>
-                <button type="submit" class="btn">Đăng nhập</button>
+                <div class="button-group">
+                    <button type="submit" class="btn">Đăng nhập</button>
+                    <div id="g_id_onload"
+                         data-client_id="256201613422-cbv7rg2ljj909hogpvn1gjtc46ti3bb5.apps.googleusercontent.com"
+                         data-callback="handleCredentialResponse"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left"></div>
+                </div>
             </form>
         </div>
-
         <div class="section">
             <h2>Đăng ký</h2>
             <form action="${pageContext.request.contextPath}/register" method="post">
                 <label for="first-name">Email</label>
                 <input type="text" id="first-name" name="email" required>
-
                 <label for="last-name">Tên tài khoản</label>
                 <input type="text" id="last-name" name="username" required>
-
                 <label for="register-password">Mật khẩu</label>
                 <input type="password" id="register-password" name="password" required
                        onkeyup="checkPasswordStrength()">
-
                 <div id="password-strength" class="password-strength"></div>
-
                 <label for="confirm-password">Xác nhận mật khẩu</label>
                 <input type="password" id="confirm-password" name="cpassword" required
                        onkeyup="checkPasswordMatch()">
-
                 <div id="password-match" class="password-match"></div>
                 <button type="submit" class="btn">Đăng ký</button>
             </form>
         </div>
     </div>
 </div>
+
 <script>
     function checkPasswordStrength() {
         const password = document.getElementById('register-password').value;
         const strengthDisplay = document.getElementById('password-strength');
-
-        // Tiêu chí kiểm tra
         const minLength = password.length >= 8;
         const hasUpperCase = /[A-Z]/.test(password);
         const hasLowerCase = /[a-z]/.test(password);
         const hasNumbers = /\d/.test(password);
         const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-        // Đếm số tiêu chí đạt
         let strength = 0;
         if (minLength) strength++;
         if (hasUpperCase) strength++;
         if (hasLowerCase) strength++;
         if (hasNumbers) strength++;
         if (hasSpecialChar) strength++;
-
-        // Hiển thị độ mạnh
         if (password.length === 0) {
             strengthDisplay.textContent = '';
             strengthDisplay.className = 'password-strength';
@@ -239,8 +227,6 @@
             strengthDisplay.textContent = 'Mật khẩu mạnh';
             strengthDisplay.className = 'password-strength strong';
         }
-
-        // Gọi kiểm tra khớp mật khẩu khi mật khẩu thay đổi
         checkPasswordMatch();
     }
 
@@ -248,7 +234,6 @@
         const password = document.getElementById('register-password').value;
         const confirmPassword = document.getElementById('confirm-password').value;
         const matchDisplay = document.getElementById('password-match');
-
         if (confirmPassword.length === 0) {
             matchDisplay.textContent = '';
             matchDisplay.className = 'password-match';
@@ -260,31 +245,69 @@
             matchDisplay.className = 'password-match no-match';
         }
     }
+
+    function handleCredentialResponse(response) {
+        const responsePayload = decodeJwtResponse(response.credential);
+        console.log("ID: " + responsePayload.sub);
+        console.log("Tên: " + responsePayload.name);
+        console.log("Email: " + responsePayload.email);
+        console.log("Image: " + responsePayload.picture);
+
+        fetch('${pageContext.request.contextPath}/auth/google', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_token: response.credential })
+        })
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert(`Đăng nhập thành công! Chào ${responsePayload.name}`);
+                    window.location.href = '${pageContext.request.contextPath}/home';
+                } else {
+                    alert('Đăng nhập bằng Google thất bại: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã có lỗi xảy ra khi đăng nhập bằng Google.');
+            });
+    }
+
+    function decodeJwtResponse(token) {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    }
 </script>
-<!-- Footer -->
+
 <footer class="footer">
     <div class="footer-brand">
         <p>CHUYÊN CUNG CẤP CÁC LOẠI THẮT LƯNG.</p>
-        <p>   Chất lượng - Uy tín - Tin cậy</p>
+        <p>Chất lượng - Uy tín - Tin cậy</p>
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
-                <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
-                <a href="https://www.instagram.com" target="_blank"></a>
-                <img src="../asset/image/logoInsta.png" alt="Instagram">
+                <img src="${pageContext.request.contextPath}/asset/image/icons8-facebook-48.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="${pageContext.request.contextPath}/asset/image/logoInsta.png" alt="Instagram">
             </a>
             <a href="https://www.youtube.com" target="_blank">
-                <img src="../asset/image/logoytb.jpg" alt="YouTube">
+                <img src="${pageContext.request.contextPath}/asset/image/logoytb.jpg" alt="YouTube">
             </a>
             <a href="https://www.twitter.com" target="_blank">
-                <img src="../asset/image/twitter.jpg" alt="Twitter">
+                <img src="${pageContext.request.contextPath}/asset/image/twitter.jpg" alt="Twitter">
             </a>
         </div>
     </div>
     <div class="footer-container">
-        <!-- Logo và mạng xã hội -->
-
         <div class="footer-brand">
-            <img src="../asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
+            <img src="${pageContext.request.contextPath}/asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
             <p>Chất lượng - Uy tín - Tin cậy</p>
             <div class="social-icons">
                 <i class="fa-brands fa-facebook"></i>
@@ -293,8 +316,6 @@
                 <i class="fa-brands fa-youtube"></i>
             </div>
         </div>
-
-        <!-- Danh sách liên kết -->
         <div class="footer-links">
             <div>
                 <h3>Sản phẩm</h3>
@@ -323,8 +344,6 @@
                 </ul>
             </div>
         </div>
-
-        <!-- Thông tin công ty -->
         <div class="footer-contact">
             <h3>Liên hệ</h3>
             <p>Địa chỉ: Số 8, Tam Bình, Thủ Đức</p>
@@ -334,7 +353,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
+        <p>© 2025 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
     </div>
 </footer>
 </body>
