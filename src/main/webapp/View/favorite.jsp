@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -64,7 +65,9 @@
     <div class="product-container">
         <c:forEach var="favorite" items="${favoriteProducts}">
             <div class="product-card">
+                <a href="${pageContext.request.contextPath}/product?pid=${favorite.productId}">
                 <img src="${favorite.imageUrl}" alt="${favorite.productName}">
+                    <a/>
                 <h3>${favorite.productName}</h3>
                 <form action="${pageContext.request.contextPath}/remove-favorite" method="post">
                     <input type="hidden" name="productId" value="${favorite.productId}">
