@@ -67,7 +67,7 @@
             <div class="product-card">
                 <a href="${pageContext.request.contextPath}/product?pid=${favorite.productId}">
                 <img src="${favorite.imageUrl}" alt="${favorite.productName}">
-                    <a/>
+                    </a>
                 <h3>${favorite.productName}</h3>
                 <form action="${pageContext.request.contextPath}/remove-favorite" method="post">
                     <input type="hidden" name="productId" value="${favorite.productId}">
