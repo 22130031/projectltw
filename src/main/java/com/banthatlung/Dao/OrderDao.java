@@ -31,53 +31,47 @@ public class OrderDao {
 
     public Order getOrder(int id) throws SQLException {
         Order order = null;
-        PreparedStatement stmt = DBConnect2.getPreparedStatement("SELECT * from orders where id = ?");
-
-        ps.setInt(1, id);
-        rs = ps.executeQuery();
-        while (rs.next()) {
-            order = new Order(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("address"), rs.getDate("orderDate").toString(), rs.getDate("update_date").toString(), rs.getInt("status"), rs.getInt("total_amount"));
+        String sql = "SELECT * from orders where id = ?";
+        try (PreparedStatement ps = DBConnect2.getPreparedStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    order = new Order(rs.getInt("id"), rs.getString("name"), rs.getString("phone"),
+                            rs.getString("address"), rs.getDate("orderDate").toString(),
+                            rs.getDate("update_date").toString(), rs.getInt("status"), rs.getInt("total_amount"));
+                }
+            }
         }
         return order;
     }
 
     public int addOrder(Order order) {
-        int generatedId = -1; // Default value if the insertion fails
+        int generatedId = -1;
         String sql = "INSERT INTO orders (name, phone, address, status, total_amount) VALUES (?, ?, ?, ?, ?)";
 
-        try {
-            // Set the values for the prepared statement
-            PreparedStatement stmt = DBConnect2.getPreparedStatement(sql);
-            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // Request generated keys
+        try (Connection con = DBConnect2.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
             ps.setString(1, order.getName());
             ps.setString(2, order.getphone());
             ps.setString(3, order.getAddress());
-            ps.setInt(4, 1);
+            ps.setInt(4, 1); // Trạng thái chờ xác nhận
             ps.setInt(5, order.getTotal_amount());
 
-            // Execute the insert statement
             ps.executeUpdate();
 
-            // Retrieve the generated keys
-            try (ResultSet rs = ps.getGeneratedKeys()) {
-                if (rs.next()) {
-                    generatedId = rs.getInt(1); // Get the generated ID
-                }
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                generatedId = rs.getInt(1);
             }
+
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle exceptions
-        } finally {
-            // Close resources to prevent memory leaks
-            try {
-                if (ps != null) ps.close();
-                if (con != null) con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            e.printStackTrace();
         }
 
-        return generatedId; // Return the generated ID
+        return generatedId;
     }
+
 
 
     public void updateOrder(Order order) {
