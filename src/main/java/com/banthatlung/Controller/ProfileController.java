@@ -17,6 +17,12 @@ import java.sql.SQLException;
 public class ProfileController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("auth");
+        System.out.println("Auth object: " + user);
+        if (user != null) {
+            System.out.println("IsActivated: " + user.isActivated());
+        }
         req.getRequestDispatcher("/View/profile.jsp").forward(req, resp);
     }
 

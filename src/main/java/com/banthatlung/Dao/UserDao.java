@@ -8,7 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao {
-
+    public boolean activateUserEmail(String userId) throws SQLException {
+        String sql = "UPDATE users SET is_activated = TRUE WHERE user_id = ?";
+        try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
+            stmt.setString(1, userId);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+    }
     private User mapUser(ResultSet rs) throws SQLException {
         return new User(
                 rs.getString(1),  // user_id
@@ -90,13 +97,14 @@ public class UserDao {
 
     // Cập nhật thông tin cá nhân người dùng
     public boolean updateProfile(User user) {
-        String sql = "UPDATE users SET full_name = ?, email = ?, phone_number = ?, date_of_birth = ? WHERE user_id = ?";
+        String sql = "UPDATE users SET full_name = ?, email = ?, phone_number = ?, date_of_birth = ? is_activated = ? WHERE user_id = ?";
         try (PreparedStatement stmt = DBConnect2.getPreparedStatement(sql)) {
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getPhone());
             stmt.setDate(4, user.getBirthday());
-            stmt.setString(5, user.getId());
+            stmt.setBoolean(5, user.isActivated());
+            stmt.setString(6, user.getId());
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
