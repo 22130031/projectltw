@@ -17,6 +17,14 @@ import java.util.List;
 public class FavoriteServlet extends HttpServlet {
     private final FavoriteDao favoriteDao = new FavoriteDao();
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("auth");
+        if (user == null) {
+            resp.sendRedirect(req.getContextPath() + "/View/login.jsp");
+            return;
+        }
+        List<Favorite> favoriteProducts = favoriteDao.getAllByUserId(user.getId());
+        req.setAttribute("favoriteProducts", favoriteProducts);
         req.getRequestDispatcher("/View/favorite.jsp").forward(req, resp);
     }
     @Override

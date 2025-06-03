@@ -10,4 +10,8 @@ public class ProfileService {
     public boolean updateUserProfile(User u) throws SQLException {
         return userDao.updateProfile(u);
     }
+
+    public boolean activateUserEmail(String id) throws SQLException {
+        return userDao.activateUserEmail(id);
+    }
 }
