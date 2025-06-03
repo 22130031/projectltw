@@ -73,7 +73,8 @@
         }
         .menu-text p {
             margin: 10px 0;
-            font liegen-size: 14px;
+            font: liegen;
+            size: 14px;
         }
         .menu-text a {
             text-decoration: none;
