@@ -73,7 +73,7 @@
         }
         .menu-text p {
             margin: 10px 0;
-            font liegen-size: 14px;
+            size: 14px;
         }
         .menu-text a {
             text-decoration: none;
@@ -263,7 +263,7 @@
     <div class="content">
         <h1>Hồ Sơ Của Tôi</h1>
         <p class="subtitle">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
-        <c:if test="${not sessionScope.auth.activated}">
+        <c:if test="${sessionScope.auth.activated}">
             <p class="activation-message">
                 Bạn chưa xác thực email. <a href="${pageContext.request.contextPath}/activate?action=send">Bấm vào đây để xác thực</a>.
             </p>
