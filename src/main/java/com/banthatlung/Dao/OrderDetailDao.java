@@ -9,7 +9,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDetailDao {
+    public List<OrderDetail> getDetailsByUser(String userId) throws SQLException {
+        List<OrderDetail> list = new ArrayList<>();
+        String sql = """
+            SELECT od.*, p.name AS product_name
+            FROM order_details od
+            JOIN products p ON od.product_id = p.id
+            WHERE od.user_id = ?
+            ORDER BY od.order_id DESC
+        """;
 
+        PreparedStatement ps = DBConnect2.getPreparedStatement(sql);
+        ps.setString(1, userId);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new OrderDetail(
+                    rs.getInt("id"),
+                    rs.getString("user_id"),
+                    rs.getInt("order_id"),
+                    rs.getInt("product_id"),
+                    rs.getString("product_name"),
+                    rs.getInt("quantity"),
+                    rs.getInt("price")
+            ));
+        }
+        return list;
+    }
 
     public List<OrderDetail> getList(int id) throws SQLException {
         List<OrderDetail> list = new ArrayList<>();
@@ -50,23 +75,6 @@ public class OrderDetailDao {
         return isAdded;
     }
 
-    public void updateOrder(Order order) {
-        try {
-            String sql = "UPDATE orders SET user_id = ?, status = ?, total_amount = ?, update_date = CURRENT_TIMESTAMP WHERE id = ?";
-            PreparedStatement ps = DBConnect2.getPreparedStatement(sql);
-            ps.setInt(1, order.getId());
-            ps.setInt(2, order.getStatus());
-            ps.setInt(3, order.getTotal_amount());
-            ps.setInt(4, order.getId());
-            int rowsUpdated = ps.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Order updated successfully!");
-            }
-        } catch (
-                SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void delete(int id) throws SQLException {
         PreparedStatement ps = DBConnect2.getPreparedStatement("DELETE FROM Orders WHERE id = ?");

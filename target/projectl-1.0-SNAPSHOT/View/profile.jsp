@@ -1,5 +1,5 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: ASUS
@@ -24,7 +24,6 @@
         <%@include file="../css/header.css" %>
     </style>
     <style>
-        /* Toàn bộ trang */
         body {
             font-family: Arial, sans-serif;
             background-color: #212121;
@@ -32,7 +31,6 @@
             margin: 0;
             padding: 0;
         }
-
         .container {
             display: flex;
             justify-content: space-around;
@@ -40,8 +38,6 @@
             color: #ffffff;
             border-right: 2px solid #3a3a3a;
         }
-
-        /* Sidebar */
         .sidebar {
             width: 250px;
             background-color: #333;
@@ -51,12 +47,10 @@
             align-items: center;
             border-radius: 10px;
         }
-
         .user-info {
             text-align: center;
             margin-bottom: 20px;
         }
-
         .avatar img {
             width: 80px;
             height: 80px;
@@ -65,69 +59,68 @@
             object-fit: cover;
         }
         .avatar img:hover {
-            transform: scale(1.1); /* Phóng to nhẹ khi hover */
+            transform: scale(1.1);
         }
-
         .username {
             font-size: 16px;
             font-weight: bold;
             margin: 10px 0;
         }
-
-
         .edit-profile {
             font-size: 14px;
             color: #e63946;
             cursor: pointer;
         }
-
         .menu-text p {
             margin: 10px 0;
-            font-size: 14px;
+            size: 14px;
         }
-
         .menu-text a {
             text-decoration: none;
             color: #f0f0f0;
             transition: color 0.3s;
         }
-
         .menu-text a:hover {
             color: #e63946;
         }
-
-        /* Content */
         .content {
             flex: 1;
             padding: 20px;
         }
-
         .subtitle {
             font-size: 12px;
             color: #aaa;
             margin-bottom: 20px;
         }
-
-        /* Form */
+        .activation-message {
+            color: #e63946;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .activation-message a {
+            color: #e63946;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .activation-message a:hover {
+            color: #d72f3e;
+        }
         .profile-form {
             background-color: #222;
             padding: 20px;
             border-radius: 10px;
         }
-
         .form-group {
             margin-bottom: 20px;
         }
-
         label {
             font-size: 14px;
             display: block;
             margin-bottom: 5px;
         }
-
         input[type="email"], input[type="date"] {
-            width: 100%; /* Thu nhỏ chiều rộng input */
-            max-width: 400px; /* Giới hạn kích thước lớn nhất */
+            width: 100%;
+            max-width: 400px;
             padding: 10px;
             font-size: 14px;
             border: 1px solid #444;
@@ -135,15 +128,14 @@
             background-color: #333;
             color: #f0f0f0;
         }
-
         input[type="email"]:focus, input[type="date"]:focus {
             border-color: #e63946;
             outline: none;
             box-shadow: 0 0 5px #e63946;
         }
-        .name-input{
-            width: 100%; /* Thu nhỏ chiều rộng input */
-            max-width: 400px; /* Giới hạn kích thước lớn nhất */
+        .name-input {
+            width: 100%;
+            max-width: 400px;
             padding: 10px;
             font-size: 14px;
             border: 1px solid #444;
@@ -151,22 +143,19 @@
             background-color: #333;
             color: #f0f0f0;
         }
-        .name-input:focus{
+        .name-input:focus {
             border-color: #e63946;
             outline: none;
             box-shadow: 0 0 5px #e63946;
         }
-
         .gender-options label {
             margin-right: 15px;
             font-size: 14px;
             cursor: pointer;
         }
-
         .gender-options input {
             margin-right: 5px;
         }
-
         .save-button {
             width: 10%;
             max-width: 400px;
@@ -179,11 +168,9 @@
             cursor: pointer;
             margin-top: 20px;
         }
-
         .save-button:hover {
             background-color: #d72f3e;
         }
-
         .avatar-upload-label {
             display: block;
             margin-top: 10px;
@@ -192,13 +179,10 @@
             cursor: pointer;
             text-decoration: underline;
         }
-
         .avatar-upload-label:hover {
             color: #d72f3e;
         }
-
     </style>
-
 </head>
 <body>
 <!--Header-->
@@ -230,7 +214,7 @@
                     </div>
                 </div>
             </form>
-            <c:if test="${sessionScope.auth ==null}">
+            <c:if test="${sessionScope.auth == null}">
                 <div class="dropdown-user">
                     <a href="#"><i class="fa-solid fa-user"></i></a>
                     <div class="dropdown-content-user">
@@ -238,7 +222,7 @@
                     </div>
                 </div>
             </c:if>
-            <c:if test="${sessionScope.auth !=null}">
+            <c:if test="${sessionScope.auth != null}">
                 <div class="dropdown-user">
                     <a href="${pageContext.request.contextPath}/profile">
                         <img src="${sessionScope.auth.image}" alt="Avatar"
@@ -248,7 +232,7 @@
                         <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
                     </div>
                 </div>
-                <a href=${pageContext.request.contextPath}/Cart?action=showCart><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="${pageContext.request.contextPath}/Cart?action=showCart"><i class="fa-solid fa-cart-shopping"></i></a>
             </c:if>
         </div>
     </div>
@@ -279,6 +263,17 @@
     <div class="content">
         <h1>Hồ Sơ Của Tôi</h1>
         <p class="subtitle">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+        <c:if test="${sessionScope.auth.activated}">
+            <p class="activation-message">
+                Bạn chưa xác thực email. <a href="${pageContext.request.contextPath}/activate?action=send">Bấm vào đây để xác thực</a>.
+            </p>
+        </c:if>
+        <c:if test="${not empty message}">
+            <p class="activation-message">${message}</p>
+        </c:if>
+        <c:if test="${not empty error}">
+            <p class="activation-message" style="color: #ff4d4d;">${error}</p>
+        </c:if>
         <div class="profile-form">
             <form action="${pageContext.request.contextPath}/profile" method="post">
                 <div class="form-group">
@@ -309,24 +304,22 @@
 <footer class="footer">
     <div class="footer-brand">
         <p>CHUYÊN CUNG CẤP CÁC LOẠI THẮT LƯNG.</p>
-        <p>   Chất lượng - Uy tín - Tin cậy</p>
+        <p>Chất lượng - Uy tín - Tin cậy</p>
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
                 <img src="../asset/image/icons8-facebook-48.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com" target="_blank">
-                    <img src="../asset/image/logoInsta.png" alt="Instagram">
-                </a>
-                <a href="https://www.youtube.com" target="_blank">
-                    <img src="../asset/image/logoytb.jpg" alt="YouTube">
-                </a>
-                <a href="https://www.twitter.com" target="_blank">
-                    <img src="../asset/image/twitter.jpg" alt="Twitter">
-                </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="../asset/image/logoInsta.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="../asset/image/logoytb.jpg" alt="YouTube">
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <img src="../asset/image/twitter.jpg" alt="Twitter">
+            </a>
         </div>
     </div>
     <div class="footer-container">
-        <!-- Logo và mạng xã hội -->
-
         <div class="footer-brand">
             <img src="../asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
             <p>Chất lượng - Uy tín - Tin cậy</p>
@@ -337,8 +330,6 @@
                 <i class="fa-brands fa-youtube"></i>
             </div>
         </div>
-
-        <!-- Danh sách liên kết -->
         <div class="footer-links">
             <div>
                 <h3>Sản phẩm</h3>
@@ -367,8 +358,6 @@
                 </ul>
             </div>
         </div>
-
-        <!-- Thông tin công ty -->
         <div class="footer-contact">
             <h3>Liên hệ</h3>
             <p>Địa chỉ: Số 8, Tam Bình, Thủ Đức</p>
@@ -378,7 +367,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
+        <p>© 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
     </div>
 </footer>
 <script>
@@ -386,16 +375,12 @@
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-
-            // Hiển thị hình ảnh được chọn
             reader.onload = function (e) {
                 document.getElementById("profile-avatar").src = e.target.result;
             };
-
             reader.readAsDataURL(file);
         }
     });
 </script>
 </body>
 </html>
-

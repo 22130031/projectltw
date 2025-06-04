@@ -4,9 +4,7 @@ package com.banthatlung.Dao;
 import com.banthatlung.Dao.db.DBConnect2;
 import com.banthatlung.Dao.model.PurchaseHistory;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 

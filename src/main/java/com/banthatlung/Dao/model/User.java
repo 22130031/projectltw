@@ -14,7 +14,7 @@ public class User implements Serializable {
     private Date birthday;
     private String gender;
     private String image;
-
+    private boolean isActivated;
     public String getId() {
         return id;
     }
@@ -111,5 +111,13 @@ public class User implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public boolean isActivated() {
+        return isActivated;
+    }
+
+    public void setActivated(boolean activated) {
+        isActivated = activated;
     }
 }

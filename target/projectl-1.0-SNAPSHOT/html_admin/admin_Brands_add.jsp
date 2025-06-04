@@ -47,35 +47,7 @@
   <!-- /. NAV TOP  -->
 
   <nav class="navbar-default navbar-side" role="navigation">
-    <div class="sidebar-collapse">
-      <ul class="nav" id="main-menu">
-        <!--LINK-->
-
-        <li>
-          <a href="admin_Disboard.html"><i class="fa fa-desktop "></i>Dashboard</a>
-        </li>
-
-
-        <li>
-          <a href=<%=request.getContextPath()%>/admin_Users ><i class="fa fa-table "></i>USER<span class="badge"></span></a>
-        </li>
-        <li>
-          <a href="<%=request.getContextPath()%>/admin_Products"><i class="fa fa-edit "></i>PRODUCT<span></span></a>
-        </li>
-        <li>
-          <a href="<%=request.getContextPath()%>/admin_Orders"><i class="fa fa-qrcode "></i>ORDERS</a>
-        </li>
-        <li>
-          <a href="<%=request.getContextPath()%>/admin_Categories" ><i class="fa fa-bar-chart-o"></i>Category</a>
-        </li>
-        <li>
-          <a href="<%=request.getContextPath()%>/admin_Brands" class="active-link"><i class="fa fa-edit "></i>Brands</a>
-        </li>
-        <a href="/fake_war_exploded/admin_Brands"><i class="fa fa-edit "></i>Brands</a>
-        </li>
-
-      </ul>
-    </div>
+    <%@ include file="/html_admin/SideBar.jsp" %>
 
   </nav>
   <!-- /. NAV SIDE  -->
