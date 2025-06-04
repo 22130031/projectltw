@@ -61,7 +61,6 @@
             <!-- /. ROW  -->
 
 
-            <tbody>
             <table id="example" class="display" style="width:100%">
                 <thead>
                 <tr>
@@ -72,13 +71,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <%-- Ví dụ: Lặp qua danh sách dữ liệu từ backend --%>
                 <c:forEach items="${OrderDetailList}" var="cate">
                     <tr>
-                        <th scope="row">${cate.getId()}</th>
-                        <td>${cate.getProduct_id()}</td>
-                        <td>${cate.getQuantity()}</td>
-                        <td>${cate.getPrice()}</td>
+                        <td>${cate.id}</td>
+                        <td>${cate.product_id}</td>
+                        <td>${cate.quantity}</td>
+                        <td>${cate.price}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
