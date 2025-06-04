@@ -76,16 +76,25 @@ public class CartController extends HttpServlet {
 
     public void showCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        HashMap<Integer, ProductCart> carts = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
-        req.setAttribute("cart", carts);
+        String keyword = req.getParameter("search");
+        HashMap<Integer, ProductCart> cart = (HashMap<Integer, ProductCart>) session.getAttribute("cart");
 
-        if (req.getHeader("X-Requested-With") != null) {
-            // Nếu yêu cầu là AJAX, chỉ trả về nội dung giỏ hàng
-            req.getRequestDispatcher("/View/Cart.jsp").include(req, resp);
+        HashMap<Integer, ProductCart> filteredCart = new HashMap<>();
+
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            String lowerKeyword = keyword.toLowerCase();
+            for (ProductCart item : cart.values()) {
+                if (item.getProduct().getName().toLowerCase().contains(lowerKeyword)) {
+                    filteredCart.put(item.getProduct().getId(), item);
+                }
+            }
+            req.setAttribute("search", keyword);
+            req.setAttribute("cart", filteredCart);
         } else {
-            // Nếu không phải AJAX, trả về toàn bộ trang
-            req.getRequestDispatcher("/View/Cart.jsp").forward(req, resp);
+            req.setAttribute("cart", cart);
         }
+
+        req.getRequestDispatcher("/View/Cart.jsp").forward(req, resp);
     }
 
     public static void addToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
