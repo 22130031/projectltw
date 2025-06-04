@@ -5,8 +5,8 @@
   Time: 5:15 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -15,6 +15,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Tiết Sản Phẩm</title>
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="${pd.name}">
+    <meta property="og:description" content="Thắt lưng làm từ da thật, thiết kế cổ điển, phù hợp với mọi lứa tuổi và phong cách.">
+    <meta property="og:image" content="${pd.image}">
+    <meta property="og:url" content="${pageContext.request.requestURL}">
+    <meta property="og:type" content="product">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         <%@include file="../css/footer.css" %>
@@ -24,6 +30,22 @@
     </style>
     <style>
         <%@include file="../css/ProductDetail.css" %>
+        /* CSS cho nút chia sẻ */
+        .share-buttons {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .share-buttons a {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .share-buttons a:hover {
+            color: #007bff;
+        }
     </style>
 </head>
 <body>
@@ -86,6 +108,21 @@
     <!-- Ảnh Sản Phẩm -->
     <div class="product-image">
         <img src="${pd.image}" alt="${pd.name}">
+        <!-- Nút chia sẻ mạng xã hội -->
+        <div class="share-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${pageContext.request.requestURL}" target="_blank" title="Chia sẻ lên Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" title="Chia sẻ lên Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=${pageContext.request.requestURL}&text=${pd.name}" target="_blank" title="Chia sẻ lên Twitter">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" title="Chia sẻ lên YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+        </div>
     </div>
 
     <!-- Thông Tin Sản Phẩm -->
@@ -203,7 +240,7 @@
                 </div>
             </div>
             <div class="reviews-content">
-                <p> ${r.reviewText}</p>
+                <p>${r.reviewText}</p>
                 <img src="${r.url}" alt="Review Image" class="review-image">
             </div>
         </div>
@@ -233,12 +270,11 @@
     </div>
 </div>
 
-
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-brand">
         <p>CHUYÊN CUNG CẤP CÁC LOẠI THẮT LƯNG.</p>
-        <p>   Chất lượng - Uy tín - Tin cậy</p>
+        <p>Chất lượng - Uy tín - Tin cậy</p>
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank">
                 <img src="../asset/image/icons8-facebook-48.png" alt="Facebook">
@@ -256,7 +292,6 @@
     </div>
     <div class="footer-container">
         <!-- Logo và mạng xã hội -->
-
         <div class="footer-brand">
             <img src="../asset/image/logoSaleNoti.png" alt="Logo" class="footer-logo">
             <p>Chất lượng - Uy tín - Tin cậy</p>
@@ -308,7 +343,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
+        <p>© 2024 Chuyên cung cấp thắt lưng các loại. Hotline: <a href="tel:0397526965">0397526965</a></p>
     </div>
 </footer>
 <script>

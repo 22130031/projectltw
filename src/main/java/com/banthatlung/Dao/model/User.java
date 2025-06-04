@@ -112,9 +112,11 @@ public class User implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
     public boolean isActivated() {
         return isActivated;
     }
+
     public void setActivated(boolean activated) {
         isActivated = activated;
     }
