@@ -17,6 +17,10 @@ public class OrderDao {
         this.conn = conn;
     }
 
+    public OrderDao() {
+        
+    }
+
     // 1. Cập nhật trạng thái hóa đơn, đồng thời lưu lịch sử trạng thái
     public boolean updateOrderStatus(int orderId, int newStatus, String changedBy, String note) throws SQLException {
         conn.setAutoCommit(false); // Đảm bảo cả 2 thao tác thành công hoặc rollback
