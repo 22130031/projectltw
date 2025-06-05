@@ -24,8 +24,8 @@ public class OrderListController extends HttpServlet {
             return;
         }
         String userId = ((com.banthatlung.Dao.model.User) session.getAttribute("auth")).getId();
-        try (Connection conn = DBConnect2.getConnection()) {
-            OrderDao orderDao = new OrderDao(conn);
+        try {
+            OrderDao orderDao = new OrderDao();
             List<Order> orders = orderDao.getOrdersByUser(userId);
             req.setAttribute("orders", orders);
         } catch (Exception e) {
